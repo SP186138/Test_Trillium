@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<RECORD xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+<NAME>recode93_119.dat</NAME>
+<LENGTH>24</LENGTH>
+
+<FIELD>
+    <NAME>Nsod</NAME>
+    <TYPE>UTF8</TYPE>
+    <STARTS-IN-COLUMN>0</STARTS-IN-COLUMN>
+    <LENGTH>3</LENGTH>
+</FIELD>
+<FIELD>
+    <NAME>Postal_code</NAME>
+    <TYPE>UTF8</TYPE>
+    <STARTS-IN-COLUMN>3</STARTS-IN-COLUMN>
+    <LENGTH>21</LENGTH>
+</FIELD>
+
+</RECORD>
+

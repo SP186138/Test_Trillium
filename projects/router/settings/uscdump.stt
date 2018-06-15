@@ -1,0 +1,5 @@
+geo_lev1_fname         USXINDEX1.tbl
+geo_base_fname         USXBASE.tbl
+geo_gaci_fname         USGACI.tbl
+DISPLAY_BASEDATA 
+LEVEL1_VALUE 

@@ -1,0 +1,17 @@
+/* characters control file
+/*
+/* list of characters that are to be converted to space
+/*
+#
+$
+^
+*
+(
+)
+=
+[
+]
+\
+<
+>
+:

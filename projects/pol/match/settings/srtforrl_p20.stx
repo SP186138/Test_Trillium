@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TSQSORT xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <SETTINGS_FILE_ENCODING>UTF8</SETTINGS_FILE_ENCODING>
+   
+   
+
+<CATEGORY>
+      <INPUT>
+         <PARAMETER>
+            <INPUT_SETTINGS>
+               <ARGUMENTS>
+                  <ENTRY>
+                     <ENTRY_ID>1</ENTRY_ID>
+                     <FILE_QUALIFIER>e31_pl_common_p17</FILE_QUALIFIER>
+                     <DATA_FILE_NAME>stdin</DATA_FILE_NAME>
+                     <DDL_FILE_NAME>$(DDL)/MATCH_MASTER_SETTINGS_p19.ddx</DDL_FILE_NAME>
+               <FILE_DELIMITER/>
+               <USE_QUOTES_AS_QUALIFIER/>
+             
+                     
+                     
+                     <START_RECORD/>
+                     <MAX_RECORDS/>
+                     <NTH_SAMPLE/>
+                     
+                     
+                     
+                  <SELECT_RECORDS/>
+</ENTRY>
+               </ARGUMENTS>
+            </INPUT_SETTINGS>
+         </PARAMETER>
+      </INPUT>
+      <OUTPUT>
+         <PARAMETER>
+            <OUTPUT_SETTINGS>
+               <ARGUMENTS>
+                  <FILE_QUALIFIER>OUTPUT</FILE_QUALIFIER>
+                  <DATA_FILE_NAME>$(OUTPUT)/pl_srtforrl_p20.dat</DATA_FILE_NAME>
+                  <DDL_FILE_NAME>$(DDL)/pl_srtforrl_p20.ddx</DDL_FILE_NAME>
+                  
+               <SELECT_RECORDS/>
+</ARGUMENTS>
+            </OUTPUT_SETTINGS>
+         </PARAMETER>
+      </OUTPUT>
+      <PROCESS>
+         <PARAMETER>
+            <PROCESS_SETTINGS>
+               <ARGUMENTS>
+                  <PROCESS_LOG_FILE_NAME>$(LOGS)/p20_pl_srtforrl_log.txt</PROCESS_LOG_FILE_NAME>
+                  <ENABLE_DEBUG_OUTPUT>0</ENABLE_DEBUG_OUTPUT>
+                  <DEBUG_FILE_NAME>$(DEBUG)/p20_pl_srtforrl_debug.txt</DEBUG_FILE_NAME>
+                  <WORKSPACE>$(WORKSPACE)</WORKSPACE>
+                  <MEMORY>1000</MEMORY>
+                  <ENTRY>
+                     <ENTRY_ID>1</ENTRY_ID>
+                     <KEY>REFERENCE_HOUSEHOLD_ID</KEY>
+                     <ORDER>A</ORDER>
+                     <COLLATING_SEQUENCE>ASCII</COLLATING_SEQUENCE>
+                  </ENTRY>
+               </ARGUMENTS>
+            </PROCESS_SETTINGS>
+         </PARAMETER>
+      </PROCESS>
+      <STATISTICS>
+         <PARAMETER>
+            <STATISTICS_SETTINGS>
+               <ARGUMENTS>
+                  <STATS_FILE_NAME>$(STATS)/p20_pl_srtforrl_stats.txt</STATS_FILE_NAME>
+               </ARGUMENTS>
+            </STATISTICS_SETTINGS>
+         </PARAMETER>
+      </STATISTICS>
+   </CATEGORY>
+</TSQSORT>
+    

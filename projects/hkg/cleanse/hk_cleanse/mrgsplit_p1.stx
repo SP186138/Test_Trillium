@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MRGSPLIT xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <SETTINGS_FILE_ENCODING>UTF8</SETTINGS_FILE_ENCODING>
+   
+   
+
+<CATEGORY>
+      <INPUT>
+         <PARAMETER>
+            <INPUT_SETTINGS>
+               <ARGUMENTS>
+                  <ENTRY>
+                     <ENTRY_ID>1</ENTRY_ID>
+                     <FILE_QUALIFIER>e44_Tss_Cleanse_Input_Hkg</FILE_QUALIFIER>
+                     <DATA_FILE_NAME>stdin</DATA_FILE_NAME>
+                     <DDL_FILE_NAME>$(DDL)/hk_tranfrmr_p1.ddx</DDL_FILE_NAME>
+               <FILE_DELIMITER/>
+               <USE_QUOTES_AS_QUALIFIER/>
+             
+                     
+                     <START_RECORD/>
+                     <MAX_RECORDS/>
+                     <NTH_SAMPLE/>
+                     
+                     
+                  <SELECT_RECORDS/>
+</ENTRY>
+               </ARGUMENTS>
+            </INPUT_SETTINGS>
+            <CONDITIONALS>
+               <ARGUMENTS>
+                  <ENTRY>
+                     <ENTRY_ID>1</ENTRY_ID>
+                     <FOR_FILES>e44_Tss_Cleanse_Input_Hkg</FOR_FILES>
+                     <CONDITION>IF (CNTRY_NAME = "HKG")
+    RUN WRITE_RECORD(1)
+        ENDIF
+    </CONDITION>
+                     
+                  </ENTRY>
+                  <ENTRY>
+                     <ENTRY_ID>2</ENTRY_ID>
+                     <FOR_FILES>e44_Tss_Cleanse_Input_Hkg</FOR_FILES>
+                     <CONDITION>IF (CNTRY_NAME = "HK2")
+    RUN WRITE_RECORD(2)
+        ENDIF
+    </CONDITION>
+                     
+                  </ENTRY>
+               </ARGUMENTS>
+            </CONDITIONALS>
+         </PARAMETER>
+      </INPUT>
+      <OUTPUT>
+         <PARAMETER>
+            <OUTPUT_SETTINGS>
+               <ARGUMENTS>
+                  <ENTRY>
+                     <ENTRY_ID>1</ENTRY_ID>
+                     <FILE_QUALIFIER>OUTPUT1</FILE_QUALIFIER>
+                     <DATA_FILE_NAME>stdout</DATA_FILE_NAME>
+                     <DDL_FILE_NAME>$(DDL)/hk_mrgsplit_p2.ddx.001</DDL_FILE_NAME>
+                     
+                     
+                     
+                     
+                  <SELECT_RECORDS/>
+</ENTRY>
+                  <ENTRY>
+                     <ENTRY_ID>2</ENTRY_ID>
+                     <FILE_QUALIFIER>OUTPUT2</FILE_QUALIFIER>
+                     <DATA_FILE_NAME>$(OUTPUT)/hk_mrgsplit_p2.dat.002</DATA_FILE_NAME>
+                     <DDL_FILE_NAME>$(DDL)/hk_mrgsplit_p2.ddx.002</DDL_FILE_NAME>
+                     
+                     
+                     
+                     
+                  <SELECT_RECORDS/>
+</ENTRY>
+               </ARGUMENTS>
+            </OUTPUT_SETTINGS>
+         </PARAMETER>
+      </OUTPUT>
+      <PROCESS>
+         <PARAMETER>
+            <PROCESS_SETTINGS>
+               <ARGUMENTS>
+                  <PROCESS_LOG_FILE_NAME>$(LOGS)/p2_hk_mrgsplit_log.txt</PROCESS_LOG_FILE_NAME>
+                  <ENABLE_DEBUG_OUTPUT>0</ENABLE_DEBUG_OUTPUT>
+                  <DEBUG_FILE_NAME>$(DEBUG)/p2_hk_mrgsplit_debug.txt</DEBUG_FILE_NAME>
+                  <PROCESS_TYPE>1</PROCESS_TYPE>
+                  <PARTITION_METHOD>7</PARTITION_METHOD>
+               </ARGUMENTS>
+            </PROCESS_SETTINGS>
+         </PARAMETER>
+      </PROCESS>
+      <STATISTICS>
+         <PARAMETER>
+            <STATISTICS_SETTINGS>
+               <ARGUMENTS>
+                  <STATS_FILE_NAME>$(STATS)/p2_hk_mrgsplit_stats.txt</STATS_FILE_NAME>
+               </ARGUMENTS>
+            </STATISTICS_SETTINGS>
+         </PARAMETER>
+      </STATISTICS>
+   </CATEGORY>
+</MRGSPLIT>
+    

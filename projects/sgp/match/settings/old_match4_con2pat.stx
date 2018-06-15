@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<CONSUMER_LEVEL2_PATTERN_SETTINGS xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <ARGUMENTS>
+        <ENTRY>
+            <PATTERN>P100AAAA</PATTERN>
+            <!--        -        -->
+            <PATTERN>P202AAAB</PATTERN>
+            <!--        -        -->
+            <PATTERN>P203AABA</PATTERN>
+            <!--        -        -->
+            <PATTERN>P204AABB</PATTERN>
+            <!--       -       -->
+            <PATTERN>P205AA--</PATTERN>
+        </ENTRY>
+    </ARGUMENTS>
+</CONSUMER_LEVEL2_PATTERN_SETTINGS>

@@ -1,0 +1,353 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TRANFRMR xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+  <SETTINGS_FILE_ENCODING>UTF8</SETTINGS_FILE_ENCODING>
+
+  
+
+
+<CATEGORY>
+    <INPUT>
+      <PARAMETER>
+        <INPUT_SETTINGS>
+          <ARGUMENTS>
+            <ENTRY>
+              <ENTRY_ID>1</ENTRY_ID>
+              <FILE_QUALIFIER>e49_br_pmatch_p4</FILE_QUALIFIER>
+              <DATA_FILE_NAME>stdin</DATA_FILE_NAME>
+              <DDL_FILE_NAME>$(DDL)/br_pmatch_p4.ddx</DDL_FILE_NAME>
+               <FILE_DELIMITER/>
+               <USE_QUOTES_AS_QUALIFIER/>
+             
+              
+              
+              <START_RECORD/>
+              <MAX_RECORDS/>
+              <NTH_SAMPLE/>
+              
+              <EXCEPTIONS_FILE_NAME/>
+              
+              
+              
+            <SELECT_RECORDS/>
+</ENTRY>
+          </ARGUMENTS>
+        </INPUT_SETTINGS>
+
+        
+      </PARAMETER>
+    </INPUT>
+    <OUTPUT>
+      <PARAMETER>
+<OUTPUT_SETTINGS>
+          <ARGUMENTS>
+            <FILE_QUALIFIER>OUTPUT</FILE_QUALIFIER>
+            <DATA_FILE_NAME>stdout</DATA_FILE_NAME>
+            <DDL_FILE_NAME>$(DDL)/br_drtranfrmr_p5.ddx</DDL_FILE_NAME>
+            
+          <SELECT_RECORDS/>
+</ARGUMENTS>
+        </OUTPUT_SETTINGS>
+
+<TABLE_RECODING>
+	<ARGUMENTS>
+		<ENTRY>
+			<ENTRY_ID>1</ENTRY_ID>
+<ENTRY_DESCRIPTION>Copyof_Addr_Line1: Use recode table to remove most leading street types</ENTRY_DESCRIPTION>
+			<FILE_QUALIFIER>RECODE1</FILE_QUALIFIER>
+			<TABLE_FILE_NAME>$(USRTABLES)/br_recode_str_types_for_winkey.tbl</TABLE_FILE_NAME>
+			<DDL_FILE_NAME>$(DDL)/br_recode_str_types_for_winkey.ddx</DDL_FILE_NAME>
+			<FILE_DELIMITER>Pipe</FILE_DELIMITER>
+			<LOOKUP_PHRASE_SEPARATOR>" "</LOOKUP_PHRASE_SEPARATOR>
+			<LOOKUP_TABLE_FIELDS>FROM_STYPE</LOOKUP_TABLE_FIELDS>
+			<LOOKUP_FIELDS_CASE_SENSITIVE>N</LOOKUP_FIELDS_CASE_SENSITIVE>
+			<LOOKUP_OUTPUT_FIELDS>COPY_DR_STREET_NAME</LOOKUP_OUTPUT_FIELDS>
+			<LOOKUP_OUTPUT_FIELDS_FORMAT>L</LOOKUP_OUTPUT_FIELDS_FORMAT>
+			<RECODE_TABLE_FIELDS>TO_STYPE</RECODE_TABLE_FIELDS>
+			<RECODE_TABLE_FIELDS_FORMAT>L</RECODE_TABLE_FIELDS_FORMAT>
+			<RECODE_OUTPUT_FIELDS>COPY_DR_STREET_NAME</RECODE_OUTPUT_FIELDS>
+			
+		</ENTRY>
+	</ARGUMENTS>
+</TABLE_RECODING>
+
+
+
+<CONDITIONALS>
+	<ARGUMENTS>
+		<ENTRY>
+			<ENTRY_ID>1</ENTRY_ID>
+			<FOR_FILES>OUTPUT</FOR_FILES>
+			<CONDITION>
+   /*
+   /* ENTRY ID/SUBROUTINE LIST:
+   /*   1. main
+   /*   2. bra_set_derived_address
+   /*   3. global_address_citypost
+   /*   4. global_address_match
+   /*   5. global_address_nomatch
+   /*   6. set_address_case
+   /*   7. set_global_address_fields_tn
+   /*   8. set_name_fields
+   /*
+/* +----------------------------------------------------------------------------+
+/* | ROUTINE: bra_cleanse                                                BRAZIL |
+/* +----------------------------------------------------------------------------+
+/*
+   IF(ALWAYS)
+      RUN SUBROUTINE(7)
+      RUN SUBROUTINE(2)
+      /* Make a copy of the DR_STREET_NAME field and remove
+      /* common Brazilian street types from the beginning of the name.
+      SET copy_dr_street_name = "^" || DR_STREET_NAME
+      RUN TABLE_RECODING(1)
+      IF(SUBSTR(copy_dr_street_name,0,1) = "^")
+         SET copy_dr_street_name = SUBSTR(copy_dr_street_name,1,59)
+      ENDIF
+      SET copy_dr_street_name = LTRIM(copy_dr_street_name)
+      RUN SUBROUTINE(8)
+      RUN SUBROUTINE(6)
+      SET dr_country      = "BR"
+      SET dr_country_name = "BRA"
+   ENDIF
+   </CONDITION>
+		</ENTRY>
+		<ENTRY>
+			<ENTRY_ID>2</ENTRY_ID>
+			<FOR_FILES>OUTPUT</FOR_FILES>
+			<CONDITION>SUBROUTINE
+   /* SUBROUTINE: bra_set_derived_address
+/* +----------------------------------------------------------------------------+
+/* | SUBROUTINE: bra_set_derived_address                                        |
+/* +----------------------------------------------------------------------------+
+/*
+   IF(ALWAYS)
+      IF(TQ_GOUT_MATCH_LEVEL IN ("0","3"))
+         SET dr_cleanse_level = "2"
+         SET dr_pobox_number  = GA_GOUT_BOX_NUMBER
+         SET dr_house_number1 = GA_GOUT_HOUSE_NUMBER
+         SET dr_street_name   = TRIM(TRIM(GA_GOUT_STREET_TYPE) |: TRIM(GA_GOUT_STREET_NAME) |: GA_GOUT_STREET_DIRECTION)
+         SET dr_house_number2 = TRIM(TRIM(GA_GOUT_BUILDING) |: TRIM(GA_GOUT_SUB_BUILDING) |: TRIM(GA_GOUT_SUB_BUILDING_VALUE) |: TRIM(GA_GOUT_SUB_BUILDING2) |: GA_GOUT_SUB_BUILDING2_VALUE)
+         SET dr_city_name     = GA_GOUT_POSTAL_CITY
+         SET dr_region_name   = GA_GOUT_STATE
+         SET dr_postal_code   = TRIM(TRIM(GA_GOUT_POSTAL_CODE) |: GA_GOUT_POSTAL_CODE_EXT)
+         SET dr_address       = GA_GOUT_DELIVERY_ADDRESS
+      ELSE
+         SET dr_cleanse_level = "1"
+         SET dr_pobox_number  = GA_GOUT_BOX_NUMBER
+         SET dr_house_number1 = PR_HOUSE_NUMBER_ORIGINAL
+         SET dr_street_name   = TRIM(TRIM(PR_STREET_TYPE1_RECODED) |: TRIM(PR_STREET_NAME_ORIGINAL) |: PR_STREET_PRIMARY_DIR_ORIGINAL)
+         SET dr_house_number2 = TRIM(TRIM(PR_DWELLING1_NAME_ORIGINAL) |: PR_DWELLING1_NUMBER)
+         SET dr_city_name     = PR_CITY_NAME_ORIGINAL
+         SET dr_region_name   = PR_STATE_ORIGINAL
+         SET dr_postal_code   = PR_POSTAL_CODE
+         SET dr_address       = GA_GOUT_DELIVERY_ADDRESS
+         /*   SET dr_address = dr_street_name |: dr_house_number1 |: dr_house_number2
+      ENDIF
+      SET dr_address2         = ""
+      SET dr_address3         = ""
+   ENDIF
+   </CONDITION>
+		</ENTRY>
+		<ENTRY>
+			<ENTRY_ID>3</ENTRY_ID>
+			<FOR_FILES>OUTPUT</FOR_FILES>
+			<CONDITION>SUBROUTINE
+   /* SUBROUTINE: global_address_citypost
+/* +----------------------------------------------------------------------------+
+/* | SUBROUTINE: global_address_citypost                                        |
+/* +----------------------------------------------------------------------------+
+/*
+/*   City + post verified
+/*
+   IF(ALWAYS)
+      SET GA_GOUT_POSTAL_CODE_CHANGED    = TERNARY(UCASE(GA_GOUT_POSTAL_CODE) = UCASE(TQ_GIN_POSTAL_CODE), "N", "Y")
+      SET GA_GOUT_PROVINCE_CHANGED       = TERNARY(UCASE(GA_GOUT_STATE)       = UCASE(TQ_GIN_STATE)      , "N", "Y")
+      SET GA_GOUT_CITY_CHANGED           = TERNARY(UCASE(GA_GOUT_POSTAL_CITY) = UCASE(TQ_GIN_CITY_NAME)  , "N", "Y")
+      SET GA_GOUT_HOUSE_NUMBER           = TQ_GIN_HOUSE_NUMBER
+      SET GA_GOUT_STREET_NAME_CHANGED    = "N"
+      SET GA_GOUT_STREET_TYPE_CHANGED    = "N"
+      SET GA_GOUT_BOX_NUMBER             = TRIM(TRIM(PR_BOX1_NAME_RECODED) |: PR_BOX1_NUMBER)
+      SET GA_GOUT_SUB_BUILDING           = TRIM(TRIM(TQ_GIN_SUB_BUILDING) |: TQ_GIN_SUB_BUILDING_VALUE)
+      SET GA_GOUT_DWELLING_1_CHANGED     = "N"
+      SET GA_GOUT_SUB_BUILDING2          = TQ_GIN_SUB_BUILDING2
+      SET GA_GOUT_SUB_BUILDING2_VALUE    = TQ_GIN_SUB_BUILDING2_VALUE
+      SET GA_GOUT_DWELLING_2_CHANGED     = "N"
+      SET GA_GOUT_BUILDING               = TRIM(TRIM(PR_COMPLEX1_NAME_RECODED) |: PR_COMPLEX1_TYPE_RECODED)
+      SET GA_GOUT_SUB_CITY               = TRIM(TRIM(PR_NEIGH1_NAME_RECODED) |: PR_NEIGH2_NAME_RECODED)
+      SET GA_GOUT_NEIGHBORHOOD_1_CHANGED = "N"
+   ENDIF
+   </CONDITION>
+		</ENTRY>
+		<ENTRY>
+			<ENTRY_ID>4</ENTRY_ID>
+			<FOR_FILES>OUTPUT</FOR_FILES>
+			<CONDITION>SUBROUTINE
+   /* SUBROUTINE: global_address_match
+/* +----------------------------------------------------------------------------+
+/* | SUBROUTINE: global_address_match                                           |
+/* +----------------------------------------------------------------------------+
+/*
+/*   verified to house number if available otherwise to street.
+/*
+   IF(ALWAYS)
+      SET GA_GOUT_POSTAL_CODE_CHANGED    = TERNARY(UCASE(GA_GOUT_POSTAL_CODE) = UCASE(TQ_GIN_POSTAL_CODE), "N", "Y")
+      SET GA_GOUT_PROVINCE_CHANGED       = TERNARY(UCASE(GA_GOUT_STATE)       = UCASE(TQ_GIN_STATE)      , "N", "Y")
+      SET GA_GOUT_CITY_CHANGED           = TERNARY(UCASE(GA_GOUT_POSTAL_CITY) = UCASE(TQ_GIN_CITY_NAME)  , "N", "Y")
+      SET GA_GOUT_HOUSE_NUMBER           = TQ_GIN_HOUSE_NUMBER
+      SET GA_GOUT_SUB_BUILDING           = TRIM(TRIM(TQ_GIN_SUB_BUILDING) |: TQ_GIN_SUB_BUILDING_VALUE)
+      SET GA_GOUT_DWELLING_1_CHANGED     = "N"
+      SET GA_GOUT_SUB_BUILDING2          = TQ_GIN_SUB_BUILDING2
+      SET GA_GOUT_SUB_BUILDING2_VALUE    = TQ_GIN_SUB_BUILDING2_VALUE
+      SET GA_GOUT_DWELLING_2_CHANGED     = "N"
+      SET GA_GOUT_BUILDING               = TRIM(TRIM(PR_COMPLEX1_NAME_RECODED) |: PR_COMPLEX1_TYPE_RECODED)
+      SET GA_GOUT_SUB_CITY               = TRIM(TRIM(PR_NEIGH1_NAME_RECODED) |: PR_NEIGH2_NAME_RECODED)
+      SET GA_GOUT_NEIGHBORHOOD_1_CHANGED = "N"
+   ENDIF
+   </CONDITION>
+		</ENTRY>
+		<ENTRY>
+			<ENTRY_ID>5</ENTRY_ID>
+			<FOR_FILES>OUTPUT</FOR_FILES>
+			<CONDITION>SUBROUTINE
+   /* SUBROUTINE: global_address_nomatch
+/* +----------------------------------------------------------------------------+
+/* | SUBROUTINE: global_address_nomatch                                         |
+/* +----------------------------------------------------------------------------+
+/*
+   IF(ALWAYS)
+      /*   address failure - fill gout with gin
+      SET GA_GOUT_POSTAL_CODE            = TQ_GIN_POSTAL_CODE
+      SET GA_GOUT_POSTAL_CODE_CHANGED    = "N"
+      SET GA_GOUT_STATE                  = TQ_GIN_STATE
+      SET GA_GOUT_PROVINCE_CHANGED       = "N"
+      SET GA_GOUT_POSTAL_CITY            = TQ_GIN_CITY_NAME
+      SET GA_GOUT_CITY_CHANGED           = "N"
+      SET GA_GOUT_HOUSE_NUMBER           = TQ_GIN_HOUSE_NUMBER
+      SET GA_GOUT_STREET_NAME_CHANGED    = "N"
+      SET GA_GOUT_STREET_TYPE_CHANGED    = "N"
+      SET GA_GOUT_BOX_NUMBER             = TRIM(TRIM(PR_BOX1_NAME_RECODED) |: PR_BOX1_NUMBER)
+      SET GA_GOUT_SUB_BUILDING           = TRIM(TRIM(TQ_GIN_SUB_BUILDING) |: TQ_GIN_SUB_BUILDING_VALUE)
+      SET GA_GOUT_DWELLING_1_CHANGED     = "N"
+      SET GA_GOUT_SUB_BUILDING2          = TQ_GIN_SUB_BUILDING2
+      SET GA_GOUT_SUB_BUILDING2_VALUE    = TQ_GIN_SUB_BUILDING2_VALUE
+      SET GA_GOUT_DWELLING_2_CHANGED     = "N"
+      SET GA_GOUT_BUILDING               = TRIM(TRIM(PR_COMPLEX1_NAME_RECODED) |: PR_COMPLEX1_TYPE_RECODED)
+      SET GA_GOUT_SUB_CITY               = TRIM(TRIM(PR_NEIGH1_NAME_RECODED) |: PR_NEIGH2_NAME_RECODED)
+      SET GA_GOUT_NEIGHBORHOOD_1_CHANGED = "N"
+   ENDIF
+   </CONDITION>
+		</ENTRY>
+		<ENTRY>
+			<ENTRY_ID>6</ENTRY_ID>
+			<FOR_FILES>OUTPUT</FOR_FILES>
+			<CONDITION>SUBROUTINE
+   /* SUBROUTINE: set_address_case
+/* +----------------------------------------------------------------------------+
+/* | SUBROUTINE: set_address_case                                               |
+/* +----------------------------------------------------------------------------+
+/*
+   IF(ALWAYS)
+      SET dr_house_number2 = TCASE(DR_HOUSE_NUMBER2)
+      SET dr_street_name   = TCASE(DR_STREET_NAME)
+      SET dr_city_name     = TCASE(DR_CITY_NAME)
+      SET dr_region_name   = UCASE(DR_REGION_NAME)
+      SET dr_address       = TCASE(DR_ADDRESS)
+      SET dr_address2      = TCASE(DR_ADDRESS2)
+      SET dr_address3      = TCASE(DR_ADDRESS3)
+   ENDIF
+   </CONDITION>
+		</ENTRY>
+		<ENTRY>
+			<ENTRY_ID>7</ENTRY_ID>
+			<FOR_FILES>OUTPUT</FOR_FILES>
+			<CONDITION>SUBROUTINE
+   /* SUBROUTINE: set_global_address_fields_tn
+/* +----------------------------------------------------------------------------+
+/* | SUBROUTINE: set_global_address_fields_tn                                   |
+/* +----------------------------------------------------------------------------+
+/*
+/*   Used for countries that place the street type before the street name.
+/*
+   IF(ALWAYS)
+      /* verified to street or to house number
+      IF(    TQ_GOUT_MATCH_LEVEL IN ("0","3"))
+         RUN SUBROUTINE(4)
+         SET GA_GOUT_STREET_NAME_CHANGED = TERNARY(UCASE(TRIM(GA_GOUT_STREET_NAME)) = UCASE(TRIM(TRIM(TQ_GIN_STREET_TYPE) |: TQ_GIN_STREET_NAME)), "N", "Y")
+         SET GA_GOUT_STREET_TYPE_CHANGED = GA_GOUT_STREET_NAME_CHANGED
+         /* nothing verified, use input
+      ELSEIF(TQ_GOUT_MATCH_LEVEL IN (" ","1","6","7","8","9"))
+         RUN SUBROUTINE(5)
+         SET GA_GOUT_STREET_NAME         = TRIM(TRIM(TQ_GIN_STREET_TYPE) |: TQ_GIN_STREET_NAME)
+         /* city + postal code verified
+      ELSEIF(TQ_GOUT_MATCH_LEVEL = "2")
+         RUN SUBROUTINE(3)
+         SET GA_GOUT_STREET_NAME         = TRIM(TRIM(TQ_GIN_STREET_TYPE) |: TQ_GIN_STREET_NAME)
+      ENDIF
+      /* fill business name
+      SET GA_GOUT_BUSINESS_NAME         = TQ_GIN_BUSNAME
+      SET GA_GOUT_BUSINESS_NAME_CHANGED = "N"
+      /* pobox address
+      IF(TQ_GIN_BOX_INDICATOR = "P" AND PR_STREET_NAME_RECODED = "")
+         SET GA_GOUT_STREET_NAME  = PR_BOX1_NAME_RECODED
+         SET GA_GOUT_HOUSE_NUMBER = PR_BOX1_NUMBER
+      ENDIF
+      /* Fill delivery address
+      SET GA_GOUT_DELIVERY_ADDRESS = TRIM(TRIM(GA_GOUT_STREET_NAME) |: TRIM(GA_GOUT_HOUSE_NUMBER) |: GA_GOUT_SUB_BUILDING)
+   ENDIF
+   </CONDITION>
+		</ENTRY>
+		<ENTRY>
+			<ENTRY_ID>8</ENTRY_ID>
+			<FOR_FILES>OUTPUT</FOR_FILES>
+			<CONDITION>SUBROUTINE
+   /* SUBROUTINE: set_name_fields
+/* +----------------------------------------------------------------------------+
+/* | SUBROUTINE: set_name_fields                                                |
+/* +----------------------------------------------------------------------------+
+/*
+/*   This is the original "set_name_fields" routine used by americas.
+/*
+   IF(ALWAYS)
+      SET dr_business_name = TCASE(PR_BUSNAME_ORIGINAL_01)
+      SET dr_alias_account = PR_BUSNAME_RECODED_01
+      SET dr_alias_contact = PR_GIVEN_NAME1_RECODED_01
+      SET dr_mrmrs         = TRIM(TCASE(NAME_PREFX_TXT))
+      SET dr_first_name    = TRIM(TCASE(GVN_NAME))
+      SET dr_middle_name   = TRIM(TCASE(MID_NAME))
+      SET dr_last_name     = TRIM(TCASE(FAMLY_NAME))
+      SET dr_name_gender   = TRIM(UCASE(GENDR_IND))
+      SET dr_name_suffix   = TRIM(TCASE(NAME_SUFFX_TXT))
+   ENDIF
+   </CONDITION>
+		</ENTRY>
+	</ARGUMENTS>
+</CONDITIONALS>
+</PARAMETER>
+    </OUTPUT>
+    <PROCESS>
+      <PARAMETER>
+        <PROCESS_SETTINGS>
+          <ARGUMENTS>
+            <PROCESS_LOG_FILE_NAME>$(LOGS)/p5_br_drtranfrmr_log.txt</PROCESS_LOG_FILE_NAME>
+            <ENABLE_DEBUG_OUTPUT>N</ENABLE_DEBUG_OUTPUT>
+            <DEBUG_FILE_NAME>$(DEBUG)/p5_br_drtranfrmr_debug.txt</DEBUG_FILE_NAME>
+            <MASK_FILE_NAME>$(GENERAL_RESOURCES)/maskfile$(PLAFEXT)</MASK_FILE_NAME>
+<STRSUB_TABLE_FILE_NAME>$(GENERAL_RESOURCES)/strsub$(PLAFEXT)</STRSUB_TABLE_FILE_NAME>
+          </ARGUMENTS>
+        </PROCESS_SETTINGS>
+      </PARAMETER>
+    </PROCESS>
+    <STATISTICS>
+      <PARAMETER>
+        <STATISTICS_SETTINGS>
+          <ARGUMENTS>
+            <STATS_FILE_NAME>$(STATS)/p5_br_drtranfrmr_stats.txt</STATS_FILE_NAME>
+          </ARGUMENTS>
+        </STATISTICS_SETTINGS>
+      </PARAMETER>
+    </STATISTICS>
+  </CATEGORY>
+
+</TRANFRMR>
+    

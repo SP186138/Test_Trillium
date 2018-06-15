@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<CONSUMER_LEVEL1_PATTERN_SETTINGS xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <ARGUMENTS>
+        <ENTRY>
+            <PATTERN>F999------</PATTERN>
+            <PATTERN>P100A--A--</PATTERN>
+            <PATTERN>P110AAAAAA</PATTERN>
+            <PATTERN>P111--AA-A</PATTERN>
+        </ENTRY>
+    </ARGUMENTS>
+</CONSUMER_LEVEL1_PATTERN_SETTINGS>

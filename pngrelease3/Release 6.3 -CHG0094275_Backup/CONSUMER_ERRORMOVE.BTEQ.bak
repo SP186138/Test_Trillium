@@ -1,0 +1,1361 @@
+/***********************************************************************************************************
+SCRIPT:               Consumer ErrorMove.BTEQ 
+DESCRIPTION:          This script moves the error records received from ETL Staging to Error Staging.
+DEPENDENCY:           
+INPUT:                ETL Staging
+OUTPUT:               Error Staging
+ERRORS:
+SPECIAL INSTRUCTIONS:
+
+CHANGE LOG:
+VERSION              DATE                 AUTHOR                          CHANGES
+1.00                 01/21/2011           TERADATA                        INITIAL VERSION
+***********************************************************************************************************/
+
+.RUN FILE \\sdwl0064\Teradata\MDM\3.05.02\custom\pngrelease3\logon\LOGON.txt;
+.SET ERROROUT STDOUT;
+.SET SESSION CHARSET 'UTF8';
+
+/* Insert into 11 ERROR STAGING TABLES  */ 
+
+INSERT	INTO ICRM_TBL.ERR_PRSNA_EMAIL_ADDR_STG
+(
+MKTNG_PGM_NBR, 
+REGIS_CNSMR_ID_VAL, 
+CNTCT_POINT_CATEG_CODE,
+EMAIL_ADDR_TXT, 
+EMAIL_FORMT_CODE, 
+PREFR_IND, 
+VALID_IND, 
+RECORD_IND,
+LOAD_ID, 
+LOAD_TS, 
+MDM_LOAD_IND, 
+CNTCT_OPTN_NBR,
+CNTCT_OPTN_IND, 
+CNSMR_CHCE_DATETM,
+GUARDN_NAME, 
+GUARDN_EMAIL_ADDR_TXT, 
+GUARDN_CNSNT_IND, 
+ACNLGMT_DATE,
+SYS_SOURCE,
+SYS_NC_TYPE,
+SYS_ERROR_TIME
+)
+SELECT	
+STG.MKTNG_PGM_NBR, 
+STG.REGIS_CNSMR_ID_VAL, 
+STG.CNTCT_POINT_CATEG_CODE, 
+STG.EMAIL_ADDR_TXT,
+STG.EMAIL_FORMT_CODE, 
+STG.PREFR_IND, 
+STG.VALID_IND, 
+STG.RECORD_IND, 
+STG.LOAD_ID, 
+STG.LOAD_TS, 
+STG.MDM_LOAD_IND, 
+C.CNTCT_OPTN_NBR, 
+C.CNTCT_OPTN_IND,
+CAST(CAST(C.CNSMR_CHCE_DATETM AS VARCHAR(19)) AS TIMESTAMP(0)), 
+C.GUARDN_NAME, 
+C.GUARDN_EMAIL_ADDR_TXT, 
+C.GUARDN_CNSNT_IND, 
+C.ACNLGMT_DATE,
+TRIM(CAST(STG.LOAD_ID AS INTEGER)),
+CASE WHEN (STG.RECORD_IND='I')
+THEN 'INSERT'
+ELSE 'UPDATE'
+END,
+STG.LOAD_TS
+FROM	
+ICRM_STAGE.PRSNA_EMAIL_ADDR_STG STG
+INNER JOIN
+MDM.MDM_LOAD_CONTROL LOAD
+ON STG.LOAD_ID = LOAD.LOAD_ID
+INNER JOIN
+ICRM_STAGE.CNTCT_OPTN_CHCE_STG C
+ON
+STG.MKTNG_PGM_NBR = C.MKTNG_PGM_NBR
+AND
+STG.REGIS_CNSMR_ID_VAL = C.REGIS_CNSMR_ID_VAL
+AND
+STG.CNTCT_POINT_CATEG_CODE=C.CNTCT_POINT_CATEG_CODE
+AND
+C.CNTCT_POINT_TYPE_CODE='E'
+INNER JOIN
+ICRM_TBL.ERR_PRSNA_STG_VIEW ERR
+ON
+STG.MKTNG_PGM_NBR = ERR.MKTNG_PGM_NBR
+AND
+STG.REGIS_CNSMR_ID_VAL = ERR.REGIS_CNSMR_ID_VAL
+WHERE C.CNTCT_POINT_TYPE_CODE='E';
+
+.IF ERRORLEVEL > 0 THEN .GOTO EXIT;
+
+INSERT	INTO ICRM_TBL.ERR_PRSNA_PHONE_STG
+(MKTNG_PGM_NBR, 
+REGIS_CNSMR_ID_VAL, 
+CNTCT_POINT_CATEG_CODE,
+PHONE_CNTRY_NBR, 
+PHONE_AREA_NBR, 
+PHONE_EXCHG_NBR, 
+PHONE_LINE_NBR,
+PHONE_EXTSN_NUM, 
+FULL_PHONE_NUM, 
+SMS_PREFR_IND, 
+SMS_AVAIL_START_TIME,
+SMS_AVAIL_END_TIME, 
+PREFR_IND, 
+VALID_IND, 
+RECORD_IND, 
+LOAD_ID,
+LOAD_TS, 
+MDM_LOAD_IND, 
+CNTCT_OPTN_IND, 
+CNTCT_OPTN_NBR, 
+CNSMR_CHCE_DATETM,
+GUARDN_NAME, 
+GUARDN_EMAIL_ADDR_TXT, 
+GUARDN_CNSNT_IND, 
+ACNLGMT_DATE,
+SYS_SOURCE,
+SYS_NC_TYPE,
+SYS_ERROR_TIME)
+SELECT	
+STG.MKTNG_PGM_NBR, 
+STG.REGIS_CNSMR_ID_VAL, 
+STG.CNTCT_POINT_CATEG_CODE, 
+STG.PHONE_CNTRY_NBR,
+STG.PHONE_AREA_NBR, 
+STG.PHONE_EXCHG_NBR, 
+STG.PHONE_LINE_NBR, 
+STG.PHONE_EXTSN_NUM, 
+STG.FULL_PHONE_NUM,
+STG.SMS_PREFR_IND, 
+CAST(CAST(STG.SMS_AVAIL_START_TIME AS VARCHAR(19)) AS TIMESTAMP(0)),
+CAST(CAST(STG.SMS_AVAIL_END_TIME AS VARCHAR(19)) AS TIMESTAMP(0)),
+STG.PREFR_IND, 
+STG.VALID_IND, 
+STG.RECORD_IND, 
+STG.LOAD_ID,
+STG.LOAD_TS, 
+STG.MDM_LOAD_IND, 
+C.CNTCT_OPTN_IND,
+C.CNTCT_OPTN_NBR, 
+CAST(CAST(C.CNSMR_CHCE_DATETM AS VARCHAR(19)) AS TIMESTAMP(0)), 
+C.GUARDN_NAME, 
+C.GUARDN_EMAIL_ADDR_TXT, 
+C.GUARDN_CNSNT_IND, 
+C.ACNLGMT_DATE,
+TRIM(CAST(STG.LOAD_ID AS INTEGER)),
+CASE WHEN (STG.RECORD_IND='I')
+THEN 'INSERT'
+ELSE 'UPDATE'
+END,
+STG.LOAD_TS
+FROM	
+ICRM_STAGE.PRSNA_PHONE_STG STG
+INNER JOIN
+MDM.MDM_LOAD_CONTROL LOAD
+ON STG.LOAD_ID = LOAD.LOAD_ID
+INNER JOIN
+ICRM_STAGE.CNTCT_OPTN_CHCE_STG C
+ON
+STG.MKTNG_PGM_NBR = C.MKTNG_PGM_NBR
+AND
+STG.REGIS_CNSMR_ID_VAL = C.REGIS_CNSMR_ID_VAL
+AND
+STG.CNTCT_POINT_CATEG_CODE=C.CNTCT_POINT_CATEG_CODE
+AND
+C.CNTCT_POINT_TYPE_CODE='P'
+INNER JOIN
+ICRM_TBL.ERR_PRSNA_STG_VIEW ERR
+ON
+STG.MKTNG_PGM_NBR = ERR.MKTNG_PGM_NBR
+AND
+STG.REGIS_CNSMR_ID_VAL = ERR.REGIS_CNSMR_ID_VAL
+WHERE C.CNTCT_POINT_TYPE_CODE='P';
+
+.IF ERRORLEVEL > 0 THEN .GOTO EXIT;
+
+INSERT	INTO ICRM_TBL.ERR_PRSNA_POSTL_ADDR_STG
+(MKTNG_PGM_NBR, 
+REGIS_CNSMR_ID_VAL, 
+CNTCT_POINT_CATEG_CODE,
+ADDR_LINE_1_TXT, 
+ADDR_LINE_2_TXT, 
+ADDR_LINE_3_TXT, 
+STRET_NUM,
+STRET_NAME, 
+APT_NUM, 
+PO_BOX_NUM, 
+CITY_NAME, 
+TERR_NAME, 
+POSTL_AREA_CODE,
+GEOC_AREA_TYPE_CODE, 
+GEOC_AREA_NAME, 
+CNTRY_NAME, 
+PREFR_IND, 
+VALID_IND, 
+RECORD_IND, 
+LOAD_ID, 
+LOAD_TS, 
+MDM_LOAD_IND,
+CNTCT_OPTN_IND,
+CNTCT_OPTN_NBR, 
+CNSMR_CHCE_DATETM, 
+GUARDN_NAME, 
+GUARDN_EMAIL_ADDR_TXT,
+GUARDN_CNSNT_IND, 
+ACNLGMT_DATE,
+SYS_SOURCE,
+SYS_NC_TYPE,
+SYS_ERROR_TIME)
+SELECT	
+STG.MKTNG_PGM_NBR, 
+STG.REGIS_CNSMR_ID_VAL, 
+STG.CNTCT_POINT_CATEG_CODE, 
+STG.ADDR_LINE_1_TXT,
+STG.ADDR_LINE_2_TXT, 
+STG.ADDR_LINE_3_TXT, 
+STG.STRET_NUM, 
+STG.STRET_NAME, 
+STG.APT_NUM, 
+STG.PO_BOX_NUM, 
+STG.CITY_NAME, 
+STG.TERR_NAME,
+STG.POSTL_AREA_CODE, 
+STG.GEOC_AREA_TYPE_CODE, 
+STG.GEOC_AREA_NAME, 
+STG.CNTRY_NAME, 
+STG.PREFR_IND, 
+STG.VALID_IND, 
+STG.RECORD_IND, 
+STG.LOAD_ID, 
+STG.LOAD_TS, 
+STG.MDM_LOAD_IND, 
+C.CNTCT_OPTN_IND,
+C.CNTCT_OPTN_NBR, 
+CAST(CAST(C.CNSMR_CHCE_DATETM AS VARCHAR(19)) AS TIMESTAMP(0)), 
+C.GUARDN_NAME, 
+C.GUARDN_EMAIL_ADDR_TXT, 
+C.GUARDN_CNSNT_IND, 
+C.ACNLGMT_DATE,
+TRIM(CAST(STG.LOAD_ID AS INTEGER)),
+CASE WHEN (STG.RECORD_IND='I')
+THEN 'INSERT'
+ELSE 'UPDATE'
+END,
+STG.LOAD_TS
+FROM	
+ICRM_STAGE.PRSNA_POSTL_ADDR_STG STG
+INNER JOIN
+MDM.MDM_LOAD_CONTROL LOAD
+ON STG.LOAD_ID = LOAD.LOAD_ID
+INNER JOIN
+ICRM_STAGE.CNTCT_OPTN_CHCE_STG C
+ON
+STG.MKTNG_PGM_NBR = C.MKTNG_PGM_NBR
+AND
+STG.REGIS_CNSMR_ID_VAL = C.REGIS_CNSMR_ID_VAL
+AND
+STG.CNTCT_POINT_CATEG_CODE=C.CNTCT_POINT_CATEG_CODE
+AND
+C.CNTCT_POINT_TYPE_CODE='A'
+INNER JOIN
+ICRM_TBL.ERR_PRSNA_STG_VIEW ERR
+ON
+STG.MKTNG_PGM_NBR = ERR.MKTNG_PGM_NBR
+AND
+STG.REGIS_CNSMR_ID_VAL = ERR.REGIS_CNSMR_ID_VAL
+WHERE C.CNTCT_POINT_TYPE_CODE='A';
+
+.IF ERRORLEVEL > 0 THEN .GOTO EXIT;
+
+INSERT	INTO ICRM_TBL.ERR_PRSNA_SOC_NETWK_ACCT_STG
+(MKTNG_PGM_NBR, 
+REGIS_CNSMR_ID_VAL, 
+CNTCT_POINT_CATEG_CODE,   
+SOCIAL_NETWK_ACCT_ID_VAL, 
+PREFR_IND, 
+VALID_IND, 
+RECORD_IND, 
+LOAD_ID, 		
+LOAD_TS, 
+MDM_LOAD_IND, 
+CNTCT_OPTN_NBR, 
+CNTCT_OPTN_IND, 
+CNSMR_CHCE_DATETM, 		
+GUARDN_NAME, 
+GUARDN_EMAIL_ADDR_TXT, 
+GUARDN_CNSNT_IND, 
+ACNLGMT_DATE,
+SYS_SOURCE,
+SYS_NC_TYPE,
+SYS_ERROR_TIME)
+SELECT	
+STG.MKTNG_PGM_NBR, 
+STG.REGIS_CNSMR_ID_VAL, 
+STG.CNTCT_POINT_CATEG_CODE, 
+STG.SOCIAL_NETWK_ACCT_ID_VAL,    
+STG.PREFR_IND, 
+STG.VALID_IND, 
+STG.RECORD_IND, 
+STG.LOAD_ID, 
+STG.LOAD_TS, 
+STG.MDM_LOAD_IND, 
+C.CNTCT_OPTN_NBR, 
+C.CNTCT_OPTN_IND,
+CAST(CAST(C.CNSMR_CHCE_DATETM AS VARCHAR(19)) AS TIMESTAMP(0)), 
+C.GUARDN_NAME, 
+C.GUARDN_EMAIL_ADDR_TXT, 
+C.GUARDN_CNSNT_IND, 
+C.ACNLGMT_DATE,
+TRIM(CAST(STG.LOAD_ID AS INTEGER)),
+CASE WHEN (STG.RECORD_IND='I')
+THEN 'INSERT'
+ELSE 'UPDATE'
+END,
+STG.LOAD_TS
+FROM	
+ICRM_STAGE.PRSNA_SOCIAL_NETWK_ACCT_STG STG
+INNER JOIN
+MDM.MDM_LOAD_CONTROL LOAD
+ON STG.LOAD_ID = LOAD.LOAD_ID
+INNER JOIN
+ICRM_STAGE.CNTCT_OPTN_CHCE_STG C
+ON
+STG.MKTNG_PGM_NBR = C.MKTNG_PGM_NBR
+AND
+STG.REGIS_CNSMR_ID_VAL = C.REGIS_CNSMR_ID_VAL
+AND
+STG.CNTCT_POINT_CATEG_CODE=C.CNTCT_POINT_CATEG_CODE
+AND
+C.CNTCT_POINT_TYPE_CODE='S'
+INNER JOIN
+ICRM_TBL.ERR_PRSNA_STG_VIEW ERR
+ON
+STG.MKTNG_PGM_NBR = ERR.MKTNG_PGM_NBR
+AND
+STG.REGIS_CNSMR_ID_VAL = ERR.REGIS_CNSMR_ID_VAL
+WHERE C.CNTCT_POINT_TYPE_CODE='S';
+
+.IF ERRORLEVEL > 0 THEN .GOTO EXIT;
+
+
+INSERT INTO ICRM_TBL.ERR_CNSMR_AFFLTN_STG
+(
+MKTNG_PGM_NBR, 
+REGIS_CNSMR_ID_VAL, 
+CNSMR_GRP_NBR, 
+AFFLTN_START_DATE, 
+AFFLTN_END_DATE, 
+RECORD_IND, 
+LOAD_ID, 
+LOAD_TS, 
+MDM_LOAD_IND,
+SYS_SOURCE,
+SYS_NC_TYPE,
+SYS_ERROR_TIME
+)
+SELECT 
+STG.MKTNG_PGM_NBR, 
+STG.REGIS_CNSMR_ID_VAL, 
+STG.CNSMR_GRP_NBR, 
+STG.AFFLTN_START_DATE, 
+STG.AFFLTN_END_DATE, 
+STG.RECORD_IND, 
+STG.LOAD_ID, 
+STG.LOAD_TS, 
+STG.MDM_LOAD_IND,
+TRIM(CAST(STG.LOAD_ID AS INTEGER)),
+CASE WHEN (STG.RECORD_IND='I')
+THEN 'INSERT'
+ELSE 'UPDATE'
+END,
+STG.LOAD_TS
+FROM ICRM_STAGE.CNSMR_AFFLTN_STG STG
+INNER JOIN
+MDM.MDM_LOAD_CONTROL LOAD
+ON STG.LOAD_ID = LOAD.LOAD_ID
+INNER JOIN
+ICRM_TBL.ERR_PRSNA_STG_VIEW ERR
+ON
+STG.MKTNG_PGM_NBR = ERR.MKTNG_PGM_NBR
+AND
+STG.REGIS_CNSMR_ID_VAL = ERR.REGIS_CNSMR_ID_VAL;
+
+.IF ERRORLEVEL > 0 THEN .GOTO EXIT;
+
+
+INSERT INTO ICRM_TBL.ERR_DPEND_STG
+(MKTNG_PGM_NBR, 
+REGIS_CNSMR_ID_VAL, 
+DPEND_SEQ_NBR, 
+DPEND_NAME, 
+DPEND_GENDR_IND, 
+DPEND_BRTH_DATE, 
+DPEND_AGE_NBR, 
+DPEND_TYPE_CODE, 
+RECORD_IND, 
+LOAD_ID, 
+LOAD_TS, 
+MDM_LOAD_IND,
+SYS_SOURCE,
+SYS_NC_TYPE,
+SYS_ERROR_TIME
+)
+SELECT
+STG.MKTNG_PGM_NBR, 
+STG.REGIS_CNSMR_ID_VAL, 
+STG.DPEND_SEQ_NBR, 
+STG.DPEND_NAME, 
+STG.DPEND_GENDR_IND, 
+STG.DPEND_BRTH_DATE, 
+STG.DPEND_AGE_NBR, 
+STG.DPEND_TYPE_CODE, 
+STG.RECORD_IND, 
+STG.LOAD_ID, 
+STG.LOAD_TS, 
+STG.MDM_LOAD_IND,
+TRIM(CAST(STG.LOAD_ID AS INTEGER)),
+CASE WHEN (STG.RECORD_IND='I')
+THEN 'INSERT'
+ELSE 'UPDATE'
+END,
+STG.LOAD_TS
+FROM ICRM_STAGE.DPEND_STG STG
+INNER JOIN
+MDM.MDM_LOAD_CONTROL LOAD
+ON STG.LOAD_ID = LOAD.LOAD_ID
+INNER JOIN
+ICRM_TBL.ERR_PRSNA_STG_VIEW ERR
+ON
+STG.MKTNG_PGM_NBR = ERR.MKTNG_PGM_NBR
+AND
+STG.REGIS_CNSMR_ID_VAL = ERR.REGIS_CNSMR_ID_VAL;
+
+.IF ERRORLEVEL > 0 THEN .GOTO EXIT;
+
+INSERT INTO ICRM_TBL.ERR_DPEND_TRT_STG
+(MKTNG_PGM_NBR, 
+REGIS_CNSMR_ID_VAL, 
+DPEND_SEQ_NBR, 
+TRT_NBR, 
+DPEND_TRT_DATE, 
+DPEND_TRT_INTEGER, 
+DPEND_TRT_TXT,
+DPEND_TRT_SEQ_NBR, 
+RECORD_IND, 
+LOAD_ID, 
+LOAD_TS, 
+MDM_LOAD_IND,
+SYS_SOURCE,
+SYS_NC_TYPE,
+SYS_ERROR_TIME
+)
+SELECT
+STG.MKTNG_PGM_NBR, 
+STG.REGIS_CNSMR_ID_VAL, 
+STG.DPEND_SEQ_NBR, 
+STG.TRT_NBR, 
+STG.DPEND_TRT_DATE, 
+STG.DPEND_TRT_INTEGER, 
+STG.DPEND_TRT_TXT,
+STG.DPEND_TRT_SEQ_NBR, 
+STG.RECORD_IND, 
+STG.LOAD_ID, 
+STG.LOAD_TS, 
+STG.MDM_LOAD_IND,TRIM(CAST(STG.LOAD_ID AS INTEGER)),
+CASE WHEN (STG.RECORD_IND='I')
+THEN 'INSERT'
+ELSE 'UPDATE'
+END,
+STG.LOAD_TS
+FROM ICRM_STAGE.DPEND_TRT_STG STG
+INNER JOIN
+MDM.MDM_LOAD_CONTROL LOAD
+ON STG.LOAD_ID = LOAD.LOAD_ID
+INNER JOIN
+ICRM_TBL.ERR_PRSNA_STG_VIEW ERR
+ON
+STG.MKTNG_PGM_NBR = ERR.MKTNG_PGM_NBR
+AND
+STG.REGIS_CNSMR_ID_VAL = ERR.REGIS_CNSMR_ID_VAL;
+
+.IF ERRORLEVEL > 0 THEN .GOTO EXIT;
+
+INSERT INTO ICRM_TBL.ERR_PET_STG
+(MKTNG_PGM_NBR, 
+REGIS_CNSMR_ID_VAL, 
+PET_SEQ_NBR, 
+PET_NAME, 
+PET_GENDR_IND, 
+PET_BRTH_DATE, 
+PET_AGE_NBR, 
+RECORD_IND, 
+LOAD_ID, 
+LOAD_TS, 
+MDM_LOAD_IND,
+SYS_SOURCE,
+SYS_NC_TYPE,
+SYS_ERROR_TIME
+)
+SELECT 
+STG.MKTNG_PGM_NBR, 
+STG.REGIS_CNSMR_ID_VAL, 
+STG.PET_SEQ_NBR, 
+STG.PET_NAME, 
+STG.PET_GENDR_IND, 
+STG.PET_BRTH_DATE,
+STG.PET_AGE_NBR, 
+STG.RECORD_IND, 
+STG.LOAD_ID, 
+STG.LOAD_TS, 
+STG.MDM_LOAD_IND,
+TRIM(CAST(STG.LOAD_ID AS INTEGER)),
+CASE WHEN (STG.RECORD_IND='I')
+THEN 'INSERT'
+ELSE 'UPDATE'
+END,
+STG.LOAD_TS
+FROM ICRM_STAGE.PET_STG STG
+INNER JOIN
+MDM.MDM_LOAD_CONTROL LOAD
+ON STG.LOAD_ID = LOAD.LOAD_ID
+INNER JOIN
+ICRM_TBL.ERR_PRSNA_STG_VIEW ERR
+ON
+STG.MKTNG_PGM_NBR = ERR.MKTNG_PGM_NBR
+AND
+STG.REGIS_CNSMR_ID_VAL = ERR.REGIS_CNSMR_ID_VAL;
+
+.IF ERRORLEVEL > 0 THEN .GOTO EXIT;
+
+INSERT INTO ICRM_TBL.ERR_PET_TRT_STG
+(MKTNG_PGM_NBR, 
+REGIS_CNSMR_ID_VAL, 
+PET_SEQ_NBR, 
+TRT_ID, 
+PET_TRT_DATE, 
+PET_TRT_INTEGRE, 
+PET_TRT_TXT, 
+PET_TRT_SEQ_NBR, 
+RECORD_IND,
+SYS_SOURCE,
+SYS_NC_TYPE,
+SYS_ERROR_TIME
+)
+SELECT 
+STG.MKTNG_PGM_NBR, 
+STG.REGIS_CNSMR_ID_VAL, 
+STG.PET_SEQ_NBR, 
+STG.TRT_ID, 
+STG.PET_TRT_DATE, 
+STG.PET_TRT_INTEGRE, 
+STG.PET_TRT_TXT, 
+STG.PET_TRT_SEQ_NBR, 
+STG.RECORD_IND,
+TRIM(CAST(STG.LOAD_ID AS INTEGER)),
+CASE WHEN (STG.RECORD_IND='I')
+THEN 'INSERT'
+ELSE 'UPDATE'
+END,
+STG.LOAD_TS
+FROM ICRM_STAGE.PET_TRT_STG STG
+INNER JOIN
+MDM.MDM_LOAD_CONTROL LOAD
+ON STG.LOAD_ID = LOAD.LOAD_ID
+INNER JOIN
+ICRM_TBL.ERR_PRSNA_STG_VIEW ERR
+ON
+STG.MKTNG_PGM_NBR = ERR.MKTNG_PGM_NBR
+AND
+STG.REGIS_CNSMR_ID_VAL = ERR.REGIS_CNSMR_ID_VAL;
+
+.IF ERRORLEVEL > 0 THEN .GOTO EXIT;
+
+INSERT INTO ICRM_TBL.ERR_PRSNA_TRT_STG
+(MKTNG_PGM_NBR, 
+REGIS_CNSMR_ID_VAL, 
+TRT_NBR, 
+PRSNA_TRT_SEQ_NBR, 
+PRSNA_TRT_DATE, 
+PRSNA_TRT_INTEGER,
+PRSNA_TRT_TXT, 
+RECORD_IND, 
+LOAD_ID, 
+LOAD_TS, 
+MDM_LOAD_IND,
+SYS_SOURCE,
+SYS_NC_TYPE,
+SYS_ERROR_TIME
+)
+SELECT 
+STG.MKTNG_PGM_NBR, 
+STG.REGIS_CNSMR_ID_VAL, 
+STG.TRT_NBR, 
+STG.PRSNA_TRT_SEQ_NBR, 
+STG.PRSNA_TRT_DATE,  
+STG.PRSNA_TRT_INTEGER, 
+STG.PRSNA_TRT_TXT, 
+STG.RECORD_IND, 
+STG.LOAD_ID, 
+STG.LOAD_TS, 
+STG.MDM_LOAD_IND,
+TRIM(CAST(STG.LOAD_ID AS INTEGER)),
+CASE WHEN (STG.RECORD_IND='I')
+THEN 'INSERT'
+ELSE 'UPDATE'
+END,
+STG.LOAD_TS
+FROM ICRM_STAGE.PRSNA_TRT_STG STG
+INNER JOIN
+MDM.MDM_LOAD_CONTROL LOAD
+ON STG.LOAD_ID = LOAD.LOAD_ID
+INNER JOIN
+ICRM_TBL.ERR_PRSNA_STG_VIEW ERR
+ON
+STG.MKTNG_PGM_NBR = ERR.MKTNG_PGM_NBR
+AND
+STG.REGIS_CNSMR_ID_VAL = ERR.REGIS_CNSMR_ID_VAL;
+
+.IF ERRORLEVEL > 0 THEN .GOTO EXIT;
+
+/* INSERT INTO MST STAGE */
+
+INSERT INTO ICRM_TBL.CNSMR_AFFLTN_STG
+(
+MKTNG_PGM_NBR, 
+REGIS_CNSMR_ID_VAL, 
+CNSMR_GRP_NBR, 
+AFFLTN_START_DATE, 
+AFFLTN_END_DATE, 
+RECORD_IND, 
+LOAD_ID, 
+LOAD_TS, 
+MDM_LOAD_IND,
+SYNC_STATUS,
+SYS_SOURCE,
+SYS_NC_TYPE,
+SYS_CREATION_DATE
+)
+SELECT 
+STG.MKTNG_PGM_NBR, 
+STG.REGIS_CNSMR_ID_VAL, 
+STG.CNSMR_GRP_NBR, 
+STG.AFFLTN_START_DATE, 
+STG.AFFLTN_END_DATE, 
+STG.RECORD_IND, 
+STG.LOAD_ID, 
+STG.LOAD_TS, 
+STG.MDM_LOAD_IND,
+'VALIDATED',
+TRIM(CAST(STG.LOAD_ID AS INTEGER)),
+CASE WHEN (STG.RECORD_IND='I')
+THEN 'INSERT'
+ELSE 'UPDATE'
+END,
+STG.LOAD_TS
+FROM ICRM_STAGE.CNSMR_AFFLTN_STG STG
+INNER JOIN
+MDM.MDM_LOAD_CONTROL LOAD
+ON STG.LOAD_ID = LOAD.LOAD_ID
+LEFT OUTER JOIN ICRM_TBL.ERR_PRSNA_STG_VIEW ERR
+ON
+STG.MKTNG_PGM_NBR = ERR.MKTNG_PGM_NBR
+AND
+STG.REGIS_CNSMR_ID_VAL = ERR.REGIS_CNSMR_ID_VAL
+WHERE ERR.MKTNG_PGM_NBR IS NULL;
+
+.IF ERRORLEVEL > 0 THEN .GOTO EXIT;
+
+INSERT INTO ICRM_TBL.DPEND_STG
+(MKTNG_PGM_NBR, 
+REGIS_CNSMR_ID_VAL, 
+DPEND_SEQ_NBR, 
+DPEND_NAME, 
+DPEND_GENDR_IND, 
+DPEND_BRTH_DATE, 
+DPEND_AGE_NBR, 
+DPEND_TYPE_CODE, 
+RECORD_IND, 
+LOAD_ID, 
+LOAD_TS, 
+MDM_LOAD_IND,
+SYNC_STATUS,
+SYS_SOURCE,
+SYS_NC_TYPE,
+SYS_CREATION_DATE
+)
+SELECT
+STG.MKTNG_PGM_NBR, 
+STG.REGIS_CNSMR_ID_VAL, 
+STG.DPEND_SEQ_NBR, 
+STG.DPEND_NAME, 
+STG.DPEND_GENDR_IND, 
+STG.DPEND_BRTH_DATE, 
+STG.DPEND_AGE_NBR, 
+STG.DPEND_TYPE_CODE, 
+STG.RECORD_IND, 
+STG.LOAD_ID, 
+STG.LOAD_TS, 
+STG.MDM_LOAD_IND,
+'VALIDATED',
+TRIM(CAST(STG.LOAD_ID AS INTEGER)),
+CASE WHEN (STG.RECORD_IND='I')
+THEN 'INSERT'
+ELSE 'UPDATE'
+END,
+STG.LOAD_TS
+FROM ICRM_STAGE.DPEND_STG STG
+INNER JOIN
+MDM.MDM_LOAD_CONTROL LOAD
+ON STG.LOAD_ID = LOAD.LOAD_ID
+LEFT OUTER JOIN ICRM_TBL.ERR_PRSNA_STG_VIEW ERR
+ON
+STG.MKTNG_PGM_NBR = ERR.MKTNG_PGM_NBR
+AND
+STG.REGIS_CNSMR_ID_VAL = ERR.REGIS_CNSMR_ID_VAL
+WHERE ERR.MKTNG_PGM_NBR IS NULL;
+
+.IF ERRORLEVEL > 0 THEN .GOTO EXIT;
+
+INSERT INTO ICRM_TBL.DPEND_TRT_STG
+(MKTNG_PGM_NBR, 
+REGIS_CNSMR_ID_VAL, 
+DPEND_SEQ_NBR, 
+TRT_NBR, 
+DPEND_TRT_DATE, 
+DPEND_TRT_INTEGER, 
+DPEND_TRT_TXT,
+DPEND_TRT_SEQ_NBR, 
+RECORD_IND, 
+LOAD_ID, 
+LOAD_TS, 
+MDM_LOAD_IND,
+SYNC_STATUS,
+SYS_SOURCE,
+SYS_NC_TYPE,
+SYS_CREATION_DATE
+)
+SELECT
+STG.MKTNG_PGM_NBR, 
+STG.REGIS_CNSMR_ID_VAL, 
+STG.DPEND_SEQ_NBR, 
+STG.TRT_NBR, 
+STG.DPEND_TRT_DATE, 
+STG.DPEND_TRT_INTEGER, 
+STG.DPEND_TRT_TXT,
+STG.DPEND_TRT_SEQ_NBR, 
+STG.RECORD_IND, 
+STG.LOAD_ID, 
+STG.LOAD_TS, 
+STG.MDM_LOAD_IND ,
+'VALIDATED',
+TRIM(CAST(STG.LOAD_ID AS INTEGER)),
+CASE WHEN (STG.RECORD_IND='I')
+THEN 'INSERT'
+ELSE 'UPDATE'
+END,
+STG.LOAD_TS
+FROM ICRM_STAGE.DPEND_TRT_STG STG
+INNER JOIN
+MDM.MDM_LOAD_CONTROL LOAD
+ON STG.LOAD_ID = LOAD.LOAD_ID
+LEFT OUTER JOIN ICRM_TBL.ERR_PRSNA_STG_VIEW ERR
+ON
+STG.MKTNG_PGM_NBR = ERR.MKTNG_PGM_NBR
+AND
+STG.REGIS_CNSMR_ID_VAL = ERR.REGIS_CNSMR_ID_VAL
+WHERE ERR.MKTNG_PGM_NBR IS NULL;
+
+.IF ERRORLEVEL > 0 THEN .GOTO EXIT;
+
+INSERT INTO ICRM_TBL.PET_STG
+(MKTNG_PGM_NBR, 
+REGIS_CNSMR_ID_VAL, 
+PET_SEQ_NBR, 
+PET_NAME, 
+PET_GENDR_IND, 
+PET_BRTH_DATE, 
+PET_AGE_NBR, 
+RECORD_IND, 
+LOAD_ID, 
+LOAD_TS, 
+MDM_LOAD_IND,
+SYNC_STATUS,
+SYS_SOURCE,
+SYS_NC_TYPE,
+SYS_CREATION_DATE
+)
+SELECT 
+STG.MKTNG_PGM_NBR, 
+STG.REGIS_CNSMR_ID_VAL, 
+STG.PET_SEQ_NBR, 
+STG.PET_NAME, 
+STG.PET_GENDR_IND, 
+STG.PET_BRTH_DATE,
+STG.PET_AGE_NBR, 
+STG.RECORD_IND, 
+STG.LOAD_ID, 
+STG.LOAD_TS, 
+STG.MDM_LOAD_IND,
+'VALIDATED',
+TRIM(CAST(STG.LOAD_ID AS INTEGER)),
+CASE WHEN (STG.RECORD_IND='I')
+THEN 'INSERT'
+ELSE 'UPDATE'
+END,
+STG.LOAD_TS
+FROM ICRM_STAGE.PET_STG STG
+INNER JOIN
+MDM.MDM_LOAD_CONTROL LOAD
+ON STG.LOAD_ID = LOAD.LOAD_ID
+LEFT OUTER JOIN ICRM_TBL.ERR_PRSNA_STG_VIEW ERR
+ON
+STG.MKTNG_PGM_NBR = ERR.MKTNG_PGM_NBR
+AND
+STG.REGIS_CNSMR_ID_VAL = ERR.REGIS_CNSMR_ID_VAL
+WHERE ERR.MKTNG_PGM_NBR IS NULL;
+
+.IF ERRORLEVEL > 0 THEN .GOTO EXIT;
+
+INSERT INTO ICRM_TBL.PET_TRT_STG
+(MKTNG_PGM_NBR, 
+REGIS_CNSMR_ID_VAL, 
+PET_SEQ_NBR, 
+TRT_ID, 
+PET_TRT_DATE, 
+PET_TRT_INTEGRE, 
+PET_TRT_TXT, 
+PET_TRT_SEQ_NBR, 
+RECORD_IND,
+SYNC_STATUS
+)
+SELECT 
+STG.MKTNG_PGM_NBR, 
+STG.REGIS_CNSMR_ID_VAL, 
+STG.PET_SEQ_NBR, 
+STG.TRT_ID, 
+STG.PET_TRT_DATE, 
+STG.PET_TRT_INTEGRE, 
+STG.PET_TRT_TXT, 
+STG.PET_TRT_SEQ_NBR, 
+STG.RECORD_IND,
+'VALIDATED'
+FROM ICRM_STAGE.PET_TRT_STG STG
+INNER JOIN
+MDM.MDM_LOAD_CONTROL LOAD
+ON STG.LOAD_ID = LOAD.LOAD_ID
+LEFT OUTER JOIN ICRM_TBL.ERR_PRSNA_STG_VIEW ERR
+ON
+STG.MKTNG_PGM_NBR = ERR.MKTNG_PGM_NBR
+AND
+STG.REGIS_CNSMR_ID_VAL = ERR.REGIS_CNSMR_ID_VAL
+WHERE ERR.MKTNG_PGM_NBR IS NULL;
+
+.IF ERRORLEVEL > 0 THEN .GOTO EXIT;
+
+INSERT	INTO ICRM_TBL.PRSNA_EMAIL_ADDR_STG
+(MKTNG_PGM_NBR, 
+REGIS_CNSMR_ID_VAL, 
+CNTCT_POINT_CATEG_CODE,
+EMAIL_ADDR_TXT, 
+EMAIL_FORMT_CODE, 
+PREFR_IND, 
+VALID_IND, 
+RECORD_IND,
+LOAD_ID, 
+LOAD_TS, 
+MDM_LOAD_IND,
+SYNC_STATUS,
+CNTCT_OPTN_NBR,
+CNTCT_OPTN_IND, 
+CNSMR_CHCE_DATETM,
+GUARDN_NAME, 
+GUARDN_EMAIL_ADDR_TXT, 
+GUARDN_CNSNT_IND, 
+ACNLGMT_DATE,
+SYS_SOURCE,
+SYS_NC_TYPE,
+SYS_CREATION_DATE )
+SELECT	
+STG.MKTNG_PGM_NBR, 
+STG.REGIS_CNSMR_ID_VAL, 
+STG.CNTCT_POINT_CATEG_CODE, 
+STG.EMAIL_ADDR_TXT,
+STG.EMAIL_FORMT_CODE, 
+STG.PREFR_IND, 
+STG.VALID_IND, 
+STG.RECORD_IND, 
+STG.LOAD_ID, 
+STG.LOAD_TS, 
+STG.MDM_LOAD_IND,
+'VALIDATED',
+C.CNTCT_OPTN_NBR, 
+C.CNTCT_OPTN_IND,
+CAST(CAST(C.CNSMR_CHCE_DATETM AS VARCHAR(19)) AS TIMESTAMP(0)), 
+C.GUARDN_NAME, 
+C.GUARDN_EMAIL_ADDR_TXT, 
+C.GUARDN_CNSNT_IND, 
+C.ACNLGMT_DATE,
+TRIM(CAST(STG.LOAD_ID AS INTEGER)),
+CASE WHEN (STG.RECORD_IND='I')
+THEN 'INSERT'
+ELSE 'UPDATE'
+END,
+STG.LOAD_TS
+FROM	
+ICRM_STAGE.PRSNA_EMAIL_ADDR_STG STG
+INNER JOIN
+MDM.MDM_LOAD_CONTROL LOAD
+ON STG.LOAD_ID = LOAD.LOAD_ID
+INNER JOIN
+ICRM_STAGE.CNTCT_OPTN_CHCE_STG C
+ON
+STG.MKTNG_PGM_NBR = C.MKTNG_PGM_NBR
+AND
+STG.REGIS_CNSMR_ID_VAL = C.REGIS_CNSMR_ID_VAL
+AND
+STG.CNTCT_POINT_CATEG_CODE=C.CNTCT_POINT_CATEG_CODE
+AND
+STG.LOAD_ID = C.LOAD_ID
+AND
+STG.RECORD_IND = C.RECORD_IND
+AND
+C.CNTCT_POINT_TYPE_CODE='E'
+LEFT OUTER JOIN ICRM_TBL.ERR_PRSNA_STG_VIEW ERR
+ON
+STG.MKTNG_PGM_NBR = ERR.MKTNG_PGM_NBR
+AND
+STG.REGIS_CNSMR_ID_VAL = ERR.REGIS_CNSMR_ID_VAL
+WHERE ERR.MKTNG_PGM_NBR IS NULL
+AND C.CNTCT_POINT_TYPE_CODE='E';
+
+.IF ERRORLEVEL > 0 THEN .GOTO EXIT;
+
+INSERT INTO ICRM_TBL.PRSNA_PHONE_STG
+(MKTNG_PGM_NBR,
+REGIS_CNSMR_ID_VAL,
+CNTCT_POINT_CATEG_CODE,
+PHONE_CNTRY_NBR,
+PHONE_AREA_NBR,
+PHONE_EXCHG_NBR,
+PHONE_LINE_NBR,
+PHONE_EXTSN_NUM,
+FULL_PHONE_NUM,
+SMS_PREFR_IND,
+SMS_AVAIL_START_TIME,
+SMS_AVAIL_END_TIME,
+PREFR_IND,
+VALID_IND,
+RECORD_IND,
+LOAD_ID,
+LOAD_TS,
+MDM_LOAD_IND,
+SYNC_STATUS,
+CNTCT_OPTN_IND,
+CNTCT_OPTN_NBR,
+CNSMR_CHCE_DATETM,
+GUARDN_NAME,
+GUARDN_EMAIL_ADDR_TXT,
+GUARDN_CNSNT_IND,
+ACNLGMT_DATE,
+SYS_SOURCE,
+SYS_NC_TYPE,
+SYS_CREATION_DATE )
+SELECT
+STG.MKTNG_PGM_NBR,
+STG.REGIS_CNSMR_ID_VAL,
+STG.CNTCT_POINT_CATEG_CODE,
+STG.PHONE_CNTRY_NBR,
+STG.PHONE_AREA_NBR,
+STG.PHONE_EXCHG_NBR,
+STG.PHONE_LINE_NBR,
+STG.PHONE_EXTSN_NUM,
+STG.FULL_PHONE_NUM,
+STG.SMS_PREFR_IND,
+CAST(CAST(STG.SMS_AVAIL_START_TIME AS VARCHAR(19)) AS TIMESTAMP(0)),
+CAST(CAST(STG.SMS_AVAIL_END_TIME AS VARCHAR(19)) AS TIMESTAMP(0)),
+STG.PREFR_IND,
+STG.VALID_IND,
+STG.RECORD_IND,
+STG.LOAD_ID,
+STG.LOAD_TS,
+STG.MDM_LOAD_IND,
+'VALIDATED',
+C.CNTCT_OPTN_IND,
+C.CNTCT_OPTN_NBR,
+CAST(CAST(C.CNSMR_CHCE_DATETM AS VARCHAR(19)) AS TIMESTAMP(0)),
+C.GUARDN_NAME,
+C.GUARDN_EMAIL_ADDR_TXT,
+C.GUARDN_CNSNT_IND,
+C.ACNLGMT_DATE,
+TRIM(CAST(STG.LOAD_ID AS INTEGER)),
+CASE WHEN (STG.RECORD_IND='I')
+THEN 'INSERT'
+ELSE 'UPDATE'
+END,
+STG.LOAD_TS
+FROM
+ICRM_STAGE.PRSNA_PHONE_STG STG
+INNER JOIN
+MDM.MDM_LOAD_CONTROL LOAD
+ON STG.LOAD_ID = LOAD.LOAD_ID
+INNER JOIN
+ICRM_STAGE.CNTCT_OPTN_CHCE_STG C
+ON
+STG.MKTNG_PGM_NBR = C.MKTNG_PGM_NBR
+AND
+STG.REGIS_CNSMR_ID_VAL = C.REGIS_CNSMR_ID_VAL
+AND
+STG.CNTCT_POINT_CATEG_CODE=C.CNTCT_POINT_CATEG_CODE
+AND
+STG.LOAD_ID = C.LOAD_ID
+AND
+STG.RECORD_IND = C.RECORD_IND
+AND
+C.CNTCT_POINT_TYPE_CODE='P'
+LEFT OUTER JOIN ICRM_TBL.ERR_PRSNA_STG_VIEW ERR
+ON
+STG.MKTNG_PGM_NBR = ERR.MKTNG_PGM_NBR
+AND
+STG.REGIS_CNSMR_ID_VAL = ERR.REGIS_CNSMR_ID_VAL
+WHERE ERR.MKTNG_PGM_NBR IS NULL
+AND C.CNTCT_POINT_TYPE_CODE='P';
+
+.IF ERRORLEVEL > 0 THEN .GOTO EXIT;
+
+INSERT INTO ICRM_TBL.PRSNA_POSTL_ADDR_STG
+(MKTNG_PGM_NBR, 
+REGIS_CNSMR_ID_VAL, 
+CNTCT_POINT_CATEG_CODE,
+ADDR_LINE_1_TXT, 
+ADDR_LINE_2_TXT, 
+ADDR_LINE_3_TXT, 
+STRET_NUM,
+STRET_NAME, 
+APT_NUM, 
+PO_BOX_NUM, 
+CITY_NAME, 
+TERR_NAME, 
+POSTL_AREA_CODE,
+GEOC_AREA_TYPE_CODE, 
+GEOC_AREA_NAME, 
+CNTRY_NAME, 
+PREFR_IND, 
+VALID_IND, 
+RECORD_IND, 
+LOAD_ID, 
+LOAD_TS, 
+MDM_LOAD_IND,
+SYNC_STATUS,	
+CNTCT_OPTN_IND,
+CNTCT_OPTN_NBR, 
+CNSMR_CHCE_DATETM, 
+GUARDN_NAME, 
+GUARDN_EMAIL_ADDR_TXT,
+GUARDN_CNSNT_IND, 
+ACNLGMT_DATE,
+SYS_SOURCE,
+SYS_NC_TYPE,
+SYS_CREATION_DATE )
+SELECT
+STG.MKTNG_PGM_NBR, 
+STG.REGIS_CNSMR_ID_VAL, 
+STG.CNTCT_POINT_CATEG_CODE, 
+STG.ADDR_LINE_1_TXT,
+STG.ADDR_LINE_2_TXT, 
+STG.ADDR_LINE_3_TXT, 
+STG.STRET_NUM, 
+STG.STRET_NAME, 
+STG.APT_NUM, 
+STG.PO_BOX_NUM, 
+STG.CITY_NAME, 
+STG.TERR_NAME,
+STG.POSTL_AREA_CODE, 
+STG.GEOC_AREA_TYPE_CODE, 
+STG.GEOC_AREA_NAME, 
+STG.CNTRY_NAME, 
+STG.PREFR_IND, 
+STG.VALID_IND, 
+STG.RECORD_IND, 
+STG.LOAD_ID, 
+STG.LOAD_TS, 
+STG.MDM_LOAD_IND,
+'VALIDATED',
+C.CNTCT_OPTN_IND,
+C.CNTCT_OPTN_NBR, 
+CAST(CAST(C.CNSMR_CHCE_DATETM AS VARCHAR(19)) AS TIMESTAMP(0)), 
+C.GUARDN_NAME, 
+C.GUARDN_EMAIL_ADDR_TXT, 
+C.GUARDN_CNSNT_IND,
+C.ACNLGMT_DATE,
+TRIM(CAST(STG.LOAD_ID AS INTEGER)),
+CASE WHEN (STG.RECORD_IND='I')
+THEN 'INSERT'
+ELSE 'UPDATE'
+END,
+STG.LOAD_TS
+FROM	
+ICRM_STAGE.PRSNA_POSTL_ADDR_STG STG
+INNER JOIN
+MDM.MDM_LOAD_CONTROL LOAD
+ON STG.LOAD_ID = LOAD.LOAD_ID
+INNER JOIN 
+ICRM_STAGE.CNTCT_OPTN_CHCE_STG C
+ON
+STG.MKTNG_PGM_NBR = C.MKTNG_PGM_NBR
+AND
+STG.REGIS_CNSMR_ID_VAL = C.REGIS_CNSMR_ID_VAL
+AND
+STG.CNTCT_POINT_CATEG_CODE=C.CNTCT_POINT_CATEG_CODE
+AND
+STG.LOAD_ID = C.LOAD_ID
+AND
+STG.RECORD_IND = C.RECORD_IND
+AND
+C.CNTCT_POINT_TYPE_CODE='A'
+LEFT OUTER JOIN ICRM_TBL.ERR_PRSNA_STG_VIEW ERR
+ON
+STG.MKTNG_PGM_NBR = ERR.MKTNG_PGM_NBR
+AND
+STG.REGIS_CNSMR_ID_VAL = ERR.REGIS_CNSMR_ID_VAL
+WHERE ERR.MKTNG_PGM_NBR IS NULL
+AND C.CNTCT_POINT_TYPE_CODE='A';
+
+.IF ERRORLEVEL > 0 THEN .GOTO EXIT;
+
+INSERT INTO ICRM_TBL.PRSNA_SOC_NETWK_ACCT_STG	
+(MKTNG_PGM_NBR, 
+REGIS_CNSMR_ID_VAL, 
+CNTCT_POINT_CATEG_CODE,   
+SOCIAL_NETWK_ACCT_ID_VAL, 
+PREFR_IND, 
+VALID_IND, 
+RECORD_IND, 
+LOAD_ID, 		
+LOAD_TS, 
+MDM_LOAD_IND, 
+SYNC_STATUS,
+CNTCT_OPTN_NBR, 
+CNTCT_OPTN_IND, 
+CNSMR_CHCE_DATETM, 		
+GUARDN_NAME, 
+GUARDN_EMAIL_ADDR_TXT, 
+GUARDN_CNSNT_IND, 
+ACNLGMT_DATE,
+SYS_SOURCE,
+SYS_NC_TYPE,
+SYS_CREATION_DATE )
+SELECT  
+STG.MKTNG_PGM_NBR, 
+STG.REGIS_CNSMR_ID_VAL, 
+STG.CNTCT_POINT_CATEG_CODE, 
+STG.SOCIAL_NETWK_ACCT_ID_VAL,    
+STG.PREFR_IND, 
+STG.VALID_IND, 
+STG.RECORD_IND, 
+STG.LOAD_ID, 
+STG.LOAD_TS, 
+STG.MDM_LOAD_IND, 
+'VALIDATED',
+C.CNTCT_OPTN_NBR, 
+C.CNTCT_OPTN_IND,
+CAST(CAST(C.CNSMR_CHCE_DATETM AS VARCHAR(19)) AS TIMESTAMP(0)),   
+C.GUARDN_NAME, 
+C.GUARDN_EMAIL_ADDR_TXT, 
+C.GUARDN_CNSNT_IND, 
+C.ACNLGMT_DATE,
+TRIM(CAST(STG.LOAD_ID AS INTEGER)),
+CASE WHEN (STG.RECORD_IND='I')
+THEN 'INSERT'
+ELSE 'UPDATE'
+END,
+STG.LOAD_TS
+FROM	
+ICRM_STAGE.PRSNA_SOCIAL_NETWK_ACCT_STG STG
+INNER JOIN
+MDM.MDM_LOAD_CONTROL LOAD
+ON STG.LOAD_ID = LOAD.LOAD_ID
+INNER JOIN 
+ICRM_STAGE.CNTCT_OPTN_CHCE_STG C
+ON
+STG.MKTNG_PGM_NBR = C.MKTNG_PGM_NBR
+AND
+STG.REGIS_CNSMR_ID_VAL = C.REGIS_CNSMR_ID_VAL
+AND
+STG.CNTCT_POINT_CATEG_CODE=C.CNTCT_POINT_CATEG_CODE
+AND
+C.CNTCT_POINT_TYPE_CODE='S'
+AND
+STG.LOAD_ID = C.LOAD_ID
+AND
+STG.RECORD_IND = C.RECORD_IND
+LEFT OUTER JOIN ICRM_TBL.ERR_PRSNA_STG_VIEW ERR
+ON
+STG.MKTNG_PGM_NBR = ERR.MKTNG_PGM_NBR
+AND
+STG.REGIS_CNSMR_ID_VAL = ERR.REGIS_CNSMR_ID_VAL
+WHERE ERR.MKTNG_PGM_NBR IS NULL
+AND C.CNTCT_POINT_TYPE_CODE='S';
+
+.IF ERRORLEVEL > 0 THEN .GOTO EXIT;
+
+INSERT INTO ICRM_TBL.PRSNA_STG
+(MKTNG_PGM_NBR, 
+REGIS_CNSMR_ID_VAL, 
+USER_NAME, 
+PRSNA_REG_DT, 
+NAME_PREFX_TXT, 
+GVN_NAME, 
+MID_NAME, 
+FAMLY_NAME, 
+NAME_SUFFX_TXT, 
+FULL_NAME, 
+GENDR_IND, 
+BRTH_DATE, 
+LANG_CODE, 
+PRSNA_STTUS_CODE, 
+RECORD_IND,  
+LOAD_ID, 
+LOAD_TS, 
+MDM_LOAD_IND,
+SYNC_STATUS,
+SYS_SOURCE,
+SYS_NC_TYPE,
+SYS_CREATION_DATE,
+CNTRY_CODE
+)
+SELECT 
+STG.MKTNG_PGM_NBR, 
+STG.REGIS_CNSMR_ID_VAL, 
+STG.USER_NAME, 
+CAST(CAST(STG.PRSNA_REG_DT AS VARCHAR(19)) AS TIMESTAMP(0)), 
+STG.NAME_PREFX_TXT, 
+STG.GVN_NAME, 
+STG.MID_NAME, 
+STG.FAMLY_NAME, 
+STG.NAME_SUFFX_TXT, 
+STG.FULL_NAME, 
+STG.GENDR_IND, 
+STG.BRTH_DATE, 
+STG.LANG_CODE, 
+STG.PRSNA_STTUS_CODE, 
+STG.RECORD_IND, 
+STG.LOAD_ID, 
+STG.LOAD_TS, 
+STG.MDM_LOAD_IND,
+'VALIDATED',
+TRIM(CAST(STG.LOAD_ID AS INTEGER)),
+CASE WHEN (STG.RECORD_IND='I')
+THEN 'INSERT'
+ELSE 'UPDATE'
+END,
+STG.LOAD_TS,
+STG.CNTRY_NAME
+FROM ICRM_STAGE.PRSNA_STG STG
+INNER JOIN
+MDM.MDM_LOAD_CONTROL LOAD
+ON STG.LOAD_ID = LOAD.LOAD_ID
+LEFT OUTER JOIN ICRM_TBL.ERR_PRSNA_STG_VIEW ERR
+ON
+STG.MKTNG_PGM_NBR = ERR.MKTNG_PGM_NBR
+AND
+STG.REGIS_CNSMR_ID_VAL = ERR.REGIS_CNSMR_ID_VAL
+WHERE ERR.MKTNG_PGM_NBR IS NULL;
+
+.IF ERRORLEVEL > 0 THEN .GOTO EXIT;
+
+INSERT INTO ICRM_TBL.PRSNA_TRT_STG
+(MKTNG_PGM_NBR, 
+REGIS_CNSMR_ID_VAL, 
+TRT_NBR, 
+PRSNA_TRT_SEQ_NBR, 
+PRSNA_TRT_DATE, 
+PRSNA_TRT_INTEGER,
+PRSNA_TRT_TXT, 
+RECORD_IND, 
+LOAD_ID, 
+LOAD_TS, 
+MDM_LOAD_IND,
+SYNC_STATUS,
+SYS_SOURCE,
+SYS_NC_TYPE,
+SYS_CREATION_DATE
+)
+SELECT 
+STG.MKTNG_PGM_NBR, 
+STG.REGIS_CNSMR_ID_VAL, 
+STG.TRT_NBR, 
+STG.PRSNA_TRT_SEQ_NBR, 
+STG.PRSNA_TRT_DATE,  
+STG.PRSNA_TRT_INTEGER, 
+STG.PRSNA_TRT_TXT, 
+STG.RECORD_IND, 
+STG.LOAD_ID, 
+STG.LOAD_TS, 
+STG.MDM_LOAD_IND,
+'VALIDATED',
+TRIM(CAST(STG.LOAD_ID AS INTEGER))D,
+CASE WHEN (STG.RECORD_IND='I')
+THEN 'INSERT'
+ELSE 'UPDATE'
+END,
+STG.LOAD_TS
+FROM ICRM_STAGE.PRSNA_TRT_STG STG
+INNER JOIN
+MDM.MDM_LOAD_CONTROL LOAD
+ON STG.LOAD_ID = LOAD.LOAD_ID
+LEFT OUTER JOIN ICRM_TBL.ERR_PRSNA_STG_VIEW ERR
+ON
+STG.MKTNG_PGM_NBR = ERR.MKTNG_PGM_NBR
+AND
+STG.REGIS_CNSMR_ID_VAL = ERR.REGIS_CNSMR_ID_VAL
+WHERE ERR.MKTNG_PGM_NBR IS NULL;
+
+.IF ERRORLEVEL > 0 THEN .GOTO EXIT;
+
+.LABEL EXIT
+
+.IF ERRORLEVEL > 4 THEN .GOTO ERR ;
+.IF ERRORLEVEL <= 4 THEN .GOTO WARN;
+
+.LABEL ERR
+
+INSERT INTO ICRM_TBL.LOAD_INFO
+(
+LOAD_ID,
+PROCESS_NAME,
+PROCESS_START_TIME,
+PROCESS_END_TIME,
+NC_TYPE,
+STATUS,
+SYS_CREATION_DATE,
+SYS_LAST_MODIFIED_DATE) 
+SELECT
+ERR1.LOAD_ID,
+'Validations',
+CAST(CURRENT_TIMESTAMP(0) AS VARCHAR(19)),
+CAST(CURRENT_TIMESTAMP(0) AS VARCHAR(19)),
+CASE WHEN (ERR1.RECORD_IND='I')
+THEN 'INSERT'
+ELSE 'UPDATE'
+END,
+'Failure',
+CAST(CURRENT_TIMESTAMP(0) AS VARCHAR(19)),
+CAST(CURRENT_TIMESTAMP(0) AS VARCHAR(19))
+FROM ICRM_STAGE.PRSNA_STG ERR1
+INNER JOIN MDM.MDM_LOAD_CONTROL LOAD
+ON ERR1.LOAD_ID = LOAD.LOAD_ID
+GROUP BY
+ERR1.LOAD_ID,
+ERR1.RECORD_IND
+;
+
+.QUIT 1
+
+.LABEL WARN
+.QUIT 0
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          

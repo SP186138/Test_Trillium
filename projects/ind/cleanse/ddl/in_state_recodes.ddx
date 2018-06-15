@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<RECORD xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+<NAME>recode267_1117.dat</NAME>
+<LENGTH>72</LENGTH>
+
+<FIELD>
+    <NAME>Terr_code</NAME>
+    <TYPE>UTF8</TYPE>
+    <STARTS-IN-COLUMN>0</STARTS-IN-COLUMN>
+    <LENGTH>6</LENGTH>
+</FIELD>
+<FIELD>
+    <NAME>Terr_name</NAME>
+    <TYPE>UTF8</TYPE>
+    <STARTS-IN-COLUMN>6</STARTS-IN-COLUMN>
+    <LENGTH>66</LENGTH>
+</FIELD>
+
+</RECORD>
+

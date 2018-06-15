@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TRANFRMR xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<SETTINGS_FILE_ENCODING>UTF8</SETTINGS_FILE_ENCODING>
+
+
+<CATEGORY>
+
+<INPUT>
+<PARAMETER>
+<INPUT_SETTINGS>
+<ARGUMENTS>
+<ENTRY>
+<ENTRY_ID>1</ENTRY_ID>
+<FILE_QUALIFIER>kr_geocoder_p8</FILE_QUALIFIER>
+<DATA_FILE_NAME>stdin</DATA_FILE_NAME>
+<DDL_FILE_NAME>$(DDL)/kr_gllatlon_p8.ddx</DDL_FILE_NAME>
+               <FILE_DELIMITER/>
+               <USE_QUOTES_AS_QUALIFIER/>
+             
+
+<START_RECORD/>
+<MAX_RECORDS/>
+<NTH_SAMPLE/>
+
+
+<SELECT_RECORDS/>
+</ENTRY>
+</ARGUMENTS>
+</INPUT_SETTINGS>
+
+
+</PARAMETER>
+</INPUT>
+<OUTPUT>
+<PARAMETER>
+<OUTPUT_SETTINGS>
+<ARGUMENTS>
+<FILE_QUALIFIER>OUTPUT</FILE_QUALIFIER>
+<DATA_FILE_NAME>stdout</DATA_FILE_NAME>
+<DDL_FILE_NAME>$(DDL)/kr_drtranfrmr_p4.ddx</DDL_FILE_NAME>
+
+<SELECT_RECORDS/>
+</ARGUMENTS>
+</OUTPUT_SETTINGS>
+
+
+<CONDITIONALS>
+<ARGUMENTS>
+<ENTRY>
+   <ENTRY_ID>10</ENTRY_ID>
+   <FOR_FILES>OUTPUT</FOR_FILES>
+   <CONDITION>SUBROUTINE
+      IF(ALWAYS)
+         /*   added 17Oct2011
+         /*  NOTE test block!=SPACES - if FLOOR = Spaces then put block in HSNO1 and sub-block in HSNO2
+         /*  If FLOOR != SPACES, then hyphenate sub-block with block and put in HSNO1 and put FLOOR in HSNO2
+         IF(pr_apartment_number_display_full = SPACES)
+            SET pr_apartment_number_display_full = pr_apartment_number
+            IF(pr_apartment_number_display_full = SPACES)
+               SET pr_apartment_number_display_full = pr_apartment_number_display
+            ENDIF
+         ENDIF
+         IF(pr_block_number != SPACES)
+            SET dr_house_number1 = trim(pr_block_number)
+            IF(pr_sub_block_number != SPACES)
+               IF(pr_house_number_display != SPACES or pr_floor_number != SPACES or pr_apartment_number != SPACES)
+                  SET dr_house_number1 = trim(dr_house_number1) || "-" || trim(pr_sub_block_number)
+                  SET dr_house_number2 = trim(pr_building_name) || trim(pr_house_number_display_full)
+                  IF(trim(pr_level4) LIKE "*리")
+                     SET dr_house_number2 = trim(dr_house_number2) || trim(pr_floor_number_display_full) || trim(pr_apartment_number_display_full)
+                  ELSE
+                     SET dr_house_number2 = trim(pr_level4) || trim(dr_house_number2) || trim(pr_floor_number_display_full) || trim(pr_apartment_number_display_full)
+                  ENDIF
+               ELSE
+                  IF(trim(pr_sub_block_number) &lt; "300")
+                     SET dr_house_number1 = trim(dr_house_number1) || "-" || trim(pr_sub_block_number)
+                     SET dr_house_number2 = trim(pr_building_name) || trim(pr_house_number_display_full)
+                  ELSE
+                     SET dr_house_number2 = trim(pr_building_name) || trim(pr_sub_block_number) || trim(pr_house_number_display_full)
+                  ENDIF
+                  IF(trim(pr_level4) LIKE "*리")
+                     SET dr_house_number2 = trim(dr_house_number2) || trim(pr_floor_number_display_full) || trim(pr_apartment_number_display_full)
+                  ELSE
+                     SET dr_house_number2 = trim(pr_level4) || trim(dr_house_number2) || trim(pr_floor_number_display_full) || trim(pr_apartment_number_display_full)
+                  ENDIF
+               ENDIF
+            ELSE
+               SET dr_house_number2 = trim(pr_building_name) || trim(pr_sub_block_number) || trim(pr_house_number_display_full)
+               IF(trim(pr_level4) LIKE "*리")
+                  SET dr_house_number2 = trim(dr_house_number2) || trim(pr_floor_number_display_full) || trim(pr_apartment_number_display_full)
+               ELSE
+                  SET dr_house_number2 = trim(pr_level4) || trim(dr_house_number2) || trim(pr_floor_number_display_full) || trim(pr_apartment_number_display_full)
+               ENDIF
+            ENDIF
+         ENDIF
+         IF(pr_block_number != SPACES AND pr_sub_block_number != SPACES AND pr_house_number_display = SPACES AND pr_building_name = SPACES AND pr_floor_number = SPACES AND pr_house_number_display_full = SPACES AND pr_apartment_number = SPACES AND pr_floor_number_display_full = SPACES AND pr_apartment_number_display_full = SPACES)
+            SET dr_house_number1 = trim(pr_block_number) || "-" || trim(pr_sub_block_number)
+            IF(trim(pr_level4) LIKE "*리")
+               SET dr_house_number2 = SPACES
+            ELSE
+               SET dr_house_number2 = trim(pr_level4)
+            ENDIF
+         ENDIF
+      ENDIF</CONDITION>
+   </ENTRY>
+   <ENTRY>
+      <ENTRY_ID>9</ENTRY_ID>
+      <FOR_FILES>OUTPUT</FOR_FILES>
+      <CONDITION>SUBROUTINE
+         IF(ALWAYS)
+            IF(dr_address = SPACES)
+               SET dr_address = TRIM(ADDR_LINE_1_TXT) || " " || TRIM(ADDR_LINE_2_TXT)
+            ENDIF
+            IF(dr_region_name = SPACES)
+               SET dr_region_name = Terr_Name
+            ENDIF
+            IF(dr_city_name = SPACES)
+               SET dr_city_name = City_Name
+            ENDIF
+            IF(dr_postal_code = SPACES)
+               SET dr_postal_code = Postl_Area_Code
+            ENDIF
+         ENDIF</CONDITION>
+      </ENTRY>
+      <ENTRY>
+         <ENTRY_ID>8</ENTRY_ID>
+         <FOR_FILES>OUTPUT</FOR_FILES>
+         <CONDITION>SUBROUTINE
+            IF(ALWAYS)
+               /*   added 3Oct2011
+               SET dr_house_number1 = dr_house_number2
+               SET dr_house_number2 = SPACES
+            ENDIF</CONDITION>
+         </ENTRY>
+         <ENTRY>
+            <ENTRY_ID>1</ENTRY_ID>
+            <FOR_FILES>OUTPUT</FOR_FILES>
+            <CONDITION>IF(ALWAYS)
+               /*   Added 3Oct2011 to set GLF=9
+               IF(PR_GEOCODE_FAIL = "2" AND PR_REVIEW_GROUP = "010")
+                  SET PR_GEOCODE_FAIL = "9"
+               ELSEIF(PR_GEOCODE_FAIL = "4" AND Pr_Addr_Mask_Final_first_4 = "1U23")
+                  SET PR_GEOCODE_FAIL = "9"
+               ENDIF
+               IF(PR_GEOCODE_FAIL IN("0","9"))
+                  SET dr_cleanse_level = "2"
+                  /*   modified 23 sept 2011 -  dr_region set to level_1 and removed from dr_city_name
+                  SET dr_region_name = trim(pr_level1)
+                  SET dr_city_name = trim(pr_level2)
+                  IF(trim(pr_level4) LIKE "*리")
+                     SET dr_street_name = trim(pr_level3) + trim(pr_level4)
+                  ELSE
+                     SET dr_street_name = trim(pr_level3)
+                  ENDIF
+                  SET dr_postal_code = pr_postcode
+                  SET dr_addr_mail = pr_addr_mail
+                  /*  Fill dr_house_number1 and dr_house_number2 - added Oct 17, 2011
+                  RUN SUBROUTINE(10)
+                  /*  Move housenumbers
+                  IF(dr_house_number1 = SPACES AND dr_house_number2 != SPACES)
+                     RUN SUBROUTINE(8)
+                  ENDIF
+                  IF(dr_house_number1 != SPACES AND dr_house_number2 != SPACES)
+                     SET dr_address = TRIM(ADDR_LINE_1_TXT) || " " || TRIM(ADDR_LINE_2_TXT)
+                  ELSE
+                     IF(pr_block_number != SPACES AND pr_sub_block_number != SPACES)
+                        SET dr_address = TRIM(ADDR_LINE_1_TXT) || " " || TRIM(ADDR_LINE_2_TXT)
+                     ELSE
+                        SET dr_address = TRIM(ADDR_LINE_1_TXT) || " " || TRIM(ADDR_LINE_2_TXT)
+                     ENDIF
+                  ENDIF
+               ELSE
+                  SET dr_cleanse_level = "0"
+                  SET dr_addr_mail = pr_addr_mail
+                  
+                  IF(trim(pr_level4) LIKE "*리")
+                     SET dr_street_name = trim(pr_level3) + trim(pr_level4)
+                  ELSE
+                     SET dr_street_name = trim(pr_level3)
+                  ENDIF
+                  /*  Fill dr_house_number1 and dr_house_number2 - added Oct 17, 2011
+                  RUN SUBROUTINE(10)
+                  /*   Move housenumbers
+                  IF(dr_house_number1 = SPACES AND dr_house_number2 != SPACES)
+                     RUN SUBROUTINE(8)
+                  ENDIF
+
+                  SET DR_STREET_NAME   = TRIM(STRET_NAME)
+                  SET DR_HOUSE_NUMBER1 = TRIM(STRET_NUM)
+                  SET DR_HOUSE_NUMBER2 = TRIM(APT_NUM)
+                  SET DR_ADDRESS       = TRIM(ADDR_LINE_1_TXT)
+                  SET DR_ADDRESS2      = TRIM(ADDR_LINE_2_TXT)
+                  SET DR_ADDRESS3      = TRIM(ADDR_LINE_3_TXT)
+                  SET DR_CITY_NAME     = TRIM(CITY_NAME)
+                  SET DR_REGION_NAME   = TRIM(TERR_NAME)
+                  SET DR_POSTAL_CODE   = TRIM(POSTL_AREA_CODE)
+               ENDIF
+               SET dr_country      = "KR"
+               SET dr_country_name = "KOR"
+            ENDIF</CONDITION>
+         </ENTRY>
+         <ENTRY>
+            <ENTRY_ID>2</ENTRY_ID>
+            <FOR_FILES>OUTPUT</FOR_FILES>
+            <CONDITION>IF(ALWAYS)
+               RUN FIELD_SCANNING(ALL)
+               SET dr_mrmrs = TCASE(NAME_PREFX_TXT)
+               SET dr_last_name = TCASE(FAMLY_NAME)
+               SET dr_first_name = TCASE(GVN_NAME)
+               SET dr_middle_name = TCASE(MID_NAME)
+            ENDIF</CONDITION>
+         </ENTRY>
+         <ENTRY>
+            <ENTRY_ID>3</ENTRY_ID>
+            <FOR_FILES>OUTPUT</FOR_FILES>
+            <CONDITION>IF(ALWAYS)
+               RUN TABLE_RECODING(ALL)
+            ENDIF</CONDITION>
+         </ENTRY>
+         </ARGUMENTS>
+         </CONDITIONALS>
+         </PARAMETER>
+         </OUTPUT>
+         <PROCESS>
+         <PARAMETER>
+         <PROCESS_SETTINGS>
+         <ARGUMENTS>
+         <PROCESS_LOG_FILE_NAME>$(LOGS)/p4_kr_drtranfrmr_log.txt</PROCESS_LOG_FILE_NAME>
+         <ENABLE_DEBUG_OUTPUT>0</ENABLE_DEBUG_OUTPUT>
+         <DEBUG_FILE_NAME>$(DEBUG)/p4_kr_drtranfrmr_debug.txt</DEBUG_FILE_NAME>
+         <MASK_FILE_NAME>$(GENERAL_RESOURCES)/maskfile$(PLAFEXT)</MASK_FILE_NAME>
+         <STRSUB_TABLE_FILE_NAME>$(GENERAL_RESOURCES)/strsub$(PLAFEXT)</STRSUB_TABLE_FILE_NAME>
+         </ARGUMENTS>
+         </PROCESS_SETTINGS>
+         </PARAMETER>
+         </PROCESS>
+         <STATISTICS>
+         <PARAMETER>
+         <STATISTICS_SETTINGS>
+         <ARGUMENTS>
+         <STATS_FILE_NAME>$(STATS)/p4_kr_drtranfrmr_stats.txt</STATS_FILE_NAME>
+         </ARGUMENTS>
+         </STATISTICS_SETTINGS>
+         </PARAMETER>
+         </STATISTICS>
+         </CATEGORY>
+         </TRANFRMR>
+    

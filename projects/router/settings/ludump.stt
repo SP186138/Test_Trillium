@@ -1,0 +1,8 @@
+LEV1_FNAME             LUINDEX1.tbl
+LEV2_FNAME             LUINDEX2.tbl
+BASE_FNAME             LUBASE.tbl
+ACITY_FNAME            LUACITY.tbl
+CSTATE_FNAME           LUCOUNTY.tbl
+DIRECTORY_VERSION      0
+DISPLAY_BASEDATA       
+LEVEL1_VALUE        

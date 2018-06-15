@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity name="IN_RELLINKREF_LINK_P16" id="59">
+        <displayName>in rellinkref link p16</displayName>
+        <attribute name="FROM_LINK" encoding="CP1252" length="16">
+        <displayName>From_link</displayName>
+        </attribute>
+        <attribute name="TO_LINK" encoding="CP1252" length="16">
+        <displayName>To_link</displayName>
+          <attribute name="ADDRESS_HOUSEHOLD_ID" encoding="CP1252" length="16">
+            <displayName>ADDRESS_HOUSEHOLD_ID</displayName>
+          </attribute>
+        </attribute>
+        <attribute name="MATCH_TYPE" encoding="NOTRANS" length="1">
+        <displayName>Match_type</displayName>
+        </attribute>
+        <attribute name="PATTERN_ID" encoding="NOTRANS" length="9">
+        <displayName>Pattern_id</displayName>
+        </attribute>
+        </entity>

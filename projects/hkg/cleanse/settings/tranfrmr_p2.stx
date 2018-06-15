@@ -1,0 +1,976 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TRANFRMR xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <SETTINGS_FILE_ENCODING>UTF8</SETTINGS_FILE_ENCODING>
+   
+   
+<CATEGORY>
+      
+      <INPUT>
+         <PARAMETER>
+            <INPUT_SETTINGS>
+               <ARGUMENTS>
+                  <ENTRY>
+                     <ENTRY_ID>1</ENTRY_ID>
+                     <FILE_QUALIFIER>e10_hk_mrgsplit_p8_002</FILE_QUALIFIER>
+                     <DATA_FILE_NAME>$(INPUT)/hk_mrgsplit_p2.dat.002</DATA_FILE_NAME>
+                     <DDL_FILE_NAME>$(DDL)/hk_mrgsplit_p2.ddx.002</DDL_FILE_NAME>
+               <FILE_DELIMITER/>
+               <USE_QUOTES_AS_QUALIFIER/>
+             
+                     
+                     
+                     <START_RECORD/>
+                     <MAX_RECORDS/>
+                     <NTH_SAMPLE/>
+                     
+                     <EXCEPTIONS_FILE_NAME/>
+                     
+                     
+                     
+                  <SELECT_RECORDS/>
+</ENTRY>
+               </ARGUMENTS>
+            </INPUT_SETTINGS>
+            
+            <CONDITIONALS>
+               <ARGUMENTS>
+                  <ENTRY>
+                     <ENTRY_ID>1</ENTRY_ID>
+                     <FOR_FILES>e10_hk_mrgsplit_p8_002</FOR_FILES>
+                     <CONDITION>IF (ALWAYS)
+        IF (ALWAYS)
+    ENDIF
+    
+    ENDIF</CONDITION>
+                  </ENTRY>
+               </ARGUMENTS>
+            </CONDITIONALS>
+         </PARAMETER>
+      </INPUT>
+      <OUTPUT>
+         <PARAMETER>
+            <OUTPUT_SETTINGS>
+               <ARGUMENTS>
+                  <FILE_QUALIFIER>OUTPUT</FILE_QUALIFIER>
+                  <DATA_FILE_NAME>stdout</DATA_FILE_NAME>
+                  <DDL_FILE_NAME>$(DDL)/hk_tranfrmr_p3.ddx</DDL_FILE_NAME>
+            <FILE_SEQUENCE_FIELD_NAME/>
+                  
+               <SELECT_RECORDS/>
+</ARGUMENTS>
+            </OUTPUT_SETTINGS>
+            <FIELD_SCANNING>
+               <ARGUMENTS>
+                  <ENTRY>
+                     <ENTRY_ID>1</ENTRY_ID>
+<ENTRY_DESCRIPTION>Insert spaces ahead of a digit</ENTRY_DESCRIPTION>
+                     <SCAN_FIELD>ADDR_LINE_1_WORK</SCAN_FIELD>
+                     <TARGET_FIELD/>
+                     <FIELD_JUSTIFICATION>NJ</FIELD_JUSTIFICATION>
+                     <SCAN_FORMAT>M</SCAN_FORMAT>
+                     <BETWEEN_SUBSTRING/>
+                     <AND_SUBSTRING/>
+                     <RETAIN_BETWEEN_SUBSTRING/>
+                     <SCAN_VALUE>DN</SCAN_VALUE>
+                     <CASE_SENSITIVE_SCAN_VALUE>Y</CASE_SENSITIVE_SCAN_VALUE>
+                     <RETAIN_SCAN_VALUE/>
+                     <SCAN_FUNCTION>CH</SCAN_FUNCTION>
+                     <SCAN_DIRECTION>L</SCAN_DIRECTION>
+                     <SCAN_POSITION>D</SCAN_POSITION>
+                     <SCAN_LEVEL/>
+                     <SCAN_CAPTURE/>
+                     <WORD_DELIMITER/>
+                     <CHANGE_VALUE>"D N"</CHANGE_VALUE>
+                     <CHANGE_OCCURENCES>1</CHANGE_OCCURENCES>
+                     <FLAG_VALUE/>
+                     
+                  </ENTRY>
+                  <ENTRY>
+                     <ENTRY_ID>2</ENTRY_ID>
+<ENTRY_DESCRIPTION>Insert space after a digit</ENTRY_DESCRIPTION>
+                     <SCAN_FIELD>ADDR_LINE_1_WORK</SCAN_FIELD>
+                     <TARGET_FIELD/>
+                     <FIELD_JUSTIFICATION>NJ</FIELD_JUSTIFICATION>
+                     <SCAN_FORMAT>M</SCAN_FORMAT>
+                     <BETWEEN_SUBSTRING/>
+                     <AND_SUBSTRING/>
+                     <RETAIN_BETWEEN_SUBSTRING/>
+                     <SCAN_VALUE>ND</SCAN_VALUE>
+                     <CASE_SENSITIVE_SCAN_VALUE>Y</CASE_SENSITIVE_SCAN_VALUE>
+                     <RETAIN_SCAN_VALUE/>
+                     <SCAN_FUNCTION>CH</SCAN_FUNCTION>
+                     <SCAN_DIRECTION>L</SCAN_DIRECTION>
+                     <SCAN_POSITION>D</SCAN_POSITION>
+                     <SCAN_LEVEL/>
+                     <SCAN_CAPTURE/>
+                     <WORD_DELIMITER/>
+                     <CHANGE_VALUE>"N D"</CHANGE_VALUE>
+                     <CHANGE_OCCURENCES>1</CHANGE_OCCURENCES>
+                     <FLAG_VALUE/>
+                     
+                  </ENTRY>
+                  <ENTRY>
+                     <ENTRY_ID>3</ENTRY_ID>
+<ENTRY_DESCRIPTION>Insert space ahead of a Latin character</ENTRY_DESCRIPTION>
+                     <SCAN_FIELD>ADDR_LINE_1_WORK</SCAN_FIELD>
+                     <TARGET_FIELD/>
+                     <FIELD_JUSTIFICATION>NJ</FIELD_JUSTIFICATION>
+                     <SCAN_FORMAT>M</SCAN_FORMAT>
+                     <BETWEEN_SUBSTRING/>
+                     <AND_SUBSTRING/>
+                     <RETAIN_BETWEEN_SUBSTRING/>
+                     <SCAN_VALUE>DA</SCAN_VALUE>
+                     <CASE_SENSITIVE_SCAN_VALUE>Y</CASE_SENSITIVE_SCAN_VALUE>
+                     <RETAIN_SCAN_VALUE/>
+                     <SCAN_FUNCTION>CH</SCAN_FUNCTION>
+                     <SCAN_DIRECTION>L</SCAN_DIRECTION>
+                     <SCAN_POSITION>D</SCAN_POSITION>
+                     <SCAN_LEVEL/>
+                     <SCAN_CAPTURE/>
+                     <WORD_DELIMITER/>
+                     <CHANGE_VALUE>"D A"</CHANGE_VALUE>
+                     <CHANGE_OCCURENCES>1</CHANGE_OCCURENCES>
+                     <FLAG_VALUE/>
+                     
+                  </ENTRY>
+                  <ENTRY>
+                     <ENTRY_ID>4</ENTRY_ID>
+<ENTRY_DESCRIPTION>Insert space after a Latin character</ENTRY_DESCRIPTION>
+                     <SCAN_FIELD>ADDR_LINE_1_WORK</SCAN_FIELD>
+                     <TARGET_FIELD/>
+                     <FIELD_JUSTIFICATION>NJ</FIELD_JUSTIFICATION>
+                     <SCAN_FORMAT>M</SCAN_FORMAT>
+                     <BETWEEN_SUBSTRING/>
+                     <AND_SUBSTRING/>
+                     <RETAIN_BETWEEN_SUBSTRING/>
+                     <SCAN_VALUE>AD</SCAN_VALUE>
+                     <CASE_SENSITIVE_SCAN_VALUE>Y</CASE_SENSITIVE_SCAN_VALUE>
+                     <RETAIN_SCAN_VALUE/>
+                     <SCAN_FUNCTION>CH</SCAN_FUNCTION>
+                     <SCAN_DIRECTION>L</SCAN_DIRECTION>
+                     <SCAN_POSITION>D</SCAN_POSITION>
+                     <SCAN_LEVEL/>
+                     <SCAN_CAPTURE/>
+                     <WORD_DELIMITER/>
+                     <CHANGE_VALUE>"A D"</CHANGE_VALUE>
+                     <CHANGE_OCCURENCES>1</CHANGE_OCCURENCES>
+                     <FLAG_VALUE/>
+                     
+                  </ENTRY>
+                  <ENTRY>
+                     <ENTRY_ID>5</ENTRY_ID>
+<ENTRY_DESCRIPTION>Insert spaces around Chinese Apt indicator</ENTRY_DESCRIPTION>
+                     <SCAN_FIELD>ADDR_LINE_1_WORK</SCAN_FIELD>
+                     <TARGET_FIELD/>
+                     <FIELD_JUSTIFICATION>NJ</FIELD_JUSTIFICATION>
+                     <SCAN_FORMAT>L</SCAN_FORMAT>
+                     <BETWEEN_SUBSTRING/>
+                     <AND_SUBSTRING/>
+                     <RETAIN_BETWEEN_SUBSTRING/>
+                     <SCAN_VALUE>室</SCAN_VALUE>
+                     <CASE_SENSITIVE_SCAN_VALUE>N</CASE_SENSITIVE_SCAN_VALUE>
+                     <RETAIN_SCAN_VALUE/>
+                     <SCAN_FUNCTION>CH</SCAN_FUNCTION>
+                     <SCAN_DIRECTION>L</SCAN_DIRECTION>
+                     <SCAN_POSITION>D</SCAN_POSITION>
+                     <SCAN_LEVEL/>
+                     <SCAN_CAPTURE/>
+                     <WORD_DELIMITER/>
+                     <CHANGE_VALUE>" 室 "</CHANGE_VALUE>
+                     <CHANGE_OCCURENCES>1</CHANGE_OCCURENCES>
+                     <FLAG_VALUE/>
+                     
+                  </ENTRY>
+                  <ENTRY>
+                     <ENTRY_ID>6</ENTRY_ID>
+<ENTRY_DESCRIPTION>Insert spaces around Chinese Floor indicator</ENTRY_DESCRIPTION>
+                     <SCAN_FIELD>ADDR_LINE_1_WORK</SCAN_FIELD>
+                     <TARGET_FIELD/>
+                     <FIELD_JUSTIFICATION>NJ</FIELD_JUSTIFICATION>
+                     <SCAN_FORMAT>L</SCAN_FORMAT>
+                     <BETWEEN_SUBSTRING/>
+                     <AND_SUBSTRING/>
+                     <RETAIN_BETWEEN_SUBSTRING/>
+                     <SCAN_VALUE>樓</SCAN_VALUE>
+                     <CASE_SENSITIVE_SCAN_VALUE>Y</CASE_SENSITIVE_SCAN_VALUE>
+                     <RETAIN_SCAN_VALUE/>
+                     <SCAN_FUNCTION>CH</SCAN_FUNCTION>
+                     <SCAN_DIRECTION>L</SCAN_DIRECTION>
+                     <SCAN_POSITION>D</SCAN_POSITION>
+                     <SCAN_LEVEL/>
+                     <SCAN_CAPTURE/>
+                     <WORD_DELIMITER/>
+                     <CHANGE_VALUE>" 樓 "</CHANGE_VALUE>
+                     <CHANGE_OCCURENCES>1</CHANGE_OCCURENCES>
+                     <FLAG_VALUE/>
+                     
+                  </ENTRY>
+                  <ENTRY>
+                     <ENTRY_ID>7</ENTRY_ID>
+<ENTRY_DESCRIPTION>Insert spaces around Chinese Complex-Type indicator - 1</ENTRY_DESCRIPTION>
+                     <SCAN_FIELD>ADDR_LINE_1_WORK</SCAN_FIELD>
+                     <TARGET_FIELD/>
+                     <FIELD_JUSTIFICATION>NJ</FIELD_JUSTIFICATION>
+                     <SCAN_FORMAT>L</SCAN_FORMAT>
+                     <BETWEEN_SUBSTRING/>
+                     <AND_SUBSTRING/>
+                     <RETAIN_BETWEEN_SUBSTRING/>
+                     <SCAN_VALUE>大廈</SCAN_VALUE>
+                     <CASE_SENSITIVE_SCAN_VALUE>Y</CASE_SENSITIVE_SCAN_VALUE>
+                     <RETAIN_SCAN_VALUE/>
+                     <SCAN_FUNCTION>CH</SCAN_FUNCTION>
+                     <SCAN_DIRECTION>L</SCAN_DIRECTION>
+                     <SCAN_POSITION>D</SCAN_POSITION>
+                     <SCAN_LEVEL/>
+                     <SCAN_CAPTURE/>
+                     <WORD_DELIMITER/>
+                     <CHANGE_VALUE>" 大廈 "</CHANGE_VALUE>
+                     <CHANGE_OCCURENCES>1</CHANGE_OCCURENCES>
+                     <FLAG_VALUE/>
+                     
+                  </ENTRY>
+                  <ENTRY>
+                     <ENTRY_ID>8</ENTRY_ID>
+<ENTRY_DESCRIPTION>Insert spaces around Chinese Street-Type indicator - 1</ENTRY_DESCRIPTION>
+                     <SCAN_FIELD>ADDR_LINE_1_WORK</SCAN_FIELD>
+                     <TARGET_FIELD/>
+                     <FIELD_JUSTIFICATION>NJ</FIELD_JUSTIFICATION>
+                     <SCAN_FORMAT>L</SCAN_FORMAT>
+                     <BETWEEN_SUBSTRING/>
+                     <AND_SUBSTRING/>
+                     <RETAIN_BETWEEN_SUBSTRING/>
+                     <SCAN_VALUE>道</SCAN_VALUE>
+                     <CASE_SENSITIVE_SCAN_VALUE>Y</CASE_SENSITIVE_SCAN_VALUE>
+                     <RETAIN_SCAN_VALUE/>
+                     <SCAN_FUNCTION>CH</SCAN_FUNCTION>
+                     <SCAN_DIRECTION>L</SCAN_DIRECTION>
+                     <SCAN_POSITION>D</SCAN_POSITION>
+                     <SCAN_LEVEL/>
+                     <SCAN_CAPTURE/>
+                     <WORD_DELIMITER/>
+                     <CHANGE_VALUE>" 道 "</CHANGE_VALUE>
+                     <CHANGE_OCCURENCES>1</CHANGE_OCCURENCES>
+                     <FLAG_VALUE/>
+                     
+                  </ENTRY>
+                  <ENTRY>
+                     <ENTRY_ID>9</ENTRY_ID>
+<ENTRY_DESCRIPTION>Insert spaces around Chinese Village indicator</ENTRY_DESCRIPTION>
+                     <SCAN_FIELD>ADDR_LINE_1_WORK</SCAN_FIELD>
+                     <TARGET_FIELD/>
+                     <FIELD_JUSTIFICATION>NJ</FIELD_JUSTIFICATION>
+                     <SCAN_FORMAT>L</SCAN_FORMAT>
+                     <BETWEEN_SUBSTRING/>
+                     <AND_SUBSTRING/>
+                     <RETAIN_BETWEEN_SUBSTRING/>
+                     <SCAN_VALUE>邨</SCAN_VALUE>
+                     <CASE_SENSITIVE_SCAN_VALUE>Y</CASE_SENSITIVE_SCAN_VALUE>
+                     <RETAIN_SCAN_VALUE/>
+                     <SCAN_FUNCTION>CH</SCAN_FUNCTION>
+                     <SCAN_DIRECTION>L</SCAN_DIRECTION>
+                     <SCAN_POSITION>D</SCAN_POSITION>
+                     <SCAN_LEVEL/>
+                     <SCAN_CAPTURE/>
+                     <WORD_DELIMITER/>
+                     <CHANGE_VALUE>" 邨 "</CHANGE_VALUE>
+                     <CHANGE_OCCURENCES>1</CHANGE_OCCURENCES>
+                     <FLAG_VALUE/>
+                     
+                  </ENTRY>
+                  <ENTRY>
+                     <ENTRY_ID>10</ENTRY_ID>
+<ENTRY_DESCRIPTION>Insert spaces around Chinese Number indicator</ENTRY_DESCRIPTION>
+                     <SCAN_FIELD>ADDR_LINE_1_WORK</SCAN_FIELD>
+                     <TARGET_FIELD/>
+                     <FIELD_JUSTIFICATION>NJ</FIELD_JUSTIFICATION>
+                     <SCAN_FORMAT>L</SCAN_FORMAT>
+                     <BETWEEN_SUBSTRING/>
+                     <AND_SUBSTRING/>
+                     <RETAIN_BETWEEN_SUBSTRING/>
+                     <SCAN_VALUE>號</SCAN_VALUE>
+                     <CASE_SENSITIVE_SCAN_VALUE/>
+                     <RETAIN_SCAN_VALUE/>
+                     <SCAN_FUNCTION>CH</SCAN_FUNCTION>
+                     <SCAN_DIRECTION>L</SCAN_DIRECTION>
+                     <SCAN_POSITION>D</SCAN_POSITION>
+                     <SCAN_LEVEL/>
+                     <SCAN_CAPTURE/>
+                     <WORD_DELIMITER/>
+                     <CHANGE_VALUE>" 號 "</CHANGE_VALUE>
+                     <CHANGE_OCCURENCES>1</CHANGE_OCCURENCES>
+                     <FLAG_VALUE/>
+                     
+                  </ENTRY>
+                  <ENTRY>
+                     <ENTRY_ID>11</ENTRY_ID>
+<ENTRY_DESCRIPTION>awkjfao;wer</ENTRY_DESCRIPTION>
+                     <SCAN_FIELD>GVN_NAME</SCAN_FIELD>
+                     <TARGET_FIELD>ADDR_LINE_3_TXT</TARGET_FIELD>
+                     <FIELD_JUSTIFICATION>NJ</FIELD_JUSTIFICATION>
+                     <SCAN_FORMAT>M</SCAN_FORMAT>
+                     <BETWEEN_SUBSTRING/>
+                     <AND_SUBSTRING/>
+                     <RETAIN_BETWEEN_SUBSTRING>N</RETAIN_BETWEEN_SUBSTRING>
+                     <SCAN_VALUE>AA</SCAN_VALUE>
+                     <CASE_SENSITIVE_SCAN_VALUE>Y</CASE_SENSITIVE_SCAN_VALUE>
+                     <RETAIN_SCAN_VALUE>Y</RETAIN_SCAN_VALUE>
+                     <SCAN_FUNCTION>CT</SCAN_FUNCTION>
+                     <SCAN_DIRECTION/>
+                     <SCAN_POSITION>B</SCAN_POSITION>
+                     <SCAN_LEVEL>F</SCAN_LEVEL>
+                     <SCAN_CAPTURE>V</SCAN_CAPTURE>
+                     <WORD_DELIMITER> </WORD_DELIMITER>
+                     <CHANGE_VALUE/>
+                     <CHANGE_OCCURENCES/>
+                     <FLAG_VALUE/>
+                     
+                  </ENTRY>
+                  <ENTRY>
+                     <ENTRY_ID>12</ENTRY_ID>
+<ENTRY_DESCRIPTION>Insert spaces around Chinese Street-Type indicator - 2</ENTRY_DESCRIPTION>
+                     <SCAN_FIELD>ADDR_LINE_1_WORK</SCAN_FIELD>
+                     <TARGET_FIELD/>
+                     <FIELD_JUSTIFICATION>NJ</FIELD_JUSTIFICATION>
+                     <SCAN_FORMAT>L</SCAN_FORMAT>
+                     <BETWEEN_SUBSTRING/>
+                     <AND_SUBSTRING/>
+                     <RETAIN_BETWEEN_SUBSTRING/>
+                     <SCAN_VALUE>"大 道"</SCAN_VALUE>
+                     <CASE_SENSITIVE_SCAN_VALUE>Y</CASE_SENSITIVE_SCAN_VALUE>
+                     <RETAIN_SCAN_VALUE/>
+                     <SCAN_FUNCTION>CH</SCAN_FUNCTION>
+                     <SCAN_DIRECTION>L</SCAN_DIRECTION>
+                     <SCAN_POSITION>D</SCAN_POSITION>
+                     <SCAN_LEVEL/>
+                     <SCAN_CAPTURE/>
+                     <WORD_DELIMITER/>
+                     <CHANGE_VALUE>" 大道 "</CHANGE_VALUE>
+                     <CHANGE_OCCURENCES>1</CHANGE_OCCURENCES>
+                     <FLAG_VALUE/>
+                     
+                  </ENTRY>
+                  <ENTRY>
+                     <ENTRY_ID>13</ENTRY_ID>
+<ENTRY_DESCRIPTION>Insert spaces around Chinese Street-Type indicator - 3</ENTRY_DESCRIPTION>
+                     <SCAN_FIELD>ADDR_LINE_1_WORK</SCAN_FIELD>
+                     <TARGET_FIELD/>
+                     <FIELD_JUSTIFICATION>NJ</FIELD_JUSTIFICATION>
+                     <SCAN_FORMAT>L</SCAN_FORMAT>
+                     <BETWEEN_SUBSTRING/>
+                     <AND_SUBSTRING/>
+                     <RETAIN_BETWEEN_SUBSTRING/>
+                     <SCAN_VALUE>街</SCAN_VALUE>
+                     <CASE_SENSITIVE_SCAN_VALUE>Y</CASE_SENSITIVE_SCAN_VALUE>
+                     <RETAIN_SCAN_VALUE/>
+                     <SCAN_FUNCTION>CH</SCAN_FUNCTION>
+                     <SCAN_DIRECTION>L</SCAN_DIRECTION>
+                     <SCAN_POSITION>D</SCAN_POSITION>
+                     <SCAN_LEVEL/>
+                     <SCAN_CAPTURE/>
+                     <WORD_DELIMITER/>
+                     <CHANGE_VALUE>" 街 "</CHANGE_VALUE>
+                     <CHANGE_OCCURENCES>1</CHANGE_OCCURENCES>
+                     <FLAG_VALUE/>
+                     
+                  </ENTRY>
+                  <ENTRY>
+                     <ENTRY_ID>14</ENTRY_ID>
+<ENTRY_DESCRIPTION>Insert spaces around Chinese Complex-Type indicator - 2</ENTRY_DESCRIPTION>
+                     <SCAN_FIELD>ADDR_LINE_1_WORK</SCAN_FIELD>
+                     <TARGET_FIELD/>
+                     <FIELD_JUSTIFICATION>NJ</FIELD_JUSTIFICATION>
+                     <SCAN_FORMAT>L</SCAN_FORMAT>
+                     <BETWEEN_SUBSTRING/>
+                     <AND_SUBSTRING/>
+                     <RETAIN_BETWEEN_SUBSTRING/>
+                     <SCAN_VALUE>中心</SCAN_VALUE>
+                     <CASE_SENSITIVE_SCAN_VALUE>Y</CASE_SENSITIVE_SCAN_VALUE>
+                     <RETAIN_SCAN_VALUE/>
+                     <SCAN_FUNCTION>CH</SCAN_FUNCTION>
+                     <SCAN_DIRECTION>L</SCAN_DIRECTION>
+                     <SCAN_POSITION>D</SCAN_POSITION>
+                     <SCAN_LEVEL/>
+                     <SCAN_CAPTURE/>
+                     <WORD_DELIMITER/>
+                     <CHANGE_VALUE>" 中心 "</CHANGE_VALUE>
+                     <CHANGE_OCCURENCES>1</CHANGE_OCCURENCES>
+                     <FLAG_VALUE/>
+                     
+                  </ENTRY>
+                  <ENTRY>
+                     <ENTRY_ID>15</ENTRY_ID>
+<ENTRY_DESCRIPTION>Insert spaces around Chinese Street-Type indicator - 4</ENTRY_DESCRIPTION>
+                     <SCAN_FIELD>ADDR_LINE_1_WORK</SCAN_FIELD>
+                     <TARGET_FIELD/>
+                     <FIELD_JUSTIFICATION>NJ</FIELD_JUSTIFICATION>
+                     <SCAN_FORMAT>L</SCAN_FORMAT>
+                     <BETWEEN_SUBSTRING/>
+                     <AND_SUBSTRING/>
+                     <RETAIN_BETWEEN_SUBSTRING/>
+                     <SCAN_VALUE>" 大道 西"</SCAN_VALUE>
+                     <CASE_SENSITIVE_SCAN_VALUE>Y</CASE_SENSITIVE_SCAN_VALUE>
+                     <RETAIN_SCAN_VALUE/>
+                     <SCAN_FUNCTION>CH</SCAN_FUNCTION>
+                     <SCAN_DIRECTION>L</SCAN_DIRECTION>
+                     <SCAN_POSITION>D</SCAN_POSITION>
+                     <SCAN_LEVEL/>
+                     <SCAN_CAPTURE/>
+                     <WORD_DELIMITER/>
+                     <CHANGE_VALUE>" 大道西 "</CHANGE_VALUE>
+                     <CHANGE_OCCURENCES>1</CHANGE_OCCURENCES>
+                     <FLAG_VALUE/>
+                     
+                  </ENTRY>
+                  <ENTRY>
+                     <ENTRY_ID>16</ENTRY_ID>
+<ENTRY_DESCRIPTION>Insert spaces around Chinese Village indicator</ENTRY_DESCRIPTION>
+                     <SCAN_FIELD>ADDR_LINE_1_WORK</SCAN_FIELD>
+                     <TARGET_FIELD/>
+                     <FIELD_JUSTIFICATION>NJ</FIELD_JUSTIFICATION>
+                     <SCAN_FORMAT>L</SCAN_FORMAT>
+                     <BETWEEN_SUBSTRING/>
+                     <AND_SUBSTRING/>
+                     <RETAIN_BETWEEN_SUBSTRING/>
+                     <SCAN_VALUE>村</SCAN_VALUE>
+                     <CASE_SENSITIVE_SCAN_VALUE/>
+                     <RETAIN_SCAN_VALUE/>
+                     <SCAN_FUNCTION>CH</SCAN_FUNCTION>
+                     <SCAN_DIRECTION>L</SCAN_DIRECTION>
+                     <SCAN_POSITION>D</SCAN_POSITION>
+                     <SCAN_LEVEL/>
+                     <SCAN_CAPTURE/>
+                     <WORD_DELIMITER/>
+                     <CHANGE_VALUE>" 村 "</CHANGE_VALUE>
+                     <CHANGE_OCCURENCES>1</CHANGE_OCCURENCES>
+                     <FLAG_VALUE/>
+                     
+                  </ENTRY>
+                  <ENTRY>
+                     <ENTRY_ID>17</ENTRY_ID>
+<ENTRY_DESCRIPTION>Find and Cut Hong Kong in Chinese</ENTRY_DESCRIPTION>
+                     <SCAN_FIELD>ADDR_LINE_1_WORK</SCAN_FIELD>
+                     <TARGET_FIELD>CHINESE_TERR</TARGET_FIELD>
+                     <FIELD_JUSTIFICATION>NJ</FIELD_JUSTIFICATION>
+                     <SCAN_FORMAT>L</SCAN_FORMAT>
+                     <BETWEEN_SUBSTRING/>
+                     <AND_SUBSTRING/>
+                     <RETAIN_BETWEEN_SUBSTRING>N</RETAIN_BETWEEN_SUBSTRING>
+                     <SCAN_VALUE>香港</SCAN_VALUE>
+                     <CASE_SENSITIVE_SCAN_VALUE>Y</CASE_SENSITIVE_SCAN_VALUE>
+                     <RETAIN_SCAN_VALUE/>
+                     <SCAN_FUNCTION>CT</SCAN_FUNCTION>
+                     <SCAN_DIRECTION/>
+                     <SCAN_POSITION>B</SCAN_POSITION>
+                     <SCAN_LEVEL/>
+                     <SCAN_CAPTURE/>
+                     <WORD_DELIMITER/>
+                     <CHANGE_VALUE/>
+                     <CHANGE_OCCURENCES/>
+                     <FLAG_VALUE/>
+                     
+                  </ENTRY>
+                  <ENTRY>
+                     <ENTRY_ID>18</ENTRY_ID>
+<ENTRY_DESCRIPTION>Find and Cut Kowloon in simplified Chinese</ENTRY_DESCRIPTION>
+                     <SCAN_FIELD>ADDR_LINE_1_WORK</SCAN_FIELD>
+                     <TARGET_FIELD>CHINESE_TERR</TARGET_FIELD>
+                     <FIELD_JUSTIFICATION>NJ</FIELD_JUSTIFICATION>
+                     <SCAN_FORMAT>L</SCAN_FORMAT>
+                     <BETWEEN_SUBSTRING/>
+                     <AND_SUBSTRING/>
+                     <RETAIN_BETWEEN_SUBSTRING>N</RETAIN_BETWEEN_SUBSTRING>
+                     <SCAN_VALUE>九龙</SCAN_VALUE>
+                     <CASE_SENSITIVE_SCAN_VALUE/>
+                     <RETAIN_SCAN_VALUE/>
+                     <SCAN_FUNCTION>CT</SCAN_FUNCTION>
+                     <SCAN_DIRECTION/>
+                     <SCAN_POSITION>B</SCAN_POSITION>
+                     <SCAN_LEVEL/>
+                     <SCAN_CAPTURE/>
+                     <WORD_DELIMITER/>
+                     <CHANGE_VALUE/>
+                     <CHANGE_OCCURENCES/>
+                     <FLAG_VALUE/>
+                     
+                  </ENTRY>
+                  <ENTRY>
+                     <ENTRY_ID>19</ENTRY_ID>
+<ENTRY_DESCRIPTION>Find Aberdeen City</ENTRY_DESCRIPTION>
+                     <SCAN_FIELD>ADDR_LINE_1_WORK</SCAN_FIELD>
+                     <TARGET_FIELD>CHINESE_CITY</TARGET_FIELD>
+                     <FIELD_JUSTIFICATION>NJ</FIELD_JUSTIFICATION>
+                     <SCAN_FORMAT>L</SCAN_FORMAT>
+                     <BETWEEN_SUBSTRING/>
+                     <AND_SUBSTRING/>
+                     <RETAIN_BETWEEN_SUBSTRING>N</RETAIN_BETWEEN_SUBSTRING>
+                     <SCAN_VALUE>香港仔</SCAN_VALUE>
+                     <CASE_SENSITIVE_SCAN_VALUE>Y</CASE_SENSITIVE_SCAN_VALUE>
+                     <RETAIN_SCAN_VALUE/>
+                     <SCAN_FUNCTION>CT</SCAN_FUNCTION>
+                     <SCAN_DIRECTION/>
+                     <SCAN_POSITION>B</SCAN_POSITION>
+                     <SCAN_LEVEL/>
+                     <SCAN_CAPTURE/>
+                     <WORD_DELIMITER/>
+                     <CHANGE_VALUE/>
+                     <CHANGE_OCCURENCES/>
+                     <FLAG_VALUE/>
+                     
+                  </ENTRY>
+                  <ENTRY>
+                     <ENTRY_ID>20</ENTRY_ID>
+<ENTRY_DESCRIPTION>Find and move City 1 </ENTRY_DESCRIPTION>
+                     <SCAN_FIELD>ADDR_LINE_1_WORK</SCAN_FIELD>
+                     <TARGET_FIELD>CHINESE_CITY</TARGET_FIELD>
+                     <FIELD_JUSTIFICATION>LA</FIELD_JUSTIFICATION>
+                     <SCAN_FORMAT>L</SCAN_FORMAT>
+                     <BETWEEN_SUBSTRING/>
+                     <AND_SUBSTRING/>
+                     <RETAIN_BETWEEN_SUBSTRING>N</RETAIN_BETWEEN_SUBSTRING>
+                     <SCAN_VALUE>西環</SCAN_VALUE>
+                     <CASE_SENSITIVE_SCAN_VALUE>Y</CASE_SENSITIVE_SCAN_VALUE>
+                     <RETAIN_SCAN_VALUE/>
+                     <SCAN_FUNCTION>CT</SCAN_FUNCTION>
+                     <SCAN_DIRECTION/>
+                     <SCAN_POSITION>B</SCAN_POSITION>
+                     <SCAN_LEVEL/>
+                     <SCAN_CAPTURE/>
+                     <WORD_DELIMITER/>
+                     <CHANGE_VALUE/>
+                     <CHANGE_OCCURENCES/>
+                     <FLAG_VALUE/>
+                     
+                  </ENTRY>
+                  <ENTRY>
+                     <ENTRY_ID>21</ENTRY_ID>
+<ENTRY_DESCRIPTION>Find and move City 2</ENTRY_DESCRIPTION>
+                     <SCAN_FIELD>ADDR_LINE_1_WORK</SCAN_FIELD>
+                     <TARGET_FIELD>CHINESE_CITY</TARGET_FIELD>
+                     <FIELD_JUSTIFICATION>NJ</FIELD_JUSTIFICATION>
+                     <SCAN_FORMAT>L</SCAN_FORMAT>
+                     <BETWEEN_SUBSTRING/>
+                     <AND_SUBSTRING/>
+                     <RETAIN_BETWEEN_SUBSTRING>N</RETAIN_BETWEEN_SUBSTRING>
+                     <SCAN_VALUE>葵涌</SCAN_VALUE>
+                     <CASE_SENSITIVE_SCAN_VALUE>Y</CASE_SENSITIVE_SCAN_VALUE>
+                     <RETAIN_SCAN_VALUE/>
+                     <SCAN_FUNCTION>CT</SCAN_FUNCTION>
+                     <SCAN_DIRECTION/>
+                     <SCAN_POSITION>B</SCAN_POSITION>
+                     <SCAN_LEVEL/>
+                     <SCAN_CAPTURE/>
+                     <WORD_DELIMITER/>
+                     <CHANGE_VALUE/>
+                     <CHANGE_OCCURENCES/>
+                     <FLAG_VALUE/>
+                     
+                  </ENTRY>
+                  <ENTRY>
+                     <ENTRY_ID>22</ENTRY_ID>
+<ENTRY_DESCRIPTION>Find and move City 3</ENTRY_DESCRIPTION>
+                     <SCAN_FIELD>ADDR_LINE_1_WORK</SCAN_FIELD>
+                     <TARGET_FIELD>CHINESE_CITY</TARGET_FIELD>
+                     <FIELD_JUSTIFICATION>NJ</FIELD_JUSTIFICATION>
+                     <SCAN_FORMAT>L</SCAN_FORMAT>
+                     <BETWEEN_SUBSTRING/>
+                     <AND_SUBSTRING/>
+                     <RETAIN_BETWEEN_SUBSTRING>N</RETAIN_BETWEEN_SUBSTRING>
+                     <SCAN_VALUE>大角咀</SCAN_VALUE>
+                     <CASE_SENSITIVE_SCAN_VALUE>Y</CASE_SENSITIVE_SCAN_VALUE>
+                     <RETAIN_SCAN_VALUE/>
+                     <SCAN_FUNCTION>CT</SCAN_FUNCTION>
+                     <SCAN_DIRECTION/>
+                     <SCAN_POSITION>B</SCAN_POSITION>
+                     <SCAN_LEVEL/>
+                     <SCAN_CAPTURE/>
+                     <WORD_DELIMITER/>
+                     <CHANGE_VALUE/>
+                     <CHANGE_OCCURENCES/>
+                     <FLAG_VALUE/>
+                     
+                  </ENTRY>
+                  <ENTRY>
+                     <ENTRY_ID>23</ENTRY_ID>
+<ENTRY_DESCRIPTION>Find and move Taiwai</ENTRY_DESCRIPTION>
+                     <SCAN_FIELD>ADDR_LINE_1_WORK</SCAN_FIELD>
+                     <TARGET_FIELD>CHINESE_CITY</TARGET_FIELD>
+                     <FIELD_JUSTIFICATION>NJ</FIELD_JUSTIFICATION>
+                     <SCAN_FORMAT>L</SCAN_FORMAT>
+                     <BETWEEN_SUBSTRING/>
+                     <AND_SUBSTRING/>
+                     <RETAIN_BETWEEN_SUBSTRING>N</RETAIN_BETWEEN_SUBSTRING>
+                     <SCAN_VALUE>大圍</SCAN_VALUE>
+                     <CASE_SENSITIVE_SCAN_VALUE/>
+                     <RETAIN_SCAN_VALUE/>
+                     <SCAN_FUNCTION>CT</SCAN_FUNCTION>
+                     <SCAN_DIRECTION/>
+                     <SCAN_POSITION>B</SCAN_POSITION>
+                     <SCAN_LEVEL/>
+                     <SCAN_CAPTURE/>
+                     <WORD_DELIMITER/>
+                     <CHANGE_VALUE/>
+                     <CHANGE_OCCURENCES/>
+                     <FLAG_VALUE/>
+                     
+                  </ENTRY>
+                  <ENTRY>
+                     <ENTRY_ID>24</ENTRY_ID>
+<ENTRY_DESCRIPTION>Find and move Kwai Chung</ENTRY_DESCRIPTION>
+                     <SCAN_FIELD>ADDR_LINE_1_WORK</SCAN_FIELD>
+                     <TARGET_FIELD>CHINESE_CITY</TARGET_FIELD>
+                     <FIELD_JUSTIFICATION>NJ</FIELD_JUSTIFICATION>
+                     <SCAN_FORMAT>L</SCAN_FORMAT>
+                     <BETWEEN_SUBSTRING/>
+                     <AND_SUBSTRING/>
+                     <RETAIN_BETWEEN_SUBSTRING>N</RETAIN_BETWEEN_SUBSTRING>
+                     <SCAN_VALUE>葵涌</SCAN_VALUE>
+                     <CASE_SENSITIVE_SCAN_VALUE/>
+                     <RETAIN_SCAN_VALUE/>
+                     <SCAN_FUNCTION>CT</SCAN_FUNCTION>
+                     <SCAN_DIRECTION/>
+                     <SCAN_POSITION>B</SCAN_POSITION>
+                     <SCAN_LEVEL/>
+                     <SCAN_CAPTURE/>
+                     <WORD_DELIMITER/>
+                     <CHANGE_VALUE/>
+                     <CHANGE_OCCURENCES/>
+                     <FLAG_VALUE/>
+                     
+                  </ENTRY>
+                  <ENTRY>
+                     <ENTRY_ID>25</ENTRY_ID>
+<ENTRY_DESCRIPTION>Find and move Shatin</ENTRY_DESCRIPTION>
+                     <SCAN_FIELD>ADDR_LINE_1_WORK</SCAN_FIELD>
+                     <TARGET_FIELD>CHINESE_CITY</TARGET_FIELD>
+                     <FIELD_JUSTIFICATION>NJ</FIELD_JUSTIFICATION>
+                     <SCAN_FORMAT>L</SCAN_FORMAT>
+                     <BETWEEN_SUBSTRING/>
+                     <AND_SUBSTRING/>
+                     <RETAIN_BETWEEN_SUBSTRING>N</RETAIN_BETWEEN_SUBSTRING>
+                     <SCAN_VALUE>沙田</SCAN_VALUE>
+                     <CASE_SENSITIVE_SCAN_VALUE/>
+                     <RETAIN_SCAN_VALUE/>
+                     <SCAN_FUNCTION>CT</SCAN_FUNCTION>
+                     <SCAN_DIRECTION/>
+                     <SCAN_POSITION>B</SCAN_POSITION>
+                     <SCAN_LEVEL/>
+                     <SCAN_CAPTURE/>
+                     <WORD_DELIMITER/>
+                     <CHANGE_VALUE/>
+                     <CHANGE_OCCURENCES/>
+                     <FLAG_VALUE/>
+                     
+                  </ENTRY>
+                  <ENTRY>
+                     <ENTRY_ID>26</ENTRY_ID>
+<ENTRY_DESCRIPTION>Find and move Tuen Mun</ENTRY_DESCRIPTION>
+                     <SCAN_FIELD>ADDR_LINE_1_WORK</SCAN_FIELD>
+                     <TARGET_FIELD>CHINESE_CITY</TARGET_FIELD>
+                     <FIELD_JUSTIFICATION>NJ</FIELD_JUSTIFICATION>
+                     <SCAN_FORMAT>L</SCAN_FORMAT>
+                     <BETWEEN_SUBSTRING/>
+                     <AND_SUBSTRING/>
+                     <RETAIN_BETWEEN_SUBSTRING>N</RETAIN_BETWEEN_SUBSTRING>
+                     <SCAN_VALUE>屯門</SCAN_VALUE>
+                     <CASE_SENSITIVE_SCAN_VALUE/>
+                     <RETAIN_SCAN_VALUE/>
+                     <SCAN_FUNCTION>CT</SCAN_FUNCTION>
+                     <SCAN_DIRECTION/>
+                     <SCAN_POSITION>B</SCAN_POSITION>
+                     <SCAN_LEVEL/>
+                     <SCAN_CAPTURE/>
+                     <WORD_DELIMITER/>
+                     <CHANGE_VALUE/>
+                     <CHANGE_OCCURENCES/>
+                     <FLAG_VALUE/>
+                     
+                  </ENTRY>
+                  <ENTRY>
+                     <ENTRY_ID>27</ENTRY_ID>
+<ENTRY_DESCRIPTION>Find and move Sham Shui Po</ENTRY_DESCRIPTION>
+                     <SCAN_FIELD>ADDR_LINE_1_WORK</SCAN_FIELD>
+                     <TARGET_FIELD>CHINESE_CITY</TARGET_FIELD>
+                     <FIELD_JUSTIFICATION>NJ</FIELD_JUSTIFICATION>
+                     <SCAN_FORMAT>L</SCAN_FORMAT>
+                     <BETWEEN_SUBSTRING/>
+                     <AND_SUBSTRING/>
+                     <RETAIN_BETWEEN_SUBSTRING>N</RETAIN_BETWEEN_SUBSTRING>
+                     <SCAN_VALUE>深水埗</SCAN_VALUE>
+                     <CASE_SENSITIVE_SCAN_VALUE/>
+                     <RETAIN_SCAN_VALUE/>
+                     <SCAN_FUNCTION>CT</SCAN_FUNCTION>
+                     <SCAN_DIRECTION/>
+                     <SCAN_POSITION>B</SCAN_POSITION>
+                     <SCAN_LEVEL/>
+                     <SCAN_CAPTURE/>
+                     <WORD_DELIMITER/>
+                     <CHANGE_VALUE/>
+                     <CHANGE_OCCURENCES/>
+                     <FLAG_VALUE/>
+                     
+                  </ENTRY>
+                  <ENTRY>
+                     <ENTRY_ID>28</ENTRY_ID>
+<ENTRY_DESCRIPTION>Find and move Sai Wan</ENTRY_DESCRIPTION>
+                     <SCAN_FIELD>ADDR_LINE_1_WORK</SCAN_FIELD>
+                     <TARGET_FIELD>CHINESE_CITY</TARGET_FIELD>
+                     <FIELD_JUSTIFICATION>NJ</FIELD_JUSTIFICATION>
+                     <SCAN_FORMAT>L</SCAN_FORMAT>
+                     <BETWEEN_SUBSTRING/>
+                     <AND_SUBSTRING/>
+                     <RETAIN_BETWEEN_SUBSTRING>N</RETAIN_BETWEEN_SUBSTRING>
+                     <SCAN_VALUE>西灣</SCAN_VALUE>
+                     <CASE_SENSITIVE_SCAN_VALUE/>
+                     <RETAIN_SCAN_VALUE/>
+                     <SCAN_FUNCTION>CT</SCAN_FUNCTION>
+                     <SCAN_DIRECTION/>
+                     <SCAN_POSITION>B</SCAN_POSITION>
+                     <SCAN_LEVEL/>
+                     <SCAN_CAPTURE/>
+                     <WORD_DELIMITER/>
+                     <CHANGE_VALUE/>
+                     <CHANGE_OCCURENCES/>
+                     <FLAG_VALUE/>
+                     
+                  </ENTRY>
+                  <ENTRY>
+                     <ENTRY_ID>29</ENTRY_ID>
+<ENTRY_DESCRIPTION>Find and move Ngau Chi Wan</ENTRY_DESCRIPTION>
+                     <SCAN_FIELD>ADDR_LINE_1_WORK</SCAN_FIELD>
+                     <TARGET_FIELD>CHINESE_CITY</TARGET_FIELD>
+                     <FIELD_JUSTIFICATION>NJ</FIELD_JUSTIFICATION>
+                     <SCAN_FORMAT>L</SCAN_FORMAT>
+                     <BETWEEN_SUBSTRING/>
+                     <AND_SUBSTRING/>
+                     <RETAIN_BETWEEN_SUBSTRING>N</RETAIN_BETWEEN_SUBSTRING>
+                     <SCAN_VALUE>牛池湾'</SCAN_VALUE>
+                     <CASE_SENSITIVE_SCAN_VALUE>Y</CASE_SENSITIVE_SCAN_VALUE>
+                     <RETAIN_SCAN_VALUE/>
+                     <SCAN_FUNCTION>CT</SCAN_FUNCTION>
+                     <SCAN_DIRECTION/>
+                     <SCAN_POSITION>S</SCAN_POSITION>
+                     <SCAN_LEVEL/>
+                     <SCAN_CAPTURE/>
+                     <WORD_DELIMITER/>
+                     <CHANGE_VALUE/>
+                     <CHANGE_OCCURENCES/>
+                     <FLAG_VALUE/>
+                     
+                  </ENTRY>
+                  <ENTRY>
+                     <ENTRY_ID>30</ENTRY_ID>
+<ENTRY_DESCRIPTION>Find and move Tsz Wan Shan</ENTRY_DESCRIPTION>
+                     <SCAN_FIELD>ADDR_LINE_1_WORK</SCAN_FIELD>
+                     <TARGET_FIELD>CHINESE_CITY</TARGET_FIELD>
+                     <FIELD_JUSTIFICATION>NJ</FIELD_JUSTIFICATION>
+                     <SCAN_FORMAT>L</SCAN_FORMAT>
+                     <BETWEEN_SUBSTRING/>
+                     <AND_SUBSTRING/>
+                     <RETAIN_BETWEEN_SUBSTRING>N</RETAIN_BETWEEN_SUBSTRING>
+                     <SCAN_VALUE>慈雲山</SCAN_VALUE>
+                     <CASE_SENSITIVE_SCAN_VALUE/>
+                     <RETAIN_SCAN_VALUE/>
+                     <SCAN_FUNCTION>CT</SCAN_FUNCTION>
+                     <SCAN_DIRECTION/>
+                     <SCAN_POSITION>B</SCAN_POSITION>
+                     <SCAN_LEVEL/>
+                     <SCAN_CAPTURE/>
+                     <WORD_DELIMITER/>
+                     <CHANGE_VALUE/>
+                     <CHANGE_OCCURENCES/>
+                     <FLAG_VALUE/>
+                     
+                  </ENTRY>
+                  <ENTRY>
+                     <ENTRY_ID>31</ENTRY_ID>
+<ENTRY_DESCRIPTION>Find and move Kwun Tong</ENTRY_DESCRIPTION>
+                     <SCAN_FIELD>ADDR_LINE_1_WORK</SCAN_FIELD>
+                     <TARGET_FIELD>CHINESE_CITY</TARGET_FIELD>
+                     <FIELD_JUSTIFICATION>NJ</FIELD_JUSTIFICATION>
+                     <SCAN_FORMAT>L</SCAN_FORMAT>
+                     <BETWEEN_SUBSTRING/>
+                     <AND_SUBSTRING/>
+                     <RETAIN_BETWEEN_SUBSTRING>N</RETAIN_BETWEEN_SUBSTRING>
+                     <SCAN_VALUE>官塘</SCAN_VALUE>
+                     <CASE_SENSITIVE_SCAN_VALUE/>
+                     <RETAIN_SCAN_VALUE/>
+                     <SCAN_FUNCTION>CT</SCAN_FUNCTION>
+                     <SCAN_DIRECTION/>
+                     <SCAN_POSITION>B</SCAN_POSITION>
+                     <SCAN_LEVEL/>
+                     <SCAN_CAPTURE/>
+                     <WORD_DELIMITER/>
+                     <CHANGE_VALUE/>
+                     <CHANGE_OCCURENCES/>
+                     <FLAG_VALUE/>
+                     
+                  </ENTRY>
+                  <ENTRY>
+                     <ENTRY_ID>32</ENTRY_ID>
+<ENTRY_DESCRIPTION>Find and move Tai Po</ENTRY_DESCRIPTION>
+                     <SCAN_FIELD>ADDR_LINE_1_WORK</SCAN_FIELD>
+                     <TARGET_FIELD>CHINESE_CITY</TARGET_FIELD>
+                     <FIELD_JUSTIFICATION>NJ</FIELD_JUSTIFICATION>
+                     <SCAN_FORMAT>L</SCAN_FORMAT>
+                     <BETWEEN_SUBSTRING/>
+                     <AND_SUBSTRING/>
+                     <RETAIN_BETWEEN_SUBSTRING>N</RETAIN_BETWEEN_SUBSTRING>
+                     <SCAN_VALUE>大埔</SCAN_VALUE>
+                     <CASE_SENSITIVE_SCAN_VALUE/>
+                     <RETAIN_SCAN_VALUE/>
+                     <SCAN_FUNCTION>CT</SCAN_FUNCTION>
+                     <SCAN_DIRECTION/>
+                     <SCAN_POSITION>B</SCAN_POSITION>
+                     <SCAN_LEVEL/>
+                     <SCAN_CAPTURE/>
+                     <WORD_DELIMITER/>
+                     <CHANGE_VALUE/>
+                     <CHANGE_OCCURENCES/>
+                     <FLAG_VALUE/>
+                     
+                  </ENTRY>
+                  <ENTRY>
+                     <ENTRY_ID>33</ENTRY_ID>
+<ENTRY_DESCRIPTION>Find and move Lam Tin</ENTRY_DESCRIPTION>
+                     <SCAN_FIELD>ADDR_LINE_1_WORK</SCAN_FIELD>
+                     <TARGET_FIELD>CHINESE_CITY</TARGET_FIELD>
+                     <FIELD_JUSTIFICATION>NJ</FIELD_JUSTIFICATION>
+                     <SCAN_FORMAT>L</SCAN_FORMAT>
+                     <BETWEEN_SUBSTRING/>
+                     <AND_SUBSTRING/>
+                     <RETAIN_BETWEEN_SUBSTRING>N</RETAIN_BETWEEN_SUBSTRING>
+                     <SCAN_VALUE>藍田</SCAN_VALUE>
+                     <CASE_SENSITIVE_SCAN_VALUE/>
+                     <RETAIN_SCAN_VALUE/>
+                     <SCAN_FUNCTION>CT</SCAN_FUNCTION>
+                     <SCAN_DIRECTION/>
+                     <SCAN_POSITION>B</SCAN_POSITION>
+                     <SCAN_LEVEL/>
+                     <SCAN_CAPTURE/>
+                     <WORD_DELIMITER/>
+                     <CHANGE_VALUE/>
+                     <CHANGE_OCCURENCES/>
+                     <FLAG_VALUE/>
+                     
+                  </ENTRY>
+                  <ENTRY>
+                     <ENTRY_ID>34</ENTRY_ID>
+<ENTRY_DESCRIPTION>Find and move Tsuen Wan</ENTRY_DESCRIPTION>
+                     <SCAN_FIELD>ADDR_LINE_1_WORK</SCAN_FIELD>
+                     <TARGET_FIELD>CHINESE_CITY</TARGET_FIELD>
+                     <FIELD_JUSTIFICATION>NJ</FIELD_JUSTIFICATION>
+                     <SCAN_FORMAT>L</SCAN_FORMAT>
+                     <BETWEEN_SUBSTRING/>
+                     <AND_SUBSTRING/>
+                     <RETAIN_BETWEEN_SUBSTRING>N</RETAIN_BETWEEN_SUBSTRING>
+                     <SCAN_VALUE>荃灣</SCAN_VALUE>
+                     <CASE_SENSITIVE_SCAN_VALUE/>
+                     <RETAIN_SCAN_VALUE/>
+                     <SCAN_FUNCTION>CT</SCAN_FUNCTION>
+                     <SCAN_DIRECTION/>
+                     <SCAN_POSITION>B</SCAN_POSITION>
+                     <SCAN_LEVEL/>
+                     <SCAN_CAPTURE/>
+                     <WORD_DELIMITER/>
+                     <CHANGE_VALUE/>
+                     <CHANGE_OCCURENCES/>
+                     <FLAG_VALUE/>
+                     
+                  </ENTRY>
+                  <ENTRY>
+                     <ENTRY_ID>35</ENTRY_ID>
+<ENTRY_DESCRIPTION>Find and move Tsing Yi</ENTRY_DESCRIPTION>
+                     <SCAN_FIELD>ADDR_LINE_1_WORK</SCAN_FIELD>
+                     <TARGET_FIELD>CHINESE_CITY</TARGET_FIELD>
+                     <FIELD_JUSTIFICATION>NJ</FIELD_JUSTIFICATION>
+                     <SCAN_FORMAT>L</SCAN_FORMAT>
+                     <BETWEEN_SUBSTRING/>
+                     <AND_SUBSTRING/>
+                     <RETAIN_BETWEEN_SUBSTRING>N</RETAIN_BETWEEN_SUBSTRING>
+                     <SCAN_VALUE>青衣</SCAN_VALUE>
+                     <CASE_SENSITIVE_SCAN_VALUE/>
+                     <RETAIN_SCAN_VALUE/>
+                     <SCAN_FUNCTION>CT</SCAN_FUNCTION>
+                     <SCAN_DIRECTION/>
+                     <SCAN_POSITION>B</SCAN_POSITION>
+                     <SCAN_LEVEL/>
+                     <SCAN_CAPTURE/>
+                     <WORD_DELIMITER/>
+                     <CHANGE_VALUE/>
+                     <CHANGE_OCCURENCES/>
+                     <FLAG_VALUE/>
+                     
+                  </ENTRY>
+                  <ENTRY>
+                     <ENTRY_ID>36</ENTRY_ID>
+<ENTRY_DESCRIPTION>Find and move Lamma Island</ENTRY_DESCRIPTION>
+                     <SCAN_FIELD>ADDR_LINE_1_WORK</SCAN_FIELD>
+                     <TARGET_FIELD>CHINESE_CITY</TARGET_FIELD>
+                     <FIELD_JUSTIFICATION>NJ</FIELD_JUSTIFICATION>
+                     <SCAN_FORMAT>L</SCAN_FORMAT>
+                     <BETWEEN_SUBSTRING/>
+                     <AND_SUBSTRING/>
+                     <RETAIN_BETWEEN_SUBSTRING>N</RETAIN_BETWEEN_SUBSTRING>
+                     <SCAN_VALUE>南丫島</SCAN_VALUE>
+                     <CASE_SENSITIVE_SCAN_VALUE/>
+                     <RETAIN_SCAN_VALUE/>
+                     <SCAN_FUNCTION>CT</SCAN_FUNCTION>
+                     <SCAN_DIRECTION/>
+                     <SCAN_POSITION>B</SCAN_POSITION>
+                     <SCAN_LEVEL/>
+                     <SCAN_CAPTURE/>
+                     <WORD_DELIMITER/>
+                     <CHANGE_VALUE/>
+                     <CHANGE_OCCURENCES/>
+                     <FLAG_VALUE/>
+                     
+                  </ENTRY>
+               </ARGUMENTS>
+            </FIELD_SCANNING>
+            
+            <CONDITIONALS>
+               <ARGUMENTS>
+                  <ENTRY>
+                     <ENTRY_ID>1</ENTRY_ID>
+                     <FOR_FILES>OUTPUT</FOR_FILES>
+                     <CONDITION>IF (ALWAYS)
+        IF (ADDR_LINE_1_TXT = ADDR_LINE_2_TXT)
+    SET ADDR_LINE_2_TXT = SPACES
+    ENDIF
+    IF (ALWAYS)
+    SET ADDR_LINE_1_WORK = TRIM( ADDR_LINE_1_TXT |: ADDR_LINE_2_TXT)
+    RUN FIELD_SCANNING(19,17-18,20-36,1-7,14,8,12-13,15,9-10,16)
+    SET SAVED_COUNTRY = "HK"
+    ENDIF
+    
+    ENDIF
+</CONDITION>
+                  </ENTRY>
+               </ARGUMENTS>
+            </CONDITIONALS>
+         </PARAMETER>
+      </OUTPUT>
+      <PROCESS>
+         <PARAMETER>
+            <PROCESS_SETTINGS>
+               <ARGUMENTS>
+                  <PROCESS_LOG_FILE_NAME>$(LOGS)/p3_hk_tranfrmr_log.txt</PROCESS_LOG_FILE_NAME>
+                  <ENABLE_DEBUG_OUTPUT>0</ENABLE_DEBUG_OUTPUT>
+                  <DEBUG_FILE_NAME>$(DEBUG)/p3_hk_tranfrmr_debug.txt</DEBUG_FILE_NAME>
+                  <MASK_FILE_NAME>$(GENERAL_RESOURCES)/maskfile$(PLAFEXT)</MASK_FILE_NAME>
+                  <STRSUB_TABLE_FILE_NAME>$(GENERAL_RESOURCES)/strsub$(PLAFEXT)</STRSUB_TABLE_FILE_NAME>
+               </ARGUMENTS>
+            </PROCESS_SETTINGS>
+         </PARAMETER>
+      </PROCESS>
+      <STATISTICS>
+         <PARAMETER>
+            <STATISTICS_SETTINGS>
+               <ARGUMENTS>
+                  <STATS_FILE_NAME>$(STATS)/p3_hk_tranfrmr_stats.txt</STATS_FILE_NAME>
+               </ARGUMENTS>
+            </STATISTICS_SETTINGS>
+         </PARAMETER>
+      </STATISTICS>
+   </CATEGORY>
+</TRANFRMR>

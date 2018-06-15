@@ -1,0 +1,113 @@
+***************************************************************************
+*
+*
+*  Country:  Greece
+*
+*            USER DEFINED SPECIFIC WORDS AND PATTERNS
+*
+***************************************************************************
+**** Upgrade to 15.6
+'HSNO STR-TYPE STR-NM 1NUMERIC'
+     PATTERN STREET DEF
+     RECODE='APT-NUM STR-TYPE STR-NM HSNO'
+'HSNO STR-TYPE STR-NM'
+     PATTERN STREET DEF
+     RECODE='HSNO STR-TYPE STR-NM'
+'HSNO STR-TYPE STR-NM NUMERIC'
+     PATTERN STREET DEF
+     RECODE='APT-NUM STR-TYPE STR-NM HSNO'
+'HSNO STR-TYPE STR-NM STR-NM'
+     PATTERN STREET DEF
+     RECODE='HSNO STR-TYPE STR-NM STR-NM'
+'STR-NM ALPHA-1SPECIAL 1NUMERIC'
+     PATTERN STREET DEF
+     RECODE='STR-NM STR-NM HSNO'
+'ALPHA 1ALPHA NUMERIC'
+     PATTERN STREET DEF
+     RECODE='STR-NM STR-NM HSNO'
+'STR-NM HSNO 1NUMERIC'
+     PATTERN STREET DEF
+     RECODE='STR-NM HSNO APT-NUM'
+'ALPHA NEI1 NUMERIC'
+     PATTERN STREET DEF
+     RECODE='STR-NM STR-NM HSNO'
+'ALPHA NEI1 1NUMERIC'
+     PATTERN STREET DEF
+     RECODE='STR-NM STR-NM HSNO'
+'STR-NM ALPHA-1SPECIAL NUMERIC-1ALPHA'
+     PATTERN STREET DEF
+     RECODE='STR-NM STR-NM HSNO'
+'HSNO STR-TYPE STR-NM ALPHA'
+     PATTERN STREET DEF
+     RECODE='HSNO STR-TYPE STR-NM STR-NM'
+'ALPHA-1SPECIAL ALPHA NUMERIC'
+     PATTERN STREET DEF
+     RECODE='STR-NM STR-NM HSNO'
+'STR-NM 1ALPHA NUMERIC-1SPECIAL'
+     PATTERN STREET DEF
+     RECODE='STR-NM STR-NM HSNO'
+'STR-NM STR-NM 1ALPHA NUMERIC'
+     PATTERN STREET DEF
+     RECODE='STR-NM STR-NM STR-NM HSNO'
+'STR-TYPE NEI1 NUMERIC'
+     PATTERN STREET DEF
+     RECODE='STR-TYPE STR-NM HSNO'
+'STR-TYPE STR-NM NEI1 NUMERIC'
+     PATTERN STREET DEF
+     RECODE='STR-TYPE STR-NM STR-NM HSNO'
+********15.6 tuning dsam 01/29/2018
+'бемифекоу екеухеяиоу'               MOD                 STREET DEF ATT=STR-NM
+'амдяоустоу'                         MOD                 STREET DEF ATT=STR-NM
+'амдяоутсоу'                         MOD                 STREET DEF ATT=STR-NM
+
+'бас цеыяциоу'      MOD   STREET DEF ATT=STR-NM REC='басик╦ыР цеыяц╨оу'
+'басик╦ыР цеыяц╨оу'       STREET DEF ATT=STR-NM
+'лецакоу акенамдяоу'  MOD    STREET DEF ATT=STR-NM
+'лец акенамдяоу'     MOD     STREET DEF ATT=STR-NM REC='лецакоу акенамдяоу'
+'ехмийгс амтистасеыс' MOD    STREET DEF ATT=STR-NM
+'ехм амтистасеыс'     MOD    STREET DEF ATT=STR-NM REC='ехмийгс амтистасеыс'
+'еяц йатоийиес'       MOD    STREET DEF ATT=STR-NM REC='еяцатий╦Р йатоийиес'
+'еяцатий╦Р йатоийиес'     STREET DEF ATT=STR-NM
+'гя покутевмеиоу'     MOD    STREET DEF ATT=STR-NM REC='гяыым покутевмеиоу'
+'гяыым покутевмеиоу'  MOD    STREET DEF ATT=STR-NM
+'ац паяасйеугс'       MOD    STREET DEF ATT=STR-NM REC='ациас паяасйеугс'
+'ациас паяасйеугс'    MOD    STREET DEF ATT=STR-NM REC='ациас паяасйеугс'
+'патя цягцояиоу е`'       STREET DEF ATT=STR-NM REC='патяи╒явоу цягцояиоу е'
+'патяи╒явоу цягцояиоу е'   STREET DEF ATT=STR-NM 
+'ац кауяасациас'          STREET DEF ATT=STR-NM REC='ациас кауяасациас'
+'ациас кауяасациас'       STREET DEF ATT=STR-NM
+'ац цеыяциоу'        MOD     STREET DEF ATT=STR-NM REC='ац╨оу цеыяциоу'
+'ац мийокаоу'        MOD     STREET DEF ATT=STR-NM REC='ац╨оу мийокаоу'
+'ац дглгтяиоу'       MOD     STREET DEF ATT=STR-NM REC='ац╨оу дглгтяиоу'
+'ац сожиас'          MOD     STREET DEF ATT=STR-NM REC='ац╨оу сожиас'
+'ац баябаяас'        MOD  STREET DEF ATT=STR-NM REC='ац╨оу баябаяас'
+'ац тяиадас'         MOD   STREET DEF ATT=STR-NM REC='ац╨оу тяиадас'
+'ац амаяцуяым'       MOD  STREET DEF ATT=STR-NM REC='ац╨оу амаяцуяым'
+'ац йымстамтимоу'    MOD  STREET DEF ATT=STR-NM REC='ац╨оу йымстамтимоу'
+'а диайоу'           MOD     STREET DEF ATT=STR-NM REC='ац╨оу диайоу'
+'а папамдяеоу'       MOD     STREET DEF ATT=STR-NM REC='ац╨оу папамдяеоу'
+'ац жамоуяиоу'       MOD     STREET DEF ATT=STR-NM REC='ац╨оу жамоуяиоу'
+'ац ахамасиоу'       MOD     STREET DEF ATT=STR-NM REC='ац╨оу ахамасиоу'
+'ац цеяасилоу'       MOD     STREET DEF ATT=STR-NM REC='ац╨оу цеяасилоу'
+'ац екеухеяиоу'      MOD     STREET DEF ATT=STR-NM REC='ац╨оу екеухеяиоу'
+'ац мейтаяиоу'       MOD     STREET DEF ATT=STR-NM REC='ац╨оу мейтаяиоу'
+'ац стежамоу'        MOD   STREET DEF ATT=STR-NM REC='ац╨оу стежамоу'
+'ац басикеиоу'       MOD  STREET DEF ATT=STR-NM REC='ац╨оу басикеиоу'
+'ац иыаммоу'         MOD  STREET DEF ATT=STR-NM REC='ац╨оу иыаммоу'
+
+'╒ц ам╒яцуяои'          GEOG DEF ATT=CITY REC='╒циои ам╒яцуяои'
+'╒ц хе╪дыяои'        GEOG DEF ATT=CITY REC='╒циои хе╪дыяои'
+'╒ц ╪яос'        GEOG DEF ATT=CITY REC='╒циом ╪яос'
+'╒ц ахам╒сиос'        GEOG DEF ATT=CITY REC='╒циос ахам╒сиос'
+'╒ц це©яциос'        GEOG DEF ATT=CITY REC='╒циос це©яциос'
+'╒ц тулжягсто╬'        GEOG DEF ATT=CITY REC='╒циос це©яциос тулжягсто╬'
+'╒ц дгл╧тяиос'        GEOG DEF ATT=CITY REC='╒циос дгл╧тяиос'
+'╒ц еустя╒тиос'        GEOG DEF ATT=CITY REC='╒циос еустя╒тиос'
+'╒ц иы╒ммгс я╦мтгс'        GEOG DEF ATT=CITY REC='╒циос иы╒ммгс я╦мтгс'
+'╒ц й╧яуйос'        GEOG DEF ATT=CITY REC='╒циос й╧яуйос'
+'╒ц йымстамт╨мос'        GEOG DEF ATT=CITY REC='╒циос йымстамт╨мос'
+'╒ц лгм╒с'        GEOG DEF ATT=CITY REC='╒циос лгм╒с'
+'╒ц мий╪каос'        GEOG DEF ATT=CITY REC='╒циос мий╪каос'
+'╒ц па╬кос'        GEOG DEF ATT=CITY REC='╒циос па╬кос'
+'╒ц ст╦жамос'        GEOG DEF ATT=CITY REC='╒циос ст╦жамос'
+

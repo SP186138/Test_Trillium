@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FILEUPDT xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <SETTINGS_FILE_ENCODING>UTF8</SETTINGS_FILE_ENCODING>
+   
+   
+
+<CATEGORY>
+      
+      <INPUT>
+         <PARAMETER>
+            <MASTER_SETTINGS>
+               <ARGUMENTS>
+                  <FILE_QUALIFIER>de_tsqsort_p15</FILE_QUALIFIER>
+                  <DATA_FILE_NAME>$(INPUT)/de_tsqsort_p10.dat</DATA_FILE_NAME>
+                  <DDL_FILE_NAME>$(DDL)/de_tsqsort_p10.ddx</DDL_FILE_NAME>
+               <FILE_DELIMITER/>
+               <USE_QUOTES_AS_QUALIFIER/>
+             
+                  
+                  
+                  <START_RECORD/>
+                  <MAX_RECORDS/>
+                  <NTH_SAMPLE/>
+                  <MATCH_KEY>REFERENCE_HOUSEHOLD_ID</MATCH_KEY>
+<TABLE_UPDATE/>
+
+
+
+                  
+                  
+                  
+               </ARGUMENTS>
+            </MASTER_SETTINGS>
+            <TRANSACTION_SETTINGS>
+               <ARGUMENTS>
+                  <ENTRY>
+                     <ENTRY_ID>1</ENTRY_ID>
+                     <FILE_QUALIFIER>de_resolve_p23</FILE_QUALIFIER>
+                     <DATA_FILE_NAME>$(INPUT)/de_resolve_p18.dat</DATA_FILE_NAME>
+                     <DDL_FILE_NAME>$(DDL)/de_resolve_p18.ddx</DDL_FILE_NAME>
+               <FILE_DELIMITER/>
+               <USE_QUOTES_AS_QUALIFIER/>
+             
+                     
+                     <START_RECORD/>
+                     <MAX_RECORDS/>
+                     <NTH_SAMPLE/>
+                     <MATCH_KEY>FROM_LINK</MATCH_KEY>
+                     
+                     
+                  </ENTRY>
+               </ARGUMENTS>
+            </TRANSACTION_SETTINGS>
+            
+         </PARAMETER>
+      </INPUT>
+      <OUTPUT>
+         <PARAMETER>
+<MATCH_MASTER_SETTINGS>
+<ARGUMENTS>
+<FILE_QUALIFIER>Matched_Master_Records</FILE_QUALIFIER>
+<DATA_FILE_NAME>stdout</DATA_FILE_NAME>
+<DDL_FILE_NAME>$(DDL)/MATCH_MASTER_SETTINGS_p19.ddx</DDL_FILE_NAME>
+
+
+
+
+<SELECT_RECORDS/>
+</ARGUMENTS>
+</MATCH_MASTER_SETTINGS>
+<MATCH_MASTER_DUP_SETTINGS>
+<ARGUMENTS>
+<FILE_QUALIFIER>Matched_Master_Records</FILE_QUALIFIER>
+<DATA_FILE_NAME>stdout</DATA_FILE_NAME>
+<DDL_FILE_NAME>$(DDL)/MATCH_MASTER_SETTINGS_p19.ddx</DDL_FILE_NAME>
+
+<UPDATE_OUTPUT_REC>Y</UPDATE_OUTPUT_REC>
+
+
+
+<SELECT_RECORDS/>
+</ARGUMENTS>
+</MATCH_MASTER_DUP_SETTINGS>
+<UNMATCH_MASTER_SETTINGS>
+<ARGUMENTS>
+<FILE_QUALIFIER>Matched_Master_Records</FILE_QUALIFIER>
+<DATA_FILE_NAME>stdout</DATA_FILE_NAME>
+<DDL_FILE_NAME>$(DDL)/MATCH_MASTER_SETTINGS_p19.ddx</DDL_FILE_NAME>
+
+
+
+
+<SELECT_RECORDS/>
+</ARGUMENTS>
+</UNMATCH_MASTER_SETTINGS>
+<UNMATCH_MASTER_DUP_SETTINGS>
+<ARGUMENTS>
+<FILE_QUALIFIER>Matched_Master_Records</FILE_QUALIFIER>
+<DATA_FILE_NAME>stdout</DATA_FILE_NAME>
+<DDL_FILE_NAME>$(DDL)/MATCH_MASTER_SETTINGS_p19.ddx</DDL_FILE_NAME>
+
+
+
+
+<SELECT_RECORDS/>
+</ARGUMENTS>
+</UNMATCH_MASTER_DUP_SETTINGS>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            
+            
+            <CONDITIONALS>
+               <ARGUMENTS>
+                  <ENTRY>
+                     <ENTRY_ID>1</ENTRY_ID>
+                     <FOR_FILES>Matched_Master_Records</FOR_FILES>
+                     <CONDITION>IF (ALWAYS)
+        IF (ALWAYS)
+    ENDIF
+    
+    ENDIF</CONDITION>
+                  </ENTRY>
+               
+
+</ARGUMENTS>
+            </CONDITIONALS>
+         </PARAMETER>
+      </OUTPUT>
+      <PROCESS>
+         <PARAMETER>
+            <PROCESS_SETTINGS>
+               <ARGUMENTS>
+                  <PROCESS_LOG_FILE_NAME>$(LOGS)/p19_de_fileupdt_log.txt</PROCESS_LOG_FILE_NAME>
+<PROCESS_SAMPLE_COUNT/>
+                  <ENABLE_DEBUG_OUTPUT>0</ENABLE_DEBUG_OUTPUT>
+                  <DEBUG_FILE_NAME>$(DEBUG)/p19_de_fileupdt_debug.txt</DEBUG_FILE_NAME>
+               </ARGUMENTS>
+            </PROCESS_SETTINGS>
+         </PARAMETER>
+      </PROCESS>
+      <STATISTICS>
+         <PARAMETER>
+            <STATISTICS_SETTINGS>
+               <ARGUMENTS>
+                  <STATS_FILE_NAME>$(STATS)/p19_de_fileupdt_stats.txt</STATS_FILE_NAME>
+               </ARGUMENTS>
+            </STATISTICS_SETTINGS>
+         </PARAMETER>
+      </STATISTICS>
+   </CATEGORY>
+</FILEUPDT>
+    

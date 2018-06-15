@@ -1,0 +1,372 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<APPARSE xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+  <SETTINGS_FILE_ENCODING>UTF8</SETTINGS_FILE_ENCODING>
+
+  
+
+
+
+
+
+
+
+
+
+
+
+<CATEGORY>
+    <INPUT>
+      <PARAMETER>
+        <INPUT_SETTINGS>
+          <ARGUMENTS>
+<FILE_QUALIFIER>e1_jp_tranfrmr_p1</FILE_QUALIFIER>
+<DATA_FILE_NAME>stdin</DATA_FILE_NAME>
+<DDL_FILE_NAME>$(DDL)/jp_tranfrmr_p1.ddx</DDL_FILE_NAME>
+               <FILE_DELIMITER/>
+               <USE_QUOTES_AS_QUALIFIER/>
+             
+<START_RECORD/>
+<MAX_RECORDS/>
+<NTH_SAMPLE/>
+
+
+
+
+
+
+
+
+<PR_INP_FIELD_NAME>FULL_NAME_1</PR_INP_FIELD_NAME>
+<PR_H_INP_FIELD_NAME/>
+<SELECT_RECORDS/>
+</ARGUMENTS>
+        </INPUT_SETTINGS>
+      </PARAMETER>
+    </INPUT>
+    <OUTPUT>
+      <PARAMETER>
+        <OUTPUT_SETTINGS>
+          <ARGUMENTS>
+            <FILE_QUALIFIER>OUTPUT</FILE_QUALIFIER>
+            <DATA_FILE_NAME>stdout</DATA_FILE_NAME>
+            <DDL_FILE_NAME>$(DDL)/jp_cusparse_p2.ddx</DDL_FILE_NAME>
+          
+
+
+<SELECT_RECORDS/>
+</ARGUMENTS>
+        </OUTPUT_SETTINGS>
+      </PARAMETER>
+    </OUTPUT>
+    <PROCESS>
+      <PARAMETER>
+        <PROCESS_SETTINGS>
+          <ARGUMENTS>
+<PROCESS_LOG_FILE_NAME>$(LOGS)/p2_jp_cusparse_log.txt</PROCESS_LOG_FILE_NAME>
+<PROCESS_SAMPLE_COUNT/>
+<ENABLE_DEBUG_OUTPUT>0</ENABLE_DEBUG_OUTPUT>
+<DEBUG_FILE_NAME>$(DEBUG)/p2_jp_cusparse_debug.txt</DEBUG_FILE_NAME>
+<PARSING_EXCEPTIONS_FILE_NAME>$(INPUT)/p2_parse_exceptions.txt</PARSING_EXCEPTIONS_FILE_NAME>
+
+
+<EXCEPTIONS_UNKNOWN_TOKENS_ONLY/>
+<COUNTRY>JP</COUNTRY>
+<WORD_PATTERN_DEFINITIONS_FILE_NAME>$(USRTABLES)/p2_jpCDPDEF$(ENDEXT)</WORD_PATTERN_DEFINITIONS_FILE_NAME>
+<CUSTOM_TABLES_LOCATION>$(APAC_POSTAL_TABLES)</CUSTOM_TABLES_LOCATION>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            
+            
+            
+
+
+            
+            
+            
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<JP_CUSTOM_TABLES_LOCATION>$(USRTABLES)/</JP_CUSTOM_TABLES_LOCATION>
+<SEPARATE_BRANCH_NAME/>
+<BUSINESS_OR_PERSONAL>1</BUSINESS_OR_PERSONAL>
+<COMMENT_CHARACTER/>
+<CONV_KANA_UPPER/>
+<DELETE_COMMENTS/>
+<LOG_WEIGHT/>
+<INVALID_TOKEN_ENDING_CHARACTERS/>
+<INVALID_TOKEN_BEGINNING_CHARACTERS/>
+<PNP_DELIMITER/>
+<PNP_MAXREC>1</PNP_MAXREC>
+<PNP_CREATE_MULTIPLE_RECORDS_FOR_NAMES/>
+<PNP_SEPARATE_HONORIFIC/>
+<PNP_SEPARATE_TITLE/>
+<PNP_SINGLE_PERSON_MODE>Y</PNP_SINGLE_PERSON_MODE>
+<PNP_REVERSE_FIRST_LAST>N</PNP_REVERSE_FIRST_LAST>
+<EXCEPTIONS_FILE_NAME/>
+<ZENKAKU_OR_HANKAKU>3</ZENKAKU_OR_HANKAKU>
+</ARGUMENTS>
+        </PROCESS_SETTINGS>
+      </PARAMETER>
+    </PROCESS>
+    <STATISTICS>
+      <PARAMETER>
+        <STATISTICS_SETTINGS>
+          <ARGUMENTS>
+            <STATS_FILE_NAME>$(STATS)/p2_jp_cusparse_stats.txt</STATS_FILE_NAME>
+          </ARGUMENTS>
+        </STATISTICS_SETTINGS>
+      </PARAMETER>
+    </STATISTICS>
+  </CATEGORY>
+
+</APPARSE>
+    

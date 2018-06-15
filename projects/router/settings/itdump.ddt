@@ -1,0 +1,83 @@
+Dictionary is Lev1
+Filename is LEV1
+
+
+RECORD is LEV1
+Type is FIXED
+Length is 244
+
+Field is Street_name
+Type is ASCII
+Starts in column 0
+Length is 41
+
+Field is Commune
+Type is ASCII
+Starts in column 41
+Length is 31
+
+Field is Postal_code
+Type is ASCII
+Starts in column 72
+Length is 6
+
+Field is Street_type
+Type is ASCII
+Starts in column 78
+Length is 6
+
+Field is Hsno
+Type is ASCII
+Starts in column 84
+Length is 11
+
+Field is Output_prov_name
+Type is ASCII
+Starts in column 95
+Length is 3
+
+Field is Output_commune
+Type is ASCII
+Starts in column 98
+Length is 31
+
+Field is Output_city_name
+Type is ASCII
+Starts in column 129
+Length is 31
+
+Field is Output_postal_code
+Type is ASCII
+Starts in column 160
+Length is 6
+
+Field is Output_street_type
+Type is ASCII
+Starts in column 166
+Length is 6
+
+Field is Output_street_name
+Type is ASCII
+Starts in column 172
+Length is 41
+
+Field is Building
+Type is ASCII
+Starts in column 213
+Length is 21
+
+Field is Apt_number
+Type is ASCII
+Starts in column 234
+Length is 4
+
+Field is Family_number
+Type is ASCII
+Starts in column 238
+Length is 5
+
+Field is CRLF
+Type is ASCII
+Starts in column 243
+Length is 1
+

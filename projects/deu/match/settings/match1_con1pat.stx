@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<CONSUMER_LEVEL1_PATTERN_SETTINGS xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <ARGUMENTS>
+        <ENTRY>
+            <PATTERN>F990---BB------</PATTERN>
+            <!--  -  -->
+            <PATTERN>P100----A--AAAA</PATTERN>
+            <PATTERN>P100----A--AACA</PATTERN>
+            <PATTERN>P100----A--CAAA</PATTERN>
+            <PATTERN>P100----A--ACAA</PATTERN>
+            <PATTERN>P100----A--ACCA</PATTERN>
+            <PATTERN>P100----A--CACA</PATTERN>
+            <PATTERN>P100----A--CCAA</PATTERN>
+            <!--  -  -->
+            <PATTERN>P101AAA-------A</PATTERN>
+            <PATTERN>P102ACA-------A</PATTERN>
+            <PATTERN>P103AAB-------A</PATTERN>
+            <PATTERN>P104AAC-------A</PATTERN>
+            <PATTERN>P105AA----C---A</PATTERN>
+            <PATTERN>P120A----B----A</PATTERN>
+            <PATTERN>P121A----C----A</PATTERN>
+            <PATTERN>P135ACB-------A</PATTERN>
+            <PATTERN>P140ACC-------A</PATTERN>
+            <PATTERN>P150BAA-------A</PATTERN>
+            <PATTERN>P155BAC-------A</PATTERN>
+            <PATTERN>P156BA----C---A</PATTERN>
+            <PATTERN>P157B----B----A</PATTERN>
+            <PATTERN>P158B----C----A</PATTERN>
+            <PATTERN>P160BCA-------A</PATTERN>
+        </ENTRY>
+    </ARGUMENTS>
+</CONSUMER_LEVEL1_PATTERN_SETTINGS>

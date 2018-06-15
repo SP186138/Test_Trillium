@@ -1,0 +1,29 @@
+Dictionary is Lev1
+Filename is LEV1
+
+
+RECORD is LEV1
+Type is FIXED
+Length is 34
+
+//REDEFINE
+Field is key
+Type is ASCII
+Starts in column 0
+Length is 32
+
+Field is City_name
+Type is ASCII
+Starts in column 0
+Length is 30
+
+Field is Province_name
+Type is ASCII
+Starts in column 30
+Length is 2
+
+Field is CRLF
+Type is ASCII
+Starts in column 32
+Length is 2
+

@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TRANFRMR xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <SETTINGS_FILE_ENCODING>UTF8</SETTINGS_FILE_ENCODING>
+   
+   
+
+<CATEGORY>
+      
+      <INPUT>
+         <PARAMETER>
+            <INPUT_SETTINGS>
+               <ARGUMENTS>
+
+<ENTRY>
+<ENTRY_ID>1</ENTRY_ID>
+<FILE_QUALIFIER>tss_match_input_crm_rus</FILE_QUALIFIER>
+<DATA_FILE_NAME>$(INPUT)/Tss_Match_Input_Crm_Rus.dat</DATA_FILE_NAME>
+<DDL_FILE_NAME>$(DDL)/Tss_Match_Input_Crm_Rus.ddx</DDL_FILE_NAME>
+              <FILE_DELIMITER_ENCODING>NOTRANS</FILE_DELIMITER_ENCODING>
+              <FILE_DELIMITER>Pipe</FILE_DELIMITER>
+              <USE_QUOTES_AS_QUALIFIER>N</USE_QUOTES_AS_QUALIFIER>
+            
+
+<START_RECORD/>
+<MAX_RECORDS/>
+<NTH_SAMPLE/>
+
+<EXCEPTIONS_FILE_NAME/>
+
+
+<SELECT_RECORDS/>
+</ENTRY>
+</ARGUMENTS>
+            </INPUT_SETTINGS>
+            
+            <CONDITIONALS>
+               <ARGUMENTS>
+<ENTRY>
+<ENTRY_ID>1</ENTRY_ID>
+<FOR_FILES>tss_match_input_crm_rus</FOR_FILES>
+<CONDITION>IF (ALWAYS)
+        IF (ALWAYS)
+    ENDIF
+    
+    ENDIF</CONDITION>
+</ENTRY>
+</ARGUMENTS>
+            </CONDITIONALS>
+         </PARAMETER>
+      </INPUT>
+      <OUTPUT>
+         <PARAMETER>
+            <OUTPUT_SETTINGS>
+               <ARGUMENTS>
+                  <FILE_QUALIFIER>OUTPUT</FILE_QUALIFIER>
+                  <DATA_FILE_NAME>stdout</DATA_FILE_NAME>
+                  <DDL_FILE_NAME>$(DDL)/ru_tranfrmr_p3.ddx</DDL_FILE_NAME>
+                  <FILE_SEQUENCE_FIELD_NAME>_SEQUENCE_NUMBER</FILE_SEQUENCE_FIELD_NAME>
+                  
+               <SELECT_RECORDS/>
+</ARGUMENTS>
+            </OUTPUT_SETTINGS>
+            
+            
+            <CONDITIONALS>
+               <ARGUMENTS>
+                  <ENTRY>
+                     <ENTRY_ID>1</ENTRY_ID>
+                     <FOR_FILES>OUTPUT</FOR_FILES>
+                     <CONDITION>IF (ALWAYS)
+        IF (ALWAYS)
+    SET RECORD_TYPE = "REF"
+    SET PR_NAME_FORM_01 = "1"
+    SET NAME_KEY = LENGTH( REFERENCE_HOUSEHOLD_ID)
+    SET DR_NAME_GENDER = UCASE( DR_NAME_GENDER)
+    SET DR_MRMRS = TCASE( DR_MRMRS)
+    SET DR_FIRST_NAME = TCASE( DR_FIRST_NAME)
+    SET DR_MIDDLE_NAME = TCASE( DR_MIDDLE_NAME)
+    SET DR_LAST_NAME = TCASE( DR_LAST_NAME)
+    SET DR_NAME_SUFFIX = TCASE( DR_NAME_SUFFIX)
+    SET DR_ADDRESS = TCASE( DR_ADDRESS)
+    SET DR_ADDRESS2 = TCASE( DR_ADDRESS2)
+    SET DR_ADDRESS3 = TCASE( DR_ADDRESS3)
+    SET DR_CITY_NAME = TCASE( DR_CITY_NAME)
+    SET EMAIL_ADDR_TXT_1 = LCASE( EMAIL_ADDR_TXT_1)
+    SET REFERENCE_HOUSEHOLD_ID = HSHLD_PRSNA_ID
+    SET REFERENCE_LEVEL1_KEY = LEGAL_ENT_PRSNA_ID
+    SET REFERENCE_LEVEL2_KEY = REGIS_PRSNA_ID
+    SET DR_ALIAS_CONTACT = TRIM( TCASE( ALIAS_GVN_NAME))
+    SET DR_ALIAS_ACCOUNT = TRIM( TCASE( ALIAS_FAMLY_NAME))
+    ENDIF
+    
+    ENDIF</CONDITION>
+                  </ENTRY>
+               </ARGUMENTS>
+            </CONDITIONALS>
+         </PARAMETER>
+      </OUTPUT>
+      <PROCESS>
+         <PARAMETER>
+            <PROCESS_SETTINGS>
+               <ARGUMENTS>
+                  <PROCESS_LOG_FILE_NAME>$(LOGS)/p3_ru_tranfrmr_log.txt</PROCESS_LOG_FILE_NAME>
+                  <ENABLE_DEBUG_OUTPUT>0</ENABLE_DEBUG_OUTPUT>
+                  <DEBUG_FILE_NAME>$(DEBUG)/p3_ru_tranfrmr_debug.txt</DEBUG_FILE_NAME>
+                  <MASK_FILE_NAME>$(GENERAL_RESOURCES)/maskfile$(PLAFEXT)</MASK_FILE_NAME>
+                  <STRSUB_TABLE_FILE_NAME>$(GENERAL_RESOURCES)/strsub$(PLAFEXT)</STRSUB_TABLE_FILE_NAME>
+               </ARGUMENTS>
+            </PROCESS_SETTINGS>
+         </PARAMETER>
+      </PROCESS>
+      <STATISTICS>
+         <PARAMETER>
+            <STATISTICS_SETTINGS>
+               <ARGUMENTS>
+                  <STATS_FILE_NAME>$(STATS)/p3_ru_tranfrmr_stats.txt</STATS_FILE_NAME>
+               </ARGUMENTS>
+            </STATISTICS_SETTINGS>
+         </PARAMETER>
+      </STATISTICS>
+   </CATEGORY>
+</TRANFRMR>

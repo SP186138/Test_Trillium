@@ -1,0 +1,24 @@
+***************************************************************************
+*
+*
+*  Country:  Hong Kong
+*
+*            USER DEFINED SPECIFIC WORDS AND PATTERNS
+*
+*   Entries made for Double type address components
+*   CRogers - May 16, 2012
+***************************************************************************
+'樓'                    STREET DEF ATT=FLOOR
+'室'                    STREET DEF ATT=APT
+                               END ATT=UNIT
+'大廈'                  STREET DEF ATT=CPLX-TYPE
+'大道'                  STREET DEF ATT=STR-TYPE
+'邨'                    STREET DEF ATT=NEI1
+'號'                    STREET DEF ATT=NUM-QUAL
+*
+'OTHER-SPECIAL STR-TYPE NUMERIC N-Q OTHER-SPECIAL CPLX-TYPE NUMERIC FLR FLR-NUM UNIT'
+     PATTERN STREET DEF
+     RECODE='STR-NM STR-TYPE HSNO N-Q CPLX-NM CPLX-TYPE FLR-NUM FLR APT-NUM APT'
+'OTHER-SPECIAL NEI1 OTHER-SPECIAL FLR FLR-NUM UNIT'
+     PATTERN STREET DEF
+     RECODE='NEI1 NEI1 CPLX-NM CPLX-TYPE APT-NUM APT'

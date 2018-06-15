@@ -1,0 +1,490 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TRANFRMR xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+  <SETTINGS_FILE_ENCODING>UTF8</SETTINGS_FILE_ENCODING>
+
+  
+<CATEGORY>
+    <INPUT>
+      <PARAMETER>
+        <INPUT_SETTINGS>
+          <ARGUMENTS>
+            <ENTRY>
+              <ENTRY_ID>1</ENTRY_ID>
+              <FILE_QUALIFIER>e5_ca_pmatch_p4</FILE_QUALIFIER>
+              <DATA_FILE_NAME>stdin</DATA_FILE_NAME>
+              <DDL_FILE_NAME>$(DDL)/ca_gllatlon_p9.ddx</DDL_FILE_NAME>
+               <FILE_DELIMITER/>
+               <USE_QUOTES_AS_QUALIFIER/>
+             
+              
+              
+              <START_RECORD/>
+              <MAX_RECORDS/>
+              <NTH_SAMPLE/>
+              <FILE_TRACE_KEY/>
+              <EXCEPTIONS_FILE_NAME/>
+              
+              
+              
+            <SELECT_RECORDS/>
+</ENTRY>
+          </ARGUMENTS>
+        </INPUT_SETTINGS>
+
+        
+      </PARAMETER>
+    </INPUT>
+    <OUTPUT>
+      <PARAMETER>
+<OUTPUT_SETTINGS>
+          <ARGUMENTS>
+            <FILE_QUALIFIER>OUTPUT</FILE_QUALIFIER>
+            <DATA_FILE_NAME>stdout</DATA_FILE_NAME>
+            <DDL_FILE_NAME>$(DDL)/ca_drtranfrmr_p5.ddx</DDL_FILE_NAME>
+            
+          <SELECT_RECORDS/>
+</ARGUMENTS>
+        </OUTPUT_SETTINGS>
+<FIELD_SCANNING>
+          <ARGUMENTS>
+            <ENTRY>
+              <ENTRY_ID>1</ENTRY_ID>
+<ENTRY_DESCRIPTION/>
+              
+              <SCAN_FIELD>DR_POSTAL_CODE</SCAN_FIELD>
+              <TARGET_FIELD/>
+              <FIELD_JUSTIFICATION/>
+              <SCAN_FORMAT>M</SCAN_FORMAT>
+              <BETWEEN_SUBSTRING/>
+              <AND_SUBSTRING/>
+              <RETAIN_BETWEEN_SUBSTRING>N</RETAIN_BETWEEN_SUBSTRING>
+              <SCAN_VALUE>ANANAN</SCAN_VALUE>
+              <CASE_SENSITIVE_SCAN_VALUE/>
+              <RETAIN_SCAN_VALUE/>
+              <SCAN_FUNCTION>CH</SCAN_FUNCTION>
+              <SCAN_DIRECTION/>
+              <SCAN_POSITION>B</SCAN_POSITION>
+              <SCAN_LEVEL/>
+              <SCAN_CAPTURE/>
+              <WORD_DELIMITER/>
+              <START_DELIMITER/>
+              <END_DELIMITER/>
+              <CHANGE_VALUE>ANA NAN</CHANGE_VALUE>
+              <CHANGE_OCCURENCES/>
+              <FLAG_VALUE/>
+            </ENTRY>
+          </ARGUMENTS>
+        </FIELD_SCANNING>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<CONDITIONALS>
+<ARGUMENTS>
+<ENTRY>
+   <ENTRY_ID>1</ENTRY_ID>
+   <FOR_FILES>OUTPUT</FOR_FILES>
+   <CONDITION>
+   /*
+   /* ENTRY ID/SUBROUTINE LIST:
+   /*   1. main
+   /*   2. can_add_suitenum_to_addrline1
+   /*   3. can_set_derived_address
+   /*   4. can_unmatched_address
+   /*   5. set_address_case
+   /*   6. set_name_fields
+   /*   7. remove_sub_characters
+   /*
+/* +----------------------------------------------------------------------------+
+/* | ROUTINE: can_cleanse                                                CANADA |
+/* +----------------------------------------------------------------------------+
+/*
+   IF(ALWAYS)
+      RUN FIELD_SCANNING(ALL)
+      RUN TABLE_RECODING(ALL)
+      RUN SUBROUTINE(3)
+      RUN SUBROUTINE(6)
+      RUN SUBROUTINE(5)
+      RUN SUBROUTINE(7)
+      SET dr_country      = "CA"
+      SET dr_country_name = "CAN"
+   ENDIF
+   </CONDITION>
+</ENTRY>
+<ENTRY>
+   <ENTRY_ID>2</ENTRY_ID>
+   <FOR_FILES>OUTPUT</FOR_FILES>
+   <CONDITION>SUBROUTINE
+   /* SUBROUTINE: can_add_suitenum_to_addrline1
+/* +----------------------------------------------------------------------------+
+/* | SUBROUTINE: can_add_suitenum_to_addrline1                                  |
+/* +----------------------------------------------------------------------------+
+/*
+/*   Purpose: Appends dwelling code information (APT, SUITE, UNIT, etc.) to the
+/*            end of the Canadian cleansed address line1.
+/*
+   IF(ALWAYS)
+      /*... Add dwelling code #1 to address line 1.
+      IF(PR_DWELLING1_NUMBER != "")
+         IF(PR_DWELLING1_TYPE = "?")
+            SET dr_address = TRIM(TRIM(dr_address) |: "#" |: PR_DWELLING1_NUMBER)
+         ELSE
+            SET dr_address = TRIM(TRIM(dr_address) |: TRIM(PR_DWELLING1_NAME_RECODED) |: PR_DWELLING1_NUMBER)
+         ENDIF
+      ENDIF
+      /*... Add dwelling code #2 to address line 1.
+      IF(PR_DWELLING2_NUMBER != "")
+         IF(PR_DWELLING2_TYPE = "?")
+            SET dr_address = TRIM(TRIM(dr_address) |: "#" |: PR_DWELLING2_NUMBER)
+         ELSE
+            SET dr_address = TRIM(TRIM(dr_address) |: TRIM(PR_DWELLING2_NAME_RECODED) |: PR_DWELLING2_NUMBER)
+         ENDIF
+      ENDIF
+      /*... Add dwelling code #3 to address line 1.
+      IF(PR_DWELLING3_NUMBER != "")
+         IF(PR_DWELLING3_TYPE = "?")
+            SET dr_address = TRIM(TRIM(dr_address) |: "#" |: PR_DWELLING3_NUMBER)
+         ELSE
+            SET dr_address = TRIM(TRIM(dr_address) |: TRIM(PR_DWELLING3_NAME_RECODED) |: PR_DWELLING3_NUMBER)
+         ENDIF
+      ENDIF
+   ENDIF
+   </CONDITION>
+</ENTRY>
+<ENTRY>
+   <ENTRY_ID>3</ENTRY_ID>
+   <FOR_FILES>OUTPUT</FOR_FILES>
+   <CONDITION>SUBROUTINE
+   /* SUBROUTINE: can_set_derived_address
+/* +----------------------------------------------------------------------------+
+/* | SUBROUTINE: can_set_derived_address                                        |
+/* +----------------------------------------------------------------------------+
+/*
+   IF(ALWAYS)
+      IF(CA_GOUT_MATCH_LEVEL = "0")
+         SET dr_cleanse_level = "2"
+         SET dr_house_number1 = CA_GOUT_HOUSE_NUMBER
+         SET dr_street_name   = CA_GOUT_STREET_NAME
+         SET dr_address       = CA_GOUT_DELIVERY_ADDRESS
+         SET dr_house_number2 = TRIM(TRIM(CA_GOUT_SUB_BUILDING) |: CA_GOUT_SUB_BUILDING_VALUE)
+         SET dr_city_name     = CA_GOUT_CITY_NAME
+         SET dr_region_name   = CA_GOUT_PROVINCE_COUNTY
+         SET dr_postal_code   = CA_GOUT_POSTAL_CODE
+      ELSE
+         SET dr_cleanse_level = "1"
+         SET dr_house_number1 = CA_GIN_HOUSE_NUMBER
+         SET dr_street_name   = CA_GIN_STREET_NAME
+         SET dr_house_number2 = TRIM(TRIM(CA_GIN_SUB_BUILDING) |: CA_GIN_SUB_BUILDING_VALUE)
+         /*SET dr_city_name     = CA_GIN_CITY_NAME
+         /*SET dr_region_name   = CA_GIN_PROVINCE_NAME
+         /*SET dr_postal_code   = CA_GIN_POSTAL_CODE
+         /*SET dr_address       = CA_GOUT_DELIVERY_ADDRESS
+         /*  SET dr_address = dr_house_number1 |: dr_street_name  |: dr_house_number2
+         RUN SUBROUTINE(4)
+      ENDIF
+      SET dr_address2         = ""
+      SET dr_address3         = ""
+   ENDIF
+   </CONDITION>
+</ENTRY>
+<ENTRY>
+   <ENTRY_ID>4</ENTRY_ID>
+   <FOR_FILES>OUTPUT</FOR_FILES>
+   <CONDITION>SUBROUTINE
+   /* SUBROUTINE: can_unmatched_address
+/* +----------------------------------------------------------------------------+
+/* | SUBROUTINE: can_unmatched_address                                          |
+/* +----------------------------------------------------------------------------+
+/*
+/*   Purpose: Populates the address fields for an address that did not match the
+/*            Canadian Post postal directory.
+/*
+   IF(ALWAYS)
+      /*... Rural Route Address
+      IF(PR_ROUTE_NUMBER_TYPE != "")
+         SET dr_address  = TRIM(TRIM(PR_ROUTE_NAME_RECODED) |: TRIM(PR_ROUTE_NUMBER) |: TRIM(PR_BOX1_NAME_RECODED) |: PR_BOX1_NUMBER)
+         RUN SUBROUTINE(2)
+         /*... PO BOX Address
+      ELSEIF(PR_BOX1_TYPE != "" )
+         SET dr_address = TRIM(TRIM(PR_BOX1_NAME_RECODED) |: PR_BOX1_NUMBER)
+         /*... Street address.
+      ELSE
+         IF(PR_STREET_TYPE1_RECODED IN ("ALLEE","AV","BOUL","CAR","CARREF","CERCLE","CH","COTE","COUR","COURS","CROIS","ECH","ILE","IMP","MONTEE","RDPT","RLE","RUE","TSSE","VOIE"))
+            /* French street address
+            SET dr_address = TRIM(TRIM(CA_GIN_HOUSE_NUMBER) |: TRIM(CA_GIN_STREET_TYPE) |: TRIM(CA_GIN_STREET_NAME) |: CA_GIN_STREET_DIRECTION)
+         ELSE
+            /* English street address
+            SET dr_address = TRIM(TRIM(CA_GIN_HOUSE_NUMBER) |: TRIM(CA_GIN_STREET_NAME) |: TRIM(CA_GIN_STREET_TYPE) |: CA_GIN_STREET_DIRECTION)
+         ENDIF
+         RUN SUBROUTINE(2)
+         SET dr_address2   = TRIM(TRIM(PR_BOX1_NAME_RECODED) |: PR_BOX1_NUMBER)
+      ENDIF
+      /*... Add the parsed complex name to cleansed street line3.
+      IF(PR_COMPLEX1_NAME_RECODED != "")
+         SET dr_address3 = TRIM(TRIM(dr_address3) |: TRIM(PR_COMPLEX1_NAME_ORIGINAL) |: PR_COMPLEX1_TYPE_RECODED)
+      ENDIF
+      /*... Set city, province, postal-code, country and country code.
+      IF(PR_REV_GROUP = "000")
+         /* Use a more aggressive strategy to get cleansed city name.
+         IF(CA_GOUT_CITY_NAME   != ""  AND
+            \  CA_GOUT_MATCH_LEVEL  &gt; "1"    )
+            SET dr_city_name   = CA_GOUT_CITY_NAME
+            SET dr_region_name = CA_GOUT_PROVINCE_COUNTY
+         ELSE
+            SET dr_city_name   = CA_GIN_CITY_NAME
+            SET dr_region_name = CA_GIN_PROVINCE_NAME
+         ENDIF
+         SET dr_postal_code    = CA_GIN_POSTAL_CODE
+      ELSE
+         SET dr_city_name      = TRIM(CITY_NAME)
+         SET dr_region_name    = TRIM(TERR_NAME)
+         SET dr_postal_code    = TRIM(POSTL_AREA_CODE)
+      ENDIF
+      /*... Otherwise, retain the original address.
+      IF(dr_address = "")
+         SET dr_cleanse_level  = "0"
+         SET dr_address        = TRIM(ADDR_LINE_1_TXT)
+         SET dr_address2       = TRIM(ADDR_LINE_2_TXT)
+         SET dr_address3       = TRIM(ADDR_LINE_3_TXT)
+      ENDIF
+   ENDIF
+   </CONDITION>
+</ENTRY>
+<ENTRY>
+   <ENTRY_ID>5</ENTRY_ID>
+   <FOR_FILES>OUTPUT</FOR_FILES>
+   <CONDITION>SUBROUTINE
+   /* SUBROUTINE: set_address_case
+/* +----------------------------------------------------------------------------+
+/* | SUBROUTINE: set_address_case                                               |
+/* +----------------------------------------------------------------------------+
+/*
+   IF(ALWAYS)
+      SET dr_house_number2 = TCASE(DR_HOUSE_NUMBER2)
+      SET dr_street_name   = TCASE(DR_STREET_NAME)
+      SET dr_city_name     = TCASE(DR_CITY_NAME)
+      SET dr_region_name   = UCASE(DR_REGION_NAME)
+      SET dr_address       = TCASE(DR_ADDRESS)
+      SET dr_address2      = TCASE(DR_ADDRESS2)
+      SET dr_address3      = TCASE(DR_ADDRESS3)
+   ENDIF
+   </CONDITION>
+</ENTRY>
+<ENTRY>
+   <ENTRY_ID>6</ENTRY_ID>
+   <FOR_FILES>OUTPUT</FOR_FILES>
+   <CONDITION>SUBROUTINE
+   /* SUBROUTINE: set_name_fields
+/* +----------------------------------------------------------------------------+
+/* | SUBROUTINE: set_name_fields                                                |
+/* +----------------------------------------------------------------------------+
+/*
+/*   This is the original "set_name_fields" routine used by americas.
+/*
+   IF(ALWAYS)
+      SET dr_business_name = TCASE(PR_BUSNAME_ORIGINAL_01)
+      SET dr_alias_account = PR_BUSNAME_RECODED_01
+      SET dr_alias_contact = PR_GIVEN_NAME1_RECODED_01
+      SET dr_mrmrs         = TRIM(TCASE(NAME_PREFX_TXT))
+      SET dr_first_name    = TRIM(TCASE(GVN_NAME))
+      SET dr_middle_name   = TRIM(TCASE(MID_NAME))
+      SET dr_last_name     = TRIM(TCASE(FAMLY_NAME))
+      SET dr_name_gender   = TRIM(UCASE(GENDR_IND))
+      SET dr_name_suffix   = TRIM(TCASE(NAME_SUFFX_TXT))
+   ENDIF
+   </CONDITION>
+</ENTRY>
+
+<ENTRY>
+   <ENTRY_ID>7</ENTRY_ID>
+   <FOR_FILES>OUTPUT</FOR_FILES>
+   <CONDITION>SUBROUTINE
+   /* SUBROUTINE: remove_sub_characters
+/* +----------------------------------------------------------------------------+
+/* | SUBROUTINE: remove_sub_characters                                          |
+/* +----------------------------------------------------------------------------+
+/*
+/*   Even though the input fields are all Unicode, some of the postal matchers
+/*   work internally in native code pages and there is a possibility an out-of-
+/*   band character might be returned as a SUB character (hex 0x1A).
+/*
+/*   If this happens, we revert to the original data.
+/*
+   IF(ALWAYS)
+      /*... Address lines
+      IF(dr_house_number1 CONTAINS HEXVAL("1A") OR
+         \  dr_street_name   CONTAINS HEXVAL("1A") OR
+         \  dr_house_number2 CONTAINS HEXVAL("1A") OR
+         \  dr_pobox_number  CONTAINS HEXVAL("1A") OR
+         \  dr_address       CONTAINS HEXVAL("1A") OR
+         \  dr_address2      CONTAINS HEXVAL("1A") OR
+         \  dr_address3      CONTAINS HEXVAL("1A")   )
+         SET dr_house_number1  = TCASE(TRIM(STRET_NUM))
+         SET dr_street_name    = TCASE(TRIM(STRET_NAME))
+         SET dr_house_number2  = TCASE(TRIM(APT_NUM))
+         SET dr_pobox_number   = TCASE(TRIM(PO_BOX_NUM))
+         SET dr_address        = TCASE(TRIM(ADDR_LINE_1_TXT))
+         SET dr_address2       = TCASE(TRIM(ADDR_LINE_2_TXT))
+         SET dr_address3       = TCASE(TRIM(ADDR_LINE_3_TXT))
+      ENDIF
+      /*... Geography line
+      IF(dr_city_name     CONTAINS HEXVAL("1A") OR
+         \  dr_region_name   CONTAINS HEXVAL("1A") OR
+         \  dr_postal_code   CONTAINS HEXVAL("1A")   )
+         SET dr_city_name      = TCASE(TRIM(CITY_NAME))
+         SET dr_region_name    = TCASE(TRIM(TERR_NAME))
+         SET dr_postal_code    = TCASE(TRIM(POSTL_AREA_CODE))
+      ENDIF
+   ENDIF
+   </CONDITION>
+</ENTRY>
+</ARGUMENTS>
+</CONDITIONALS>
+</PARAMETER>
+    </OUTPUT>
+    <PROCESS>
+      <PARAMETER>
+        <PROCESS_SETTINGS>
+          <ARGUMENTS>
+            <PROCESS_LOG_FILE_NAME>$(LOGS)/p5_ca_drtranfrmr_log.txt</PROCESS_LOG_FILE_NAME>
+            <ENABLE_DEBUG_OUTPUT>N</ENABLE_DEBUG_OUTPUT>
+            <DEBUG_FILE_NAME>$(DEBUG)/p5_ca_drtranfrmr_debug.txt</DEBUG_FILE_NAME>
+            <MASK_FILE_NAME>$(GENERAL_RESOURCES)/maskfile$(PLAFEXT)</MASK_FILE_NAME>
+<STRSUB_TABLE_FILE_NAME>$(GENERAL_RESOURCES)/strsub$(PLAFEXT)</STRSUB_TABLE_FILE_NAME>
+          </ARGUMENTS>
+        </PROCESS_SETTINGS>
+      </PARAMETER>
+    </PROCESS>
+    <STATISTICS>
+      <PARAMETER>
+        <STATISTICS_SETTINGS>
+          <ARGUMENTS>
+            <STATS_FILE_NAME>$(STATS)/p5_ca_drtranfrmr_stats.txt</STATS_FILE_NAME>
+          </ARGUMENTS>
+        </STATISTICS_SETTINGS>
+      </PARAMETER>
+    </STATISTICS>
+  </CATEGORY>
+
+</TRANFRMR>
+    

@@ -1,0 +1,650 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TRANFRMR xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+  <SETTINGS_FILE_ENCODING>UTF8</SETTINGS_FILE_ENCODING>
+
+  
+<CATEGORY>
+
+    <INPUT>
+      <PARAMETER>
+        <INPUT_SETTINGS>
+          <ARGUMENTS>
+            <ENTRY>
+              <ENTRY_ID>1</ENTRY_ID>
+              <FILE_QUALIFIER>e5_es_pmatch_p4</FILE_QUALIFIER>
+              <DATA_FILE_NAME>stdin</DATA_FILE_NAME>
+              <DDL_FILE_NAME>$(DDL)/es_gllatlon_p10.ddx</DDL_FILE_NAME>
+               <FILE_DELIMITER/>
+               <USE_QUOTES_AS_QUALIFIER/>
+             
+              
+              
+              <START_RECORD/>
+              <MAX_RECORDS/>
+              <NTH_SAMPLE/>
+              <FILE_TRACE_KEY/>
+              <EXCEPTIONS_FILE_NAME/>
+              
+              
+              
+            <SELECT_RECORDS/>
+</ENTRY>
+          </ARGUMENTS>
+        </INPUT_SETTINGS>
+
+        <CONDITIONALS>
+          <ARGUMENTS>
+<ENTRY>
+<ENTRY_ID>1</ENTRY_ID>
+<FOR_FILES>e5_es_pmatch_p4</FOR_FILES>
+<CONDITION>IF (ALWAYS)
+        IF (ALWAYS)
+    ENDIF
+    
+    ENDIF</CONDITION>
+</ENTRY>
+</ARGUMENTS>
+        </CONDITIONALS>
+      </PARAMETER>
+    </INPUT>
+    <OUTPUT>
+      <PARAMETER>
+<OUTPUT_SETTINGS>
+          <ARGUMENTS>
+            <FILE_QUALIFIER>OUTPUT</FILE_QUALIFIER>
+            <DATA_FILE_NAME>stdout</DATA_FILE_NAME>
+            <DDL_FILE_NAME>$(DDL)/es_drtranfrmr_p5.ddx</DDL_FILE_NAME>
+            
+          <SELECT_RECORDS/>
+</ARGUMENTS>
+        </OUTPUT_SETTINGS>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<CONDITIONALS>
+	<ARGUMENTS>
+		<ENTRY>
+			<ENTRY_ID>1</ENTRY_ID>
+			<FOR_FILES>OUTPUT</FOR_FILES>
+			<CONDITION>
+   /*
+   /* ENTRY ID/SUBROUTINE LIST:
+   /*   1. main
+   /*   2. remove_blank_address_lines
+   /*   3. remove_sub_characters
+   /*   4. set_address_case
+   /*   5. set_name_fields
+   /*   6. tqtn_common
+   /*   7. tqtn_keep_original_address
+   /*   8. tqtn_parsed_address
+   /*   9. tqtn_postal_matched_address
+   /*
+/* +----------------------------------------------------------------------------+
+/* | ROUTINE: esp_cleanse                                                 SPAIN |
+/* +----------------------------------------------------------------------------+
+/*
+   IF(ALWAYS)
+      RUN SUBROUTINE(6)
+      RUN SUBROUTINE(4)
+      SET dr_country      = "ES"
+      SET dr_country_name = "ESP"
+      RUN SUBROUTINE(3)
+      SET national_id_nbr = UCASE(national_id_nbr)
+   ENDIF
+   </CONDITION>
+		</ENTRY>
+		<ENTRY>
+			<ENTRY_ID>2</ENTRY_ID>
+			<FOR_FILES>OUTPUT</FOR_FILES>
+			<CONDITION>SUBROUTINE
+   /* SUBROUTINE: remove_blank_address_lines
+/* +----------------------------------------------------------------------------+
+/* | SUBROUTINE: remove_blank_address_lines                                     |
+/* +----------------------------------------------------------------------------+
+/*
+/*   Removes blank or duplicate address lines from finished address.
+/*
+   IF(ALWAYS)
+      /*... remove duplicate lines.
+      IF(dr_address = dr_address2)
+         SET dr_address2 = ""
+      ENDIF
+      IF(dr_address = dr_address3)
+         SET dr_address3 = ""
+      ENDIF
+      IF(dr_address2 = dr_address3)
+         SET dr_address3 = ""
+      ENDIF
+      /*... remove blank lines.
+      IF(dr_address2 = "")
+         SET dr_address2 = dr_address3
+         SET dr_address3 = ""
+      ENDIF
+      IF(dr_address = "")
+         SET dr_address  = dr_address2
+         SET dr_address2 = ""
+      ENDIF
+   ENDIF
+   </CONDITION>
+		</ENTRY>
+		<ENTRY>
+			<ENTRY_ID>3</ENTRY_ID>
+			<FOR_FILES>OUTPUT</FOR_FILES>
+			<CONDITION>SUBROUTINE
+   /* SUBROUTINE: remove_sub_characters
+/* +----------------------------------------------------------------------------+
+/* | SUBROUTINE: remove_sub_characters                                          |
+/* +----------------------------------------------------------------------------+
+/*
+/*   Even though the input fields are all Unicode, some of the postal matchers
+/*   work internally in native code pages and there is a possibility an out-of-
+/*   band character might be returned as a SUB character (hex 0x1A).
+/*
+/*   If this happens, we revert to the original data.
+/*
+   IF(ALWAYS)
+      /*... Address lines
+      IF(dr_house_number1 CONTAINS HEXVAL("1A") OR
+         \  dr_street_name   CONTAINS HEXVAL("1A") OR
+         \  dr_house_number2 CONTAINS HEXVAL("1A") OR
+         \  dr_pobox_number  CONTAINS HEXVAL("1A") OR
+         \  dr_address       CONTAINS HEXVAL("1A") OR
+         \  dr_address2      CONTAINS HEXVAL("1A") OR
+         \  dr_address3      CONTAINS HEXVAL("1A")   )
+         SET dr_house_number1  = TCASE(TRIM(STRET_NUM))
+         SET dr_street_name    = TCASE(TRIM(STRET_NAME))
+         SET dr_house_number2  = TCASE(TRIM(APT_NUM))
+         SET dr_pobox_number   = TCASE(TRIM(PO_BOX_NUM))
+         SET dr_address        = TCASE(TRIM(ADDR_LINE_1_TXT))
+         SET dr_address2       = TCASE(TRIM(ADDR_LINE_2_TXT))
+         SET dr_address3       = TCASE(TRIM(ADDR_LINE_3_TXT))
+      ENDIF
+      /*... Geography line
+      IF(dr_city_name     CONTAINS HEXVAL("1A") OR
+         \  dr_region_name   CONTAINS HEXVAL("1A") OR
+         \  dr_postal_code   CONTAINS HEXVAL("1A")   )
+         SET dr_city_name      = TCASE(TRIM(CITY_NAME))
+         SET dr_region_name    = TCASE(TRIM(TERR_NAME))
+         SET dr_postal_code    = TCASE(TRIM(POSTL_AREA_CODE))
+      ENDIF
+   ENDIF
+   </CONDITION>
+		</ENTRY>
+		<ENTRY>
+			<ENTRY_ID>4</ENTRY_ID>
+			<FOR_FILES>OUTPUT</FOR_FILES>
+			<CONDITION>SUBROUTINE
+   /* SUBROUTINE: set_address_case
+/* +----------------------------------------------------------------------------+
+/* | SUBROUTINE: set_address_case                                               |
+/* +----------------------------------------------------------------------------+
+/*
+   IF(ALWAYS)
+      SET dr_house_number2 = TCASE(DR_HOUSE_NUMBER2)
+      SET dr_street_name   = TCASE(DR_STREET_NAME)
+      SET dr_city_name     = TCASE(DR_CITY_NAME)
+      SET dr_region_name   = UCASE(DR_REGION_NAME)
+      SET dr_address       = TCASE(DR_ADDRESS)
+      SET dr_address2      = TCASE(DR_ADDRESS2)
+      SET dr_address3      = TCASE(DR_ADDRESS3)
+   ENDIF
+   </CONDITION>
+		</ENTRY>
+		<ENTRY>
+			<ENTRY_ID>5</ENTRY_ID>
+			<FOR_FILES>OUTPUT</FOR_FILES>
+			<CONDITION>SUBROUTINE
+   /* SUBROUTINE: set_name_fields
+/* +----------------------------------------------------------------------------+
+/* | SUBROUTINE: set_name_fields                                                |
+/* +----------------------------------------------------------------------------+
+/*
+/*   This is the original "set_name_fields" routine used by americas.
+/*
+   IF(ALWAYS)
+      SET dr_business_name = TCASE(PR_BUSNAME_ORIGINAL_01)
+      SET dr_alias_account = PR_BUSNAME_RECODED_01
+IF (LENGTH(TRIM(PR_GIVEN_NAME1_RECODED_01)) IN ("0","1"))
+SET dr_alias_contact = TRIM(PR_GIVEN_NAME2_RECODED_01)
+ELSE 
+SET dr_alias_contact =  TRIM(PR_GIVEN_NAME1_RECODED_01)
+ENDIF
+IF (UCASE(TRIM(dr_alias_contact)) = "MARIA" AND PR_GIVEN_NAME2_RECODED_01 != SPACES) 
+SET dr_alias_contact = TRIM(PR_GIVEN_NAME2_RECODED_01)
+ENDIF 
+      /*SET dr_alias_contact = PR_GIVEN_NAME1_RECODED_01
+      SET dr_mrmrs         = TRIM(TCASE(NAME_PREFX_TXT))
+      SET dr_first_name    = TRIM(TCASE(GVN_NAME))
+      SET dr_middle_name   = TRIM(TCASE(MID_NAME))
+      SET dr_last_name     = TRIM(TCASE(FAMLY_NAME))
+      SET dr_name_gender   = TRIM(UCASE(GENDR_IND))
+      SET dr_name_suffix   = TRIM(TCASE(NAME_SUFFX_TXT))
+   ENDIF
+   </CONDITION>
+		</ENTRY>
+		<ENTRY>
+			<ENTRY_ID>6</ENTRY_ID>
+			<FOR_FILES>OUTPUT</FOR_FILES>
+			<CONDITION>SUBROUTINE
+   /* SUBROUTINE: tqtn_common
+/* +----------------------------------------------------------------------------+
+/* | ROUTINE: tqtn_common                                                       |
+/* +----------------------------------------------------------------------------+
+/*
+/*   Purpose: Common code used to reconstruct addresses for all countries that
+/*            use the TQ Custom Postal Matcher and place the street type before
+/*            the street name.
+/*            For example, CHE, ESP, PRT.
+/*
+   IF(ALWAYS)
+      RUN FIELD_SCANNING(ALL)
+      RUN TABLE_RECODING(ALL)
+      IF(TQ_GOUT_MATCH_LEVEL = "0" AND PR_REV_GROUP IN "000,002,005,008,009,010,018")
+         SET dr_cleanse_level = "2"
+         RUN SUBROUTINE(9)
+      ELSE
+         IF(PR_REV_GROUP IN "000,002,005,008,009,010")
+            SET dr_cleanse_level = "1"
+            RUN SUBROUTINE(8)
+         ELSE
+            SET dr_cleanse_level = "0"
+            RUN SUBROUTINE(7)
+         ENDIF
+      ENDIF
+      /* Set name fields
+      RUN SUBROUTINE(5)
+      IF(pr_name_form_01 != "1")
+         SET dr_business_name = ""
+         SET dr_alias_account = ""
+      ENDIF
+      RUN SUBROUTINE(2)
+   ENDIF
+   </CONDITION>
+		</ENTRY>
+		<ENTRY>
+			<ENTRY_ID>7</ENTRY_ID>
+			<FOR_FILES>OUTPUT</FOR_FILES>
+			<CONDITION>SUBROUTINE
+   /* SUBROUTINE: tqtn_keep_original_address
+/* +----------------------------------------------------------------------------+
+/* | SUBROUTINE: tqtn_keep_original_address                                     |
+/* +----------------------------------------------------------------------------+
+/*
+/*   Purpose: Populates the address fields with original input data.
+/*
+/*            Used used for all TQ Custom Postal Matcher countries that place the
+/*            street type before the street name.  Such as "RUE MAIN"
+/*
+   IF(ALWAYS)
+      SET dr_house_number1 = TQ_GIN_HOUSE_NUMBER
+      SET dr_street_name   = TRIM(TRIM(TQ_GIN_STREET_TYPE) |: TQ_GIN_STREET_NAME)
+      SET dr_house_number2 = TRIM(TRIM(TQ_GIN_SUB_BUILDING) |: TQ_GIN_SUB_BUILDING_VALUE)
+      SET dr_pobox_number  = PR_BOX1_NUMBER
+      SET dr_address       = UCASE(TRIM(ADDR_LINE_1_TXT))
+      SET dr_address2      = UCASE(TRIM(ADDR_LINE_2_TXT))
+      SET dr_address3      = UCASE(TRIM(ADDR_LINE_3_TXT))
+      SET dr_city_name     = UCASE(TRIM(CITY_NAME))
+      SET dr_region_name   = UCASE(TRIM(TERR_NAME))
+      SET dr_postal_code   = UCASE(TRIM(POSTL_AREA_CODE))
+   ENDIF
+   </CONDITION>
+		</ENTRY>
+		<ENTRY>
+			<ENTRY_ID>8</ENTRY_ID>
+			<FOR_FILES>OUTPUT</FOR_FILES>
+			<CONDITION>SUBROUTINE
+   /* SUBROUTINE: tqtn_parsed_address
+/* +----------------------------------------------------------------------------+
+/* | SUBROUTINE: tqtn_parsed_address                                            |
+/* +----------------------------------------------------------------------------+
+/*
+/*   Purpose: Populates the address fields for an address that did not match the
+/*            postal directory.
+/*
+/*            Used used for all TQ Custom Postal Matcher countries that place the
+/*            street type before the street name.  Such as "RUE MAIN"
+/*
+   IF(ALWAYS)
+      /*... Set house_number, street_name, apartment_number and PO box.
+      SET dr_house_number1 = TQ_GIN_HOUSE_NUMBER
+      SET dr_street_name   = TRIM(TQ_GIN_STREET_TYPE) |: TRIM(TQ_GIN_STREET_NAME)
+      SET dr_house_number2 = TRIM(TQ_GIN_SUB_BUILDING) |: TRIM(TQ_GIN_SUB_BUILDING_VALUE)
+      SET dr_pobox_number  = PR_BOX1_NUMBER
+      /*... Set address lines.
+      SET dr_address       = TRIM(DR_STREET_NAME) |: TRIM(DR_HOUSE_NUMBER1) |: TRIM(DR_HOUSE_NUMBER2) |: TRIM(TQ_GIN_SUB_BUILDING2) |: TRIM(TQ_GIN_SUB_BUILDING2_VALUE) |: TRIM(PR_DWELLING3_NAME_RECODED) |: TRIM(PR_DWELLING3_NUMBER)
+      SET dr_address2      = TRIM(PR_BOX1_NAME_RECODED) |: TRIM(PR_BOX1_NUMBER)
+      /* Add the parsed complex name to cleansed street line3.
+      IF(PR_COMPLEX1_NAME_RECODED != "")
+         SET dr_address3 = TRIM(PR_COMPLEX1_NAME_ORIGINAL) |: TRIM(PR_COMPLEX1_TYPE_RECODED)
+      ENDIF
+      
+      IF(SUBSTR(PR_ORIG_LINE_PATTERN,1,1) = "S" AND SUBSTR(PR_ORIG_LINE_PATTERN,2,1) IN ("I","Z","M","Y","?","2") AND SUBSTR(PR_ORIG_LINE_PATTERN,3,1) = "")
+         SET dr_address       = TRIM(DR_STREET_NAME) |: TRIM(DR_HOUSE_NUMBER1) |: TRIM(DR_HOUSE_NUMBER2) |: TRIM(TQ_GIN_SUB_BUILDING2) |: TRIM(TQ_GIN_SUB_BUILDING2_VALUE) |: TRIM(PR_DWELLING3_NAME_RECODED) |: TRIM(PR_DWELLING3_NUMBER)
+         SET dr_address2      = TRIM(ADDR_LINE_2_TXT)
+      ELSE
+         IF(SUBSTR(PR_ORIG_LINE_PATTERN,1,1) IN ("I","Z","M","Y","?","2") AND SUBSTR(PR_ORIG_LINE_PATTERN,2,1) = "S" AND SUBSTR(PR_ORIG_LINE_PATTERN,3,1) = "")
+                    SET dr_address       = TRIM(ADDR_LINE_1_TXT)
+            SET dr_address2      = TRIM(DR_STREET_NAME) |: TRIM(DR_HOUSE_NUMBER1) |: TRIM(DR_HOUSE_NUMBER2) |: TRIM(TQ_GIN_SUB_BUILDING2) |: TRIM(TQ_GIN_SUB_BUILDING2_VALUE) |: TRIM(PR_DWELLING3_NAME_RECODED) |: TRIM(PR_DWELLING3_NUMBER)
+         ELSE
+            IF(SUBSTR(PR_ORIG_LINE_PATTERN,1,3) LIKE "*I*" OR
+            \  SUBSTR(PR_ORIG_LINE_PATTERN,1,3) LIKE "*Z*" OR
+            \  SUBSTR(PR_ORIG_LINE_PATTERN,1,3) LIKE "*M*" OR
+            \  SUBSTR(PR_ORIG_LINE_PATTERN,1,3) LIKE "*Y*")
+               SET dr_address        = TRIM(ADDR_LINE_1_TXT)
+                       SET dr_address2       = TRIM(ADDR_LINE_2_TXT)
+               SET dr_address3       = TRIM(ADDR_LINE_3_TXT)
+            ENDIF
+         ENDIF
+      ENDIF
+      
+      RUN SUBROUTINE(2)
+      /*... Set city, province and postal-code.
+      /* Use a more aggressive strategy to get cleansed city name.
+      /*!not working in TSQ13.0, omit for now: IF(TQ_GOUT_POSTAL_CITY != ""  AND
+      /*!not working in TSQ13.0, omit for now: \  TQ_GOUT_MATCH_LEVEL &gt;  "1"    )
+      /*!not working in TSQ13.0, omit for now:    SET dr_city_name   = TQ_GOUT_POSTAL_CITY
+      /*!not working in TSQ13.0, omit for now:    SET dr_region_name = TQ_GOUT_STATE
+      /*!not working in TSQ13.0, omit for now:    SET dr_postal_code = TQ_GOUT_POSTAL_CODE
+      /*!not working in TSQ13.0, omit for now: ELSE
+      /*!not working in TSQ13.0, omit for now:    SET dr_city_name   = TQ_GIN_CITY_NAME
+      /*!not working in TSQ13.0, omit for now:    SET dr_region_name = TQ_GIN_STATE
+      /*!not working in TSQ13.0, omit for now:    SET dr_postal_code = PR_POSTAL_CODE
+      /*!not working in TSQ13.0, omit for now: ENDIF
+      SET dr_city_name     = UCASE(TRIM(CITY_NAME))
+      SET dr_region_name   = UCASE(TRIM(TERR_NAME))
+      SET dr_postal_code   = UCASE(TRIM(POSTL_AREA_CODE))
+      /*... If necessary, retain the original address.
+      IF(dr_address = "")
+         SET dr_address        = TRIM(ADDR_LINE_1_TXT)
+         SET dr_address2       = TRIM(ADDR_LINE_2_TXT)
+         SET dr_address3       = TRIM(ADDR_LINE_3_TXT)
+      ENDIF
+   ENDIF
+   </CONDITION>
+		</ENTRY>
+		<ENTRY>
+			<ENTRY_ID>9</ENTRY_ID>
+			<FOR_FILES>OUTPUT</FOR_FILES>
+			<CONDITION>SUBROUTINE
+   /* SUBROUTINE: tqtn_postal_matched_address
+/* +----------------------------------------------------------------------------+
+/* | SUBROUTINE: tqtn_postal_matched_address                                    |
+/* +----------------------------------------------------------------------------+
+/*
+/*   Purpose: Populates the address fields for an address that matched the
+/*            postal directory.
+/*
+/*            Used used for all TQ Custom Postal Matcher countries that place the
+/*            street type before the street name.  Such as "RUE MAIN"
+/*
+   IF(ALWAYS)
+      /* Use postal-matcher values
+      SET dr_house_number1 = TQ_GOUT_HOUSE_NUMBER
+      SET dr_street_name   = TRIM(TQ_GOUT_STREET_TYPE) |: TRIM(TQ_GOUT_STREET_NAME)
+      SET dr_house_number2 = TRIM(TQ_GOUT_SUB_BUILDING) |: TRIM(TQ_GOUT_SUB_BUILDING_VALUE) |: TRIM(TQ_GOUT_SUB_BUILDING2) |: TRIM(TQ_GOUT_SUB_BUILDING2_VALUE)
+      SET dr_pobox_number  = PR_BOX1_NUMBER
+      SET dr_city_name     = TQ_GOUT_POSTAL_CITY
+      SET dr_region_name   = TQ_GOUT_STATE
+      SET dr_postal_code   = TQ_GOUT_POSTAL_CODE
+      SET dr_address       = TRIM(DR_STREET_NAME) |: TRIM(DR_HOUSE_NUMBER1) |: TRIM(DR_HOUSE_NUMBER2) |: TRIM(TQ_GOUT_SUB_BUILDING2) |: TRIM(TQ_GOUT_SUB_BUILDING2_VALUE) |: TRIM(PR_DWELLING3_NAME_RECODED) |: TRIM(PR_DWELLING3_NUMBER)
+
+      IF(SUBSTR(PR_ORIG_LINE_PATTERN,1,1) = "S" AND SUBSTR(PR_ORIG_LINE_PATTERN,2,1) IN ("I","Z","M","Y","?","2") AND SUBSTR(PR_ORIG_LINE_PATTERN,3,1) = "")
+         SET dr_address       = TRIM(DR_STREET_NAME) |: TRIM(DR_HOUSE_NUMBER1) |: TRIM(DR_HOUSE_NUMBER2) |: TRIM(TQ_GOUT_SUB_BUILDING2) |: TRIM(TQ_GOUT_SUB_BUILDING2_VALUE) |: TRIM(PR_DWELLING3_NAME_RECODED) |: TRIM(PR_DWELLING3_NUMBER)
+         SET dr_address2      = TRIM(ADDR_LINE_2_TXT)
+      ELSE
+         IF(SUBSTR(PR_ORIG_LINE_PATTERN,1,1) IN ("I","Z","M","Y","?","2") AND SUBSTR(PR_ORIG_LINE_PATTERN,2,1) = "S" AND SUBSTR(PR_ORIG_LINE_PATTERN,3,1) = "")
+            SET dr_address       = TRIM(ADDR_LINE_1_TXT)
+            SET dr_address2      = TRIM(DR_STREET_NAME) |: TRIM(DR_HOUSE_NUMBER1) |: TRIM(DR_HOUSE_NUMBER2) |: TRIM(TQ_GOUT_SUB_BUILDING2) |: TRIM(TQ_GOUT_SUB_BUILDING2_VALUE) |: TRIM(PR_DWELLING3_NAME_RECODED) |: TRIM(PR_DWELLING3_NUMBER)
+         ELSE
+            IF(SUBSTR(PR_ORIG_LINE_PATTERN,1,3) LIKE "*I*" OR
+            \  SUBSTR(PR_ORIG_LINE_PATTERN,1,3) LIKE "*Z*" OR
+            \  SUBSTR(PR_ORIG_LINE_PATTERN,1,3) LIKE "*M*" OR
+            \  SUBSTR(PR_ORIG_LINE_PATTERN,1,3) LIKE "*Y*")
+               SET dr_address        = TRIM(ADDR_LINE_1_TXT)
+               SET dr_address2       = TRIM(ADDR_LINE_2_TXT)
+               SET dr_address3       = TRIM(ADDR_LINE_3_TXT)
+            ENDIF
+         ENDIF
+      ENDIF
+      
+      IF(PR_COMPLEX1_NAME_RECODED != "" AND TQ_GOUT_OTHER1 = SPACES AND TQ_GOUT_OTHER2 = SPACES AND dr_address3 = SPACES)
+         SET dr_address3 = TRIM(TRIM(PR_COMPLEX1_NAME_ORIGINAL) |: PR_COMPLEX1_TYPE_RECODED)
+      ENDIF
+      
+   ENDIF
+   </CONDITION>
+		</ENTRY>
+	</ARGUMENTS>
+</CONDITIONALS>
+</PARAMETER>
+    </OUTPUT>
+    <PROCESS>
+      <PARAMETER>
+        <PROCESS_SETTINGS>
+          <ARGUMENTS>
+            <PROCESS_LOG_FILE_NAME>$(LOGS)/p5_es_drtranfrmr_log.txt</PROCESS_LOG_FILE_NAME>
+            <ENABLE_DEBUG_OUTPUT>N</ENABLE_DEBUG_OUTPUT>
+            <DEBUG_FILE_NAME>$(DEBUG)/p5_es_drtranfrmr_debug.txt</DEBUG_FILE_NAME>
+            <MASK_FILE_NAME>$(GENERAL_RESOURCES)/maskfile$(PLAFEXT)</MASK_FILE_NAME>
+<STRSUB_TABLE_FILE_NAME>$(GENERAL_RESOURCES)/strsub$(PLAFEXT)</STRSUB_TABLE_FILE_NAME>
+          </ARGUMENTS>
+        </PROCESS_SETTINGS>
+      </PARAMETER>
+    </PROCESS>
+    <STATISTICS>
+      <PARAMETER>
+        <STATISTICS_SETTINGS>
+          <ARGUMENTS>
+            <STATS_FILE_NAME>$(STATS)/p5_es_drtranfrmr_stats.txt</STATS_FILE_NAME>
+          </ARGUMENTS>
+        </STATISTICS_SETTINGS>
+      </PARAMETER>
+    </STATISTICS>
+  </CATEGORY>
+
+</TRANFRMR>
+    

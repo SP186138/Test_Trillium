@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TRANFRMR xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+  <SETTINGS_FILE_ENCODING>UTF8</SETTINGS_FILE_ENCODING>
+
+  
+<CATEGORY>
+
+    <INPUT>
+      <PARAMETER>
+        <INPUT_SETTINGS>
+          <ARGUMENTS>
+            <ENTRY>
+              <ENTRY_ID>1</ENTRY_ID>
+              <FILE_QUALIFIER>e7_fr_winkey_p6</FILE_QUALIFIER>
+              <DATA_FILE_NAME>stdin</DATA_FILE_NAME>
+              <DDL_FILE_NAME>$(DDL)/fr_winkey_p6.ddx</DDL_FILE_NAME>
+               <FILE_DELIMITER/>
+               <USE_QUOTES_AS_QUALIFIER/>
+             
+              
+              
+              <START_RECORD/>
+              <MAX_RECORDS/>
+              <NTH_SAMPLE/>
+              <FILE_TRACE_KEY/>
+              <EXCEPTIONS_FILE_NAME/>
+              
+              
+              
+            <SELECT_RECORDS/>
+</ENTRY>
+          </ARGUMENTS>
+        </INPUT_SETTINGS>
+
+        <CONDITIONALS>
+          <ARGUMENTS>
+<ENTRY>
+<ENTRY_ID>1</ENTRY_ID>
+<FOR_FILES>e7_fr_winkey_p6</FOR_FILES>
+<CONDITION>IF (ALWAYS)
+     IF(dr_house_number1 CONTAINS HEXVAL("FFFD") OR
+         \  dr_street_name   CONTAINS HEXVAL("FFFD") OR
+         \  dr_house_number2 CONTAINS HEXVAL("FFFD") OR
+         \  dr_pobox_number  CONTAINS HEXVAL("FFFD") OR
+         \  dr_address       CONTAINS HEXVAL("FFFD") OR
+         \  dr_address2      CONTAINS HEXVAL("FFFD") OR
+         \  dr_address3      CONTAINS HEXVAL("FFFD")   )
+         SET dr_house_number1  = TCASE(TRIM(STRET_NUM))
+         SET dr_street_name    = TCASE(TRIM(STRET_NAME))
+         SET dr_house_number2  = TCASE(TRIM(APT_NUM))
+         SET dr_pobox_number   = TCASE(TRIM(PO_BOX_NUM))
+         SET dr_address        = TCASE(TRIM(ADDR_LINE_1_TXT))
+         SET dr_address2       = TCASE(TRIM(ADDR_LINE_2_TXT))
+         SET dr_address3       = TCASE(TRIM(ADDR_LINE_3_TXT))
+      ENDIF
+      /*... Geography line
+      IF(dr_city_name     CONTAINS HEXVAL("FFFD") OR
+         \  dr_region_name   CONTAINS HEXVAL("FFFD") OR
+         \  dr_postal_code   CONTAINS HEXVAL("FFFD")   )
+         SET dr_city_name      = TCASE(TRIM(CITY_NAME))
+         SET dr_region_name    = TCASE(TRIM(TERR_NAME))
+         SET dr_postal_code    = TCASE(TRIM(POSTL_AREA_CODE))
+      ENDIF
+    
+    ENDIF</CONDITION>
+</ENTRY>
+</ARGUMENTS>
+        </CONDITIONALS>
+      </PARAMETER>
+    </INPUT>
+    <OUTPUT>
+      <PARAMETER>
+<OUTPUT_SETTINGS>
+          <ARGUMENTS>
+            <FILE_QUALIFIER>OUTPUT</FILE_QUALIFIER>
+                  <DATA_FILE_NAME>$(OUTPUT)/TSS_CLEANSE_OUTPUT_FRA.DAT</DATA_FILE_NAME>
+            <DDL_FILE_NAME>$(DDL)/fr_tranfrmr_p7.ddx</DDL_FILE_NAME>
+                  <FILE_DELIMITER_ENCODING>UTF8</FILE_DELIMITER_ENCODING>
+                  <FILE_DELIMITER>Pipe</FILE_DELIMITER>
+                  <USE_QUOTES_AS_QUALIFIER>N</USE_QUOTES_AS_QUALIFIER>
+                  <USE_FILE_HEADER>0</USE_FILE_HEADER>
+          <SELECT_RECORDS/>
+</ARGUMENTS>
+        </OUTPUT_SETTINGS>
+
+
+<CONDITIONALS>
+          <ARGUMENTS>
+<ENTRY>
+<ENTRY_ID>1</ENTRY_ID>
+<FOR_FILES>OUTPUT</FOR_FILES>
+<CONDITION>IF (ALWAYS)
+    
+    ENDIF</CONDITION>
+</ENTRY>
+</ARGUMENTS>
+        </CONDITIONALS>
+</PARAMETER>
+    </OUTPUT>
+    <PROCESS>
+      <PARAMETER>
+        <PROCESS_SETTINGS>
+          <ARGUMENTS>
+            <PROCESS_LOG_FILE_NAME>$(LOGS)/p7_fr_tranfrmr_log.txt</PROCESS_LOG_FILE_NAME>
+            <ENABLE_DEBUG_OUTPUT>0</ENABLE_DEBUG_OUTPUT>
+            <DEBUG_FILE_NAME>$(DEBUG)/p7_fr_tranfrmr_debug.txt</DEBUG_FILE_NAME>
+            <MASK_FILE_NAME>$(GENERAL_RESOURCES)/maskfile$(PLAFEXT)</MASK_FILE_NAME>
+<STRSUB_TABLE_FILE_NAME>$(GENERAL_RESOURCES)/strsub$(PLAFEXT)</STRSUB_TABLE_FILE_NAME>
+          </ARGUMENTS>
+        </PROCESS_SETTINGS>
+      </PARAMETER>
+    </PROCESS>
+    <STATISTICS>
+      <PARAMETER>
+        <STATISTICS_SETTINGS>
+          <ARGUMENTS>
+            <STATS_FILE_NAME>$(STATS)/p7_fr_tranfrmr_stats.txt</STATS_FILE_NAME>
+          </ARGUMENTS>
+        </STATISTICS_SETTINGS>
+      </PARAMETER>
+    </STATISTICS>
+  </CATEGORY>
+
+</TRANFRMR>

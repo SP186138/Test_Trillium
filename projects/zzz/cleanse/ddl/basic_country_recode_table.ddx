@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<RECORD xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+  <NAME>BASIC_COUNTRY</NAME>
+
+  <TYPE>FIXED</TYPE>
+
+  <LENGTH>50</LENGTH>
+
+  <FIELD>
+    <REDEFINE>N</REDEFINE>
+    <NAME>ISO2</NAME>
+    <TYPE>UTF8</TYPE>
+    <STARTS-IN-COLUMN>0</STARTS-IN-COLUMN>
+    <LENGTH>3</LENGTH>
+  </FIELD>
+
+  <FIELD>
+    <REDEFINE>N</REDEFINE>
+    <NAME>ISO3</NAME>
+    <TYPE>UTF8</TYPE>
+    <STARTS-IN-COLUMN>3</STARTS-IN-COLUMN>
+    <LENGTH>4</LENGTH>
+  </FIELD>
+
+  <FIELD>
+    <REDEFINE>N</REDEFINE>
+    <NAME>COUNTRY</NAME>
+    <TYPE>UTF8</TYPE>
+    <STARTS-IN-COLUMN>7</STARTS-IN-COLUMN>
+    <LENGTH>43</LENGTH>
+  </FIELD>
+
+</RECORD>

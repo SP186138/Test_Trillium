@@ -1,0 +1,8 @@
+LEV1_FNAME             NLINDEX1.tbl
+LEV2_FNAME             NLINDEX2.tbl
+BASE_FNAME             NLBASE.tbl
+ACITY_FNAME            NLACITY.tbl
+CSTATE_FNAME           NLCOUNTY.tbl
+DIRECTORY_VERSION      0
+DISPLAY_BASEDATA       
+LEVEL1_VALUE        

@@ -1,0 +1,843 @@
+***************************************************************************
+*   
+*
+*  Country:  Norway
+*
+*            USER DEFINED SPECIFIC WORDS AND PATTERNS
+*
+***************************************************************************
+*
+*   Word/Phrase entries added during Tuning Feb 2014
+*
+***************************************************************************
+'AP'                                                    STREET DEF ATT=APT REC=APT
+                                                               END ATT=APT REC=APT
+'APT'                                                   STREET DEF ATT=APT
+                                                               END ATT=APT
+'BNR'                                                   STREET DEF ATT=APT
+                                                               END ATT=APT
+'HNR'                                                   STREET DEF ATT=APT
+                                                               END ATT=APT
+'HO'                                                    STREET DEF ATT=APT
+                                                               END ATT=APT
+'HOEGGVEGEN'                                            STREET DEF ATT=APT REC=HO
+                                                               END ATT=APT REC=HO
+'HUSNER'                                                STREET DEF ATT=APT
+                                                               END ATT=APT
+'HUSNR'                                                 STREET DEF ATT=APT
+                                                               END ATT=APT
+'LEI'                                                   STREET DEF ATT=APT REC=LEIL
+                                                               END ATT=APT REC=LEIL
+'LEIE'                                                  STREET DEF ATT=APT REC=LEIL
+                                                               END ATT=APT REC=LEIL
+'LEIEL'                                                 STREET DEF ATT=APT
+                                                               END ATT=APT
+'LEIL'                                         MOD      STREET DEF ATT=APT
+                                                               END ATT=APT
+'LEIL NR'                                               STREET DEF ATT=APT REC=LEIL
+                                                               END ATT=APT REC=LEIL
+'LEILIGHET'                                    MOD      STREET DEF ATT=APT REC=LEIL
+                                                               END ATT=APT REC=LEIL
+'LEILGHT'                                               STREET DEF ATT=APT REC=LEIL
+                                                               END ATT=APT REC=LEIL
+'LEILIGHET APARTMENT'                                   STREET DEF ATT=APT REC=LEIL
+                                                               END ATT=APT REC=LEIL
+'LEILIGHETSNR'                                          STREET DEF ATT=APT REC=LEIL
+                                                               END ATT=APT REC=LEIL
+'LEILNR'                                                STREET DEF ATT=APT REC=LEIL
+                                                               END ATT=APT REC=LEIL
+'LGH'                                                   STREET DEF ATT=APT REC=LEIL
+                                                               END ATT=APT REC=LEIL
+'MF'                                                    STREET DEF ATT=UNIT-NUM
+'NR'                                                    STREET DEF ATT=APT
+                                                               END ATT=APT
+'PBOKS'                                                 STREET DEF ATT=BOX
+'SAL'                                                   STREET DEF ATT=APT
+'ST'                                                    STREET BEG ATT=CON
+                                                               DEF ATT=FLR-NUM REC='ST'
+                                                               END ATT=FLR-NUM REC='ST'
+'TH'                                                    STREET DEF ATT=UNIT-NUM
+                                                               END ATT=UNIT-NUM
+'TV'                                                    STREET DEF ATT=UNIT-NUM
+                                                               END ATT=UNIT-NUM
+***************************************************************************
+*
+*   Pattern entries added during Tuning Feb 2014
+*
+***************************************************************************
+'ALPHA STR-TYPE NUMERIC'
+     MOD PATTERN STREET DEF
+     RECODE='STR-NM STR-NM HSNO'
+'ALPHA STR-TYPE 1NUMERIC'
+     MOD PATTERN STREET DEF
+     RECODE='STR-NM STR-NM HSNO'
+'ALPHA STR-TYPE NUMERIC 1ALPHA'
+     MOD PATTERN STREET DEF
+     RECODE='STR-NM STR-NM HSNO APT-NUM'
+'ALPHA STR-TYPE 1NUMERIC 1ALPHA'
+     MOD PATTERN STREET DEF
+     RECODE='STR-NM STR-NM HSNO APT-NUM'
+'ALPHA HSNO NUMERIC'
+     MOD PATTERN STREET DEF
+     RECODE='STR-NM HSNO APT-NUM'
+'1ALPHA ALPHA HSNO 1ALPHA'
+     PATTERN STREET DEF
+     RECODE='STR-NM STR-NM HSNO APT-NUM'
+'1ALPHA 1ALPHA ALPHA STR-TYPE NUMERIC'
+     MOD PATTERN STREET DEF
+     RECODE='STR-NM STR-NM STR-NM STR-NM HSNO'
+'ALPHA 1ALPHA HSNO 1ALPHA'
+     MOD PATTERN STREET DEF
+     RECODE='STR-NM STR-NM HSNO APT-NUM'
+'ALPHA HSNO OTHER-SPECIAL'
+     PATTERN STREET DEF
+     RECODE='STR-NM HSNO APT-NUM'
+'1ALPHA ALPHA NUMERIC'
+     MOD PATTERN STREET DEF
+     RECODE='STR-NM STR-NM HSNO'
+'ALPHA HSNO 1ALPHA NUMERIC'
+     PATTERN STREET DEF
+     RECODE='STR-NM HSNO APT-NUM APT-NUM'
+'ALPHA STR-TYPE NUMERIC ALPHA-NUMERIC'
+     PATTERN STREET DEF
+     RECODE='STR-NM STR-NM HSNO APT-NUM'
+'ALPHA HSNO ALPHA-NUMERIC'
+     PATTERN STREET DEF
+     RECODE='STR-NM HSNO APT-NUM'
+'ALPHA 1ALPHA NUMERIC'
+     MOD PATTERN STREET DEF
+     RECODE='STR-NM STR-NM HSNO'
+'ALPHA HSNO 1NUMERIC UNIT-NUM'
+     PATTERN STREET DEF
+     RECODE='STR-NM HSNO FLR-NUM UNIT-NUM'
+'1ALPHA 1ALPHA ALPHA NUMERIC'
+     MOD PATTERN STREET DEF
+     RECODE='STR-NM STR-NM STR-NM HSNO'
+'1ALPHA 1ALPHA ALPHA HSNO 1ALPHA'
+     PATTERN STREET DEF
+     RECODE='STR-NM STR-NM STR-NM HSNO APT-NUM'
+'1ALPHA ALPHA STR-TYPE NUMERIC'
+     MOD PATTERN STREET DEF
+     RECODE='STR-NM STR-NM STR-NM HSNO'
+'ALPHA-1SPECIAL NUMERIC 1ALPHA'
+     MOD PATTERN STREET DEF
+     RECODE='STR-NM HSNO APT-NUM'
+'POBOX POBOX-NUM ALPHA'
+   MOD PATTERN STREET DEF ATT=APT
+    REC='POBOX POBOX-NUM CPLX-NM'
+'STR-NM HSNO POBOX POBOX-NUM ALPHA'
+   MOD PATTERN STREET DEF
+    REC='STR-NM HSNO POBOX POBOX-NUM CPLX-NM'
+'ALPHA HSNO FLR-NUM UNIT-NUM'
+     PATTERN STREET DEF
+     RECODE='STR-NM HSNO FLR-NUM UNIT-NUM'
+'1ALPHA ALPHA STR-TYPE NUMERIC 1ALPHA'
+     MOD PATTERN STREET DEF
+     RECODE='STR-NM STR-NM STR-NM HSNO APT-NUM'
+'ALPHA HSNO 1ALPHA NMB'
+     PATTERN STREET DEF
+     RECODE='STR-NM HSNO APT-NUM APT-NUM'
+'ALPHA-1SPECIAL 1NUMERIC 1ALPHA'
+     MOD PATTERN STREET DEF
+     RECODE='STR-NM HSNO APT-NUM'
+'STR-TYPE 1NUMERIC APT APT-NUM'
+     PATTERN STREET DEF
+     RECODE='STR-NM HSNO APT APT-NUM'
+'1ALPHA 1ALPHA ALPHA STR-TYPE 1NUMERIC 1ALPHA'
+     PATTERN STREET DEF
+     RECODE='STR-NM STR-NM STR-NM STR-NM HSNO APT-NUM'
+'ALPHA NUMERIC'
+  MOD  PATTERN STREET DEF
+    REC='STR-NM HSNO'
+'ALPHA STR-TYPE NUMERIC NUMERIC'
+     PATTERN STREET DEF
+     RECODE='STR-NM STR-NM HSNO APT-NUM'
+'HSNO 1ALPHA ALPHA'
+     PATTERN STREET DEF
+     RECODE='HSNO APT-NUM STR-NM'
+'ALPHA STR-TYPE 1NUMERIC ALPHA-NUMERIC'
+     PATTERN STREET DEF
+     RECODE='STR-NM STR-NM HSNO APT-NUM'
+'HSNO 1ALPHA ALPHA STR-TYPE'
+     PATTERN STREET DEF
+     RECODE='HSNO APT-NUM STR-NM STR-NM'
+'ALPHA STR-TYPE 1NUMERIC OTHER-SPECIAL'
+     PATTERN STREET DEF
+     RECODE='STR-NM STR-NM HSNO APT-NUM'
+'1ALPHA 1ALPHA ALPHA STR-TYPE NUMERIC 1ALPHA'
+     MOD PATTERN STREET DEF
+     RECODE='STR-NM STR-NM STR-NM STR-NM HSNO APT-NUM'
+'ALPHA HSNO C-OF ALPHA'
+     PATTERN STREET DEF
+     RECODE='STR-NM HSNO IGN IGN'
+
+***************************************************************************
+*
+*   Entries added during May-July 2013 Development
+*
+***************************************************************************
+'CO/'                                                     SYN='C/O'
+'C/O'                                                     MISC   BEG ATT=C-OF
+                                                                 DEF ATT=C-OF
+                                                          NAME   BEG ATT=C-OF
+                                                                 DEF ATT=C-OF
+                                                          STREET BEG ATT=C-OF
+                                                                 DEF ATT=C-OF
+
+*... Additional entries to identify foreign records.
+
+'ABU DHABI'                                           GEOG   END ATT=CNTRY CAT=F00ARE
+'ACAPULCO GUERRERO'                                   GEOG   END ATT=CNTRY CAT=F00MEX
+'ADMIRALTY IS'                                        GEOG   END ATT=CNTRY CAT=F00PNG
+'AFAR'                                                GEOG   END ATT=CNTRY CAT=F00ZZZ
+'AFI'                                                 GEOG   END ATT=CNTRY CAT=F00ZZZ
+'AFRICA'                                              GEOG   END ATT=CNTRY CAT=F00AFR
+'AG S AMER'                                           GEOG   END ATT=CNTRY CAT=F00ARG
+'AG SA'                                               GEOG   END ATT=CNTRY CAT=F00ARG
+'AG SOUTH AMERICA'                                    GEOG   END ATT=CNTRY CAT=F00ARG
+'AGENTINA'                                            GEOG   END ATT=CNTRY CAT=F00ARG
+'AGO'                                                 GEOG   END ATT=CNTRY CAT=F00AGO
+'AJMAN'                                               GEOG   END ATT=CNTRY CAT=F00ARE
+'ALB'                                                 GEOG   END ATT=CNTRY CAT=F00ALB
+'ALGERIA'                                             GEOG   END ATT=CNTRY CAT=F00DZA
+'AMSTERDAM'                                           GEOG   END ATT=CNTRY CAT=F00NLD
+'ANEGADA'                                             GEOG   END ATT=CNTRY CAT=F00VGB
+'ANGENTINA'                                           GEOG   END ATT=CNTRY CAT=F00ARG
+'ANGUILLA'                                            GEOG   END ATT=CNTRY CAT=F00AIA
+'ANT'                                                 GEOG   END ATT=CNTRY CAT=F00ABW
+'ANTARCTICA'                                          GEOG   END ATT=CNTRY CAT=F00ATA
+'ANTIGUA AND BARBUDA'                                 GEOG   END ATT=CNTRY CAT=F00ATG
+'ANTIGUA WI'                                          GEOG   END ATT=CNTRY CAT=F00ATG
+'ANTIGUA'                                             GEOG   END ATT=CNTRY CAT=F00ATG
+'ANTIGUE WEST INDIES'                                 GEOG   END ATT=CNTRY CAT=F00ATG
+'ARABIAN GULF'                                        GEOG   END ATT=CNTRY CAT=F00SAU
+'ARABRIAN GULF'                                       GEOG   END ATT=CNTRY CAT=F00SAU
+'ARE'                                             MOD NAME   BEG ATT=GVN-NM1 GEN=M
+                                                      GEOG   END ATT=CNTRY CAT=F00ARE
+'ARG S AMER'                                          GEOG   END ATT=CNTRY CAT=F00ARG
+'ARG SA'                                              GEOG   END ATT=CNTRY CAT=F00ARG
+'ARG SOUTH AMERICA'                                   GEOG   END ATT=CNTRY CAT=F00ARG
+'ARG'                                                 GEOG   END ATT=CNTRY CAT=F00ARG
+'ARGEN S AMER'                                        GEOG   END ATT=CNTRY CAT=F00ARG
+'ARGEN SA'                                            GEOG   END ATT=CNTRY CAT=F00ARG
+'ARGEN SOUTH AMERICA'                                 GEOG   END ATT=CNTRY CAT=F00ARG
+'ARGEN'                                               GEOG   END ATT=CNTRY CAT=F00ARG
+'ARGENT'                                              GEOG   END ATT=CNTRY CAT=F00ARG
+'ARGENTI'                                             GEOG   END ATT=CNTRY CAT=F00ARG
+'ARGENTIA'                                            GEOG   END ATT=CNTRY CAT=F00ARG
+'ARGENTIAN'                                           GEOG   END ATT=CNTRY CAT=F00ARG
+'ARGENTIN'                                            GEOG   END ATT=CNTRY CAT=F00ARG
+'ARGENTINA S AMER'                                    GEOG   END ATT=CNTRY CAT=F00ARG
+'ARGENTINA SA'                                        GEOG   END ATT=CNTRY CAT=F00ARG
+'ARGENTINA SOUTH AMERICA'                             GEOG   END ATT=CNTRY CAT=F00ARG
+'ARGENTINO'                                           GEOG   END ATT=CNTRY CAT=F00ARG
+'ARU'                                                 GEOG   END ATT=CNTRY CAT=F00ABW
+'ARUBA N A'                                           GEOG   END ATT=CNTRY CAT=F00ABW
+'ARUBA'                                               GEOG   END ATT=CNTRY CAT=F00ABW
+'ASCENSION ISLANDS'                                   GEOG   END ATT=CNTRY CAT=F00SHN
+'ASHMORE AND CARTIER ISLANDS'                         GEOG   END ATT=CNTRY CAT=F00AUS
+'ASHMORE IS'                                          GEOG   END ATT=CNTRY CAT=F00ZZZ
+'ASM'                                                 GEOG   END ATT=CNTRY CAT=F00ASM
+'ATA'                                                 GEOG   END ATT=CNTRY CAT=F00ATA
+'ATF'                                                 GEOG   END ATT=CNTRY CAT=F00ATF
+'ATG'                                                 GEOG   END ATT=CNTRY CAT=F00ATG
+'AUS'                                                 GEOG   END ATT=CNTRY CAT=F00AUS
+'AUST'                                                GEOG   END ATT=CNTRY CAT=F00AUS
+'AUSTRA'                                              GEOG   END ATT=CNTRY CAT=F00AUS
+'AUSTRAILIA'                                          GEOG   END ATT=CNTRY CAT=F00AUS
+'AUSTRAL IS'                                          GEOG   END ATT=CNTRY CAT=F00PYF
+'AUSTRAL'                                             GEOG   END ATT=CNTRY CAT=F00AUS
+'AUSTRALI'                                            GEOG   END ATT=CNTRY CAT=F00AUS
+'AUSTRI'                                              GEOG   END ATT=CNTRY CAT=F00AUT
+'AUSTRIA EUROPE'                                      GEOG   END ATT=CNTRY CAT=F00AUT
+'AUSTRIA'                                             GEOG   END ATT=CNTRY CAT=F00AUT
+'AUSTRIALIA'                                          GEOG   END ATT=CNTRY CAT=F00AUS
+'AUT'                                                 GEOG   END ATT=CNTRY CAT=F00AUT
+'AZERBAIJAN'                                          GEOG   END ATT=CNTRY CAT=F00AZE
+'AZORE IS'                                            GEOG   END ATT=CNTRY CAT=F00PRT
+'AZORES'                                              GEOG   END ATT=CNTRY CAT=F00PRT
+'BALEARIC ISLANDS'                                    GEOG   END ATT=CNTRY CAT=F00ESP
+'BANKOK'                                              GEOG   END ATT=CNTRY CAT=F00THA
+'BARBADOS'                                            GEOG   END ATT=CNTRY CAT=F00BRB
+'BARBUDA'                                             GEOG   END ATT=CNTRY CAT=F00ATG
+'BDI'                                                 GEOG   END ATT=CNTRY CAT=F00BDI
+'BELARUS'                                             GEOG   END ATT=CNTRY CAT=F00BLR
+'BELGIUM'                                             GEOG   END ATT=CNTRY CAT=F00BEL
+'BEN'                                             MOD NAME   DEF ATT=GVN-NM1 GEN=M
+                                                      GEOG   END ATT=CNTRY CAT=F00BEN
+'BENIN'                                               GEOG   END ATT=CNTRY CAT=F00BEN
+'BENINE'                                              GEOG   END ATT=CNTRY CAT=F00BEN
+'BERMUDA'                                             GEOG   END ATT=CNTRY CAT=F00BMU
+'BOMBAY'                                              GEOG   END ATT=CNTRY CAT=F00IND
+'BONAIRE'                                             GEOG   END ATT=CNTRY CAT=F00ABW
+'BONIN IS'                                            GEOG   END ATT=CNTRY CAT=F00JPN
+'BOSNIA AND HERZEGOVINA'                              GEOG   END ATT=CNTRY CAT=F00BIH
+'BOSNIA'                                              GEOG   END ATT=CNTRY CAT=F00BIH
+'BOUGAINVILLE'                                        GEOG   END ATT=CNTRY CAT=F00PNG
+'BOUVET ISLAND'                                       GEOG   END ATT=CNTRY CAT=F00BVT
+'BRA'                                                 GEOG   END ATT=CNTRY CAT=F00BRA
+'BRAZIL'                                              GEOG   END ATT=CNTRY CAT=F00BRA
+'BRB'                                                 GEOG   END ATT=CNTRY CAT=F00BRB
+'BRITISH HONDURAS'                                    GEOG   END ATT=CNTRY CAT=F00BLZ
+'BRITISH INDIAN OCEAN TERRITORY'                      GEOG   END ATT=CNTRY CAT=F00IOT
+'BRITISH INDIAN OCEAN'                                GEOG   END ATT=CNTRY CAT=F00IOT
+'BRITISH SOLOMON ISLANDS'                             GEOG   END ATT=CNTRY CAT=F00SLB
+'BRITISH VIRGIN ISLANDS'                              GEOG   END ATT=CNTRY CAT=F00VGB
+'BRITISH WEST INDIES'                                 GEOG   END ATT=CNTRY CAT=F00ATG
+'BUENOS AIRES AR'                                     GEOG   END ATT=CNTRY CAT=F00ARG
+'BUENOS AIRES'                                        GEOG   END ATT=CNTRY CAT=F00ARG
+'BUHRAIN'                                             GEOG   DEF ATT=CNTRY CAT=F00BHR
+'BUKA IS'                                             GEOG   END ATT=CNTRY CAT=F00PNG
+'BURKINA FASO'                                        GEOG   END ATT=CNTRY CAT=F00BFA
+'BURKINA'                                             GEOG   END ATT=CNTRY CAT=F00BFA
+'BURUNDI'                                             GEOG   END ATT=CNTRY CAT=F00BDI
+'BVT'                                                 GEOG   END ATT=CNTRY CAT=F00PNG
+'BWI'                                                 GEOG   END ATT=CNTRY CAT=F00ATG
+'CABRERA IS'                                          GEOG   END ATT=CNTRY CAT=F00ESP
+'CAF'                                                 GEOG   END ATT=CNTRY CAT=F00CAF
+'CAMBODIA'                                            GEOG   END ATT=CNTRY CAT=F00KHM
+'CAMEROON'                                            GEOG   END ATT=CNTRY CAT=F00CMR
+'CANAL ZONE'                                          GEOG   END ATT=CNTRY CAT=F00PAN
+'CANARY IS'                                           GEOG   END ATT=CNTRY CAT=F00ESP
+'CANTON IS'                                           GEOG   END ATT=CNTRY CAT=F00KIR
+'CAPE VERDE ISLANDS'                                  GEOG   END ATT=CNTRY CAT=F00CPV
+'CAPE VERDE'                                          GEOG   END ATT=CNTRY CAT=F00CPV
+'CAROLINE ISLANDS'                                    GEOG   END ATT=CNTRY CAT=F00MHL
+'CAROLINES'                                           GEOG   END ATT=CNTRY CAT=F00MHL
+'CARTIER IS'                                          GEOG   END ATT=CNTRY CAT=F00ZZZ
+'CAYMAN ISLANDS'                                      GEOG   END ATT=CNTRY CAT=F00CYM
+'CCK'                                                 GEOG   END ATT=CNTRY CAT=F00CCK
+'CELEBES'                                             GEOG   END ATT=CNTRY CAT=F00IDN
+'CENTRAL AFRICA'                                      GEOG   END ATT=CNTRY CAT=F00CAF
+'CENTRAL AFRICAN REPUBLIC'                            GEOG   END ATT=CNTRY CAT=F00CAF
+'CENTRAL LINE IS'                                     GEOG   END ATT=CNTRY CAT=F00KIR
+'CEUTA'                                               GEOG   END ATT=CNTRY CAT=F00ESP
+'CEYLON'                                              GEOG   END ATT=CNTRY CAT=F00LKA
+'CHAD'                                                GEOG   END ATT=CNTRY CAT=F00TCD
+'CHANNEL ISLANDS'                                     GEOG   END ATT=CNTRY CAT=F00GBR
+'CHE'                                                 GEOG   END ATT=CNTRY CAT=F00CHE
+'CHINA'                                               GEOG   END ATT=CNTRY CAT=F00CHN
+'CHRISTMAS ISLAND'                                    GEOG   END ATT=CNTRY CAT=F00CXR
+'CHRISTMAS'                                           GEOG   END ATT=CNTRY CAT=F00CXR
+'CIV'                                                 GEOG   END ATT=CNTRY CAT=F00CIV
+'CLIPPERTON ISLAND'                                   GEOG   END ATT=CNTRY CAT=F00PYF
+'COCOS ISLANDS'                                       GEOG   END ATT=CNTRY CAT=F00CCK
+'COCOS'                                               GEOG   END ATT=CNTRY CAT=F00CCK
+'COG'                                                 GEOG   END ATT=CNTRY CAT=F00COG
+'COK'                                                 GEOG   END ATT=CNTRY CAT=F00COK
+'COLUMBIA'                                            GEOG   END ATT=CNTRY CAT=F00COL
+'COMORO ISLANDS'                                      GEOG   END ATT=CNTRY CAT=F00COM
+'COMOROS'                                             GEOG   END ATT=CNTRY CAT=F00COM
+'CONGO'                                               GEOG   END ATT=CNTRY CAT=F00COG
+'COOK ISLANDS'                                        GEOG   END ATT=CNTRY CAT=F00COK
+'COPENHAGEN'                                          GEOG   END ATT=CNTRY CAT=F00DNK
+'CORAL SEA ISLANDS'                                   GEOG   END ATT=CNTRY CAT=F00AUS
+'CORSICA'                                             GEOG   END ATT=CNTRY CAT=F00FRA
+'COSTA RICA'                                          GEOG   END ATT=CNTRY CAT=F00CRI
+'COTE D"IVOIRE'                                       GEOG   END ATT=CNTRY CAT=F00HRV
+'CRETE'                                               GEOG   END ATT=CNTRY CAT=F00GRC
+'CRI'                                                 GEOG   END ATT=CNTRY CAT=F00CRI
+'CROATIA'                                             GEOG   END ATT=CNTRY CAT=F00HRV
+'CTE'                                                 GEOG   END ATT=CNTRY CAT=F00KIR
+'CUB'                                                 GEOG   END ATT=CNTRY CAT=F00CUB
+'CURACAO'                                 MOD         GEOG   END ATT=CNTRY CAT=F00ABW
+'CXR'                                                 GEOG   END ATT=CNTRY CAT=F00CXR
+'CYM'                                                 GEOG   END ATT=CNTRY CAT=F00CYM
+'CYPRUS'                                              GEOG   END ATT=CNTRY CAT=F00CYP
+'CZECH REPUBLIC'                                      GEOG   END ATT=CNTRY CAT=F00CZE
+'CZECHOSLOVAKIA'                                      GEOG   END ATT=CNTRY CAT=F00CSK
+'CÔTE D"IVOIRE'                                       GEOG   END ATT=CNTRY CAT=F00CIV
+'DAHOMEY'                                             GEOG   END ATT=CNTRY CAT=F00ZZZ
+'DDR'                                                 GEOG   END ATT=CNTRY CAT=F00DDR
+'DENMARK'                                             GEOG   END ATT=CNTRY CAT=F00DNK
+'DEU'                                                 GEOG   END ATT=CNTRY CAT=F00DEU
+'DEUTSCHLAND'                                         GEOG   END ATT=CNTRY CAT=F00DEU
+'DJI'                                                 GEOG   END ATT=CNTRY CAT=F00DJI
+'DMA'                                                 GEOG   END ATT=CNTRY CAT=F00DMA
+'DNK'                                                 GEOG   END ATT=CNTRY CAT=F00DNK
+'DOMINICA WEST INDIES'                                GEOG   END ATT=CNTRY CAT=F00DMA
+'DOMINICA'                                            GEOG   END ATT=CNTRY CAT=F00DMA
+'DOMINICAN REPUBLIC'                                  GEOG   END ATT=CNTRY CAT=F00DOM
+'DUBAI'                                               GEOG   END ATT=CNTRY CAT=F00ARE
+'DZA'                                                 GEOG   END ATT=CNTRY CAT=F00DZA
+'EAST GERMANY'                                        GEOG   END ATT=CNTRY CAT=F00DDR
+'EAST TIMOR'                                          GEOG   END ATT=CNTRY CAT=F00TLS
+'EASTER ISLAND SA'                                    GEOG   END ATT=CNTRY CAT=F00CHL
+'EASTER ISLAND'                                       GEOG   END ATT=CNTRY CAT=F00CHL
+'EIRE'                                                GEOG   END ATT=CNTRY CAT=F00IRL
+'ELLICE IS'                                           GEOG   END ATT=CNTRY CAT=F00TUV
+'ENDERBURY ISLAND'                                    GEOG   END ATT=CNTRY CAT=F00KIR
+'ENG'                                                 GEOG   END ATT=CNTRY CAT=F00GBR
+'ENGLAND'                                             GEOG   END ATT=CNTRY CAT=F00GBR
+'ENIWETOK IS'                                         GEOG   END ATT=CNTRY CAT=F00MHL
+'EQUATORIAL GUINEA'                                   GEOG   END ATT=CNTRY CAT=F00GNQ
+'ESH'                                                 GEOG   END ATT=CNTRY CAT=F00ESH
+'ESTONIA'                                             GEOG   END ATT=CNTRY CAT=F00EST
+'ETH'                                                 GEOG   END ATT=CNTRY CAT=F00ETH
+'ETHIOPIA'                                            GEOG   END ATT=CNTRY CAT=F00ETH
+'FAEROE ISLANDS'                                      GEOG   END ATT=CNTRY CAT=F00FRO
+'FALKLAND IS'                                         GEOG   END ATT=CNTRY CAT=F00FLK
+'FALKLAND ISLANDS'                                    GEOG   END ATT=CNTRY CAT=F00FLK
+'FAROE ISLANDS'                                       GEOG   END ATT=CNTRY CAT=F00FRO
+'FIJI ISLANDS'                                        GEOG   END ATT=CNTRY CAT=F00FJI
+'FINLAND'                                             GEOG   END ATT=CNTRY CAT=F00FIN
+'FORMENTERA IS'                                       GEOG   END ATT=CNTRY CAT=F00ESP
+'FR'                                              MOD NAME   BEG ATT=TTLP
+                                                      GEOG   END ATT=CNTRY CAT=F00FRA
+'FRANCE'                                              GEOG   END ATT=CNTRY CAT=F00FRA
+'FRANCE,METROPOLITAN'                                 GEOG   END ATT=CNTRY CAT=F00FXX
+'FREEPORT GRAND BAHAMA'                               GEOG   END ATT=CNTRY CAT=F00BHS
+'FRENCH GUIANA'                                       GEOG   END ATT=CNTRY CAT=F00GUF
+'FRENCH POLYNESIA'                                    GEOG   END ATT=CNTRY CAT=F00PYF
+'FRENCH STHRN & ANTRCTC LANDS'                        GEOG   END ATT=CNTRY CAT=F00ATF
+'FRENCH TERRITORIAL AFARS'                            GEOG   END ATT=CNTRY CAT=F00ZZZ
+'FRG'                                                 GEOG   END ATT=CNTRY CAT=F00DEU
+'FRO'                                                 GEOG   END ATT=CNTRY CAT=F00FRO
+'FUJAIRAH'                                            GEOG   END ATT=CNTRY CAT=F00ARE
+'GABON'                                               GEOG   END ATT=CNTRY CAT=F00GAB
+'GALAPAGOS IS'                                        GEOG   END ATT=CNTRY CAT=F00ECU
+'GAMBIA'                                              GEOG   END ATT=CNTRY CAT=F00GMB
+'GAMBIER IS'                                          GEOG   END ATT=CNTRY CAT=F00PYF
+'GEL'                                                 GEOG   END ATT=CNTRY CAT=F00TUV
+'GERMANY WEST BERLIN'                                 GEOG   END ATT=CNTRY CAT=F00DEU
+'GERMANY'                                             GEOG   END ATT=CNTRY CAT=F00DEU
+'GHANA'                                               GEOG   END ATT=CNTRY CAT=F00GHA
+'GIBRALTAR'                                           GEOG   END ATT=CNTRY CAT=F00GIB
+'GILBERT IS'                                          GEOG   END ATT=CNTRY CAT=F00TUV
+'GIN'                                                 GEOG   END ATT=CNTRY CAT=F00GIN
+'GRD'                                                 GEOG   END ATT=CNTRY CAT=F00GRD
+'GREAT BRITAIN'                                       GEOG   END ATT=CNTRY CAT=F00GBR
+'GREECE'                                              GEOG   END ATT=CNTRY CAT=F00GRC
+'GREENLAND'                                           GEOG   END ATT=CNTRY CAT=F00GRL
+'GRENADA'                                             GEOG   END ATT=CNTRY CAT=F00GRD
+'GUADALOUPE'                                          GEOG   END ATT=CNTRY CAT=F00GLP
+'GUADELOUPE'                                          GEOG   END ATT=CNTRY CAT=F00GLP
+'GUATEMALA'                                           GEOG   END ATT=CNTRY CAT=F00GTM
+'GUERNSEY'                                            GEOG   END ATT=CNTRY CAT=F00GBR
+'GUF'                                                 GEOG   END ATT=CNTRY CAT=F00GUF
+'GUINEA BISSAU'                                       GEOG   DEF ATT=CNTRY CAT=F00GNB
+'GUINEA'                                              GEOG   END ATT=CNTRY CAT=F00GIN
+'GUINEA-BISSAU'                                       GEOG   END ATT=CNTRY CAT=F00GNB
+'GUYANA'                                              GEOG   END ATT=CNTRY CAT=F00GUY
+'HAINAN IS'                                           GEOG   END ATT=CNTRY CAT=F00CHN
+'HAITI'                                               GEOG   END ATT=CNTRY CAT=F00HTI
+'HEARD & MCDONALD ISLAND'                             GEOG   END ATT=CNTRY CAT=F00HMD
+'HEARD IS'                                            GEOG   END ATT=CNTRY CAT=F00HMD
+'HEARD ISLAND'                                        GEOG   END ATT=CNTRY CAT=F00HMD
+'HERZEGOVINA'                                         GEOG   END ATT=CNTRY CAT=F00BIH
+'HIVAOA IS'                                           GEOG   END ATT=CNTRY CAT=F00PYF
+'HMD'                                                 GEOG   END ATT=CNTRY CAT=F00HMD
+'HND'                                                 GEOG   END ATT=CNTRY CAT=F00HND
+'HOLY SEE'                                            GEOG   END ATT=CNTRY CAT=F00VAT
+'HONG KONG'                                           GEOG   END ATT=CNTRY CAT=F00HKG
+'HTI'                                                 GEOG   END ATT=CNTRY CAT=F00HTI
+'HUNGARY'                                             GEOG   END ATT=CNTRY CAT=F00HUN
+'HVO'                                                 GEOG   END ATT=CNTRY CAT=F00BFA
+'IBIZIA IS'                                           GEOG   END ATT=CNTRY CAT=F00ESP
+'ICELAND'                                             GEOG   END ATT=CNTRY CAT=F00ISL
+'IFNI'                                                GEOG   END ATT=CNTRY CAT=F00MAR
+'INDIA'                                               GEOG   END ATT=CNTRY CAT=F00IND
+'INDONESIA'                                           GEOG   END ATT=CNTRY CAT=F00IDN
+'INNER MONGOLIA'                                      GEOG   END ATT=CNTRY CAT=F00CHN
+'IOT'                                                 GEOG   END ATT=CNTRY CAT=F00IOT
+'IRAQ SAUDI ANZ'                                      GEOG   END ATT=CNTRY CAT=F00NTZ
+'IRAQ'                                                GEOG   END ATT=CNTRY CAT=F00IRQ
+'IRELAND'                                             GEOG   END ATT=CNTRY CAT=F00IRL
+'ISLAS MALVINAS'                                      GEOG   END ATT=CNTRY CAT=F00FLK
+'ISSAS'                                               GEOG   END ATT=CNTRY CAT=F00ZZZ
+'ITA'                                                 GEOG   END ATT=CNTRY CAT=F00ITA
+'ITALY'                                               GEOG   END ATT=CNTRY CAT=F00ITA
+'IVORY COAST'                                         GEOG   END ATT=CNTRY CAT=F00CIV
+'JOST VAN DYKE'                                       GEOG   END ATT=CNTRY CAT=F00VGB
+'JUAN FERNANDEZ ISLANDS'                              GEOG   END ATT=CNTRY CAT=F00CHL
+'KALIMANTAN'                                          GEOG   END ATT=CNTRY CAT=F00IDN
+'KAMPUCHEA'                                           GEOG   END ATT=CNTRY CAT=F00KHM
+'KAZAKHSTAN'                                          GEOG   END ATT=CNTRY CAT=F00KAZ
+'KEELING'                                             GEOG   END ATT=CNTRY CAT=F00CCK
+'KHM'                                                 GEOG   END ATT=CNTRY CAT=F00KHM
+'KNA'                                                 GEOG   END ATT=CNTRY CAT=F00KNA
+'KONG KONG'                                           GEOG   END ATT=CNTRY CAT=F00HKG
+'KWAJALEIN'                                           GEOG   END ATT=CNTRY CAT=F00MHL
+'KYRGYZSTAN'                                          GEOG   END ATT=CNTRY CAT=F00KGZ
+'LABANON'                                             GEOG   END ATT=CNTRY CAT=F00LBN
+'LAOS'                                                GEOG   END ATT=CNTRY CAT=F00LAO
+'LEBANON'                                             GEOG   END ATT=CNTRY CAT=F00LBN
+'LESOTHO'                                             GEOG   END ATT=CNTRY CAT=F00LSO
+'LIBERIA'                                             GEOG   END ATT=CNTRY CAT=F00LBR
+'LIBYA'                                               GEOG   END ATT=CNTRY CAT=F00LBY
+'LITHUANIA'                                           GEOG   END ATT=CNTRY CAT=F00LTU
+'LKA'                                                 GEOG   END ATT=CNTRY CAT=F00LKA
+'LOYALTY'                                             GEOG   END ATT=CNTRY CAT=F00NCL
+'LUXEMBURG'                                           GEOG   END ATT=CNTRY CAT=F00LUX REC=LUXEMBOURG
+'MACAO'                                               GEOG   END ATT=CNTRY CAT=F00MAC
+'MACAU'                                               GEOG   END ATT=CNTRY CAT=F00MAC
+'MACEDONIA'                                           GEOG   END ATT=CNTRY CAT=F00MKD
+'MADAGASCAR'                                          GEOG   END ATT=CNTRY CAT=F00MDG
+'MADEIRA'                                             GEOG   END ATT=CNTRY CAT=F00PRT
+'MAJORCA IS'                                          GEOG   END ATT=CNTRY CAT=F00ESP
+'MAJURO IS'                                           GEOG   END ATT=CNTRY CAT=F00MHL
+'MALAWI'                                              GEOG   END ATT=CNTRY CAT=F00MWI
+'MALAYSIA'                                            GEOG   END ATT=CNTRY CAT=F00MYS
+'MALDIVES'                                            GEOG   END ATT=CNTRY CAT=F00MDV
+'MALI'                                            MOD NAME   DEF ATT=GVN-NM1 GEN=F
+                                                      GEOG   END ATT=CNTRY CAT=F00MLI
+'MALPELO'                                             GEOG   END ATT=CNTRY CAT=F00COL
+'MALTA'                                               GEOG   END ATT=CNTRY CAT=F00MLT
+'MANCHURIA'                                           GEOG   END ATT=CNTRY CAT=F00CHN
+'MAR'                                                 GEOG   END ATT=CNTRY CAT=F00MAR
+'MARCUS IS'                                           GEOG   END ATT=CNTRY CAT=F00JPN
+'MARIE GALANTE'                                       GEOG   END ATT=CNTRY CAT=F00GLP
+'MARQUEZAS IS'                                        GEOG   END ATT=CNTRY CAT=F00PYF
+'MARTINIQUE'                                          GEOG   END ATT=CNTRY CAT=F00MTQ
+'MAURITIUS'                                           GEOG   END ATT=CNTRY CAT=F00MUS
+'MCDONALD IS'                                         GEOG   END ATT=CNTRY CAT=F00HMD
+'MCDONALD ISLAND'                                     GEOG   END ATT=CNTRY CAT=F00HMD
+'MCDONALD ISLANDS'                                    GEOG   END ATT=CNTRY CAT=F00HMD
+'METRO MANILA PH'                                     GEOG   END ATT=CNTRY CAT=F00PHL
+'MICRONESIA'                                          GEOG   END ATT=CNTRY CAT=F00FSM
+'MINORCA IS'                                          GEOG   END ATT=CNTRY CAT=F00ESP
+'MLT'                                                 GEOG   END ATT=CNTRY CAT=F00MLT
+'MNG'                                                 GEOG   END ATT=CNTRY CAT=F00MNG
+'MOLDOVA'                                             GEOG   END ATT=CNTRY CAT=F00MDA
+'MONACO'                                              GEOG   END ATT=CNTRY CAT=F00MCO
+'MONTSERRAT'                                          GEOG   END ATT=CNTRY CAT=F00MSR
+'MOROCCO'                                             GEOG   END ATT=CNTRY CAT=F00MAR
+'MOZAMBIQUE'                                          GEOG   END ATT=CNTRY CAT=F00MOZ
+'MRT'                                                 GEOG   END ATT=CNTRY CAT=F00MRT
+'MUS'                                                 GEOG   END ATT=CNTRY CAT=F00MUS
+'NAMIBIA'                                             GEOG   END ATT=CNTRY CAT=F00NAM
+'NAURU'                                               GEOG   END ATT=CNTRY CAT=F00NRU
+'NCL'                                                 GEOG   END ATT=CNTRY CAT=F00NCL
+'NEPAL'                                               GEOG   END ATT=CNTRY CAT=F00NPL
+'NER'                                                 GEOG   END ATT=CNTRY CAT=F00NER
+'NETHERLANDS ANTILLES'                                GEOG   END ATT=CNTRY CAT=F00ANT
+'NETHERLANDS'                                         GEOG   END ATT=CNTRY CAT=F00NLD
+'NEVIS'                                               GEOG   END ATT=CNTRY CAT=F00KNA
+'NEW BRITAIN'                                         GEOG   END ATT=CNTRY CAT=F00PNG
+'NEW CALEDONIA'                                       GEOG   END ATT=CNTRY CAT=F00NCL
+'NEW GUINEA'                                          GEOG   END ATT=CNTRY CAT=F00PNG
+'NEW HEBRIDES'                                        GEOG   END ATT=CNTRY CAT=F00VUT
+'NEW IRELAND'                                         GEOG   END ATT=CNTRY CAT=F00PNG
+'NIC'                                                 GEOG   END ATT=CNTRY CAT=F00NIC
+'NICARAGUA'                                           GEOG   END ATT=CNTRY CAT=F00NIC
+'NIGER'                                               GEOG   END ATT=CNTRY CAT=F00NER
+'NIGERIA'                                             GEOG   END ATT=CNTRY CAT=F00NGA
+'NIR'                                                 GEOG   END ATT=CNTRY CAT=F00GBR
+'NIUE ISLAND'                                         GEOG   END ATT=CNTRY CAT=F00NIU
+'NIUE'                                                GEOG   END ATT=CNTRY CAT=F00NIU
+'NORFOLK ISLAND'                                      GEOG   END ATT=CNTRY CAT=F00NFK
+'NORFOLK ISLANDS'                                     GEOG   END ATT=CNTRY CAT=F00NFK
+'NORTH IRELAND'                                       GEOG   END ATT=CNTRY CAT=F00GBR
+'NORTH KOREA'                                         GEOG   END ATT=CNTRY CAT=F00PRK
+'NORTH VIETNAM'                                       GEOG   END ATT=CNTRY CAT=F00VNM
+'NORTHERN IRELAND'                                    GEOG   END ATT=CNTRY CAT=F00GBR
+'NPL'                                                 GEOG   END ATT=CNTRY CAT=F00NPL
+'NRU'                                                 GEOG   END ATT=CNTRY CAT=F00NRU
+'NTZ'                                                 GEOG   END ATT=CNTRY CAT=F00NTZ
+'OMAN'                                                GEOG   END ATT=CNTRY CAT=F00OMN
+'PACIFIC ISLANDS TRUST'                               GEOG   END ATT=CNTRY CAT=F00MHL
+'PAKISTAN'                                            GEOG   END ATT=CNTRY CAT=F00PAK
+'PALMYRA ATOLL'                                       GEOG   END ATT=CNTRY CAT=F00UMI
+'PANAMA CANAL ZONE'                                   GEOG   END ATT=CNTRY CAT=F00PAN
+'PANAMA'                                              GEOG   END ATT=CNTRY CAT=F00PAN
+'PAPUA NEW GUINEA'                                    GEOG   END ATT=CNTRY CAT=F00PNG
+'PAPUA'                                               GEOG   END ATT=CNTRY CAT=F00PNG
+'PARACEL IS'                                          GEOG   END ATT=CNTRY CAT=F00TWN
+'PARAGUAY'                                            GEOG   END ATT=CNTRY CAT=F00PRY
+'PARECE VELA'                                         GEOG   END ATT=CNTRY CAT=F00JPN
+'PCI'                                                 GEOG   END ATT=CNTRY CAT=F00MHL
+'PCN'                                                 GEOG   END ATT=CNTRY CAT=F00PCN
+'PCZ'                                                 GEOG   END ATT=CNTRY CAT=F00PAN
+'PEMBA'                                               GEOG   END ATT=CNTRY CAT=F00MOZ
+'PERU'                                                GEOG   END ATT=CNTRY CAT=F00PER
+'PESCADORES'                                          GEOG   END ATT=CNTRY CAT=F00TWN
+'PHI'                                                 GEOG   END ATT=CNTRY CAT=F00PHL
+'PHIL'                                                GEOG   END ATT=CNTRY CAT=F00PHL
+'PHILIP'                                          MOD NAME   BEG ATT=GVN-NM1 GEN=M
+                                                      GEOG   END ATT=CNTRY CAT=F00PHL
+'PHILIPPINES'                                         GEOG   END ATT=CNTRY CAT=F00PHL
+'PITCAIRN ISLAND'                                     GEOG   END ATT=CNTRY CAT=F00PCN
+'PITCAIRN ISLANDS'                                    GEOG   END ATT=CNTRY CAT=F00PCN
+'POLAND'                                              GEOG   END ATT=CNTRY CAT=F00POL
+'PONAPE'                                              GEOG   END ATT=CNTRY CAT=F00MHL
+'PORTUGAL'                                            GEOG   END ATT=CNTRY CAT=F00PRT
+'PORTUGUESE GUINEA'                                   GEOG   END ATT=CNTRY CAT=F00GIN
+'PORTUGUESE TIMOR'                                    GEOG   END ATT=CNTRY CAT=F00TMP
+'PUNTAS ARENAS CHILE'                                 GEOG   END ATT=CNTRY CAT=F00CHL
+'PUS'                                                 GEOG   END ATT=CNTRY CAT=F00UMI
+'PYF'                                                 GEOG   END ATT=CNTRY CAT=F00PYF
+'QATAR'                                               GEOG   END ATT=CNTRY CAT=F00QAT
+'REPUBLIC OF SO AFRICA'                               GEOG   END ATT=CNTRY CAT=F00ZAF
+'REPUBLIC OF SOUTH AFRICA'                            GEOG   END ATT=CNTRY CAT=F00ZAF
+'REPUBLIC OF THE CONGO'                               GEOG   END ATT=CNTRY CAT=F00COG
+'REUNION'                                             GEOG   END ATT=CNTRY CAT=F00REU
+'RHODESIA'                                            GEOG   END ATT=CNTRY CAT=F00ZWE
+'RONCADOR CAY'                                        GEOG   END ATT=CNTRY CAT=F00COL
+'ROSARIO IS'                                          GEOG   END ATT=CNTRY CAT=F00JPN
+'RUSSIA'                                              GEOG   END ATT=CNTRY CAT=F00RUS
+'RUSSIAN FEDERATION'                                  GEOG   END ATT=CNTRY CAT=F00RUS
+'RWA'                                                 GEOG   END ATT=CNTRY CAT=F00RWA
+'RYUKYU ISLANDS'                                      GEOG   END ATT=CNTRY CAT=F00JPN
+'RÉUNION'                                             GEOG   END ATT=CNTRY CAT=F00REU
+'S ARABIA'                                            GEOG   END ATT=CNTRY CAT=F00SAU
+'SABA'                                                GEOG   END ATT=CNTRY CAT=F00ABW
+'SABAH'                                               GEOG   END ATT=CNTRY CAT=F00MYS
+'SAFAT KUWAIT S A K'                                  GEOG   END ATT=CNTRY CAT=F00KWT
+'SAFRICA'                                             GEOG   END ATT=CNTRY CAT=F00ZAF
+'SAINT HELENA'                                        GEOG   END ATT=CNTRY CAT=F00SHN
+'SAINT KITTS AND NEVIS'                               GEOG   END ATT=CNTRY CAT=F00KNA
+'SAINT KITTS'                                         GEOG   END ATT=CNTRY CAT=F00KNA
+'SAINT LUCIA'                                         GEOG   END ATT=CNTRY CAT=F00LCA
+'SAINT PIERRE AND MIQUELON'                           GEOG   END ATT=CNTRY CAT=F00SPM
+'SAINT VINCENT'                                       GEOG   END ATT=CNTRY CAT=F00VCT
+'SAIPAN CM'                                           GEOG   END ATT=CNTRY CAT=F00MHL
+'SAIPAN IS'                                           GEOG   END ATT=CNTRY CAT=F00MHL
+'SAIPAN TT'                                           GEOG   END ATT=CNTRY CAT=F00MHL
+'SALA Y GOMEZ'                                        GEOG   END ATT=CNTRY CAT=F00CHL
+'SAMOA'                                               GEOG   END ATT=CNTRY CAT=F00WSM
+'SAN AMBROSIO'                                        GEOG   END ATT=CNTRY CAT=F00CHL
+'SAN ANDRES'                                          GEOG   END ATT=CNTRY CAT=F00COL
+'SAN FELIX'                                           GEOG   END ATT=CNTRY CAT=F00CHL
+'SAN MARINO'                                          GEOG   END ATT=CNTRY CAT=F00SMR
+'SAO TOME AND PRINCIPE'                               GEOG   END ATT=CNTRY CAT=F00STP
+'SARAWAK'                                             GEOG   END ATT=CNTRY CAT=F00MYS
+'SARDINIA'                                            GEOG   END ATT=CNTRY CAT=F00ITA
+'SAUDI ARABIA'                                        GEOG   END ATT=CNTRY CAT=F00SAU
+'SCOTLAND'                                            GEOG   END ATT=CNTRY CAT=F00GBR
+'SDN'                                                 GEOG   END ATT=CNTRY CAT=F00SDN
+'SENEGAL'                                             GEOG   END ATT=CNTRY CAT=F00SEN
+'SEOUL KOREA'                                         GEOG   END ATT=CNTRY CAT=F00KOR
+'SERRANA BANK'                                        GEOG   END ATT=CNTRY CAT=F00COL
+'SERRANILLA BANK'                                     GEOG   END ATT=CNTRY CAT=F00COL
+'SEYCHELLES'                                          GEOG   END ATT=CNTRY CAT=F00SYC
+'SHARJAH'                                             GEOG   END ATT=CNTRY CAT=F00ARE
+'SHN'                                                 GEOG   END ATT=CNTRY CAT=F00SHN
+'SIERRA LEONE'                                        GEOG   END ATT=CNTRY CAT=F00SLE
+'SIKKIM'                                              GEOG   END ATT=CNTRY CAT=F00IND
+'SINGAPORE'                                           GEOG   END ATT=CNTRY CAT=F00SGP
+'SINKIANG'                                            GEOG   END ATT=CNTRY CAT=F00CHN
+'SJM'                                                 GEOG   END ATT=CNTRY CAT=F00SJM
+'SLB'                                                 GEOG   END ATT=CNTRY CAT=F00SLB
+'SLE'                                                 GEOG   END ATT=CNTRY CAT=F00SLE
+'SLOVAKIA'                                            GEOG   END ATT=CNTRY CAT=F00SVK
+'SLV'                                                 GEOG   END ATT=CNTRY CAT=F00SLV
+'SMR'                                                 GEOG   END ATT=CNTRY CAT=F00SMR
+'SO KOREA'                                            GEOG   END ATT=CNTRY CAT=F00KOR
+'SOCIETY IS'                                          GEOG   END ATT=CNTRY CAT=F00PYF
+'SOLOMON ISLANDS'                                     GEOG   END ATT=CNTRY CAT=F00SLB
+'SOM'                                                 GEOG   END ATT=CNTRY CAT=F00SOM
+'SOMALIA'                                             GEOG   END ATT=CNTRY CAT=F00SOM
+'SOUTH AFRICA'                                        GEOG   END ATT=CNTRY CAT=F00ZAF
+'SOUTH GEORGIA AND THE ISLANDS'                       GEOG   END ATT=CNTRY CAT=F00SGS
+'SOUTH GEORGIA ISLANDS'                               GEOG   END ATT=CNTRY CAT=F00SGS
+'SOUTH IRELAND'                                       GEOG   END ATT=CNTRY CAT=F00IRL
+'SOUTH KOREA'                                         GEOG   END ATT=CNTRY CAT=F00KOR
+'SOUTH RHODESIA'                                      GEOG   END ATT=CNTRY CAT=F00ZWE
+'SOUTH VIETNAM'                                       GEOG   END ATT=CNTRY CAT=F00VNM
+'SOUTH WEST AFRICA'                                   GEOG   END ATT=CNTRY CAT=F00NAM
+'SOUTH-WEST AFRICA'                                   GEOG   END ATT=CNTRY CAT=F00NAM
+'SOUTHERN AFRICA'                                     GEOG   END ATT=CNTRY CAT=F00ZAF
+'SOUTHERN IRELAND'                                    GEOG   END ATT=CNTRY CAT=F00IRL
+'SOUTHERN LINE IS'                                    GEOG   END ATT=CNTRY CAT=F00KIR
+'SOVIET SOCIALIST REPUBLICS'                          GEOG   END ATT=CNTRY CAT=F00SUN
+'SOVIET UNION'                                        GEOG   END ATT=CNTRY CAT=F00SUN
+'SPAIN'                                               GEOG   END ATT=CNTRY CAT=F00ESP
+'SPANISH NORTH AFRICA'                                GEOG   END ATT=CNTRY CAT=F00ESP
+'SPANISH SAHARA'                                      GEOG   END ATT=CNTRY CAT=F00ESH
+'SPM'                                                 GEOG   END ATT=CNTRY CAT=F00SPM
+'SPN'                                                 GEOG   END ATT=CNTRY CAT=F00ESP
+'SPRATLEY IS'                                         GEOG   END ATT=CNTRY CAT=F00TWN
+'SRI LANKA'                                           GEOG   END ATT=CNTRY CAT=F00LKA
+'ST BARTHELEMY'                                       GEOG   END ATT=CNTRY CAT=F00GLP
+'ST CHRISTOPHER-NEVIS'                                GEOG   END ATT=CNTRY CAT=F00KNA
+'ST EUSTATIUS'                                        GEOG   END ATT=CNTRY CAT=F00ABW
+'ST HELENA'                                           GEOG   END ATT=CNTRY CAT=F00SHN
+'ST KITTS WEST INDIES'                                GEOG   END ATT=CNTRY CAT=F00LCA
+'ST LUCIA W INDIES'                                   GEOG   END ATT=CNTRY CAT=F00LCA
+'ST LUCIA WEST INDIES'                                GEOG   END ATT=CNTRY CAT=F00LCA
+'ST LUCIA'                                            GEOG   END ATT=CNTRY CAT=F00LCA
+'ST MARTIN'                                           GEOG   END ATT=CNTRY CAT=F00GLP
+'ST PIERRE AND MIQUELON'                              GEOG   END ATT=CNTRY CAT=F00SPM
+'ST VINCENT W INDIES'                                 GEOG   END ATT=CNTRY CAT=F00VCT
+'ST VINCENT WEST INDIES'                              GEOG   END ATT=CNTRY CAT=F00VCT
+'ST VINCENT'                                          GEOG   END ATT=CNTRY CAT=F00VCT
+'STP'                                                 GEOG   END ATT=CNTRY CAT=F00STP
+'SUADI ARABIA'                                        GEOG   END ATT=CNTRY CAT=F00SAU
+'SUDAN'                                               GEOG   END ATT=CNTRY CAT=F00SDN
+'SUISSE'                                              GEOG   END ATT=CNTRY CAT=F00CHE
+'SUMATRA'                                             GEOG   END ATT=CNTRY CAT=F00IDN
+'SUN'                                                 GEOG   END ATT=CNTRY CAT=F00SUN
+'SUR'                                                 GEOG   END ATT=CNTRY CAT=F00SUR
+'SURINAM S AMER'                                      GEOG   END ATT=CNTRY CAT=F00SUR
+'SURINAM SA'                                          GEOG   END ATT=CNTRY CAT=F00SUR
+'SURINAM SOUTH AMERICA'                               GEOG   END ATT=CNTRY CAT=F00SUR
+'SURINAM'                                             GEOG   END ATT=CNTRY CAT=F00SUR
+'SURINAME S AMER'                                     GEOG   END ATT=CNTRY CAT=F00SUR
+'SURINAME SA'                                         GEOG   END ATT=CNTRY CAT=F00SUR
+'SURINAME SOUTH AMERICA'                              GEOG   END ATT=CNTRY CAT=F00SUR
+'SURINAME'                                            GEOG   END ATT=CNTRY CAT=F00SUR
+'SVALBARD'                                            GEOG   END ATT=CNTRY CAT=F00SJM
+'SWAN ISLANDS CA'                                     GEOG   END ATT=CNTRY CAT=F00HND
+'SWAN ISLANDS'                                        GEOG   END ATT=CNTRY CAT=F00HND
+'SWAZILAND'                                           GEOG   END ATT=CNTRY CAT=F00SWZ
+'SWE'                                                 GEOG   END ATT=CNTRY CAT=F00SWE
+'SWED'                                                GEOG   END ATT=CNTRY CAT=F00SWE
+'SWEDE'                                               GEOG   END ATT=CNTRY CAT=F00SWE
+'SWEDEN'                                              GEOG   END ATT=CNTRY CAT=F00SWE
+'SWEDN'                                               GEOG   END ATT=CNTRY CAT=F00SWE
+'SWEDON'                                              GEOG   END ATT=CNTRY CAT=F00SWE
+'SWEEDEN'                                             GEOG   END ATT=CNTRY CAT=F00SWE
+'SWITZ'                                               GEOG   END ATT=CNTRY CAT=F00CHE
+'SWITZE'                                              GEOG   END ATT=CNTRY CAT=F00CHE
+'SWITZER'                                             GEOG   END ATT=CNTRY CAT=F00CHE
+'SWITZERLA'                                           GEOG   END ATT=CNTRY CAT=F00CHE
+'SWITZERLAND'                                         GEOG   END ATT=CNTRY CAT=F00CHE
+'SWITZERLD'                                           GEOG   END ATT=CNTRY CAT=F00CHE
+'SWITZERLN'                                           GEOG   END ATT=CNTRY CAT=F00CHE
+'SWITZLND'                                            GEOG   END ATT=CNTRY CAT=F00CHE
+'SWTIZERLAND'                                         GEOG   END ATT=CNTRY CAT=F00CHE
+'SWZ'                                                 GEOG   END ATT=CNTRY CAT=F00SWZ
+'SYC'                                                 GEOG   END ATT=CNTRY CAT=F00SYC
+'SYR'                                                 GEOG   END ATT=CNTRY CAT=F00SYR
+'SYRIA'                                               GEOG   END ATT=CNTRY CAT=F00SYR
+'TAHITI'                                              GEOG   END ATT=CNTRY CAT=F00PYF
+'TAIPEI TAIWAN'                                       GEOG   END ATT=CNTRY CAT=F00TWN
+'TAIW'                                                GEOG   END ATT=CNTRY CAT=F00TWN
+'TAIWA'                                               GEOG   END ATT=CNTRY CAT=F00TWN
+'TAIWAN ROC'                                          GEOG   END ATT=CNTRY CAT=F00TWN
+'TAIWAN'                                              GEOG   END ATT=CNTRY CAT=F00TWN
+'TAIWAW'                                              GEOG   END ATT=CNTRY CAT=F00TWN
+'TAJIKISTAN'                                          GEOG   END ATT=CNTRY CAT=F00TJK
+'TANZANIA'                                            GEOG   END ATT=CNTRY CAT=F00TZA
+'TASMANIA'                                            GEOG   END ATT=CNTRY CAT=F00AUS
+'TAWAIN'                                              GEOG   END ATT=CNTRY CAT=F00TWN
+'TCA'                                                 GEOG   END ATT=CNTRY CAT=F00TCA
+'TCD'                                                 GEOG   END ATT=CNTRY CAT=F00TCD
+'TGO'                                                 GEOG   END ATT=CNTRY CAT=F00TGO
+'THA'                                                 GEOG   END ATT=CNTRY CAT=F00THA
+'THAIL'                                               GEOG   END ATT=CNTRY CAT=F00THA
+'THAILAN'                                             GEOG   END ATT=CNTRY CAT=F00THA
+'THAILAND'                                            GEOG   END ATT=CNTRY CAT=F00THA
+'THAILN'                                              GEOG   END ATT=CNTRY CAT=F00THA
+'THE BAHAMAS'                                         GEOG   END ATT=CNTRY CAT=F00BHS
+'THE GAMBIA'                                          GEOG   END ATT=CNTRY CAT=F00GMB
+'THE GRENADINES'                                      GEOG   END ATT=CNTRY CAT=F00VCT
+'THE NEATHERLANDS'                                    GEOG   END ATT=CNTRY CAT=F00NLD
+'THE NETH'                                            GEOG   END ATT=CNTRY CAT=F00NLD
+'THE NETHERLANDS'                                     GEOG   END ATT=CNTRY CAT=F00NLD
+'THE REPUBLIC OF MACEDONIA'                           GEOG   END ATT=CNTRY CAT=F00MKD
+'TIAWAN'                                              GEOG   END ATT=CNTRY CAT=F00TWN
+'TIBET'                                               GEOG   END ATT=CNTRY CAT=F00CHN
+'TIMOR'                                               GEOG   END ATT=CNTRY CAT=F00IDN
+'TIWAN'                                               GEOG   END ATT=CNTRY CAT=F00TWN
+'TKL'                                                 GEOG   END ATT=CNTRY CAT=F00TKL
+'TOBAGO WI'                                           GEOG   END ATT=CNTRY CAT=F00TTO
+'TOBAGO'                                              GEOG   END ATT=CNTRY CAT=F00TTO
+'TOGO'                                                GEOG   END ATT=CNTRY CAT=F00TGO
+'TOKELAU ISLANDS'                                     GEOG   END ATT=CNTRY CAT=F00TKL
+'TOKELAU'                                             GEOG   END ATT=CNTRY CAT=F00TKL
+'TON'                                                 GEOG   END ATT=CNTRY CAT=F00TON
+'TONGA'                                               GEOG   END ATT=CNTRY CAT=F00TON
+'TORINO IT'                                           GEOG   END ATT=CNTRY CAT=F00ITA
+'TORTOLA'                                             GEOG   END ATT=CNTRY CAT=F00VGB
+'TRINIDAD AND TOBAGO'                                 GEOG   END ATT=CNTRY CAT=F00TTO
+'TRINIDAD WEST INDIES'                                GEOG   END ATT=CNTRY CAT=F00TTO
+'TRINIDAD WI'                                         GEOG   END ATT=CNTRY CAT=F00TTO
+'TRINIDAD'                                            GEOG   END ATT=CNTRY CAT=F00TTO
+'TRINIDAN WI'                                         GEOG   END ATT=CNTRY CAT=F00TTO
+'TRISTAN DA CUNHA'                                    GEOG   END ATT=CNTRY CAT=F00SHN
+'TRUK IS'                                             GEOG   END ATT=CNTRY CAT=F00MHL
+'TTO'                                                 GEOG   END ATT=CNTRY CAT=F00TTO
+'TUAMOTU'                                             GEOG   END ATT=CNTRY CAT=F00PYF
+'TUN'                                                 GEOG   END ATT=CNTRY CAT=F00TUN
+'TUNISIA'                                             GEOG   END ATT=CNTRY CAT=F00TUN
+'TUR'                                                 GEOG   END ATT=CNTRY CAT=F00TUR
+'TURKEY'                                              GEOG   END ATT=CNTRY CAT=F00TUR
+'TURKMENISTAN'                                        GEOG   END ATT=CNTRY CAT=F00TKM
+'TURKS AND CAICOS ISLANDS'                            GEOG   END ATT=CNTRY CAT=F00TCA
+'TURKS CAICOS ISLANDS'                                GEOG   END ATT=CNTRY CAT=F00TCA
+'TUV'                                                 GEOG   END ATT=CNTRY CAT=F00TUV
+'TUVALU IS'                                           GEOG   END ATT=CNTRY CAT=F00TUV
+'TUVALU ISLAND'                                       GEOG   END ATT=CNTRY CAT=F00TUV
+'TUVALU'                                              GEOG   END ATT=CNTRY CAT=F00TUV
+'TWN'                                                 GEOG   END ATT=CNTRY CAT=F00CHN
+'TZA'                                                 GEOG   END ATT=CNTRY CAT=F00TZA
+'UAE'                                                 GEOG   END ATT=CNTRY CAT=F00ARE
+'UGA'                                                 GEOG   END ATT=CNTRY CAT=F00UGA
+'UGANDA'                                              GEOG   END ATT=CNTRY CAT=F00UGA
+'UK'                                                  GEOG   END ATT=CNTRY CAT=F00GBR
+'UKRAINE'                                             GEOG   END ATT=CNTRY CAT=F00UKR
+'UMM AL QAIWAIN'                                      GEOG   END ATT=CNTRY CAT=F00ARE
+'UNITED ARAB EMERATES'                                GEOG   END ATT=CNTRY CAT=F00ARE
+'UNITED ARAB EMIRATES'                                GEOG   END ATT=CNTRY CAT=F00ARE
+'UNITED ARAB EMIRTES'                                 GEOG   END ATT=CNTRY CAT=F00ARE
+'UNITED ARAB REPUBLIC'                                GEOG   END ATT=CNTRY CAT=F00ARE
+'UNITED ARAB'                                         GEOG   END ATT=CNTRY CAT=F00ARE
+'UNITED KINGDO'                                       GEOG   END ATT=CNTRY CAT=F00GBR
+'UNITED KINGDOM'                                      GEOG   END ATT=CNTRY CAT=F00GBR
+'UPPER VOLTA'                                         GEOG   END ATT=CNTRY CAT=F00BFA
+'URUGUAY'                                             GEOG   END ATT=CNTRY CAT=F00URY
+'US PACIFIC IS'                                       GEOG   END ATT=CNTRY CAT=F00UMI
+'US PACIFIC ISLANDS'                                  GEOG   END ATT=CNTRY CAT=F00UMI
+'USSR'                                                GEOG   END ATT=CNTRY CAT=F00SUN
+'UZBEKISTAN'                                          GEOG   END ATT=CNTRY CAT=F00UZB
+'VANUATU'                                             GEOG   END ATT=CNTRY CAT=F00VUT
+'VATICAN CITY'                                        GEOG   END ATT=CNTRY CAT=F00VAT
+'VENEZUELA'                                           GEOG   END ATT=CNTRY CAT=F00VEN
+'VGT'                                                 GEOG   END ATT=CNTRY CAT=F00VGB
+'VIRGIN GORDA'                                        GEOG   END ATT=CNTRY CAT=F00VGB
+'VOLCANO IS'                                          GEOG   END ATT=CNTRY CAT=F00JPN
+'W GERMANY'                                           GEOG   END ATT=CNTRY CAT=F00DEU
+'WALES'                                               GEOG   END ATT=CNTRY CAT=F00GBR
+'WALLIS AND FUTUNA'                                   GEOG   END ATT=CNTRY CAT=F00WLF
+'WEST BERLIN'                                         GEOG   END ATT=CNTRY CAT=F00DEU
+'WEST GERMANY'                                        GEOG   END ATT=CNTRY CAT=F00DEU
+'WEST IRIAN'                                          GEOG   END ATT=CNTRY CAT=F00IDN
+'WESTERN SAHARA'                                      GEOG   END ATT=CNTRY CAT=F00ESH
+'WESTERN SAMOA'                                       GEOG   END ATT=CNTRY CAT=F00WSM
+'WGERM'                                               GEOG   END ATT=CNTRY CAT=F00DEU
+'YAP IS'                                              GEOG   END ATT=CNTRY CAT=F00MHL
+'YEMEN PEOPLES DEMOCRATIC'                            GEOG   END ATT=CNTRY CAT=F00YEM
+'YEMEN'                                               GEOG   END ATT=CNTRY CAT=F00YEM
+'YUGOSLAVIA'                                          GEOG   END ATT=CNTRY CAT=F00YUG
+'ZAF'                                                 GEOG   END ATT=CNTRY CAT=F00ZAF
+'ZAIRE'                                               GEOG   END ATT=CNTRY CAT=F00ZAR
+'ZANZIBAR'                                            GEOG   END ATT=CNTRY CAT=F00TZA
+'ZARIA'                                               GEOG   END ATT=CNTRY CAT=F00NGA
+
+*... New patterns.
+
+'ALPHA-1SPECIAL NMB'
+     PATTERN STREET DEF
+     RECODE='STR-NM HSNO'
+'ALPHA-1SPECIAL STR-TYPE NMB'
+     PATTERN STREET DEF
+     RECODE='STR-NM STR-TYPE HSNO'
+'ALPHA-1SPECIAL NMB 1ALPHA'
+     PATTERN STREET DEF
+     RECODE='STR-NM HSNO APT-NUM'
+'ALPHA-1NUMERIC NMB'
+     PATTERN STREET DEF
+     RECODE='STR-NM HSNO'
+
+***  Upgrade to 15.6
+
+'ALPHA STR-TYPE NUMERIC 1ALPHA NUMERIC'
+     PATTERN STREET DEF
+     RECODE='STR-NM STR-TYPE HSNO APT-NUM APT-NUM'
+'ALPHA HSNO 1ALPHA NUMERIC 1ALPHA'
+     PATTERN STREET DEF
+     RECODE='STR-NM HSNO APT-NUM APT-NUM APT-NUM'
+'ALPHA HSNO 1ALPHA 1NUMERIC 1ALPHA'
+     PATTERN STREET DEF
+     RECODE='STR-NM HSNO APT-NUM APT-NUM APT-NUM'
+'ALPHA STR-TYPE 1NUMERIC 1ALPHA NUMERIC'
+     PATTERN STREET DEF
+     RECODE='STR-NM STR-TYPE HSNO APT-NUM APT-NUM'
+'ALPHA HSNO 1NUMERIC 1ALPHA'
+     PATTERN STREET DEF
+     RECODE='STR-NM HSNO APT-NUM APT-NUM'
+'ALPHA HSNO NUMERIC 1ALPHA'
+     PATTERN STREET DEF
+     RECODE='STR-NM HSNO APT-NUM APT-NUM'
+

@@ -1,0 +1,13 @@
+***************************************************************************
+*   
+*
+*  Country:  Canada
+*
+*            USER DEFINED SPECIFIC WORDS AND PATTERNS
+*
+***************************************************************************
+
+* Teradata parser tuning
+
+'ST-PIE X'                                    STREET DEF ATT=STR-NM REC='SAINT-PIE-X'
+'QB'                                          GEOG   END ATT=PRV REC=QC

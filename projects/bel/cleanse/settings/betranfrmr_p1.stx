@@ -1,0 +1,644 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TRANFRMR xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+   <SETTINGS_FILE_ENCODING>UTF8</SETTINGS_FILE_ENCODING>
+
+   
+   <CATEGORY>
+      
+      <INPUT>
+         <PARAMETER>
+            <INPUT_SETTINGS>
+               <ARGUMENTS>
+<ENTRY>
+<ENTRY_ID>1</ENTRY_ID>
+<FILE_QUALIFIER>tss_cleanse_input_bel_1</FILE_QUALIFIER>
+<DATA_FILE_NAME>$(INPUT)/TSS_CLEANSE_INPUT_BEL.dat</DATA_FILE_NAME>
+<DDL_FILE_NAME>$(DDL)/TSS_CLEANSE_INPUT_BEL.ddx</DDL_FILE_NAME>
+              <FILE_DELIMITER_ENCODING>NOTRANS</FILE_DELIMITER_ENCODING>
+              <FILE_DELIMITER>Pipe</FILE_DELIMITER>
+              <USE_QUOTES_AS_QUALIFIER>N</USE_QUOTES_AS_QUALIFIER>
+            
+
+<START_RECORD/>
+<MAX_RECORDS/>
+<NTH_SAMPLE/>
+<FILE_TRACE_KEY/>
+<EXCEPTIONS_FILE_NAME/>
+
+
+
+
+
+<SELECT_RECORDS/>
+</ENTRY>
+
+</ARGUMENTS>
+            </INPUT_SETTINGS>
+            
+            
+         </PARAMETER>
+      </INPUT>
+      <OUTPUT>
+         <PARAMETER>
+<OUTPUT_SETTINGS>
+               <ARGUMENTS>
+                  <FILE_QUALIFIER>OUTPUT</FILE_QUALIFIER>
+                  <DATA_FILE_NAME>stdout</DATA_FILE_NAME>
+                  <DDL_FILE_NAME>$(DDL)/be_tranfrmr_p1.ddx</DDL_FILE_NAME>
+
+                  
+
+
+                  
+               <SELECT_RECORDS/>
+</ARGUMENTS>
+            </OUTPUT_SETTINGS>
+<FIELD_SCANNING>
+               <ARGUMENTS>
+<ENTRY>
+                     <ENTRY_ID>1</ENTRY_ID>
+<ENTRY_DESCRIPTION>Addr_Line_1_Txt: replace all "BTE" with "Ψ"</ENTRY_DESCRIPTION>
+                     <SCAN_FIELD>ADDR_LINE_1_TXT</SCAN_FIELD>
+                     <TARGET_FIELD/>
+                     <FIELD_JUSTIFICATION>NJ</FIELD_JUSTIFICATION>
+                     <SCAN_FORMAT>L</SCAN_FORMAT>
+                     <BETWEEN_SUBSTRING/>
+                     <AND_SUBSTRING/>
+                     <RETAIN_BETWEEN_SUBSTRING/>
+                     <SCAN_VALUE>"BTE"</SCAN_VALUE>
+                     <CASE_SENSITIVE_SCAN_VALUE>N</CASE_SENSITIVE_SCAN_VALUE>
+                     <RETAIN_SCAN_VALUE/>
+                     <SCAN_FUNCTION>CH</SCAN_FUNCTION>
+                     <SCAN_DIRECTION>L</SCAN_DIRECTION>
+                     <SCAN_POSITION>D</SCAN_POSITION>
+                     <SCAN_LEVEL/>
+                     <SCAN_CAPTURE/>
+                     <WORD_DELIMITER/>
+                     <CHANGE_VALUE>"Ψ"</CHANGE_VALUE>
+                     <CHANGE_OCCURENCES>ALL</CHANGE_OCCURENCES>
+                     <FLAG_VALUE/>
+                     
+                  </ENTRY>
+<ENTRY>
+                     <ENTRY_ID>2</ENTRY_ID>
+<ENTRY_DESCRIPTION>Addr_Line_1_Txt: replace all "9Ψ" with "9 Ψ"</ENTRY_DESCRIPTION>
+                     <SCAN_FIELD>ADDR_LINE_1_TXT</SCAN_FIELD>
+                     <TARGET_FIELD/>
+                     <FIELD_JUSTIFICATION>NJ</FIELD_JUSTIFICATION>
+                     <SCAN_FORMAT>M</SCAN_FORMAT>
+                     <BETWEEN_SUBSTRING/>
+                     <AND_SUBSTRING/>
+                     <RETAIN_BETWEEN_SUBSTRING/>
+                     <SCAN_VALUE>"9Ψ"</SCAN_VALUE>
+                     <CASE_SENSITIVE_SCAN_VALUE>Y</CASE_SENSITIVE_SCAN_VALUE>
+                     <RETAIN_SCAN_VALUE/>
+                     <SCAN_FUNCTION>CH</SCAN_FUNCTION>
+                     <SCAN_DIRECTION>L</SCAN_DIRECTION>
+                     <SCAN_POSITION>D</SCAN_POSITION>
+                     <SCAN_LEVEL/>
+                     <SCAN_CAPTURE/>
+                     <WORD_DELIMITER/>
+                     <CHANGE_VALUE>"9Ψ"</CHANGE_VALUE>
+                     <CHANGE_OCCURENCES>ALL</CHANGE_OCCURENCES>
+                     <FLAG_VALUE/>
+                     
+                  </ENTRY>
+<ENTRY>
+                     <ENTRY_ID>3</ENTRY_ID>
+<ENTRY_DESCRIPTION>Addr_Line_1_Txt: replace all "Ψ9" with "Ψ 9"</ENTRY_DESCRIPTION>
+                     <SCAN_FIELD>ADDR_LINE_1_TXT</SCAN_FIELD>
+                     <TARGET_FIELD/>
+                     <FIELD_JUSTIFICATION>NJ</FIELD_JUSTIFICATION>
+                     <SCAN_FORMAT>M</SCAN_FORMAT>
+                     <BETWEEN_SUBSTRING/>
+                     <AND_SUBSTRING/>
+                     <RETAIN_BETWEEN_SUBSTRING/>
+                     <SCAN_VALUE>"Ψ9"</SCAN_VALUE>
+                     <CASE_SENSITIVE_SCAN_VALUE>Y</CASE_SENSITIVE_SCAN_VALUE>
+                     <RETAIN_SCAN_VALUE/>
+                     <SCAN_FUNCTION>CH</SCAN_FUNCTION>
+                     <SCAN_DIRECTION>L</SCAN_DIRECTION>
+                     <SCAN_POSITION>D</SCAN_POSITION>
+                     <SCAN_LEVEL/>
+                     <SCAN_CAPTURE/>
+                     <WORD_DELIMITER/>
+                     <CHANGE_VALUE>"Ψ 9"</CHANGE_VALUE>
+                     <CHANGE_OCCURENCES>ALL</CHANGE_OCCURENCES>
+                     <FLAG_VALUE/>
+                     
+                  </ENTRY>
+<ENTRY>
+                     <ENTRY_ID>4</ENTRY_ID>
+<ENTRY_DESCRIPTION>Addr_Line_1_Txt: replace all "Ψ" with "BTE"</ENTRY_DESCRIPTION>
+                     <SCAN_FIELD>ADDR_LINE_1_TXT</SCAN_FIELD>
+                     <TARGET_FIELD/>
+                     <FIELD_JUSTIFICATION>NJ</FIELD_JUSTIFICATION>
+                     <SCAN_FORMAT>L</SCAN_FORMAT>
+                     <BETWEEN_SUBSTRING/>
+                     <AND_SUBSTRING/>
+                     <RETAIN_BETWEEN_SUBSTRING/>
+                     <SCAN_VALUE>"Ψ"</SCAN_VALUE>
+                     <CASE_SENSITIVE_SCAN_VALUE>N</CASE_SENSITIVE_SCAN_VALUE>
+                     <RETAIN_SCAN_VALUE/>
+                     <SCAN_FUNCTION>CH</SCAN_FUNCTION>
+                     <SCAN_DIRECTION>L</SCAN_DIRECTION>
+                     <SCAN_POSITION>D</SCAN_POSITION>
+                     <SCAN_LEVEL/>
+                     <SCAN_CAPTURE/>
+                     <WORD_DELIMITER/>
+                     <CHANGE_VALUE>"BTE"</CHANGE_VALUE>
+                     <CHANGE_OCCURENCES>ALL</CHANGE_OCCURENCES>
+                     <FLAG_VALUE/>
+                     
+                  </ENTRY>
+<ENTRY>
+                     <ENTRY_ID>5</ENTRY_ID>
+<ENTRY_DESCRIPTION>Addr_Line_1_Txt: replace all "BUS" with "Ψ"</ENTRY_DESCRIPTION>
+                     <SCAN_FIELD>ADDR_LINE_1_TXT</SCAN_FIELD>
+                     <TARGET_FIELD/>
+                     <FIELD_JUSTIFICATION>NJ</FIELD_JUSTIFICATION>
+                     <SCAN_FORMAT>L</SCAN_FORMAT>
+                     <BETWEEN_SUBSTRING/>
+                     <AND_SUBSTRING/>
+                     <RETAIN_BETWEEN_SUBSTRING/>
+                     <SCAN_VALUE>"BUS"</SCAN_VALUE>
+                     <CASE_SENSITIVE_SCAN_VALUE>N</CASE_SENSITIVE_SCAN_VALUE>
+                     <RETAIN_SCAN_VALUE/>
+                     <SCAN_FUNCTION>CH</SCAN_FUNCTION>
+                     <SCAN_DIRECTION>L</SCAN_DIRECTION>
+                     <SCAN_POSITION>D</SCAN_POSITION>
+                     <SCAN_LEVEL/>
+                     <SCAN_CAPTURE/>
+                     <WORD_DELIMITER/>
+                     <CHANGE_VALUE>"Ψ"</CHANGE_VALUE>
+                     <CHANGE_OCCURENCES>ALL</CHANGE_OCCURENCES>
+                     <FLAG_VALUE/>
+                     
+                  </ENTRY>
+<ENTRY>
+                     <ENTRY_ID>6</ENTRY_ID>
+<ENTRY_DESCRIPTION>Addr_Line_1_Txt: replace all "9Ψ" with "9 Ψ"</ENTRY_DESCRIPTION>
+                     <SCAN_FIELD>ADDR_LINE_1_TXT</SCAN_FIELD>
+                     <TARGET_FIELD/>
+                     <FIELD_JUSTIFICATION>NJ</FIELD_JUSTIFICATION>
+                     <SCAN_FORMAT>M</SCAN_FORMAT>
+                     <BETWEEN_SUBSTRING/>
+                     <AND_SUBSTRING/>
+                     <RETAIN_BETWEEN_SUBSTRING/>
+                     <SCAN_VALUE>"9Ψ"</SCAN_VALUE>
+                     <CASE_SENSITIVE_SCAN_VALUE>Y</CASE_SENSITIVE_SCAN_VALUE>
+                     <RETAIN_SCAN_VALUE/>
+                     <SCAN_FUNCTION>CH</SCAN_FUNCTION>
+                     <SCAN_DIRECTION>L</SCAN_DIRECTION>
+                     <SCAN_POSITION>D</SCAN_POSITION>
+                     <SCAN_LEVEL/>
+                     <SCAN_CAPTURE/>
+                     <WORD_DELIMITER/>
+                     <CHANGE_VALUE>"9Ψ"</CHANGE_VALUE>
+                     <CHANGE_OCCURENCES>ALL</CHANGE_OCCURENCES>
+                     <FLAG_VALUE/>
+                     
+                  </ENTRY>
+<ENTRY>
+                     <ENTRY_ID>7</ENTRY_ID>
+<ENTRY_DESCRIPTION>Addr_Line_1_Txt: replace all "Ψ9" with "Ψ 9"</ENTRY_DESCRIPTION>
+                     <SCAN_FIELD>ADDR_LINE_1_TXT</SCAN_FIELD>
+                     <TARGET_FIELD/>
+                     <FIELD_JUSTIFICATION>NJ</FIELD_JUSTIFICATION>
+                     <SCAN_FORMAT>M</SCAN_FORMAT>
+                     <BETWEEN_SUBSTRING/>
+                     <AND_SUBSTRING/>
+                     <RETAIN_BETWEEN_SUBSTRING/>
+                     <SCAN_VALUE>"Ψ9"</SCAN_VALUE>
+                     <CASE_SENSITIVE_SCAN_VALUE>Y</CASE_SENSITIVE_SCAN_VALUE>
+                     <RETAIN_SCAN_VALUE/>
+                     <SCAN_FUNCTION>CH</SCAN_FUNCTION>
+                     <SCAN_DIRECTION>L</SCAN_DIRECTION>
+                     <SCAN_POSITION>D</SCAN_POSITION>
+                     <SCAN_LEVEL/>
+                     <SCAN_CAPTURE/>
+                     <WORD_DELIMITER/>
+                     <CHANGE_VALUE>"Ψ 9"</CHANGE_VALUE>
+                     <CHANGE_OCCURENCES>ALL</CHANGE_OCCURENCES>
+                     <FLAG_VALUE/>
+                     
+                  </ENTRY>
+<ENTRY>
+                     <ENTRY_ID>8</ENTRY_ID>
+<ENTRY_DESCRIPTION>Addr_Line_1_Txt: replace all "Ψ" with "BUS"</ENTRY_DESCRIPTION>
+                     <SCAN_FIELD>ADDR_LINE_1_TXT</SCAN_FIELD>
+                     <TARGET_FIELD/>
+                     <FIELD_JUSTIFICATION>NJ</FIELD_JUSTIFICATION>
+                     <SCAN_FORMAT>L</SCAN_FORMAT>
+                     <BETWEEN_SUBSTRING/>
+                     <AND_SUBSTRING/>
+                     <RETAIN_BETWEEN_SUBSTRING/>
+                     <SCAN_VALUE>"Ψ"</SCAN_VALUE>
+                     <CASE_SENSITIVE_SCAN_VALUE>N</CASE_SENSITIVE_SCAN_VALUE>
+                     <RETAIN_SCAN_VALUE/>
+                     <SCAN_FUNCTION>CH</SCAN_FUNCTION>
+                     <SCAN_DIRECTION>L</SCAN_DIRECTION>
+                     <SCAN_POSITION>D</SCAN_POSITION>
+                     <SCAN_LEVEL/>
+                     <SCAN_CAPTURE/>
+                     <WORD_DELIMITER/>
+                     <CHANGE_VALUE>"BUS"</CHANGE_VALUE>
+                     <CHANGE_OCCURENCES>ALL</CHANGE_OCCURENCES>
+                     <FLAG_VALUE/>
+                     
+                  </ENTRY>
+<ENTRY>
+                     <ENTRY_ID>9</ENTRY_ID>
+<ENTRY_DESCRIPTION>Addr_Line_1_Txt: replace all "STRAAT" with "Ψ"</ENTRY_DESCRIPTION>
+                     <SCAN_FIELD>ADDR_LINE_1_TXT</SCAN_FIELD>
+                     <TARGET_FIELD/>
+                     <FIELD_JUSTIFICATION>NJ</FIELD_JUSTIFICATION>
+                     <SCAN_FORMAT>L</SCAN_FORMAT>
+                     <BETWEEN_SUBSTRING/>
+                     <AND_SUBSTRING/>
+                     <RETAIN_BETWEEN_SUBSTRING/>
+                     <SCAN_VALUE>"STRAAT"</SCAN_VALUE>
+                     <CASE_SENSITIVE_SCAN_VALUE>N</CASE_SENSITIVE_SCAN_VALUE>
+                     <RETAIN_SCAN_VALUE/>
+                     <SCAN_FUNCTION>CH</SCAN_FUNCTION>
+                     <SCAN_DIRECTION>L</SCAN_DIRECTION>
+                     <SCAN_POSITION>D</SCAN_POSITION>
+                     <SCAN_LEVEL/>
+                     <SCAN_CAPTURE/>
+                     <WORD_DELIMITER/>
+                     <CHANGE_VALUE>"Ψ"</CHANGE_VALUE>
+                     <CHANGE_OCCURENCES>ALL</CHANGE_OCCURENCES>
+                     <FLAG_VALUE/>
+                     
+                  </ENTRY>
+<ENTRY>
+                     <ENTRY_ID>10</ENTRY_ID>
+<ENTRY_DESCRIPTION>Addr_Line_1_Txt: replace all "Ψ9" with "Ψ 9"</ENTRY_DESCRIPTION>
+                     <SCAN_FIELD>ADDR_LINE_1_TXT</SCAN_FIELD>
+                     <TARGET_FIELD/>
+                     <FIELD_JUSTIFICATION>NJ</FIELD_JUSTIFICATION>
+                     <SCAN_FORMAT>M</SCAN_FORMAT>
+                     <BETWEEN_SUBSTRING/>
+                     <AND_SUBSTRING/>
+                     <RETAIN_BETWEEN_SUBSTRING/>
+                     <SCAN_VALUE>"Ψ9"</SCAN_VALUE>
+                     <CASE_SENSITIVE_SCAN_VALUE>Y</CASE_SENSITIVE_SCAN_VALUE>
+                     <RETAIN_SCAN_VALUE/>
+                     <SCAN_FUNCTION>CH</SCAN_FUNCTION>
+                     <SCAN_DIRECTION>L</SCAN_DIRECTION>
+                     <SCAN_POSITION>D</SCAN_POSITION>
+                     <SCAN_LEVEL/>
+                     <SCAN_CAPTURE/>
+                     <WORD_DELIMITER/>
+                     <CHANGE_VALUE>"Ψ 9"</CHANGE_VALUE>
+                     <CHANGE_OCCURENCES>ALL</CHANGE_OCCURENCES>
+                     <FLAG_VALUE/>
+                     
+                  </ENTRY>
+<ENTRY>
+                     <ENTRY_ID>11</ENTRY_ID>
+<ENTRY_DESCRIPTION>Addr_Line_1_Txt: replace all "Ψ" with "STRAAT"</ENTRY_DESCRIPTION>
+                     <SCAN_FIELD>ADDR_LINE_1_TXT</SCAN_FIELD>
+                     <TARGET_FIELD/>
+                     <FIELD_JUSTIFICATION>NJ</FIELD_JUSTIFICATION>
+                     <SCAN_FORMAT>L</SCAN_FORMAT>
+                     <BETWEEN_SUBSTRING/>
+                     <AND_SUBSTRING/>
+                     <RETAIN_BETWEEN_SUBSTRING/>
+                     <SCAN_VALUE>"Ψ"</SCAN_VALUE>
+                     <CASE_SENSITIVE_SCAN_VALUE>N</CASE_SENSITIVE_SCAN_VALUE>
+                     <RETAIN_SCAN_VALUE/>
+                     <SCAN_FUNCTION>CH</SCAN_FUNCTION>
+                     <SCAN_DIRECTION>L</SCAN_DIRECTION>
+                     <SCAN_POSITION>D</SCAN_POSITION>
+                     <SCAN_LEVEL/>
+                     <SCAN_CAPTURE/>
+                     <WORD_DELIMITER/>
+                     <CHANGE_VALUE>"STRAAT"</CHANGE_VALUE>
+                     <CHANGE_OCCURENCES>ALL</CHANGE_OCCURENCES>
+                     <FLAG_VALUE/>
+                     
+                  </ENTRY>
+<ENTRY>
+                     <ENTRY_ID>12</ENTRY_ID>
+<ENTRY_DESCRIPTION>Addr_Line_1_Txt: replace all "LAAN" with "Ψ"</ENTRY_DESCRIPTION>
+                     <SCAN_FIELD>ADDR_LINE_1_TXT</SCAN_FIELD>
+                     <TARGET_FIELD/>
+                     <FIELD_JUSTIFICATION>NJ</FIELD_JUSTIFICATION>
+                     <SCAN_FORMAT>L</SCAN_FORMAT>
+                     <BETWEEN_SUBSTRING/>
+                     <AND_SUBSTRING/>
+                     <RETAIN_BETWEEN_SUBSTRING/>
+                     <SCAN_VALUE>"LAAN"</SCAN_VALUE>
+                     <CASE_SENSITIVE_SCAN_VALUE>N</CASE_SENSITIVE_SCAN_VALUE>
+                     <RETAIN_SCAN_VALUE/>
+                     <SCAN_FUNCTION>CH</SCAN_FUNCTION>
+                     <SCAN_DIRECTION>L</SCAN_DIRECTION>
+                     <SCAN_POSITION>D</SCAN_POSITION>
+                     <SCAN_LEVEL/>
+                     <SCAN_CAPTURE/>
+                     <WORD_DELIMITER/>
+                     <CHANGE_VALUE>"Ψ"</CHANGE_VALUE>
+                     <CHANGE_OCCURENCES>ALL</CHANGE_OCCURENCES>
+                     <FLAG_VALUE/>
+                     
+                  </ENTRY>
+<ENTRY>
+                     <ENTRY_ID>13</ENTRY_ID>
+<ENTRY_DESCRIPTION>Addr_Line_1_Txt: replace all "Ψ9" with "Ψ 9"</ENTRY_DESCRIPTION>
+                     <SCAN_FIELD>ADDR_LINE_1_TXT</SCAN_FIELD>
+                     <TARGET_FIELD/>
+                     <FIELD_JUSTIFICATION>NJ</FIELD_JUSTIFICATION>
+                     <SCAN_FORMAT>M</SCAN_FORMAT>
+                     <BETWEEN_SUBSTRING/>
+                     <AND_SUBSTRING/>
+                     <RETAIN_BETWEEN_SUBSTRING/>
+                     <SCAN_VALUE>"Ψ9"</SCAN_VALUE>
+                     <CASE_SENSITIVE_SCAN_VALUE>Y</CASE_SENSITIVE_SCAN_VALUE>
+                     <RETAIN_SCAN_VALUE/>
+                     <SCAN_FUNCTION>CH</SCAN_FUNCTION>
+                     <SCAN_DIRECTION>L</SCAN_DIRECTION>
+                     <SCAN_POSITION>D</SCAN_POSITION>
+                     <SCAN_LEVEL/>
+                     <SCAN_CAPTURE/>
+                     <WORD_DELIMITER/>
+                     <CHANGE_VALUE>"Ψ 9"</CHANGE_VALUE>
+                     <CHANGE_OCCURENCES>ALL</CHANGE_OCCURENCES>
+                     <FLAG_VALUE/>
+                     
+                  </ENTRY>
+<ENTRY>
+                     <ENTRY_ID>14</ENTRY_ID>
+<ENTRY_DESCRIPTION>Addr_Line_1_Txt: replace all "Ψ" with "LAAN"</ENTRY_DESCRIPTION>
+                     <SCAN_FIELD>ADDR_LINE_1_TXT</SCAN_FIELD>
+                     <TARGET_FIELD/>
+                     <FIELD_JUSTIFICATION>NJ</FIELD_JUSTIFICATION>
+                     <SCAN_FORMAT>L</SCAN_FORMAT>
+                     <BETWEEN_SUBSTRING/>
+                     <AND_SUBSTRING/>
+                     <RETAIN_BETWEEN_SUBSTRING/>
+                     <SCAN_VALUE>"Ψ"</SCAN_VALUE>
+                     <CASE_SENSITIVE_SCAN_VALUE>N</CASE_SENSITIVE_SCAN_VALUE>
+                     <RETAIN_SCAN_VALUE/>
+                     <SCAN_FUNCTION>CH</SCAN_FUNCTION>
+                     <SCAN_DIRECTION>L</SCAN_DIRECTION>
+                     <SCAN_POSITION>D</SCAN_POSITION>
+                     <SCAN_LEVEL/>
+                     <SCAN_CAPTURE/>
+                     <WORD_DELIMITER/>
+                     <CHANGE_VALUE>"LAAN"</CHANGE_VALUE>
+                     <CHANGE_OCCURENCES>ALL</CHANGE_OCCURENCES>
+                     <FLAG_VALUE/>
+                     
+                  </ENTRY>
+<ENTRY>
+<ENTRY_ID>15</ENTRY_ID>
+<ENTRY_DESCRIPTION>Addr_Line_1_Txt: change all mask "AAA9  " to "AAA 9  "</ENTRY_DESCRIPTION>
+<SCAN_FIELD>ADDR_LINE_1_TXT</SCAN_FIELD>
+<TARGET_FIELD/>
+<FIELD_JUSTIFICATION>LA</FIELD_JUSTIFICATION>
+<SCAN_FORMAT>M</SCAN_FORMAT>
+<BETWEEN_SUBSTRING/>
+<AND_SUBSTRING/>
+<RETAIN_BETWEEN_SUBSTRING/>
+<SCAN_VALUE>"AAA9  "</SCAN_VALUE>
+<CASE_SENSITIVE_SCAN_VALUE>Y</CASE_SENSITIVE_SCAN_VALUE>
+<RETAIN_SCAN_VALUE/>
+<SCAN_FUNCTION>CH</SCAN_FUNCTION>
+<SCAN_DIRECTION>L</SCAN_DIRECTION>
+<SCAN_POSITION>D</SCAN_POSITION>
+<SCAN_LEVEL/>
+<SCAN_CAPTURE/>
+<WORD_DELIMITER/>
+<CHANGE_VALUE>"AAA 9  "</CHANGE_VALUE>
+<CHANGE_OCCURENCES>ALL</CHANGE_OCCURENCES>
+<FLAG_VALUE/>
+
+</ENTRY>
+<ENTRY>
+<ENTRY_ID>16</ENTRY_ID>
+<ENTRY_DESCRIPTION>Addr_Line_1_Txt: change all mask "AAA99  " to "AAA 99  "</ENTRY_DESCRIPTION>
+<SCAN_FIELD>ADDR_LINE_1_TXT</SCAN_FIELD>
+<TARGET_FIELD/>
+<FIELD_JUSTIFICATION>NJ</FIELD_JUSTIFICATION>
+<SCAN_FORMAT>M</SCAN_FORMAT>
+<BETWEEN_SUBSTRING/>
+<AND_SUBSTRING/>
+<RETAIN_BETWEEN_SUBSTRING/>
+<SCAN_VALUE>"AAA99  "</SCAN_VALUE>
+<CASE_SENSITIVE_SCAN_VALUE>Y</CASE_SENSITIVE_SCAN_VALUE>
+<RETAIN_SCAN_VALUE/>
+<SCAN_FUNCTION>CH</SCAN_FUNCTION>
+<SCAN_DIRECTION>L</SCAN_DIRECTION>
+<SCAN_POSITION>D</SCAN_POSITION>
+<SCAN_LEVEL/>
+<SCAN_CAPTURE/>
+<WORD_DELIMITER/>
+<CHANGE_VALUE>"AAA 99  "</CHANGE_VALUE>
+<CHANGE_OCCURENCES>ALL</CHANGE_OCCURENCES>
+<FLAG_VALUE/>
+
+</ENTRY>
+<ENTRY>
+<ENTRY_ID>17</ENTRY_ID>
+<ENTRY_DESCRIPTION>Addr_Line_1_Txt: change all mask "AAA999  " to "AAA 999  "</ENTRY_DESCRIPTION>
+<SCAN_FIELD>ADDR_LINE_1_TXT</SCAN_FIELD>
+<TARGET_FIELD/>
+<FIELD_JUSTIFICATION>NJ</FIELD_JUSTIFICATION>
+<SCAN_FORMAT>M</SCAN_FORMAT>
+<BETWEEN_SUBSTRING/>
+<AND_SUBSTRING/>
+<RETAIN_BETWEEN_SUBSTRING/>
+<SCAN_VALUE>"AAA999  "</SCAN_VALUE>
+<CASE_SENSITIVE_SCAN_VALUE>Y</CASE_SENSITIVE_SCAN_VALUE>
+<RETAIN_SCAN_VALUE/>
+<SCAN_FUNCTION>CH</SCAN_FUNCTION>
+<SCAN_DIRECTION>L</SCAN_DIRECTION>
+<SCAN_POSITION>D</SCAN_POSITION>
+<SCAN_LEVEL/>
+<SCAN_CAPTURE/>
+<WORD_DELIMITER/>
+<CHANGE_VALUE>"AAA 999  "</CHANGE_VALUE>
+<CHANGE_OCCURENCES>ALL</CHANGE_OCCURENCES>
+<FLAG_VALUE/>
+
+</ENTRY>
+<ENTRY>
+<ENTRY_ID>18</ENTRY_ID>
+<ENTRY_DESCRIPTION>Addr_Line_1_Txt: change all mask "AAA9999  " to "AAA 9999  "</ENTRY_DESCRIPTION>
+<SCAN_FIELD>ADDR_LINE_1_TXT</SCAN_FIELD>
+<TARGET_FIELD/>
+<FIELD_JUSTIFICATION>NJ</FIELD_JUSTIFICATION>
+<SCAN_FORMAT>M</SCAN_FORMAT>
+<BETWEEN_SUBSTRING/>
+<AND_SUBSTRING/>
+<RETAIN_BETWEEN_SUBSTRING/>
+<SCAN_VALUE>"AAA9999  "</SCAN_VALUE>
+<CASE_SENSITIVE_SCAN_VALUE>Y</CASE_SENSITIVE_SCAN_VALUE>
+<RETAIN_SCAN_VALUE/>
+<SCAN_FUNCTION>CH</SCAN_FUNCTION>
+<SCAN_DIRECTION>L</SCAN_DIRECTION>
+<SCAN_POSITION>D</SCAN_POSITION>
+<SCAN_LEVEL/>
+<SCAN_CAPTURE/>
+<WORD_DELIMITER/>
+<CHANGE_VALUE>"AAA 9999  "</CHANGE_VALUE>
+<CHANGE_OCCURENCES>ALL</CHANGE_OCCURENCES>
+<FLAG_VALUE/>
+
+</ENTRY>
+<ENTRY>
+<ENTRY_ID>19</ENTRY_ID>
+<ENTRY_DESCRIPTION>Addr Ln 1 Txt: Add spaces around /</ENTRY_DESCRIPTION>
+<SCAN_FIELD>ADDR_LINE_1_TXT</SCAN_FIELD>
+<TARGET_FIELD/>
+<FIELD_JUSTIFICATION>NJ</FIELD_JUSTIFICATION>
+<SCAN_FORMAT>L</SCAN_FORMAT>
+<BETWEEN_SUBSTRING/>
+<AND_SUBSTRING/>
+<RETAIN_BETWEEN_SUBSTRING/>
+<SCAN_VALUE>/</SCAN_VALUE>
+<CASE_SENSITIVE_SCAN_VALUE>Y</CASE_SENSITIVE_SCAN_VALUE>
+<RETAIN_SCAN_VALUE/>
+<SCAN_FUNCTION>CH</SCAN_FUNCTION>
+<SCAN_DIRECTION>L</SCAN_DIRECTION>
+<SCAN_POSITION>D</SCAN_POSITION>
+<SCAN_LEVEL/>
+<SCAN_CAPTURE/>
+<WORD_DELIMITER/>
+<CHANGE_VALUE>" / "</CHANGE_VALUE>
+<CHANGE_OCCURENCES>ALL</CHANGE_OCCURENCES>
+<FLAG_VALUE/>
+
+</ENTRY>
+<ENTRY>
+<ENTRY_ID>20</ENTRY_ID>
+<ENTRY_DESCRIPTION>Addr Ln 1 Txt: Recode double spaces to single</ENTRY_DESCRIPTION>
+<SCAN_FIELD>ADDR_LINE_1_TXT</SCAN_FIELD>
+<TARGET_FIELD/>
+<FIELD_JUSTIFICATION>NJ</FIELD_JUSTIFICATION>
+<SCAN_FORMAT>L</SCAN_FORMAT>
+<BETWEEN_SUBSTRING/>
+<AND_SUBSTRING/>
+<RETAIN_BETWEEN_SUBSTRING/>
+<SCAN_VALUE>"  "</SCAN_VALUE>
+<CASE_SENSITIVE_SCAN_VALUE>Y</CASE_SENSITIVE_SCAN_VALUE>
+<RETAIN_SCAN_VALUE/>
+<SCAN_FUNCTION>CH</SCAN_FUNCTION>
+<SCAN_DIRECTION>L</SCAN_DIRECTION>
+<SCAN_POSITION>D</SCAN_POSITION>
+<SCAN_LEVEL/>
+<SCAN_CAPTURE/>
+<WORD_DELIMITER/>
+<CHANGE_VALUE>" "</CHANGE_VALUE>
+<CHANGE_OCCURENCES>ALL</CHANGE_OCCURENCES>
+<FLAG_VALUE/>
+
+</ENTRY>
+<ENTRY>
+<ENTRY_ID>21</ENTRY_ID>
+<ENTRY_DESCRIPTION>City Name: Recode hyphens to spaces</ENTRY_DESCRIPTION>
+<SCAN_FIELD>CITY_NAME</SCAN_FIELD>
+<TARGET_FIELD/>
+<FIELD_JUSTIFICATION>NJ</FIELD_JUSTIFICATION>
+<SCAN_FORMAT>L</SCAN_FORMAT>
+<BETWEEN_SUBSTRING/>
+<AND_SUBSTRING/>
+<RETAIN_BETWEEN_SUBSTRING/>
+<SCAN_VALUE>-</SCAN_VALUE>
+<CASE_SENSITIVE_SCAN_VALUE>Y</CASE_SENSITIVE_SCAN_VALUE>
+<RETAIN_SCAN_VALUE/>
+<SCAN_FUNCTION>CH</SCAN_FUNCTION>
+<SCAN_DIRECTION>L</SCAN_DIRECTION>
+<SCAN_POSITION>D</SCAN_POSITION>
+<SCAN_LEVEL/>
+<SCAN_CAPTURE/>
+<WORD_DELIMITER/>
+<CHANGE_VALUE>" "</CHANGE_VALUE>
+<CHANGE_OCCURENCES>ALL</CHANGE_OCCURENCES>
+<FLAG_VALUE/>
+
+</ENTRY>
+</ARGUMENTS>
+            </FIELD_SCANNING>
+<TABLE_RECODING>
+               <ARGUMENTS>
+<ENTRY>
+<ENTRY_ID>1</ENTRY_ID>
+<ENTRY_DESCRIPTION>Addr Ln1 Txt: Recode accents</ENTRY_DESCRIPTION>
+<FILE_QUALIFIER>RECODE1</FILE_QUALIFIER>
+<TABLE_FILE_NAME>$(USRTABLES)/accents.tbl</TABLE_FILE_NAME>
+<DDL_FILE_NAME>$(USRTABLES)/accents.ddx</DDL_FILE_NAME>
+<FILE_DELIMITER>Tab</FILE_DELIMITER>
+<USE_QUOTES_AS_QUALIFIER>N</USE_QUOTES_AS_QUALIFIER>
+<DELIMITED_FILE_COMMENT_INDICATOR>#</DELIMITED_FILE_COMMENT_INDICATOR>
+<LOOKUP_PHRASE_SEPARATOR>"ANY"</LOOKUP_PHRASE_SEPARATOR>
+<LOOKUP_PHRASE_CHANGE/>
+<LOOKUP_POSITION>D</LOOKUP_POSITION>
+<LOOKUP_TABLE_FIELDS>LOOKUP</LOOKUP_TABLE_FIELDS>
+<LOOKUP_FIELDS_CASE_SENSITIVE>N</LOOKUP_FIELDS_CASE_SENSITIVE>
+<LOOKUP_OUTPUT_FIELDS>ADDR_LINE_1_TXT</LOOKUP_OUTPUT_FIELDS>
+<LOOKUP_OUTPUT_FIELDS_FORMAT>L</LOOKUP_OUTPUT_FIELDS_FORMAT>
+<RECODE_TABLE_FIELDS>RECODE</RECODE_TABLE_FIELDS>
+<RECODE_TABLE_FIELDS_FORMAT>L</RECODE_TABLE_FIELDS_FORMAT>
+<RECODE_OUTPUT_FIELDS>ADDR_LINE_1_TXT</RECODE_OUTPUT_FIELDS>
+
+</ENTRY>
+</ARGUMENTS>
+            </TABLE_RECODING>
+
+
+<CONDITIONALS>
+               <ARGUMENTS>
+                  <ENTRY>
+                     <ENTRY_ID>1</ENTRY_ID>
+                     <FOR_FILES>OUTPUT</FOR_FILES>
+                     <CONDITION>IF (ALWAYS)
+        IF (ALWAYS)
+    RUN FIELD_SCANNING(15-18)
+    ENDIF
+    IF (NOT (ADDR_LINE_1_TXT contains "Ψ"))
+    RUN FIELD_SCANNING(1-14)
+    ENDIF
+    IF (ADDR_LINE_1_TXT = SPACES)
+    SET ADDR_LINE_1_TXT = TRIM( STRET_NAME) |: TRIM( STRET_NUM) |: TRIM( APT_NUM)
+    ENDIF
+    IF (ALWAYS)
+    RUN FIELD_SCANNING(19-20)
+    RUN TABLE_RECODING(1)
+    RUN FIELD_SCANNING(21)
+    ENDIF
+    
+    ENDIF
+</CONDITION>
+                  </ENTRY>
+               </ARGUMENTS>
+            </CONDITIONALS>
+</PARAMETER>
+      </OUTPUT>
+      <PROCESS>
+         <PARAMETER>
+            <PROCESS_SETTINGS>
+               <ARGUMENTS>
+                  <PROCESS_LOG_FILE_NAME>$(LOGS)/p1_be_tranfrmr_log.txt</PROCESS_LOG_FILE_NAME>
+                  <ENABLE_DEBUG_OUTPUT>0</ENABLE_DEBUG_OUTPUT>
+                  <DEBUG_FILE_NAME>$(DEBUG)/p1_be_tranfrmr_debug.txt</DEBUG_FILE_NAME>
+                  <MASK_FILE_NAME>$(USRTABLES)/maskfile$(PLAFEXT)</MASK_FILE_NAME>
+                  <STRSUB_TABLE_FILE_NAME>$(GENERAL_RESOURCES)/strsub$(PLAFEXT)</STRSUB_TABLE_FILE_NAME>
+               </ARGUMENTS>
+            </PROCESS_SETTINGS>
+         </PARAMETER>
+      </PROCESS>
+      <STATISTICS>
+         <PARAMETER>
+            <STATISTICS_SETTINGS>
+               <ARGUMENTS>
+                  <STATS_FILE_NAME>$(STATS)/p1_be_tranfrmr_stats.txt</STATS_FILE_NAME>
+               </ARGUMENTS>
+            </STATISTICS_SETTINGS>
+         </PARAMETER>
+      </STATISTICS>
+   </CATEGORY>
+
+</TRANFRMR>

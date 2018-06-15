@@ -1,0 +1,51 @@
+
+***********************************************************
+* TSQ Configuration File
+* generated on 2017/08/29 17:45:15
+
+* Change DATABASE and WORKSPACE to point to your project
+
+***********************************************************
+* Common Extensions
+TBL = "tbl"
+ENC = "len"
+
+* Project Location
+
+DATABASE  = "C:\client_projects\teradata_pg&e\15.5 upgrade\batch exports\can\cleanse\project3\batch"
+PROJDIR   = "$(DATABASE)"
+
+INPUT     = "$(PROJDIR)\data"
+OUTPUT    = "$(PROJDIR)\data"
+DDL       = "$(PROJDIR)\ddl"
+USRTABLES = "$(PROJDIR)\tables"
+WORKSPACE = "$(PROJDIR)\data"
+SETTINGS  = "$(PROJDIR)\settings"
+LOGS      = "$(PROJDIR)\logs"
+STATS     = "$(PROJDIR)\logs"
+DEBUG     = "$(PROJDIR)\logs"
+DETAILS   = "$(LOGS)\details"
+
+TSQ_REPORT_ENCODING = "UTF8"
+
+ENDEXT    = ".len"
+PLAFEXT   = ".win"
+
+
+* Reference to Base Software Location
+
+BASEDIR   = "C:\Program Files (x86)\Trillium Software\MBSW\15\tsq\Software"
+
+SOFTWARE           = "$(BASEDIR)\..\Software"
+TABLES             = "$(BASEDIR)\..\tables"
+GENERAL_RESOURCES  = "$(TABLES)\general_resources"
+PARSER_RULES       = "$(TABLES)\parser_rules"
+CODE_PAGES         = "$(TABLES)\code_pages"
+
+*
+* Please check that the postal table paths point to your current installation
+*
+POSTAL_TABLES = "$(TABLES)\postal_tables"
+APAC_POSTAL_TABLES = "$(TABLES)\aptables"
+CENSUS_TABLES = "$(TABLES)\census_tables"
+ACE_TABLES = "$(TABLES)\ACE_tables"

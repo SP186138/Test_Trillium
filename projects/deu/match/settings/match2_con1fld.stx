@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<CONSUMER_LEVEL1_FIELD_SETTINGS xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <ARGUMENTS>
+        <ENTRY>
+            <DESCRIPTION>email</DESCRIPTION>
+            <SCORE>100</SCORE>
+            <ROUTINE>partial1</ROUTINE>
+            <ROUTINE>nonblank</ROUTINE>
+            <FIELD_NAME>EMAIL_ADDR_TXT_1</FIELD_NAME>
+        </ENTRY>
+        <ENTRY>
+            <DESCRIPTION>legal_entity_nbr</DESCRIPTION>
+            <SCORE>100</SCORE>
+            <ROUTINE>partial1</ROUTINE>
+            <FIELD_NAME>LEGAL_ENT_NBR</FIELD_NAME>
+        </ENTRY>
+    </ARGUMENTS>
+</CONSUMER_LEVEL1_FIELD_SETTINGS>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DOCUMENTS>
+
+  <DEFINE_METHOD Name="invokeRouteCleanse">
+    <RULE>
+      <ACTION>
+        <EXECUTE_SHELL_COMMAND Value="TSSRouteCleanse.BAT" AssignToVar="thisReturn"/>
+      </ACTION>
+    </RULE>
+  </DEFINE_METHOD>
+
+    <DEFINE_METHOD Name="TSSMatch">
+    <RULE>
+      <ACTION>
+        <EXECUTE_SHELL_COMMAND Value="TSSMatch.BAT" AssignToVar="thisReturn"/>
+      </ACTION>
+    </RULE>
+  </DEFINE_METHOD>
+  
+</DOCUMENTS>

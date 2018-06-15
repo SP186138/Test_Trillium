@@ -1,0 +1,73 @@
+*****************************************************
+*                                                   *
+*                                                   *
+*  STANDARD_DEFS_DICTIONARY_FILE_NAME               *
+*                                                   *
+* This is a template that defines Automobiles       *
+* This is provided as a SAMPLE, the Customer must   *
+* create their own table based on their business    *
+* data.                                             *
+*                                                   *
+*****************************************************
+*----------------
+* Automotive Attributes
+*----------------
+USER1, MAKE
+USER2, YEAR
+USER3, V_VEHICLE
+USER4, APARTMENT_IND
+USER5, STREET_TYPE
+USER6, NEIGHBORHOOD_IND
+USER7, BUILDING_IND
+USER8, FLOOR_IND
+USER9, APARTMENT_NUMBER
+USER10, FLOOR_NUMBER
+USER11, HOUSE_NUMBER
+USER12, NUMBER_IND
+USER26, MODEL
+USER27, BUILDING_NAME
+USER28, STREET_NAME
+USER29, NEIGHBORHOOD
+*---------------
+* Reserved Words
+*---------------
+ATT, ATT
+ATTRIBUTE, ATTRIBUTE
+BEG, BEG
+BEGGINING, BEGINNING
+CAT, CAT
+CATEGORY, CATEGORY
+DEF, DEF
+DEFAULT, DEFAULT
+END, END
+INS, INS
+INSERT, INSERT
+MASK, MASK
+MISC, MISC
+MISCELLANEOUS, MISCELLANEOUS
+PATT, PATT
+PATTERN, PATTERN
+REC, REC
+RECODE, RECODE
+SYN, SYN
+SYNONYM, SYNONYM
+*----------------------
+* Intrinsic Attributes
+*----------------------
+1ALPHA, 1ALPHA
+1NUMERIC, 1NUMERIC
+ALPHA, ALPHA
+ALPHA-1NUMERIC, ALPHA-1NUMERIC
+ALPHA-1SPECIAL, ALPHA-1SPECIAL
+ALPHA-NUMERIC, ALPHA-NUMERIC
+ALPHA-SPECIAL, ALPHA-SPECIAL
+HYPHEN, HYPHEN
+IGN, IGN
+IGNORE, IGNORE
+MIXED-NUMERIC, MIXED-NUMERIC
+NUMERIC, NUMERIC		
+NUMERIC-1ALPHA, NUMERIC-1ALPHA	
+NUMERIC-1SPECIAL, NUMERIC-1SPECIAL
+NUMERIC-ALPHA, NUMERIC-ALPHA
+NUMERIC-SPECIAL, NUMERIC-SPECIAL
+OTHER-SPECIAL, OTHER-SPECIAL

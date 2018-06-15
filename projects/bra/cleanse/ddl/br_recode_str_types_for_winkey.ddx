@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RECORD xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tcl="urn:discovery.trilliumsoftware.com:tcl">
+<NAME>BR_RECODE_STR_TYPES_FOR_WINKEY</NAME>
+<TYPE>FIXED</TYPE>
+<LENGTH>200</LENGTH>
+<FIELD>
+   <NAME>FROM_STYPE</NAME>
+   <TYPE>CP1252</TYPE>
+   <STARTS-IN-COLUMN>0</STARTS-IN-COLUMN>
+   <LENGTH>100</LENGTH>
+</FIELD>
+<FIELD>
+   <NAME>TO_STYPE</NAME>
+   <TYPE>CP1252</TYPE>
+   <STARTS-IN-COLUMN>100</STARTS-IN-COLUMN>
+   <LENGTH>100</LENGTH>
+</FIELD>
+</RECORD>

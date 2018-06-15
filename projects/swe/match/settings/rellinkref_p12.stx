@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RELLINK xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <SETTINGS_FILE_ENCODING>UTF8</SETTINGS_FILE_ENCODING>
+   
+   
+
+<CATEGORY>
+      <INPUT>
+         <PARAMETER>
+            <INPUT_SETTINGS>
+               <ARGUMENTS>
+                  <ENTRY>
+                     <ENTRY_ID>1</ENTRY_ID>
+                     <FILE_QUALIFIER>e53_se_transaction_p61</FILE_QUALIFIER>
+                     <DATA_FILE_NAME>$(INPUT)/se_srtforrl_p15.dat</DATA_FILE_NAME>
+                     <DDL_FILE_NAME>$(DDL)/se_srtforrl_p15.ddx</DDL_FILE_NAME>
+               <FILE_DELIMITER/>
+               <USE_QUOTES_AS_QUALIFIER/>
+             
+                     
+                     
+                     <START_RECORD/>
+                     <MAX_RECORDS/>
+                     <NTH_SAMPLE/>
+                     
+                     
+                     
+                  <SELECT_RECORDS/>
+</ENTRY>
+               </ARGUMENTS>
+            </INPUT_SETTINGS>
+         </PARAMETER>
+      </INPUT>
+      <OUTPUT>
+         <PARAMETER>
+            <OUTPUT_SETTINGS>
+               <ARGUMENTS>
+                  <FILE_QUALIFIER>OUTPUT</FILE_QUALIFIER>
+                  <DATA_FILE_NAME>$(OUTPUT)/se_rellinkref_p16.dat</DATA_FILE_NAME>
+                  <DDL_FILE_NAME>$(DDL)/se_rellinkref_p16.ddx</DDL_FILE_NAME>
+               <SELECT_RECORDS/>
+</ARGUMENTS>
+            </OUTPUT_SETTINGS>
+         </PARAMETER>
+      </OUTPUT>
+      
+      <REFERENCE>
+         <PARAMETER>
+            <REFERENCE_INPUT_SETTINGS>
+               <ARGUMENTS>
+                  <ENTRY>
+                     <ENTRY_ID>1</ENTRY_ID>
+                     <FILE_QUALIFIER>REF1</FILE_QUALIFIER>
+                     <DATA_FILE_NAME>$(INPUT)/se_srtforrl_p11.dat</DATA_FILE_NAME>
+                     <DDL_FILE_NAME>$(DDL)/se_srtforrl_p11.ddx</DDL_FILE_NAME>
+                     
+                     
+                  <SELECT_RECORDS/>
+</ENTRY>
+               </ARGUMENTS>
+            </REFERENCE_INPUT_SETTINGS>
+         </PARAMETER>
+      </REFERENCE>
+      <LINKING>
+         <PARAMETER>
+            <LINKING_SETTINGS>
+               <ARGUMENTS>
+                  <FILE_QUALIFIER>LINK</FILE_QUALIFIER>
+                  <DATA_FILE_NAME>$(OUTPUT)/LINKING_se_rellinkref_p16.dat</DATA_FILE_NAME>
+                  <DDL_FILE_NAME>$(DDL)/LINKING_se_rellinkref_p16.ddx</DDL_FILE_NAME>
+                  <LINK_SELECTION_FLAG>0</LINK_SELECTION_FLAG>
+                  <LINK_SOURCE_ID>ADDRESS_HOUSEHOLD_ID</LINK_SOURCE_ID>
+                  
+               <SELECT_RECORDS/>
+</ARGUMENTS>
+            </LINKING_SETTINGS>
+         </PARAMETER>
+      </LINKING>
+      <PROCESS>
+         <PARAMETER>
+            <PROCESS_SETTINGS>
+               <ARGUMENTS>
+                  <PROCESS_LOG_FILE_NAME>$(LOGS)/p16_se_rellinkref_log.txt</PROCESS_LOG_FILE_NAME>
+                  <ENABLE_DEBUG_OUTPUT>0</ENABLE_DEBUG_OUTPUT>
+                  <DEBUG_FILE_NAME>$(DEBUG)/p16_se_rellinkref_debug.txt</DEBUG_FILE_NAME>
+                  <MASK_FILE_NAME>$(GENERAL_RESOURCES)/maskfile$(PLAFEXT)</MASK_FILE_NAME>
+                  <MATCH_METHOD>2</MATCH_METHOD>
+                  <NAME_FORM_FIELD_NAME>PR_NAME_FORM_01</NAME_FORM_FIELD_NAME>
+                  <OVERRIDE_NAME_FORM>1</OVERRIDE_NAME_FORM>
+               </ARGUMENTS>
+            </PROCESS_SETTINGS>
+            <CONSUMER_LEVEL1_FIELD_SETTINGS>
+               <ARGUMENTS>
+                  <ENTRIES_FILE_NAME>$(SETTINGS)/match3_con1fld.stx</ENTRIES_FILE_NAME>
+               </ARGUMENTS>
+            </CONSUMER_LEVEL1_FIELD_SETTINGS>
+            <CONSUMER_LEVEL1_PATTERN_SETTINGS>
+               <ARGUMENTS>
+                  <ENTRIES_FILE_NAME>$(SETTINGS)/match3_con1pat.stx</ENTRIES_FILE_NAME>
+               </ARGUMENTS>
+            </CONSUMER_LEVEL1_PATTERN_SETTINGS>
+            <TRANSACTION_WINDOW_SETTINGS>
+               <ARGUMENTS>
+                  <WINDOW_KEY_FIELD_NAME>TMP_PHONE_WINKEY</WINDOW_KEY_FIELD_NAME>
+                  <MAX_WINDOW_SIZE>2000</MAX_WINDOW_SIZE>
+               </ARGUMENTS>
+            </TRANSACTION_WINDOW_SETTINGS>
+            <WINDOW_MATCHING>
+               <ARGUMENTS>
+                  <MATCH_ALL_TO_ALL_FLAG>Y</MATCH_ALL_TO_ALL_FLAG>
+               </ARGUMENTS>
+            </WINDOW_MATCHING>
+            <REFERENCE_MATCHING>
+               <ARGUMENTS>
+                  <WINDOW_KEY_FIELD_NAME>TMP_PHONE_WINKEY</WINDOW_KEY_FIELD_NAME>
+                  <MAX_WINDOW_SIZE>2000</MAX_WINDOW_SIZE>
+                  <MAX_WINDOW_SIZE_FIELD_NAME/>
+                  <REFERENCE_FILE_MATCH_ALL>Y</REFERENCE_FILE_MATCH_ALL>
+                  <REFERENCE_MATCH_FLAG>0</REFERENCE_MATCH_FLAG>
+                  <NUMBER_GENERATION_START>140000</NUMBER_GENERATION_START>
+                  <NUMBER_GENERATION_CYCLE>999999</NUMBER_GENERATION_CYCLE>
+                  <REFERENCE_LEV1_PASS_PATTERN_FIELD_NAME>REFERENCE_MATCHED_LEV1_PATTERN</REFERENCE_LEV1_PASS_PATTERN_FIELD_NAME>
+                  <REFERENCE_LEV2_PASS_PATTERN_FIELD_NAME>REFERENCE_MATCHED_LEV2_PATTERN</REFERENCE_LEV2_PASS_PATTERN_FIELD_NAME>
+                  <REFERENCE_LEV1_SUSPECT_PATTERN_FIELD_NAME>REFERENCE_SUSPECT_LEV1_PATTERN</REFERENCE_LEV1_SUSPECT_PATTERN_FIELD_NAME>
+                  <REFERENCE_LEV2_SUSPECT_PATTERN_FIELD_NAME>REFERENCE_SUSPECT_LEV2_PATTERN</REFERENCE_LEV2_SUSPECT_PATTERN_FIELD_NAME>
+                  <REFERENCE_LEV1_PASS_NUMBER>REFERENCE_HOUSEHOLD_ID</REFERENCE_LEV1_PASS_NUMBER>
+                  <REFERENCE_LEV2_PASS_NUMBER/>
+                  <REFERENCE_RECORD_ID>_SEQUENCE_NUMBER</REFERENCE_RECORD_ID>
+                  <BUSINESS_LEV1_INPUT_TO_REFERENCE_FIELD_LIST/>
+                  <BUSINESS_LEV2_INPUT_TO_REFERENCE_FIELD_LIST/>
+                  <CONSUMER_LEV1_INPUT_TO_REFERENCE_FIELD_LIST/>
+                  <CONSUMER_LEV2_INPUT_TO_REFERENCE_FIELD_LIST/>
+                  <BUSINESS_LEV1_REFERENCE_TO_INPUT_FIELD_LIST/>
+                  <BUSINESS_LEV2_REFERENCE_TO_INPUT_FIELD_LIST/>
+                  <CONSUMER_LEV1_REFERENCE_TO_INPUT_FIELD_LIST/>
+                  <CONSUMER_LEV2_REFERENCE_TO_INPUT_FIELD_LIST/>
+               </ARGUMENTS>
+            </REFERENCE_MATCHING>
+         </PARAMETER>
+      </PROCESS>
+      <STATISTICS>
+         <PARAMETER>
+            <STATISTICS_SETTINGS>
+               <ARGUMENTS>
+                  <STATS_FILE_NAME>$(STATS)/p16_se_rellinkref_stats.txt</STATS_FILE_NAME>
+               </ARGUMENTS>
+            </STATISTICS_SETTINGS>
+         </PARAMETER>
+      </STATISTICS>
+   </CATEGORY>
+</RELLINK>
+    

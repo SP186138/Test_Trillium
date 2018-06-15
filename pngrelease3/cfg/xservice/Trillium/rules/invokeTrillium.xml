@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DOCUMENTS>
+
+  <DEFINE_METHOD Name="invokeRouteCleanse">
+    <RULE>
+      <ACTION>
+        <EXECUTE_SHELL_COMMAND Value="{concat('TSSRouteCleanse_', $thisParam/CNTRY_NAME/@Value,'.BAT')}" AssignToVar="thisReturn"/>
+      </ACTION>
+    </RULE>
+  </DEFINE_METHOD>
+
+    <DEFINE_METHOD Name="TSSMatch">
+    <RULE>
+      <ACTION>
+        <EXECUTE_SHELL_COMMAND Value="{concat('TSSMatch_', $thisParam/CNTRY_NAME/@Value,'.BAT')}" AssignToVar="thisReturn"/>
+      </ACTION>
+    </RULE>
+  </DEFINE_METHOD>
+      <DEFINE_METHOD Name="invokeOptOut">
+    <RULE>
+      <ACTION>
+        <EXECUTE_SHELL_COMMAND Value="OptOut.BAT" AssignToVar="thisReturn"/>
+      </ACTION>
+    </RULE>
+  </DEFINE_METHOD>
+  
+       <DEFINE_METHOD Name="invokeGdpr">
+    <RULE>
+      <ACTION>
+        <EXECUTE_SHELL_COMMAND Value="Gdpr.BAT" AssignToVar="thisReturn"/>
+      </ACTION>
+    </RULE>
+  </DEFINE_METHOD>
+  
+ <DEFINE_METHOD Name="invokeNCOA">
+    <RULE>
+      <ACTION>
+        <EXECUTE_SHELL_COMMAND Value="NCOA.BAT" AssignToVar="thisReturn"/>
+      </ACTION>
+    </RULE>
+  </DEFINE_METHOD>
+  <DEFINE_METHOD Name="CPUUtil">
+    <RULE>
+      <ACTION>
+        <EXECUTE_SHELL_COMMAND Value="CPUUtil.bat {$thisParam/CPUPercentProcessorTime/@Value}" AssignToVar="thisReturn"/>
+      </ACTION>
+    </RULE>
+  </DEFINE_METHOD>
+ <DEFINE_METHOD Name="invokeRETLR">
+    <RULE>
+      <ACTION>
+        <EXECUTE_SHELL_COMMAND Value="RETLR.BAT" AssignToVar="thisReturn"/>
+      </ACTION>
+    </RULE>
+  </DEFINE_METHOD>  
+ <DEFINE_METHOD Name="invokeTestTrilliumService">
+    <RULE>
+      <ACTION>
+        <PRINTLN Value="Service Found {$thisParam/CNTRY_NAME/@Value}"/>
+      </ACTION>
+    </RULE>
+  </DEFINE_METHOD>    
+</DOCUMENTS>

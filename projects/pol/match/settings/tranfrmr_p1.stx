@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TRANFRMR xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <SETTINGS_FILE_ENCODING>UTF8</SETTINGS_FILE_ENCODING>
+   
+   
+
+<CATEGORY>
+      
+      <INPUT>
+         <PARAMETER>
+            <INPUT_SETTINGS>
+               <ARGUMENTS>
+
+<ENTRY>
+<ENTRY_ID>1</ENTRY_ID>
+<FILE_QUALIFIER>e63_pl_tranfrmr_p3</FILE_QUALIFIER>
+              <DATA_FILE_NAME>$(INPUT)/TSS_CLEANSE_OUTPUT_POL.DAT</DATA_FILE_NAME>
+              <DDL_FILE_NAME>$(DDL)/TSS_CLEANSE_OUTPUT.ddx</DDL_FILE_NAME>
+              <FILE_DELIMITER_ENCODING>NOTRANS</FILE_DELIMITER_ENCODING>
+              <FILE_DELIMITER>Pipe</FILE_DELIMITER>
+              <USE_QUOTES_AS_QUALIFIER>N</USE_QUOTES_AS_QUALIFIER>
+            
+
+<START_RECORD/>
+<MAX_RECORDS/>
+<NTH_SAMPLE/>
+
+<EXCEPTIONS_FILE_NAME/>
+
+
+<SELECT_RECORDS/>
+</ENTRY>
+</ARGUMENTS>
+            </INPUT_SETTINGS>
+            
+            
+         </PARAMETER>
+      </INPUT>
+      <OUTPUT>
+         <PARAMETER>
+            <OUTPUT_SETTINGS>
+               <ARGUMENTS>
+                  <FILE_QUALIFIER>OUTPUT</FILE_QUALIFIER>
+                  <DATA_FILE_NAME>stdout</DATA_FILE_NAME>
+                  <DDL_FILE_NAME>$(DDL)/pl_tranfrmr_p1.ddx</DDL_FILE_NAME>
+                  <FILE_SEQUENCE_FIELD_NAME/>
+                  
+               <SELECT_RECORDS/>
+</ARGUMENTS>
+            </OUTPUT_SETTINGS>
+            
+            <TABLE_RECODING>
+               <ARGUMENTS>
+                  <ENTRY>
+                     <ENTRY_ID>1</ENTRY_ID>
+<ENTRY_DESCRIPTION>Table_Recode: Look for bad winkey1 values</ENTRY_DESCRIPTION>
+                     <FILE_QUALIFIER>RECODE1</FILE_QUALIFIER>
+                     <TABLE_FILE_NAME>$(USRTABLES)/bad_winkey1_keys.tbl</TABLE_FILE_NAME>
+                     <DDL_FILE_NAME>$(DDL)/bad_winkey1_keys.ddx</DDL_FILE_NAME>
+                     <FILE_DELIMITER>Pipe</FILE_DELIMITER>
+                     <LOOKUP_PHRASE_SEPARATOR/>
+                     <LOOKUP_TABLE_FIELDS>WINDOW_KEY_01</LOOKUP_TABLE_FIELDS>
+                     <LOOKUP_FIELDS_CASE_SENSITIVE>Y</LOOKUP_FIELDS_CASE_SENSITIVE>
+                     <LOOKUP_OUTPUT_FIELDS>TMP_ADDRESS_WINKEY</LOOKUP_OUTPUT_FIELDS>
+                     <LOOKUP_OUTPUT_FIELDS_FORMAT>L</LOOKUP_OUTPUT_FIELDS_FORMAT>
+                     <RECODE_TABLE_FIELDS>FLAG</RECODE_TABLE_FIELDS>
+                     <RECODE_TABLE_FIELDS_FORMAT>L</RECODE_TABLE_FIELDS_FORMAT>
+                     <RECODE_OUTPUT_FIELDS>TMP_ADDRESS_WINKEY</RECODE_OUTPUT_FIELDS>
+                     
+                  </ENTRY>
+                  <ENTRY>
+                     <ENTRY_ID>2</ENTRY_ID>
+<ENTRY_DESCRIPTION>Table_Recode: Look for bad phone values</ENTRY_DESCRIPTION>
+                     <FILE_QUALIFIER>RECODE2</FILE_QUALIFIER>
+                     <TABLE_FILE_NAME>$(USRTABLES)/bad_phone_keys.tbl</TABLE_FILE_NAME>
+                     <DDL_FILE_NAME>$(DDL)/bad_phone_keys.ddx</DDL_FILE_NAME>
+                     <FILE_DELIMITER>Pipe</FILE_DELIMITER>
+                     <LOOKUP_PHRASE_SEPARATOR/>
+                     <LOOKUP_TABLE_FIELDS>FULL_PHONE_NUM_1</LOOKUP_TABLE_FIELDS>
+                     <LOOKUP_FIELDS_CASE_SENSITIVE>Y</LOOKUP_FIELDS_CASE_SENSITIVE>
+                     <LOOKUP_OUTPUT_FIELDS>TMP_PHONE_WINKEY</LOOKUP_OUTPUT_FIELDS>
+                     <LOOKUP_OUTPUT_FIELDS_FORMAT>L</LOOKUP_OUTPUT_FIELDS_FORMAT>
+                     <RECODE_TABLE_FIELDS>FLAG</RECODE_TABLE_FIELDS>
+                     <RECODE_TABLE_FIELDS_FORMAT>L</RECODE_TABLE_FIELDS_FORMAT>
+                     <RECODE_OUTPUT_FIELDS>TMP_PHONE_WINKEY</RECODE_OUTPUT_FIELDS>
+                     
+                  </ENTRY>
+                  <ENTRY>
+                     <ENTRY_ID>3</ENTRY_ID>
+<ENTRY_DESCRIPTION>Table_Recode: Look for bad email values</ENTRY_DESCRIPTION>
+                     <FILE_QUALIFIER>RECODE3</FILE_QUALIFIER>
+                     <TABLE_FILE_NAME>$(USRTABLES)/bad_email_keys.tbl</TABLE_FILE_NAME>
+                     <DDL_FILE_NAME>$(DDL)/bad_email_keys.ddx</DDL_FILE_NAME>
+                     <FILE_DELIMITER>Pipe</FILE_DELIMITER>
+                     <LOOKUP_PHRASE_SEPARATOR/>
+                     <LOOKUP_TABLE_FIELDS>EMAIL_ADDR_TXT_1</LOOKUP_TABLE_FIELDS>
+                     <LOOKUP_FIELDS_CASE_SENSITIVE>Y</LOOKUP_FIELDS_CASE_SENSITIVE>
+                     <LOOKUP_OUTPUT_FIELDS>TMP_EMAIL_WINKEY</LOOKUP_OUTPUT_FIELDS>
+                     <LOOKUP_OUTPUT_FIELDS_FORMAT>L</LOOKUP_OUTPUT_FIELDS_FORMAT>
+                     <RECODE_TABLE_FIELDS>FLAG</RECODE_TABLE_FIELDS>
+                     <RECODE_TABLE_FIELDS_FORMAT>L</RECODE_TABLE_FIELDS_FORMAT>
+                     <RECODE_OUTPUT_FIELDS>TMP_EMAIL_WINKEY</RECODE_OUTPUT_FIELDS>
+                     
+                  </ENTRY>
+               </ARGUMENTS>
+            </TABLE_RECODING>
+            <CONDITIONALS>
+               <ARGUMENTS>
+                  <ENTRY>
+                     <ENTRY_ID>1</ENTRY_ID>
+                     <FOR_FILES>OUTPUT</FOR_FILES>
+                     <CONDITION>IF (ALWAYS)
+        IF (ALWAYS)
+    SET RECORD_TYPE = "TRN"
+    SET NAME_KEY = LENGTH( REFERENCE_HOUSEHOLD_ID)
+    SET EMAIL_ADDR_TXT_1 = LCASE( EMAIL_ADDR_TXT_1)
+    SET EMAIL_IND = TERNARY( REGEXP( "[a-z0-9!#$%&amp;'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&amp;'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])", EMAIL_ADDR_TXT_1) != SPACES, "Y", "N")
+    SET EMAIL_IND = TERNARY( EMAIL_ADDR_TXT_1 LIKE "abuse@*" OR EMAIL_ADDR_TXT_1 LIKE "admin@*" OR EMAIL_ADDR_TXT_1 LIKE "hostmaster@*" OR EMAIL_ADDR_TXT_1 LIKE "postmaster@*" OR EMAIL_ADDR_TXT_1 LIKE "root@*" OR EMAIL_ADDR_TXT_1 LIKE "system_admin@*" OR EMAIL_ADDR_TXT_1 LIKE "webmaster@*" OR EMAIL_ADDR_TXT_1 LIKE "all@*" OR EMAIL_ADDR_TXT_1 LIKE "support@*" OR EMAIL_ADDR_TXT_1 LIKE "info@*" OR EMAIL_ADDR_TXT_1 LIKE "customercare@*" OR EMAIL_ADDR_TXT_1 LIKE "sales@*" OR EMAIL_ADDR_TXT_1 LIKE "contact@*", "N", EMAIL_IND)
+    SET EMAIL_IND = TERNARY( EMAIL_ADDR_TXT_1 LIKE "*attbi.com" OR EMAIL_ADDR_TXT_1 LIKE "*home.com" OR EMAIL_ADDR_TXT_1 LIKE "*hotmail.com.mx" OR EMAIL_ADDR_TXT_1 LIKE "*houston.rr.com" OR EMAIL_ADDR_TXT_1 LIKE "*jam.rr.com" OR EMAIL_ADDR_TXT_1 LIKE "*midsouth.rr.com" OR EMAIL_ADDR_TXT_1 LIKE "*mn.rr.com" OR EMAIL_ADDR_TXT_1 LIKE "*se.rr.com" OR EMAIL_ADDR_TXT_1 LIKE "*sport.rr.com" OR EMAIL_ADDR_TXT_1 LIKE "*sprintpcs.com" OR EMAIL_ADDR_TXT_1 LIKE "*swfla.rr.com" OR EMAIL_ADDR_TXT_1 LIKE "*ucwphilly.rr.com" OR EMAIL_ADDR_TXT_1 LIKE "*alltel.net", "N", EMAIL_IND)
+    SET EMAIL_IND = TERNARY( EMAIL_ADDR_TXT_1 LIKE "*news.alltel.net" OR EMAIL_ADDR_TXT_1 LIKE "*business.alltel.net" OR EMAIL_ADDR_TXT_1 LIKE "*home.alltel.net" OR EMAIL_ADDR_TXT_1 LIKE "*webmail.alltel.net" OR EMAIL_ADDR_TXT_1 LIKE "*mediaone.net" OR EMAIL_ADDR_TXT_1 LIKE "*direcway.com" OR EMAIL_ADDR_TXT_1 LIKE "*prodigy.com" OR EMAIL_ADDR_TXT_1 LIKE "*suscom.net" OR EMAIL_ADDR_TXT_1 LIKE "*patmedia.net" OR EMAIL_ADDR_TXT_1 LIKE "*tele2.fr" OR EMAIL_ADDR_TXT_1 LIKE "*chello.fr" OR EMAIL_ADDR_TXT_1 LIKE "*mailorama.net" OR EMAIL_ADDR_TXT_1 LIKE "*dolfijn.nl" OR EMAIL_ADDR_TXT_1 LIKE "*freemail.nl" OR EMAIL_ADDR_TXT_1 LIKE "*Jumpy.it" OR EMAIL_ADDR_TXT_1 LIKE "*zoom.co.uk" OR EMAIL_ADDR_TXT_1 LIKE "*onmail.co.uk" OR EMAIL_ADDR_TXT_1 LIKE "*merseymail.com" OR EMAIL_ADDR_TXT_1 LIKE "*clubinternet.fr" OR EMAIL_ADDR_TXT_1 LIKE "*expressmail.com.pl" OR EMAIL_ADDR_TXT_1 LIKE "*aias.gr" OR EMAIL_ADDR_TXT_1 LIKE "*altecnet.gr" OR EMAIL_ADDR_TXT_1 LIKE "*athforthnet.gr" OR EMAIL_ADDR_TXT_1 LIKE "*gmail.gr" OR EMAIL_ADDR_TXT_1 LIKE "*hayoo.gr" OR EMAIL_ADDR_TXT_1 LIKE "*hotmail.conm" OR EMAIL_ADDR_TXT_1 LIKE "*hotmail.vom" OR EMAIL_ADDR_TXT_1 LIKE "*hotmail.xom" OR EMAIL_ADDR_TXT_1 LIKE "*lawduth.gr" OR EMAIL_ADDR_TXT_1 LIKE "*oacii.an" OR EMAIL_ADDR_TXT_1 LIKE "*oacii.gr" OR EMAIL_ADDR_TXT_1 LIKE "*oneway.gr" OR EMAIL_ADDR_TXT_1 LIKE "*otemet.gr" OR EMAIL_ADDR_TXT_1 LIKE "*otene.gr" OR EMAIL_ADDR_TXT_1 LIKE "*uahoo.gr" OR EMAIL_ADDR_TXT_1 LIKE "*vodafon.net.gr" OR EMAIL_ADDR_TXT_1 LIKE "*windouslive.com" OR EMAIL_ADDR_TXT_1 LIKE "*yagoo.gr" OR EMAIL_ADDR_TXT_1 LIKE "*yahoo.gt" OR EMAIL_ADDR_TXT_1 LIKE "*yahooo.gr" OR EMAIL_ADDR_TXT_1 LIKE "*yhaoo.gr", "N", EMAIL_IND)
+    ENDIF
+    IF (ALWAYS)
+    SET TMP_ADDRESS_WINKEY = WINDOW_KEY_01
+    SET TMP_EMAIL_WINKEY = EMAIL_ADDR_TXT_1
+    SET TMP_PHONE_WINKEY = FULL_PHONE_NUM_1
+    RUN TABLE_RECODING(1,3,2)
+    SET TMP_ADDRESS_WINKEY = TERNARY( TRIM( TMP_ADDRESS_WINKEY) = "~BADKEY~", "~BADKEY~" || _SEQUENCE_NUMBER, TMP_ADDRESS_WINKEY)
+    SET TMP_EMAIL_WINKEY = TERNARY( TRIM( TMP_EMAIL_WINKEY) = "~BADKEY~", "~BADKEY~" || _SEQUENCE_NUMBER, TMP_EMAIL_WINKEY)
+    SET TMP_PHONE_WINKEY = TERNARY( TRIM( TMP_PHONE_WINKEY) = "~BADKEY~", "~BADKEY~" || _SEQUENCE_NUMBER, TMP_PHONE_WINKEY)
+    ENDIF
+    
+    ENDIF
+</CONDITION>
+                  </ENTRY>
+               </ARGUMENTS>
+            </CONDITIONALS>
+         </PARAMETER>
+      </OUTPUT>
+      <PROCESS>
+         <PARAMETER>
+            <PROCESS_SETTINGS>
+               <ARGUMENTS>
+                  <PROCESS_LOG_FILE_NAME>$(LOGS)/p1_pl_tranfrmr_log.txt</PROCESS_LOG_FILE_NAME>
+                  <ENABLE_DEBUG_OUTPUT>0</ENABLE_DEBUG_OUTPUT>
+                  <DEBUG_FILE_NAME>$(DEBUG)/p1_pl_tranfrmr_debug.txt</DEBUG_FILE_NAME>
+                  <MASK_FILE_NAME>$(GENERAL_RESOURCES)/maskfile$(PLAFEXT)</MASK_FILE_NAME>
+                  <STRSUB_TABLE_FILE_NAME>$(GENERAL_RESOURCES)/strsub$(PLAFEXT)</STRSUB_TABLE_FILE_NAME>
+               </ARGUMENTS>
+            </PROCESS_SETTINGS>
+         </PARAMETER>
+      </PROCESS>
+      <STATISTICS>
+         <PARAMETER>
+            <STATISTICS_SETTINGS>
+               <ARGUMENTS>
+                  <STATS_FILE_NAME>$(STATS)/p1_pl_tranfrmr_stats.txt</STATS_FILE_NAME>
+               </ARGUMENTS>
+            </STATISTICS_SETTINGS>
+         </PARAMETER>
+      </STATISTICS>
+   </CATEGORY>
+</TRANFRMR>

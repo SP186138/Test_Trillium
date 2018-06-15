@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DEPMATCH xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+  <SETTINGS_FILE_ENCODING>UTF8</SETTINGS_FILE_ENCODING>
+
+  
+
+<CATEGORY>
+    <INPUT>
+      <PARAMETER>
+        <INPUT_SETTINGS>
+          <ARGUMENTS>
+            <FILE_QUALIFIER>e4_de_srtforpm_p3</FILE_QUALIFIER>
+            <DATA_FILE_NAME>stdin</DATA_FILE_NAME>
+            <DDL_FILE_NAME>$(DDL)/de_srtforpm_p3.ddx</DDL_FILE_NAME>
+               <FILE_DELIMITER/>
+               <USE_QUOTES_AS_QUALIFIER/>
+             
+          <SELECT_RECORDS/>
+</ARGUMENTS>
+        </INPUT_SETTINGS>
+      </PARAMETER>
+    </INPUT>
+    <OUTPUT>
+      <PARAMETER>
+        <OUTPUT_SETTINGS>
+          <ARGUMENTS>
+            <FILE_QUALIFIER>OUTPUT</FILE_QUALIFIER>
+            <DATA_FILE_NAME>stdout</DATA_FILE_NAME>
+            <DDL_FILE_NAME>$(DDL)/de_pmatch_p4.ddx</DDL_FILE_NAME>
+          
+<SELECT_RECORDS/>
+</ARGUMENTS>
+        </OUTPUT_SETTINGS>
+      </PARAMETER>
+    </OUTPUT>
+    <PROCESS>
+      <PARAMETER>
+        <PROCESS_SETTINGS>
+          <ARGUMENTS>
+            <PROCESS_LOG_FILE_NAME>$(LOGS)/p4_de_pmatch_log.txt</PROCESS_LOG_FILE_NAME>
+            <ENABLE_DEBUG_OUTPUT>0</ENABLE_DEBUG_OUTPUT>
+            <DEBUG_FILE_NAME>$(DEBUG)/p4_de_pmatch_debug.txt</DEBUG_FILE_NAME>
+            <MASK_FILE_NAME>$(GENERAL_RESOURCES)/maskfile$(PLAFEXT)</MASK_FILE_NAME>
+            <POSTAL_BASE_DATA_FILE_NAME>$(POSTAL_TABLES)/DEBASE.tbl</POSTAL_BASE_DATA_FILE_NAME>
+            <POSTAL_LEVEL1_DATA_FILE_NAME>$(POSTAL_TABLES)/DEINDEX1.tbl</POSTAL_LEVEL1_DATA_FILE_NAME>
+            <POSTAL_LEVEL2_DATA_FILE_NAME>$(POSTAL_TABLES)/DEINDEX2.tbl</POSTAL_LEVEL2_DATA_FILE_NAME>
+            <POSTAL_AUXILIARY_CITY_FILE_NAME>$(POSTAL_TABLES)/DEACITY.tbl</POSTAL_AUXILIARY_CITY_FILE_NAME>
+            <UPPERCASE_CHARACTER_FILE_NAME>$(TABLES)/code_pages/m819u819.tbl</UPPERCASE_CHARACTER_FILE_NAME>
+            <LOWERCASE_CHARACTER_FILE_NAME>$(TABLES)/code_pages/m819l819.tbl</LOWERCASE_CHARACTER_FILE_NAME>
+          </ARGUMENTS>
+        </PROCESS_SETTINGS>
+      </PARAMETER>
+    </PROCESS>
+    <STATISTICS>
+      <PARAMETER>
+        <STATISTICS_SETTINGS>
+          <ARGUMENTS>
+            <STATS_FILE_NAME>$(STATS)/p4_de_pmatch_stats.txt</STATS_FILE_NAME>
+          </ARGUMENTS>
+        </STATISTICS_SETTINGS>
+      </PARAMETER>
+    </STATISTICS>
+  </CATEGORY>
+
+</DEPMATCH>
+    

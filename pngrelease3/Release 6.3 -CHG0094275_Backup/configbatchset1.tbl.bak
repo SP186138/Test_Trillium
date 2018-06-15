@@ -1,0 +1,9 @@
+DATABASEFOUR  = "E:\TrilliumDeployment\project4\batch"
+DRMDM_INPUT = "\\10.36.32.35\Teradata\MDM\3.05.02\custom\pngrelease3\data"
+DRTSS_OUTPUT = "E:\TrilliumDeployment\png\output"
+BASEDR   = "E:\Program Files (x86)\Trillium Software\TSQuality\13\Software"
+DATABASETEN = "E:\TrilliumDeployment\project10\batch"
+DATABASETHIRTYSEVEN = "E:\TrilliumDeployment\project45\batch"
+DATABASETWOTHREE = "E:\TrilliumDeployment\project23\batch"
+DATABASEFOURFOUR = "E:\TrilliumDeployment\project44\batch"
+

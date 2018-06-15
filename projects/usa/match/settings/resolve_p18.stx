@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RESOLVE xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <SETTINGS_FILE_ENCODING>UTF8</SETTINGS_FILE_ENCODING>
+   
+   
+<CATEGORY>
+      <INPUT>
+         <PARAMETER>
+            <INPUT_SETTINGS>
+               <ARGUMENTS>
+                  <FILE_QUALIFIER>e54_us_tranfrmr_p14</FILE_QUALIFIER>
+                  <DATA_FILE_NAME>stdin</DATA_FILE_NAME>
+                  <DDL_FILE_NAME>$(DDL)/us_tranfrmr_p17.ddx</DDL_FILE_NAME>
+               <FILE_DELIMITER/>
+               <USE_QUOTES_AS_QUALIFIER/>
+             
+
+
+
+<START_RECORD/>
+<MAX_RECORDS/>
+<NTH_SAMPLE/>
+<FROM_LINK_FIELD>FROM_LINK</FROM_LINK_FIELD>
+<TO_LINK_FIELD>TO_LINK</TO_LINK_FIELD>
+<PROCESS_GROUP_RECORDS/>
+<PROCESS_GROUP_MEMORY/>
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+               <SELECT_RECORDS/>
+</ARGUMENTS>
+            </INPUT_SETTINGS>
+         </PARAMETER>
+      </INPUT>
+      <OUTPUT>
+         <PARAMETER>
+            <OUTPUT_SETTINGS>
+               <ARGUMENTS>
+                  <FILE_QUALIFIER>OUTPUT</FILE_QUALIFIER>
+                  <DATA_FILE_NAME>$(OUTPUT)/us_resolve_p18.dat</DATA_FILE_NAME>
+                  <DDL_FILE_NAME>$(DDL)/us_resolve_p18.ddx</DDL_FILE_NAME>
+                  
+               <SELECT_RECORDS/>
+</ARGUMENTS>
+            </OUTPUT_SETTINGS>
+         </PARAMETER>
+      </OUTPUT>
+      <PROCESS>
+         <PARAMETER>
+            <PROCESS_SETTINGS>
+               <ARGUMENTS>
+                  <PROCESS_LOG_FILE_NAME>$(LOGS)/p18_us_resolve_log.txt</PROCESS_LOG_FILE_NAME>
+                  <ENABLE_DEBUG_OUTPUT>0</ENABLE_DEBUG_OUTPUT>
+                  <DEBUG_FILE_NAME>$(DEBUG)/p18_us_resolve_debug.txt</DEBUG_FILE_NAME>
+<INITIAL_RECORDS_IN_MEMORY/>
+<ADDITIONAL_RECORDS_IN_MEMORY/>
+<REPORT_TOP_RESOLVED_GROUPS/>
+<TRACK_LINK/>
+<MAX_CHANGE_ENTRIES/>
+<ADJUST_SORT>L</ADJUST_SORT>
+               </ARGUMENTS>
+            </PROCESS_SETTINGS>
+         </PARAMETER>
+      </PROCESS>
+      <STATISTICS>
+         <PARAMETER>
+            <STATISTICS_SETTINGS>
+               <ARGUMENTS>
+                  <STATS_FILE_NAME>$(STATS)/p18_us_resolve_stats.txt</STATS_FILE_NAME>
+               </ARGUMENTS>
+            </STATISTICS_SETTINGS>
+         </PARAMETER>
+      </STATISTICS>
+   </CATEGORY>
+</RESOLVE>
+    

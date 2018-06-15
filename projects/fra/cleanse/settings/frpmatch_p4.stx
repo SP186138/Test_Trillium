@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TQPMATCH xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <SETTINGS_FILE_ENCODING>UTF8</SETTINGS_FILE_ENCODING>
+   
+   <CATEGORY>
+      <INPUT>
+         <PARAMETER>
+            <INPUT_SETTINGS>
+               <ARGUMENTS>
+                  <FILE_QUALIFIER>e4_fr_srtforpm_p3</FILE_QUALIFIER>
+                  <DATA_FILE_NAME>stdin</DATA_FILE_NAME>
+                  <DDL_FILE_NAME>$(DDL)/fr_srtforpm_p3.ddx</DDL_FILE_NAME>
+               <FILE_DELIMITER/>
+               <USE_QUOTES_AS_QUALIFIER/>
+             
+               <SELECT_RECORDS/>
+</ARGUMENTS>
+            </INPUT_SETTINGS>
+         </PARAMETER>
+      </INPUT>
+      <OUTPUT>
+         <PARAMETER>
+            <OUTPUT_SETTINGS>
+               <ARGUMENTS>
+                  <FILE_QUALIFIER>OUTPUT</FILE_QUALIFIER>
+                  <DATA_FILE_NAME>stdout</DATA_FILE_NAME>
+                  <DDL_FILE_NAME>$(DDL)/fr_pmatch_p4.ddx</DDL_FILE_NAME>
+                  
+               
+<SELECT_RECORDS/>
+</ARGUMENTS>
+            </OUTPUT_SETTINGS>
+         </PARAMETER>
+      </OUTPUT>
+      <PROCESS>
+         <PARAMETER>
+            <PROCESS_SETTINGS>
+               <ARGUMENTS>
+                  <PROCESS_LOG_FILE_NAME>$(LOGS)/p4_fr_pmatch_log.txt</PROCESS_LOG_FILE_NAME>
+<PROCESS_SAMPLE_COUNT/>
+                  <ENABLE_DEBUG_OUTPUT>0</ENABLE_DEBUG_OUTPUT>
+                  <DEBUG_FILE_NAME>$(DEBUG)/p4_fr_pmatch_debug.txt</DEBUG_FILE_NAME>
+                  <MASK_FILE_NAME>$(GENERAL_RESOURCES)/maskfile$(PLAFEXT)</MASK_FILE_NAME>
+
+                  
+                  <POSTAL_BASE_DATA_FILE_NAME>$(POSTAL_TABLES)/FRBASE.tbl</POSTAL_BASE_DATA_FILE_NAME>
+                  <POSTAL_LEVEL1_DATA_FILE_NAME>$(POSTAL_TABLES)/FRINDEX1.tbl</POSTAL_LEVEL1_DATA_FILE_NAME>
+                  <POSTAL_LEVEL2_DATA_FILE_NAME>$(POSTAL_TABLES)/FRINDEX2.tbl</POSTAL_LEVEL2_DATA_FILE_NAME>
+                  <PROVINCE_NAMES_FILE_NAME>$(POSTAL_TABLES)/FRCOUNTY.tbl</PROVINCE_NAMES_FILE_NAME>
+                  <POSTAL_AUXILIARY_CITY_FILE_NAME>$(POSTAL_TABLES)/FRACITY.tbl</POSTAL_AUXILIARY_CITY_FILE_NAME>
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+               
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<DIRECTORY_VERSION>0</DIRECTORY_VERSION>
+<SPELL_STREET>0</SPELL_STREET>
+<STREET_MATCH>Y</STREET_MATCH>
+<DWELLING_MATCH>Y</DWELLING_MATCH>
+<NEIGHBORHOOD_MATCH>Y</NEIGHBORHOOD_MATCH>
+<PROVINCE_MATCH>N</PROVINCE_MATCH>
+<BUSNAME_MATCH>Y</BUSNAME_MATCH>
+<TYPE_MATCH>Y</TYPE_MATCH>
+<DIRECTION_MATCH>N</DIRECTION_MATCH>
+<POSTAL_CODE_MATCH>Y</POSTAL_CODE_MATCH>
+<ACCEPT_SCORE>93</ACCEPT_SCORE>
+<STREET_SCORE>90</STREET_SCORE>
+<NEIGHBORHOOD_SCORE>95</NEIGHBORHOOD_SCORE>
+<BUSNAME_SCORE>95</BUSNAME_SCORE>
+<POSTAL_CODE_LENGTH>5</POSTAL_CODE_LENGTH>
+<ADDRESS_PRIORITY>1</ADDRESS_PRIORITY>
+<DIRECTORY_STYLE>0</DIRECTORY_STYLE>
+<DELIVERY_TYPE>2</DELIVERY_TYPE>
+<DISPLAY_BASEDATA>N</DISPLAY_BASEDATA>
+</ARGUMENTS>
+            </PROCESS_SETTINGS>
+         </PARAMETER>
+      </PROCESS>
+      <STATISTICS>
+         <PARAMETER>
+            <STATISTICS_SETTINGS>
+               <ARGUMENTS>
+                  <STATS_FILE_NAME>$(STATS)/p4_fr_pmatch_stats.txt</STATS_FILE_NAME>
+               </ARGUMENTS>
+            </STATISTICS_SETTINGS>
+         </PARAMETER>
+      </STATISTICS>
+   </CATEGORY>
+</TQPMATCH>
+    

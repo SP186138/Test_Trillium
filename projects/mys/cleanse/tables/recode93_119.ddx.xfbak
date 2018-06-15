@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<RECORD xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+<NAME>recode93_119.dat</NAME>
+<LENGTH>615</LENGTH>
+
+<FIELD>
+    <NAME>Postal_code</NAME>
+    <TYPE>UTF8</TYPE>
+    <STARTS-IN-COLUMN>0</STARTS-IN-COLUMN>
+    <LENGTH>15</LENGTH>
+</FIELD>
+<FIELD>
+    <NAME>terr</NAME>
+    <TYPE>UTF8</TYPE>
+    <STARTS-IN-COLUMN>15</STARTS-IN-COLUMN>
+    <LENGTH>300</LENGTH>
+</FIELD>
+<FIELD>
+    <NAME>city</NAME>
+    <TYPE>UTF8</TYPE>
+    <STARTS-IN-COLUMN>315</STARTS-IN-COLUMN>
+    <LENGTH>300</LENGTH>
+</FIELD>
+</RECORD>
+

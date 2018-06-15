@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TRANFRMR xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+  <SETTINGS_FILE_ENCODING>UTF8</SETTINGS_FILE_ENCODING>
+
+  
+<CATEGORY>
+    <INPUT>
+      <PARAMETER>
+        <INPUT_SETTINGS>
+          <ARGUMENTS>
+            <ENTRY>
+              <ENTRY_ID>1</ENTRY_ID>
+              <FILE_QUALIFIER>e12_ch_tranfrmr_p7</FILE_QUALIFIER>
+                     <DATA_FILE_NAME>$(OUTPUT)/TSS_CLEANSE_OUTPUT_CHE.DAT</DATA_FILE_NAME>
+              <DDL_FILE_NAME>$(DDL)/ch_tranfrmr_p7.ddx</DDL_FILE_NAME>
+                     <FILE_DELIMITER_ENCODING>UTF8</FILE_DELIMITER_ENCODING>
+                     <FILE_DELIMITER>Pipe</FILE_DELIMITER>
+                     <USE_QUOTES_AS_QUALIFIER>N</USE_QUOTES_AS_QUALIFIER>
+             
+             
+              
+              
+              <START_RECORD/>
+              <MAX_RECORDS/>
+              <NTH_SAMPLE/>
+              <FILE_TRACE_KEY/>
+              <EXCEPTIONS_FILE_NAME/>
+              
+              
+              
+            <SELECT_RECORDS/>
+</ENTRY>
+          </ARGUMENTS>
+        </INPUT_SETTINGS>
+
+        
+      </PARAMETER>
+    </INPUT>
+    <OUTPUT>
+      <PARAMETER>
+<OUTPUT_SETTINGS>
+          <ARGUMENTS>
+            <FILE_QUALIFIER>OUTPUT</FILE_QUALIFIER>
+                  <DATA_FILE_NAME>$(OUTPUT)/TSS_WINKEY_OUTPUT_CHE.DAT</DATA_FILE_NAME>
+            <DDL_FILE_NAME>$(DDL)/ch_tranfrmr_p8.ddx</DDL_FILE_NAME>
+                  <FILE_DELIMITER_ENCODING>UTF8</FILE_DELIMITER_ENCODING>
+                  <FILE_DELIMITER>Pipe</FILE_DELIMITER>
+                  <USE_QUOTES_AS_QUALIFIER>N</USE_QUOTES_AS_QUALIFIER>
+                  <USE_FILE_HEADER>0</USE_FILE_HEADER>
+            
+            
+          <SELECT_RECORDS/>
+</ARGUMENTS>
+        </OUTPUT_SETTINGS>
+
+
+
+</PARAMETER>
+    </OUTPUT>
+    <PROCESS>
+      <PARAMETER>
+        <PROCESS_SETTINGS>
+          <ARGUMENTS>
+            <PROCESS_LOG_FILE_NAME>$(LOGS)/p8_ch_tranfrmr_log.txt</PROCESS_LOG_FILE_NAME>
+            <ENABLE_DEBUG_OUTPUT>0</ENABLE_DEBUG_OUTPUT>
+            <DEBUG_FILE_NAME>$(DEBUG)/p8_ch_tranfrmr_debug.txt</DEBUG_FILE_NAME>
+            <MASK_FILE_NAME>$(GENERAL_RESOURCES)/maskfile$(PLAFEXT)</MASK_FILE_NAME>
+<STRSUB_TABLE_FILE_NAME>$(GENERAL_RESOURCES)/strsub$(PLAFEXT)</STRSUB_TABLE_FILE_NAME>
+          </ARGUMENTS>
+        </PROCESS_SETTINGS>
+      </PARAMETER>
+    </PROCESS>
+    <STATISTICS>
+      <PARAMETER>
+        <STATISTICS_SETTINGS>
+          <ARGUMENTS>
+            <STATS_FILE_NAME>$(STATS)/p8_ch_tranfrmr_stats.txt</STATS_FILE_NAME>
+          </ARGUMENTS>
+        </STATISTICS_SETTINGS>
+      </PARAMETER>
+    </STATISTICS>
+  </CATEGORY>
+
+</TRANFRMR>

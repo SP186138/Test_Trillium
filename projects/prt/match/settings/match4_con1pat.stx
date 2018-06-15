@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<CONSUMER_LEVEL1_PATTERN_SETTINGS xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <ARGUMENTS>
+        <ENTRY>
+            <!--           -           -->
+            <PATTERN>F001-----D-----</PATTERN>
+            <!--           -           -->
+            <PATTERN>F002-------B---</PATTERN>
+            <!--        -        -->
+            <PATTERN>F005-D-D--B----</PATTERN>
+            <!--        -        -->
+            <PATTERN>F006-D-D--D----</PATTERN>
+            <PATTERN>P100AAAAAA--AA-</PATTERN>
+            <!--               -               -->
+            <PATTERN>P101-----A--AAA</PATTERN>
+            <!--              -              -->
+            <PATTERN>P105---A-AA-AA-</PATTERN>
+            <PATTERN>P102A-AAAAA-AA-</PATTERN>
+            <PATTERN>P110AAAABA--AA-</PATTERN>
+            <PATTERN>P112A-AABAA-AA-</PATTERN>
+            <PATTERN>P120AAAACA--AA-</PATTERN>
+            <PATTERN>P122A-AACAA-AA-</PATTERN>
+            <PATTERN>P128AAAA-A--AA-</PATTERN>
+            <PATTERN>P130AABAAA--AA-</PATTERN>
+            <PATTERN>P132A-BAAAA-AA-</PATTERN>
+            <PATTERN>P140AABABA--AA-</PATTERN>
+            <PATTERN>P142A-BABAA-AA-</PATTERN>
+            <PATTERN>P150AABA-A--AA-</PATTERN>
+            <PATTERN>P156AACAAA--AA-</PATTERN>
+            <PATTERN>P158A-CAAAA-AA-</PATTERN>
+            <PATTERN>P166AACABA--AA-</PATTERN>
+            <PATTERN>P168A-CABAA-AA-</PATTERN>
+            <PATTERN>P170AACACA--AA-</PATTERN>
+            <PATTERN>P172AACA-A--AA-</PATTERN>
+            <PATTERN>P174AADAAA--AA-</PATTERN>
+            <PATTERN>P176A-DAAAA-AA-</PATTERN>
+            <PATTERN>P182AADABA--AA-</PATTERN>
+            <PATTERN>P184A-DABAA-AA-</PATTERN>
+            <PATTERN>P190AADACA--AA-</PATTERN>
+            <PATTERN>P192AA-AAA--AA-</PATTERN>
+            <PATTERN>P196ABAAAA--AA-</PATTERN>
+            <PATTERN>P200ABAABA--AA-</PATTERN>
+            <PATTERN>P208ABAACA--AA-</PATTERN>
+            <PATTERN>P210ABBAAA--AA-</PATTERN>
+            <PATTERN>P216ABBABA--AA-</PATTERN>
+            <PATTERN>P222ABCAAA--AA-</PATTERN>
+            <PATTERN>P228ABCABA--AA-</PATTERN>
+            <PATTERN>P232ABDAAA--AA-</PATTERN>
+            <PATTERN>P238ABDABA--AA-</PATTERN>
+            <PATTERN>P242ACAAAA--AA-</PATTERN>
+            <PATTERN>P248ACAABA--AA-</PATTERN>
+            <PATTERN>P254ACBAAA--AA-</PATTERN>
+            <PATTERN>P260ACBABA--AA-</PATTERN>
+            <PATTERN>P266ACCAAA--AA-</PATTERN>
+            <PATTERN>P272ACCABA--AA-</PATTERN>
+            <PATTERN>P274BAAAAA--AA-</PATTERN>
+            <PATTERN>P276B-AAAAA-AA-</PATTERN>
+            <PATTERN>P284BAAABA--AA-</PATTERN>
+            <PATTERN>P286B-AABAA-AA-</PATTERN>
+            <PATTERN>P294BAAACA--AA-</PATTERN>
+            <PATTERN>P296B-AACAA-AA-</PATTERN>
+            <PATTERN>P302BABAAA--AA-</PATTERN>
+            <PATTERN>P304B-BAAAA-AA-</PATTERN>
+            <PATTERN>P314B-BABAA-AA-</PATTERN>
+            <PATTERN>P316BABABA--AA-</PATTERN>
+            <PATTERN>P322BABACA--AA-</PATTERN>
+            <PATTERN>P328B-BACAA-AA-</PATTERN>
+            <PATTERN>P332BACAAA--AA-</PATTERN>
+            <PATTERN>P334B-CAAAA-AA-</PATTERN>
+            <PATTERN>P344BACABA--AA-</PATTERN>
+            <PATTERN>P346B-CABAA-AA-</PATTERN>
+            <PATTERN>P354BBAAAA--AA-</PATTERN>
+            <PATTERN>P358BBAABA--AA-</PATTERN>
+            <PATTERN>P362BBAACA--AA-</PATTERN>
+            <PATTERN>P364CAAAAA--AA-</PATTERN>
+            <PATTERN>P366C-AAAAA-AA-</PATTERN>
+            <PATTERN>P374CAAABA--AA-</PATTERN>
+            <PATTERN>P376C-AABAA-AA-</PATTERN>
+            <PATTERN>P386CABAAA--AA-</PATTERN>
+            <PATTERN>P388C-BAAAA-AA-</PATTERN>
+            <PATTERN>P396CACAAA--AA-</PATTERN>
+            <PATTERN>P398C-CAAAA-AA-</PATTERN>
+            <PATTERN>P406CBAAAA--AA-</PATTERN>
+            <PATTERN>P412CBBAAA--AA-</PATTERN>
+            <PATTERN>P418CBCAAA--AA-</PATTERN>
+            <PATTERN>P422CBCAA---AA-</PATTERN>
+            <PATTERN>F999-----------</PATTERN>
+        </ENTRY>
+    </ARGUMENTS>
+</CONSUMER_LEVEL1_PATTERN_SETTINGS>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<RECORD xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+<NAME>recode93_119.dat</NAME>
+<LENGTH>110</LENGTH>
+
+<FIELD>
+    <NAME>Country_Name</NAME>
+    <TYPE>UTF8</TYPE>
+    <STARTS-IN-COLUMN>0</STARTS-IN-COLUMN>
+    <LENGTH>100</LENGTH>
+</FIELD>
+<FIELD>
+    <NAME>Country_Code</NAME>
+    <TYPE>UTF8</TYPE>
+    <STARTS-IN-COLUMN>100</STARTS-IN-COLUMN>
+    <LENGTH>10</LENGTH>
+</FIELD>
+
+</RECORD>
+

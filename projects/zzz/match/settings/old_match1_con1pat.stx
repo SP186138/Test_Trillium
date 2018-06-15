@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<CONSUMER_LEVEL1_PATTERN_SETTINGS xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <ARGUMENTS>
+        <ENTRY>
+            <PATTERN>F990---BB-</PATTERN>
+            <PATTERN>P100AAA---</PATTERN>
+            <PATTERN>P105AAC---</PATTERN>
+            <PATTERN>P130AAB---</PATTERN>
+            <PATTERN>P135ACA---</PATTERN>
+            <PATTERN>P140ACC---</PATTERN>
+            <PATTERN>P145ACB--C</PATTERN>
+            <PATTERN>P155ADB--C</PATTERN>
+            <PATTERN>P160ADA--C</PATTERN>
+            <PATTERN>S165AAD---</PATTERN>
+            <PATTERN>S175BAD---</PATTERN>
+            <PATTERN>S180ABD---</PATTERN>
+            <PATTERN>F185ADD---</PATTERN>
+            <PATTERN>F215BBD---</PATTERN>
+            <PATTERN>F220BDD---</PATTERN>
+            <PATTERN>F245CAD---</PATTERN>
+            <PATTERN>F250CBD---</PATTERN>
+            <PATTERN>P260AA----</PATTERN>
+            <PATTERN>P270BA----</PATTERN>
+            <PATTERN>P275AB----</PATTERN>
+            <PATTERN>S280AD----</PATTERN>
+            <PATTERN>S310BB----</PATTERN>
+            <PATTERN>S315BC----</PATTERN>
+            <PATTERN>S340CA----</PATTERN>
+            <PATTERN>S345CB----</PATTERN>
+            <PATTERN>F410BD----</PATTERN>
+            <PATTERN>S455AC----</PATTERN>
+            <PATTERN>F999------</PATTERN>
+        </ENTRY>
+    </ARGUMENTS>
+</CONSUMER_LEVEL1_PATTERN_SETTINGS>

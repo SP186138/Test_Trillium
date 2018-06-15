@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GLLATLON xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+  <SETTINGS_FILE_ENCODING>UTF8</SETTINGS_FILE_ENCODING>
+
+  
+
+<CATEGORY>
+    <INPUT>
+      <PARAMETER>
+        <INPUT_SETTINGS>
+          <ARGUMENTS>
+            <FILE_QUALIFIER>de_drtranfrmr_p5</FILE_QUALIFIER>
+            <DATA_FILE_NAME>stdin</DATA_FILE_NAME>
+            <DDL_FILE_NAME>$(DDL)/de_drtranfrmr_p5.ddx</DDL_FILE_NAME>
+               <FILE_DELIMITER/>
+               <USE_QUOTES_AS_QUALIFIER/>
+             
+          <SELECT_RECORDS/>
+</ARGUMENTS>
+        </INPUT_SETTINGS>
+      </PARAMETER>
+    </INPUT>
+    <OUTPUT>
+      <PARAMETER>
+        <OUTPUT_SETTINGS>
+          <ARGUMENTS>
+            <FILE_QUALIFIER>OUTPUT</FILE_QUALIFIER>
+            <DATA_FILE_NAME>stdout</DATA_FILE_NAME>
+            <DDL_FILE_NAME>$(DDL)/de_gllatlon_p6.ddx</DDL_FILE_NAME>
+          <SELECT_RECORDS/>
+</ARGUMENTS>
+        </OUTPUT_SETTINGS>
+      </PARAMETER>
+    </OUTPUT>
+    <PROCESS>
+      <PARAMETER>
+        <PROCESS_SETTINGS>
+          <ARGUMENTS>
+            <PROCESS_LOG_FILE_NAME>$(LOGS)/p6_de_gllatlon_log.txt</PROCESS_LOG_FILE_NAME>
+            <ENABLE_DEBUG_OUTPUT>0</ENABLE_DEBUG_OUTPUT>
+            <DEBUG_FILE_NAME>$(DEBUG)/p6_de_gllatlon_debug.txt</DEBUG_FILE_NAME>
+            <PROCESS_COUNTRY>DE</PROCESS_COUNTRY>
+<GL_INI_FILE_PATH>$(SOFTWARE)/bin</GL_INI_FILE_PATH>
+<EXHAUSTIVE_ENHANCEMENT/>
+
+
+            
+            
+            <ENTRY>
+              <ENTRY_ID>31</ENTRY_ID>
+              <INPUT_FIELD_NAME>DE_GOUT_STATE</INPUT_FIELD_NAME>
+              <GLOBAL_FIELD_NAME>Region</GLOBAL_FIELD_NAME>
+            </ENTRY>
+            <ENTRY>
+              <ENTRY_ID>32</ENTRY_ID>
+              <INPUT_FIELD_NAME>DE_GOUT_CITY_NAME</INPUT_FIELD_NAME>
+              <GLOBAL_FIELD_NAME>City</GLOBAL_FIELD_NAME>
+            </ENTRY>
+            <ENTRY>
+              <ENTRY_ID>33</ENTRY_ID>
+              <INPUT_FIELD_NAME>DE_GOUT_POSTAL_CODE</INPUT_FIELD_NAME>
+              <GLOBAL_FIELD_NAME>Postcode</GLOBAL_FIELD_NAME>
+            </ENTRY>
+            <ENTRY>
+              <ENTRY_ID>34</ENTRY_ID>
+              <INPUT_FIELD_NAME>DE_GOUT_STREET_NAME</INPUT_FIELD_NAME>
+              <GLOBAL_FIELD_NAME>Street</GLOBAL_FIELD_NAME>
+            </ENTRY>
+            <ENTRY>
+              <ENTRY_ID>35</ENTRY_ID>
+              <INPUT_FIELD_NAME>DE_GOUT_HOUSE_NUMBER</INPUT_FIELD_NAME>
+              <GLOBAL_FIELD_NAME>Premise</GLOBAL_FIELD_NAME>
+            </ENTRY>
+          </ARGUMENTS>
+        </PROCESS_SETTINGS>
+      </PARAMETER>
+    </PROCESS>
+    <SAVED_FIELDS>
+      <PARAMETER>
+        <SAVED_FIELDS_SETTINGS>
+          <ARGUMENTS>
+            <ENTRY>
+              <ENTRY_ID>41</ENTRY_ID>
+              <GLOBAL_FIELD_NAME>reserved</GLOBAL_FIELD_NAME>
+              <OUTPUT_FIELD_NAME>GL_ACCURACY</OUTPUT_FIELD_NAME>
+            </ENTRY>
+            <ENTRY>
+              <ENTRY_ID>42</ENTRY_ID>
+              <GLOBAL_FIELD_NAME>Latitude</GLOBAL_FIELD_NAME>
+              <OUTPUT_FIELD_NAME>GL_LATITUDE</OUTPUT_FIELD_NAME>
+            </ENTRY>
+            <ENTRY>
+              <ENTRY_ID>43</ENTRY_ID>
+              <GLOBAL_FIELD_NAME>Longitude</GLOBAL_FIELD_NAME>
+              <OUTPUT_FIELD_NAME>GL_LONGITUDE</OUTPUT_FIELD_NAME>
+            </ENTRY>
+            <ENTRY>
+              <ENTRY_ID>45</ENTRY_ID>
+              <GLOBAL_FIELD_NAME>reserved</GLOBAL_FIELD_NAME>
+              <OUTPUT_FIELD_NAME>GL_MATCH_FLAG</OUTPUT_FIELD_NAME>
+            </ENTRY>
+          </ARGUMENTS>
+        </SAVED_FIELDS_SETTINGS>
+      </PARAMETER>
+    </SAVED_FIELDS>
+    <STATISTICS>
+      <PARAMETER>
+        <STATISTICS_SETTINGS>
+          <ARGUMENTS>
+            <STATS_FILE_NAME>$(STATS)/p6_de_gllatlon_stats.txt</STATS_FILE_NAME>
+          </ARGUMENTS>
+        </STATISTICS_SETTINGS>
+      </PARAMETER>
+    </STATISTICS>
+  </CATEGORY>
+
+</GLLATLON>
+    

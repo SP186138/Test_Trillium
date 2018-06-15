@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONSUMER_LEVEL2_FIELD_SETTINGS xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <ARGUMENTS>
+        <ENTRY>
+            <DESCRIPTION>Legal Entity Number</DESCRIPTION>
+            <SCORE>100</SCORE>
+            <ROUTINE>partial1</ROUTINE>
+            <FIELD_NAME>LEGAL_ENT_NBR</FIELD_NAME>
+        </ENTRY>
+        <ENTRY>
+            <DESCRIPTION>Marketing Program Number</DESCRIPTION>
+            <SCORE>100</SCORE>
+            <ROUTINE>partial1</ROUTINE>
+            <FIELD_NAME>MKTNG_PGM_NBR</FIELD_NAME>
+        </ENTRY>
+        <ENTRY>
+            <DESCRIPTION>Dpend Name</DESCRIPTION>
+            <SCORE>100</SCORE>
+            <SCORE>65</SCORE>
+            <ROUTINE>partial1</ROUTINE>
+            <ROUTINE>nonblank</ROUTINE>
+            <FIELD_NAME>DPEND_NAME</FIELD_NAME>
+        </ENTRY>
+        <ENTRY>
+            <DESCRIPTION>Pet Name</DESCRIPTION>
+            <SCORE>100</SCORE>
+            <SCORE>65</SCORE>
+            <ROUTINE>partial1</ROUTINE>
+            <ROUTINE>nonblank</ROUTINE>
+            <FIELD_NAME>PET_NAME</FIELD_NAME>
+        </ENTRY>
+    </ARGUMENTS>
+</CONSUMER_LEVEL2_FIELD_SETTINGS>

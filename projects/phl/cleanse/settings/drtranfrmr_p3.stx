@@ -1,0 +1,372 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TRANFRMR xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+  <SETTINGS_FILE_ENCODING>UTF8</SETTINGS_FILE_ENCODING>
+
+  
+
+
+
+
+
+
+<CATEGORY>
+
+    <INPUT>
+      <PARAMETER>
+        <INPUT_SETTINGS>
+          <ARGUMENTS>
+<ENTRY>
+<ENTRY_ID>1</ENTRY_ID>
+<FILE_QUALIFIER>ph_geocoder_p7</FILE_QUALIFIER>
+<DATA_FILE_NAME>stdin</DATA_FILE_NAME>
+<DDL_FILE_NAME>$(DDL)/ph_gllatlon_p7.ddx</DDL_FILE_NAME>
+               <FILE_DELIMITER/>
+               <USE_QUOTES_AS_QUALIFIER/>
+             
+
+<START_RECORD/>
+<MAX_RECORDS/>
+<NTH_SAMPLE/>
+
+
+<SELECT_RECORDS/>
+</ENTRY>
+</ARGUMENTS>
+        </INPUT_SETTINGS>
+
+        
+      </PARAMETER>
+    </INPUT>
+    <OUTPUT>
+      <PARAMETER>
+<OUTPUT_SETTINGS>
+          <ARGUMENTS>
+            <FILE_QUALIFIER>OUTPUT</FILE_QUALIFIER>
+            <DATA_FILE_NAME>stdout</DATA_FILE_NAME>
+            <DDL_FILE_NAME>$(DDL)/ph_drtranfrmr_p3.ddx</DDL_FILE_NAME>
+            
+          <SELECT_RECORDS/>
+</ARGUMENTS>
+        </OUTPUT_SETTINGS>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<CONDITIONALS>
+<ARGUMENTS>
+<ENTRY>
+   <ENTRY_ID>1</ENTRY_ID>
+   <FOR_FILES>OUTPUT</FOR_FILES>
+   <CONDITION>
+   /*
+   /* ENTRY ID/SUBROUTINE LIST:
+   /*   1. main
+   /*   2. phl_use_original_street
+   /*   3. phl_use_parsed_street
+   /*   4. set_address_case
+   /*   5. set_name_fields
+   /*
+/* +----------------------------------------------------------------------------+
+/* | ROUTINE: phl_cleanse                                           PHILIPPINES |
+/* +----------------------------------------------------------------------------+
+/*
+   IF(ALWAYS)
+      RUN FIELD_SCANNING(ALL)
+      RUN TABLE_RECODING(ALL)
+      /* fill name fields
+      RUN SUBROUTINE(5)
+      SET dr_alias_contact = UCASE(GVN_NAME)
+      IF(PR_REV_GROUP IN ("000","009","010"))
+         SET dr_cleanse_level = "1"
+         RUN SUBROUTINE(3)
+         SET dr_city_name   = PR_CITY_NAME_RECODED
+         SET dr_region_name = PR_STATE_RECODED
+         SET dr_postal_code = PR_POSTAL_CODE
+      ELSE
+         IF(PR_REV_GROUP IN ("018"))
+            SET dr_cleanse_level = "1"
+            RUN SUBROUTINE(3)
+         ELSE
+            SET dr_cleanse_level = "0"
+            RUN SUBROUTINE(2)
+         ENDIF
+         SET dr_city_name   = TCASE(CITY_NAME)
+         SET dr_region_name = UCASE(TRIM(TERR_NAME))
+         SET dr_postal_code = POSTL_AREA_CODE
+      ENDIF
+      RUN SUBROUTINE(4)
+      SET DR_COUNTRY       = "PH"
+      SET DR_COUNTRY_NAME  = "PHL"
+   ENDIF
+   </CONDITION>
+</ENTRY>
+<ENTRY>
+   <ENTRY_ID>2</ENTRY_ID>
+   <FOR_FILES>OUTPUT</FOR_FILES>
+   <CONDITION>SUBROUTINE
+   /* SUBROUTINE: phl_use_original_street
+/* +----------------------------------------------------------------------------+
+/* | SUBROUTINE: phl_use_original_street                                        |
+/* +----------------------------------------------------------------------------+
+/*
+/*   Build street output from elmentized original data.
+/*
+   IF(ALWAYS)
+      IF(STRET_NAME != "")
+         SET dr_street_name   = TRIM(STRET_NAME)
+         SET dr_house_number2 = TRIM(APT_NUM)
+         SET dr_house_number1 = TRIM(STRET_NUM)
+      ELSEIF(PO_BOX_NUM != "")
+         SET dr_house_number1 = PO_BOX_NUM
+         SET dr_street_name   = "PO BOX"
+      ENDIF
+      IF(STRET_NAME != "")
+         SET dr_address  = TRIM(TRIM(dr_house_number1) |: TRIM(dr_street_name)  |: dr_house_number2)
+      ELSE
+         SET dr_address  = TRIM(ADDR_LINE_1_TXT)
+         SET dr_address2 = TRIM(ADDR_LINE_2_TXT)
+         SET dr_address3 = TRIM(ADDR_LINE_3_TXT)
+      ENDIF
+   ENDIF
+   </CONDITION>
+</ENTRY>
+<ENTRY>
+   <ENTRY_ID>3</ENTRY_ID>
+   <FOR_FILES>OUTPUT</FOR_FILES>
+   <CONDITION>SUBROUTINE
+   /* SUBROUTINE: phl_use_parsed_street
+/* +----------------------------------------------------------------------------+
+/* | SUBROUTINE: phl_use_parsed_street                                          |
+/* +----------------------------------------------------------------------------+
+/*
+/*   Use Parsed output for street address fields.
+/*
+   IF(ALWAYS)
+      IF(PR_STREET_NAME_RECODED != "")
+         SET dr_house_number1 = PR_HOUSE_NUMBER_RECODED
+         SET dr_street_name   = TRIM(TRIM(PR_STREET_NAME_RECODED) |: PR_STREET_TYPE1_RECODED)
+      ELSE
+         SET dr_house_number1 = PR_BEST_STREET_NUMBER
+         SET dr_street_name   = PR_BEST_STREET_NAME
+      ENDIF
+      SET dr_house_number2 = TRIM(TRIM(PR_DWELLING1_NAME_RECODED) |: TRIM(PR_DWELLING1_NUMBER) |: TRIM(PR_DWELLING2_NAME_RECODED) |: PR_DWELLING2_NUMBER)
+      SET dr_building      = TRIM(TRIM(PR_COMPLEX1_NAME_RECODED) |: PR_COMPLEX1_TYPE_RECODED)
+      IF(PR_STREET_NAME_RECODED != "")
+         SET dr_address    = TRIM(TRIM(dr_house_number1) |: TRIM(dr_street_name)  |: dr_house_number2)
+         SET dr_address2   = dr_building
+      ELSEIF(ph_geocoder_p7.PR_BOX1_TYPE != "")
+         SET dr_address    = TRIM(TRIM(ph_geocoder_p7.PR_BOX1_NAME_RECODED) |: ph_geocoder_p7.PR_BOX1_NUMBER)
+         SET dr_address2   = TRIM(TRIM(dr_building) |: dr_house_number2)
+      ELSEIF(ph_geocoder_p7.PR_ROUTE_NUMBER_TYPE != "")
+         SET dr_address    = TRIM(TRIM(ph_geocoder_p7.PR_ROUTE_NAME_RECODED) |: ph_geocoder_p7.PR_ROUTE_NUMBER)
+         SET dr_address2   = TRIM(TRIM(dr_building) |: dr_house_number2)
+      ENDIF
+   ENDIF
+   </CONDITION>
+</ENTRY>
+<ENTRY>
+   <ENTRY_ID>4</ENTRY_ID>
+   <FOR_FILES>OUTPUT</FOR_FILES>
+   <CONDITION>SUBROUTINE
+   /* SUBROUTINE: set_address_case
+/* +----------------------------------------------------------------------------+
+/* | SUBROUTINE: set_address_case                                               |
+/* +----------------------------------------------------------------------------+
+/*
+   IF(ALWAYS)
+      SET dr_house_number2 = TCASE(DR_HOUSE_NUMBER2)
+      SET dr_street_name   = TCASE(DR_STREET_NAME)
+      SET dr_city_name     = TCASE(DR_CITY_NAME)
+      SET dr_region_name   = UCASE(DR_REGION_NAME)
+      SET dr_address       = TCASE(DR_ADDRESS)
+      SET dr_address2      = TCASE(DR_ADDRESS2)
+      SET dr_address3      = TCASE(DR_ADDRESS3)
+   ENDIF
+   </CONDITION>
+</ENTRY>
+<ENTRY>
+   <ENTRY_ID>5</ENTRY_ID>
+   <FOR_FILES>OUTPUT</FOR_FILES>
+   <CONDITION>SUBROUTINE
+   /* SUBROUTINE: set_name_fields
+/* +----------------------------------------------------------------------------+
+/* | SUBROUTINE: set_name_fields                                                |
+/* +----------------------------------------------------------------------------+
+/*
+/*   This is the original "set_name_fields" routine used by americas.
+/*
+   IF(ALWAYS)
+      SET dr_business_name = TCASE(PR_BUSNAME_ORIGINAL_01)
+      SET dr_alias_account = PR_BUSNAME_RECODED_01
+      SET dr_alias_contact = PR_GIVEN_NAME1_RECODED_01
+      SET dr_mrmrs         = TRIM(TCASE(NAME_PREFX_TXT))
+      SET dr_first_name    = TRIM(TCASE(GVN_NAME))
+      SET dr_middle_name   = TRIM(TCASE(MID_NAME))
+      SET dr_last_name     = TRIM(TCASE(FAMLY_NAME))
+      SET dr_name_gender   = TRIM(UCASE(GENDR_IND))
+      SET dr_name_suffix   = TRIM(TCASE(NAME_SUFFX_TXT))
+   ENDIF
+   </CONDITION>
+</ENTRY>
+</ARGUMENTS>
+</CONDITIONALS>
+</PARAMETER>
+    </OUTPUT>
+    <PROCESS>
+      <PARAMETER>
+        <PROCESS_SETTINGS>
+          <ARGUMENTS>
+            <PROCESS_LOG_FILE_NAME>$(LOGS)/p3_ph_drtranfrmr_log.txt</PROCESS_LOG_FILE_NAME>
+            <ENABLE_DEBUG_OUTPUT>N</ENABLE_DEBUG_OUTPUT>
+            <DEBUG_FILE_NAME>$(DEBUG)/p3_ph_drtranfrmr_debug.txt</DEBUG_FILE_NAME>
+            <MASK_FILE_NAME>$(GENERAL_RESOURCES)/maskfile$(PLAFEXT)</MASK_FILE_NAME>
+<STRSUB_TABLE_FILE_NAME>$(GENERAL_RESOURCES)/strsub$(PLAFEXT)</STRSUB_TABLE_FILE_NAME>
+          </ARGUMENTS>
+        </PROCESS_SETTINGS>
+      </PARAMETER>
+    </PROCESS>
+    <STATISTICS>
+      <PARAMETER>
+        <STATISTICS_SETTINGS>
+          <ARGUMENTS>
+            <STATS_FILE_NAME>$(STATS)/p3_ph_drtranfrmr_stats.txt</STATS_FILE_NAME>
+          </ARGUMENTS>
+        </STATISTICS_SETTINGS>
+      </PARAMETER>
+    </STATISTICS>
+  </CATEGORY>
+
+</TRANFRMR>
+    

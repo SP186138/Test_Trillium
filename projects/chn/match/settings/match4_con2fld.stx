@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONSUMER_LEVEL2_FIELD_SETTINGS xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <ARGUMENTS>
+        <ENTRY>
+            <DESCRIPTION>Legal Entity Number</DESCRIPTION>
+            <SCORE>100</SCORE>
+            <ROUTINE>absolute</ROUTINE>
+            <FIELD_NAME>LEGAL_ENT_NBR</FIELD_NAME>
+        </ENTRY>
+        <ENTRY>
+            <DESCRIPTION>mktg prg nbr</DESCRIPTION>
+            <SCORE>99</SCORE>
+            <SCORE>97</SCORE>
+            <SCORE>95</SCORE>
+            <SCORE>0</SCORE>
+            <ROUTINE>absolute</ROUTINE>
+            <FIELD_NAME>MKTNG_PGM_NBR</FIELD_NAME>
+            <ROUTINE_MODIFIER>UC</ROUTINE_MODIFIER>
+        </ENTRY>
+        <ENTRY>
+            <DESCRIPTION>Dpend Name</DESCRIPTION>
+            <SCORE>98</SCORE>
+            <SCORE>96</SCORE>
+            <SCORE>90</SCORE>
+            <ROUTINE>frstname</ROUTINE>
+            <FIELD_NAME>DPEND_NAME</FIELD_NAME>
+        </ENTRY>
+        <ENTRY>
+            <DESCRIPTION>Pet Name</DESCRIPTION>
+            <SCORE>98</SCORE>
+            <SCORE>96</SCORE>
+            <SCORE>90</SCORE>
+            <ROUTINE>frstname</ROUTINE>
+            <FIELD_NAME>PET_NAME</FIELD_NAME>
+        </ENTRY>
+    </ARGUMENTS>
+</CONSUMER_LEVEL2_FIELD_SETTINGS>

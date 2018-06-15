@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TRANFRMR xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <SETTINGS_FILE_ENCODING>UTF8</SETTINGS_FILE_ENCODING>
+   
+   
+<CATEGORY>
+      
+      <INPUT>
+         <PARAMETER>
+            <INPUT_SETTINGS>
+               <ARGUMENTS>
+                  <ENTRY>
+                     <ENTRY_ID>1</ENTRY_ID>
+                     <FILE_QUALIFIER>e57_jp_rellinkref_p19</FILE_QUALIFIER>
+                     <DATA_FILE_NAME>stdin</DATA_FILE_NAME>
+                     <DDL_FILE_NAME>$(DDL)/jp_rellinkref_p21.ddx</DDL_FILE_NAME>
+               <FILE_DELIMITER/>
+               <USE_QUOTES_AS_QUALIFIER/>
+             
+                     
+                     
+                     <START_RECORD/>
+                     <MAX_RECORDS/>
+                     <NTH_SAMPLE/>
+                     <FILE_TRACE_KEY/>
+                     <EXCEPTIONS_FILE_NAME/>
+                     
+                     
+                     
+                  <SELECT_RECORDS>ALWAYS</SELECT_RECORDS>
+</ENTRY>
+               </ARGUMENTS>
+            </INPUT_SETTINGS>
+            
+            <CONDITIONALS>
+               <ARGUMENTS>
+                  <ENTRY>
+                     <ENTRY_ID>1</ENTRY_ID>
+                     <FOR_FILES>e57_jp_rellinkref_p19</FOR_FILES>
+                     <CONDITION>IF (ALWAYS)
+        IF (ALWAYS)
+    SET REFERENCE_LEGAL_ENTITY_KEY = REFERENCE_LEVEL1_KEY
+    SET REFERENCE_REGISTRATION_KEY = REFERENCE_LEVEL2_KEY
+    ENDIF
+    
+    ENDIF</CONDITION>
+                  </ENTRY>
+               </ARGUMENTS>
+            </CONDITIONALS>
+         </PARAMETER>
+      </INPUT>
+      <OUTPUT>
+         <PARAMETER>
+            <OUTPUT_SETTINGS>
+               <ARGUMENTS>
+                  <FILE_QUALIFIER>OUTPUT</FILE_QUALIFIER>
+             <DATA_FILE_NAME>$(INPUT)/TSS_MATCH_OUTPUT_JPN.DAT</DATA_FILE_NAME>
+                  <DDL_FILE_NAME>$(DDL)/jp_tranfrmr_p22.ddx</DDL_FILE_NAME>
+                  <FILE_DELIMITER_ENCODING>UTF8</FILE_DELIMITER_ENCODING>
+                  <FILE_DELIMITER>Pipe</FILE_DELIMITER>
+                  <USE_QUOTES_AS_QUALIFIER>N</USE_QUOTES_AS_QUALIFIER>
+                  <USE_FILE_HEADER>0</USE_FILE_HEADER>
+                  
+               <SELECT_RECORDS>ALWAYS</SELECT_RECORDS>
+</ARGUMENTS>
+            </OUTPUT_SETTINGS>
+            
+            
+            <CONDITIONALS>
+               <ARGUMENTS>
+                  <ENTRY>
+                     <ENTRY_ID>1</ENTRY_ID>
+                     <FOR_FILES>OUTPUT</FOR_FILES>
+                     <CONDITION>IF (ALWAYS)
+        IF (SUBSTR(REFERENCE_HOUSEHOLD_ID , 0 , 6) = "999999")
+    SET REFERENCE_HOUSEHOLD_ID = "HH" || SUBSTR(REFERENCE_HOUSEHOLD_ID , 6 , 10)
+    ENDIF
+    IF (SUBSTR(REFERENCE_LEGAL_ENTITY_KEY , 0 , 6) = "999999")
+    SET REFERENCE_LEGAL_ENTITY_KEY = "LE" || SUBSTR(REFERENCE_LEGAL_ENTITY_KEY , 6 , 10)
+    ENDIF
+    IF (SUBSTR(REFERENCE_REGISTRATION_KEY , 0 , 6) = "999999")
+    SET REFERENCE_REGISTRATION_KEY = "RG" || SUBSTR(REFERENCE_REGISTRATION_KEY , 6 , 10)
+    ENDIF
+    
+    ENDIF</CONDITION>
+                  </ENTRY>
+               </ARGUMENTS>
+            </CONDITIONALS>
+         </PARAMETER>
+      </OUTPUT>
+      <PROCESS>
+         <PARAMETER>
+            <PROCESS_SETTINGS>
+               <ARGUMENTS>
+                  <PROCESS_LOG_FILE_NAME>$(LOGS)/p22_jp_tranfrmr_log.txt</PROCESS_LOG_FILE_NAME>
+                  <ENABLE_DEBUG_OUTPUT>0</ENABLE_DEBUG_OUTPUT>
+                  <DEBUG_FILE_NAME>$(DEBUG)/p22_jp_tranfrmr_debug.txt</DEBUG_FILE_NAME>
+                  <MASK_FILE_NAME>$(GENERAL_RESOURCES)/maskfile$(PLAFEXT)</MASK_FILE_NAME>
+                  <STRSUB_TABLE_FILE_NAME>$(GENERAL_RESOURCES)/strsub$(PLAFEXT)</STRSUB_TABLE_FILE_NAME>
+               </ARGUMENTS>
+            </PROCESS_SETTINGS>
+         </PARAMETER>
+      </PROCESS>
+      <STATISTICS>
+         <PARAMETER>
+            <STATISTICS_SETTINGS>
+               <ARGUMENTS>
+                  <STATS_FILE_NAME>$(STATS)/p22_jp_tranfrmr_stats.txt</STATS_FILE_NAME>
+               </ARGUMENTS>
+            </STATISTICS_SETTINGS>
+         </PARAMETER>
+      </STATISTICS>
+   </CATEGORY>
+</TRANFRMR>
+    

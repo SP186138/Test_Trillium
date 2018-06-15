@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<CONSUMER_LEVEL1_PATTERN_SETTINGS xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <ARGUMENTS>
+        <ENTRY>
+            <!--         -         -->
+            <PATTERN>P100A--AA-A--</PATTERN>
+            <!--              -              -->
+            <PATTERN>P101AA-AA----</PATTERN>
+            <!--             -             -->
+            <PATTERN>P102--AAA----</PATTERN>
+            <!--     -     -->
+            <PATTERN>P103AA--A-A--</PATTERN>
+            <!--     -     -->
+            <PATTERN>P104A-A-A-A--</PATTERN>
+            <PATTERN>P105AACAA----</PATTERN>
+            <!--            -            -->
+            <PATTERN>P120---AA-AAA</PATTERN>
+            <!--            -            -->
+            <PATTERN>P121---AA-ABA</PATTERN>
+            <!--           -           -->
+            <PATTERN>P124---AA-A--</PATTERN>
+            <!--           -           -->
+            <PATTERN>P125AAAAA-A--</PATTERN>
+            <!--         -         -->
+            <PATTERN>P127AAAAA-AAA</PATTERN>
+            <PATTERN>P135ACBAA----</PATTERN>
+            <PATTERN>P140ACCAA----</PATTERN>
+            <PATTERN>P145ACBAAC---</PATTERN>
+            <PATTERN>P155ADBAAC---</PATTERN>
+            <PATTERN>P160ADAAAC---</PATTERN>
+            <PATTERN>S165AAD------</PATTERN>
+            <PATTERN>S175BAD------</PATTERN>
+            <PATTERN>S180ABD------</PATTERN>
+            <PATTERN>F185ADD------</PATTERN>
+            <PATTERN>F215BBD------</PATTERN>
+            <PATTERN>F220BDD------</PATTERN>
+            <PATTERN>F245CAD------</PATTERN>
+            <PATTERN>F250CBD------</PATTERN>
+            <PATTERN>F260AA-------</PATTERN>
+            <PATTERN>F270BA-------</PATTERN>
+            <PATTERN>F275AB-------</PATTERN>
+            <PATTERN>S280AD-------</PATTERN>
+            <PATTERN>S310BB-------</PATTERN>
+            <PATTERN>S315BC-------</PATTERN>
+            <PATTERN>S340CA-------</PATTERN>
+            <PATTERN>S345CB-------</PATTERN>
+            <PATTERN>F990---A-----</PATTERN>
+            <!--     -     -->
+            <PATTERN>F999---------</PATTERN>
+        </ENTRY>
+    </ARGUMENTS>
+</CONSUMER_LEVEL1_PATTERN_SETTINGS>

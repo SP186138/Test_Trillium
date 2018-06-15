@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TSQSORT xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+  <SETTINGS_FILE_ENCODING>UTF8</SETTINGS_FILE_ENCODING>
+
+  
+<CATEGORY>
+    <INPUT>
+      <PARAMETER>
+        <INPUT_SETTINGS>
+          <ARGUMENTS>
+            <ENTRY>
+              <ENTRY_ID>1</ENTRY_ID>
+              <FILE_QUALIFIER>e3_es_cusparse_p2</FILE_QUALIFIER>
+              <DATA_FILE_NAME>stdin</DATA_FILE_NAME>
+              <DDL_FILE_NAME>$(DDL)/es_cusparse_p2.ddx</DDL_FILE_NAME>
+               <FILE_DELIMITER/>
+               <USE_QUOTES_AS_QUALIFIER/>
+             
+              
+              
+              <START_RECORD/>
+              <MAX_RECORDS/>
+              <NTH_SAMPLE/>
+              
+              
+            <SELECT_RECORDS/>
+</ENTRY>
+          </ARGUMENTS>
+        </INPUT_SETTINGS>
+      </PARAMETER>
+    </INPUT>
+    <OUTPUT>
+      <PARAMETER>
+        <OUTPUT_SETTINGS>
+          <ARGUMENTS>
+            <FILE_QUALIFIER>OUTPUT</FILE_QUALIFIER>
+            <DATA_FILE_NAME>stdout</DATA_FILE_NAME>
+            <DDL_FILE_NAME>$(DDL)/es_srtforpm_p3.ddx</DDL_FILE_NAME>
+          <SELECT_RECORDS/>
+</ARGUMENTS>
+        </OUTPUT_SETTINGS>
+      </PARAMETER>
+    </OUTPUT>
+    <PROCESS>
+      <PARAMETER>
+        <PROCESS_SETTINGS>
+          <ARGUMENTS>
+            <PROCESS_LOG_FILE_NAME>$(LOGS)/p3_es_srtforpm_log.txt</PROCESS_LOG_FILE_NAME>
+            <ENABLE_DEBUG_OUTPUT>0</ENABLE_DEBUG_OUTPUT>
+            <DEBUG_FILE_NAME>$(DEBUG)/p3_es_srtforpm_debug.txt</DEBUG_FILE_NAME>
+<COLLATING_SEQ/>
+<DUPLICATES/>
+<ESTIMATED_RECS/>
+
+<STABLE_SORT>N</STABLE_SORT>
+<WORKSPACE>$(WORKSPACE)</WORKSPACE>
+<MEMORY>1000</MEMORY>
+            
+            
+            <ENTRY>
+              <ENTRY_ID>1</ENTRY_ID>
+              <KEY>TQ_GIN_STATE</KEY>
+              <ORDER>A</ORDER>
+              <COLLATING_SEQUENCE/>
+            </ENTRY>
+            <ENTRY>
+              <ENTRY_ID>2</ENTRY_ID>
+              <KEY>TQ_GIN_CITY_NAME</KEY>
+              <ORDER>A</ORDER>
+              <COLLATING_SEQUENCE/>
+            </ENTRY>
+            <ENTRY>
+              <ENTRY_ID>3</ENTRY_ID>
+              <KEY>TQ_GIN_STREET_NAME</KEY>
+              <ORDER>A</ORDER>
+              <COLLATING_SEQUENCE/>
+            </ENTRY>
+            <ENTRY>
+              <ENTRY_ID>4</ENTRY_ID>
+              <KEY>TQ_GIN_POSTAL_CODE</KEY>
+              <ORDER>A</ORDER>
+              <COLLATING_SEQUENCE/>
+            </ENTRY>
+          </ARGUMENTS>
+        </PROCESS_SETTINGS>
+      </PARAMETER>
+    </PROCESS>
+    <STATISTICS>
+      <PARAMETER>
+        <STATISTICS_SETTINGS>
+          <ARGUMENTS>
+            <STATS_FILE_NAME>$(STATS)/p3_es_srtforpm_stats.txt</STATS_FILE_NAME>
+          </ARGUMENTS>
+        </STATISTICS_SETTINGS>
+      </PARAMETER>
+    </STATISTICS>
+  </CATEGORY>
+
+</TSQSORT>
+    

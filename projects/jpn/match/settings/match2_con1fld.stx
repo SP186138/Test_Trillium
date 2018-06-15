@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<CONSUMER_LEVEL1_FIELD_SETTINGS xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <ARGUMENTS>
+        <ENTRY>
+            <DESCRIPTION>email_address</DESCRIPTION>
+            <SCORE>100</SCORE>
+            <SCORE>0</SCORE>
+            <ROUTINE>partial1</ROUTINE>
+            <ROUTINE>nonblank</ROUTINE>
+            <FIELD_NAME>EMAIL_ADDR_TXT_1</FIELD_NAME>
+            <ROUTINE_MODIFIER>UC</ROUTINE_MODIFIER>
+        </ENTRY>
+    </ARGUMENTS>
+</CONSUMER_LEVEL1_FIELD_SETTINGS>

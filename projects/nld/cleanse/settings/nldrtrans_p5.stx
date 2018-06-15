@@ -1,0 +1,534 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TRANFRMR xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+  <SETTINGS_FILE_ENCODING>UTF8</SETTINGS_FILE_ENCODING>
+
+  
+<CATEGORY>
+    <INPUT>
+      <PARAMETER>
+        <INPUT_SETTINGS>
+          <ARGUMENTS>
+            <ENTRY>
+              <ENTRY_ID>1</ENTRY_ID>
+              <FILE_QUALIFIER>e5_nl_pmatch_p4</FILE_QUALIFIER>
+              <DATA_FILE_NAME>stdin</DATA_FILE_NAME>
+              <DDL_FILE_NAME>$(DDL)/nl_pmatch_p4.ddx</DDL_FILE_NAME>
+               <FILE_DELIMITER/>
+               <USE_QUOTES_AS_QUALIFIER/>
+             
+              
+              
+              <START_RECORD/>
+              <MAX_RECORDS/>
+              <NTH_SAMPLE/>
+              <FILE_TRACE_KEY/>
+              <EXCEPTIONS_FILE_NAME/>
+              
+              
+              
+            <SELECT_RECORDS/>
+</ENTRY>
+          </ARGUMENTS>
+        </INPUT_SETTINGS>
+
+        
+      </PARAMETER>
+    </INPUT>
+    <OUTPUT>
+      <PARAMETER>
+<OUTPUT_SETTINGS>
+          <ARGUMENTS>
+            <FILE_QUALIFIER>OUTPUT</FILE_QUALIFIER>
+            <DATA_FILE_NAME>stdout</DATA_FILE_NAME>
+            <DDL_FILE_NAME>$(DDL)/nl_drtranfrmr_p5.ddx</DDL_FILE_NAME>
+            
+          <SELECT_RECORDS/>
+</ARGUMENTS>
+        </OUTPUT_SETTINGS>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<CONDITIONALS>
+	<ARGUMENTS>
+		<ENTRY>
+			<ENTRY_ID>1</ENTRY_ID>
+			<FOR_FILES>OUTPUT</FOR_FILES>
+			<CONDITION>
+   /*
+   /* ENTRY ID/SUBROUTINE LIST:
+   /*   1. main
+   /*   2. nld_keep_original_address
+   /*   3. nld_parsed_address
+   /*   4. nld_postal_matched_address
+   /*   5. remove_blank_address_lines
+   /*   6. remove_sub_characters
+   /*   7. set_address_case
+   /*   8. set_name_fields_clear_busname
+   /*
+/* +----------------------------------------------------------------------------+
+/* | ROUTINE: nld_cleanse                                           NETHERLANDS |
+/* +----------------------------------------------------------------------------+
+/*
+   IF(ALWAYS)
+      RUN FIELD_SCANNING(ALL)
+      RUN TABLE_RECODING(ALL)
+      IF(TQ_GOUT_MATCH_LEVEL = "0" AND PR_REV_GROUP IN "000,002,005,008,009,010,018")
+         SET dr_cleanse_level = "2"
+         RUN SUBROUTINE(4)
+      ELSE
+         IF(PR_REV_GROUP IN "000,002,005,008,009,010")
+            SET dr_cleanse_level = "1"
+            RUN SUBROUTINE(3)
+         ELSE
+            SET dr_cleanse_level = "0"
+            RUN SUBROUTINE(2)
+         ENDIF
+      ENDIF
+      RUN SUBROUTINE(7)
+      RUN SUBROUTINE(8)
+      SET dr_country      = "NL"
+      SET dr_country_name = "NLD"
+      RUN SUBROUTINE(6)
+   ENDIF
+   </CONDITION>
+		</ENTRY>
+		<ENTRY>
+			<ENTRY_ID>2</ENTRY_ID>
+			<FOR_FILES>OUTPUT</FOR_FILES>
+			<CONDITION>SUBROUTINE
+   /* SUBROUTINE: nld_keep_original_address
+/* +----------------------------------------------------------------------------+
+/* | SUBROUTINE: nld_keep_original_address                                      |
+/* +----------------------------------------------------------------------------+
+/*
+/*   Purpose: Populates the address fields with original input data.
+/*
+   IF(ALWAYS)
+      SET dr_house_number1 = TQ_GIN_HOUSE_NUMBER
+      SET dr_street_name   = TRIM(TRIM(TQ_GIN_STREET_TYPE) |: TQ_GIN_STREET_NAME)
+      SET dr_house_number2 = TRIM(TRIM(TQ_GIN_SUB_BUILDING) |: TQ_GIN_SUB_BUILDING_VALUE)
+      SET dr_pobox_number  = PR_BOX1_NUMBER
+      SET dr_address       = UCASE(TRIM(ADDR_LINE_1_TXT))
+      SET dr_address2      = UCASE(TRIM(ADDR_LINE_2_TXT))
+      SET dr_address3      = UCASE(TRIM(ADDR_LINE_3_TXT))
+      SET dr_city_name     = UCASE(TRIM(CITY_NAME))
+      SET dr_region_name   = UCASE(TRIM(TERR_NAME))
+      SET dr_postal_code   = UCASE(TRIM(POSTL_AREA_CODE))
+   ENDIF
+   </CONDITION>
+		</ENTRY>
+		<ENTRY>
+			<ENTRY_ID>3</ENTRY_ID>
+			<FOR_FILES>OUTPUT</FOR_FILES>
+			<CONDITION>SUBROUTINE
+   /* SUBROUTINE: nld_parsed_address
+/* +----------------------------------------------------------------------------+
+/* | SUBROUTINE: nld_parsed_address                                             |
+/* +----------------------------------------------------------------------------+
+/*
+/*   Purpose: Populates the address fields for an address that did not match the
+/*            Dutch postal directory.
+/*
+   IF(ALWAYS)
+      /*... Set house_number, street_name, apartment_number and PO box.
+      SET dr_house_number1 = TQ_GIN_HOUSE_NUMBER
+      SET dr_street_name   = TRIM(TRIM(TQ_GIN_STREET_NAME) |: TQ_GIN_STREET_TYPE)
+      SET dr_house_number2 = TRIM(TRIM(TQ_GIN_SUB_BUILDING) |: TRIM(TQ_GIN_SUB_BUILDING_VALUE) |: TRIM(TQ_GIN_SUB_BUILDING2) |: TQ_GIN_SUB_BUILDING2_VALUE)
+      SET dr_pobox_number  = PR_BOX1_NUMBER
+      /*... Set address lines.
+      SET dr_address = TRIM(TRIM(DR_STREET_NAME) |: DR_HOUSE_NUMBER1)
+      IF(DR_HOUSE_NUMBER2 != "")
+         IF(dr_address != "")
+            SET dr_address = TRIM(TRIM(dr_address) || "-" || DR_HOUSE_NUMBER2)
+         ELSE
+            SET dr_address = DR_HOUSE_NUMBER2
+         ENDIF
+      ENDIF
+      /* Add PO Box to cleansed street line2.
+      IF(NOT(dr_address CONTAINS TRIM(TRIM(PR_BOX1_NAME_RECODED) |: PR_BOX1_NUMBER)))
+         SET dr_address2 =       TRIM(TRIM(PR_BOX1_NAME_RECODED) |: PR_BOX1_NUMBER)
+      ENDIF
+      /* Add the parsed complex name to cleansed street line3.
+      IF(PR_COMPLEX1_NAME_RECODED != "")
+         SET dr_address3 = TRIM(TRIM(PR_COMPLEX1_NAME_ORIGINAL) |: PR_COMPLEX1_TYPE_RECODED)
+      ENDIF
+      RUN SUBROUTINE(5)
+      /*... Set city, province and postal-code.
+      /* Use a more aggressive strategy to get cleansed city name.
+      IF(TQ_GOUT_POSTAL_CITY != ""  AND
+         \  TQ_GOUT_MATCH_LEVEL &gt;  "1"    )
+         SET dr_city_name   = TQ_GOUT_POSTAL_CITY
+         SET dr_region_name = TQ_GOUT_STATE
+         SET dr_postal_code = TQ_GOUT_POSTAL_CODE
+      ELSE
+         SET dr_city_name   = TQ_GIN_CITY_NAME
+         SET dr_region_name = TQ_GIN_STATE
+         SET dr_postal_code = PR_POSTAL_CODE
+      ENDIF
+      /*... If necessary, retain the original address.
+      IF(dr_address = "")
+         SET dr_address        = TRIM(ADDR_LINE_1_TXT)
+         SET dr_address2       = TRIM(ADDR_LINE_2_TXT)
+         SET dr_address3       = TRIM(ADDR_LINE_3_TXT)
+      ENDIF
+   ENDIF
+   </CONDITION>
+		</ENTRY>
+		<ENTRY>
+			<ENTRY_ID>4</ENTRY_ID>
+			<FOR_FILES>OUTPUT</FOR_FILES>
+			<CONDITION>SUBROUTINE
+   /* SUBROUTINE: nld_postal_matched_address
+/* +----------------------------------------------------------------------------+
+/* | SUBROUTINE: nld_postal_matched_address                                     |
+/* +----------------------------------------------------------------------------+
+/*
+/*   Purpose: Populates the address fields for an address that matched the
+/*            Dutch postal directory.
+/*
+   IF(ALWAYS)
+      /*... Set house_number, street_name, apartment_number and PO box.
+      SET dr_house_number1 = TQ_GOUT_HOUSE_NUMBER
+      SET dr_street_name   = TRIM(TRIM(TQ_GOUT_STREET_NAME) |: TQ_GOUT_STREET_TYPE)
+      SET dr_house_number2 = TRIM(TRIM(TQ_GOUT_SUB_BUILDING) |: TRIM(TQ_GOUT_SUB_BUILDING_VALUE) |: TRIM(TQ_GOUT_SUB_BUILDING2) |: TQ_GOUT_SUB_BUILDING2_VALUE)
+      SET dr_pobox_number  = PR_BOX1_NUMBER
+      /*... Set address lines.
+      SET dr_address = TRIM(TRIM(DR_STREET_NAME) |: DR_HOUSE_NUMBER1)
+      IF(DR_HOUSE_NUMBER2 != "")
+         IF(dr_address != "")
+            SET dr_address = TRIM(TRIM(dr_address) || "-" || DR_HOUSE_NUMBER2)
+         ELSE
+            SET dr_address = DR_HOUSE_NUMBER2
+         ENDIF
+      ENDIF
+      IF(NOT(dr_address CONTAINS TRIM(TRIM(PR_BOX1_NAME_RECODED) |: PR_BOX1_NUMBER)))
+         SET dr_address2 =       TRIM(TRIM(PR_BOX1_NAME_RECODED) |: PR_BOX1_NUMBER)
+      ENDIF
+      /* Add the parsed complex name to cleansed street line3.
+      IF(PR_COMPLEX1_NAME_RECODED != "")
+         SET dr_address3 = TRIM(TRIM(PR_COMPLEX1_NAME_ORIGINAL) |: PR_COMPLEX1_TYPE_RECODED)
+      ENDIF
+      RUN SUBROUTINE(5)
+      /*... Set city, province and postal-code.
+      SET dr_city_name     = TQ_GOUT_POSTAL_CITY
+      SET dr_region_name   = TQ_GOUT_STATE
+      SET dr_postal_code   = TQ_GOUT_POSTAL_CODE
+   ENDIF
+   </CONDITION>
+		</ENTRY>
+		<ENTRY>
+			<ENTRY_ID>5</ENTRY_ID>
+			<FOR_FILES>OUTPUT</FOR_FILES>
+			<CONDITION>SUBROUTINE
+   /* SUBROUTINE: remove_blank_address_lines
+/* +----------------------------------------------------------------------------+
+/* | SUBROUTINE: remove_blank_address_lines                                     |
+/* +----------------------------------------------------------------------------+
+/*
+/*   Removes blank or duplicate address lines from finished address.
+/*
+   IF(ALWAYS)
+      /*... remove duplicate lines.
+      IF(dr_address = dr_address2)
+         SET dr_address2 = ""
+      ENDIF
+      IF(dr_address = dr_address3)
+         SET dr_address3 = ""
+      ENDIF
+      IF(dr_address2 = dr_address3)
+         SET dr_address3 = ""
+      ENDIF
+      /*... remove blank lines.
+      IF(dr_address2 = "")
+         SET dr_address2 = dr_address3
+         SET dr_address3 = ""
+      ENDIF
+      IF(dr_address = "")
+         SET dr_address  = dr_address2
+         SET dr_address2 = ""
+      ENDIF
+   ENDIF
+   </CONDITION>
+		</ENTRY>
+		<ENTRY>
+			<ENTRY_ID>6</ENTRY_ID>
+			<FOR_FILES>OUTPUT</FOR_FILES>
+			<CONDITION>SUBROUTINE
+   /* SUBROUTINE: remove_sub_characters
+/* +----------------------------------------------------------------------------+
+/* | SUBROUTINE: remove_sub_characters                                          |
+/* +----------------------------------------------------------------------------+
+/*
+/*   Even though the input fields are all Unicode, some of the postal matchers
+/*   work internally in native code pages and there is a possibility an out-of-
+/*   band character might be returned as a SUB character (hex 0x1A).
+/*
+/*   If this happens, we revert to the original data.
+/*
+   IF(ALWAYS)
+      /*... Address lines
+      IF(dr_house_number1 CONTAINS HEXVAL("1A") OR
+         \  dr_street_name   CONTAINS HEXVAL("1A") OR
+         \  dr_house_number2 CONTAINS HEXVAL("1A") OR
+         \  dr_pobox_number  CONTAINS HEXVAL("1A") OR
+         \  dr_address       CONTAINS HEXVAL("1A") OR
+         \  dr_address2      CONTAINS HEXVAL("1A") OR
+         \  dr_address3      CONTAINS HEXVAL("1A")   )
+         SET dr_house_number1  = TCASE(TRIM(STRET_NUM))
+         SET dr_street_name    = TCASE(TRIM(STRET_NAME))
+         SET dr_house_number2  = TCASE(TRIM(APT_NUM))
+         SET dr_pobox_number   = TCASE(TRIM(PO_BOX_NUM))
+         SET dr_address        = TCASE(TRIM(ADDR_LINE_1_TXT))
+         SET dr_address2       = TCASE(TRIM(ADDR_LINE_2_TXT))
+         SET dr_address3       = TCASE(TRIM(ADDR_LINE_3_TXT))
+      ENDIF
+      /*... Geography line
+      IF(dr_city_name     CONTAINS HEXVAL("1A") OR
+         \  dr_region_name   CONTAINS HEXVAL("1A") OR
+         \  dr_postal_code   CONTAINS HEXVAL("1A")   )
+         SET dr_city_name      = TCASE(TRIM(CITY_NAME))
+         SET dr_region_name    = TCASE(TRIM(TERR_NAME))
+         SET dr_postal_code    = TCASE(TRIM(POSTL_AREA_CODE))
+      ENDIF
+   ENDIF
+   </CONDITION>
+		</ENTRY>
+		<ENTRY>
+			<ENTRY_ID>7</ENTRY_ID>
+			<FOR_FILES>OUTPUT</FOR_FILES>
+			<CONDITION>SUBROUTINE
+   /* SUBROUTINE: set_address_case
+/* +----------------------------------------------------------------------------+
+/* | SUBROUTINE: set_address_case                                               |
+/* +----------------------------------------------------------------------------+
+/*
+   IF(ALWAYS)
+      SET dr_house_number2 = TCASE(DR_HOUSE_NUMBER2)
+      SET dr_street_name   = TCASE(DR_STREET_NAME)
+      SET dr_city_name     = TCASE(DR_CITY_NAME)
+      SET dr_region_name   = UCASE(DR_REGION_NAME)
+      SET dr_address       = TCASE(DR_ADDRESS)
+      SET dr_address2      = TCASE(DR_ADDRESS2)
+      SET dr_address3      = TCASE(DR_ADDRESS3)
+   ENDIF
+   </CONDITION>
+		</ENTRY>
+		<ENTRY>
+			<ENTRY_ID>8</ENTRY_ID>
+			<FOR_FILES>OUTPUT</FOR_FILES>
+			<CONDITION>SUBROUTINE
+   /* SUBROUTINE: set_name_fields_clear_busname
+/* +----------------------------------------------------------------------------+
+/* | SUBROUTINE: set_name_fields_clear_busname                                  |
+/* +----------------------------------------------------------------------------+
+/*
+/*   This is an improved "set_name_fields" routine that also conditionally
+/*   clears the busname fields.  It is used by EMEA.
+/*
+   IF(ALWAYS)
+      /*... Set name fields.
+      SET dr_business_name = TCASE(PR_BUSNAME_ORIGINAL_01)
+      SET dr_alias_account = PR_BUSNAME_RECODED_01
+      SET dr_alias_contact = PR_GIVEN_NAME1_RECODED_01
+      SET dr_mrmrs         = TRIM(TCASE(NAME_PREFX_TXT))
+      SET dr_first_name    = TRIM(TCASE(GVN_NAME))
+      SET dr_middle_name   = TRIM(TCASE(MID_NAME))
+      SET dr_last_name     = TRIM(TCASE(FAMLY_NAME))
+      SET dr_name_gender   = TRIM(UCASE(GENDR_IND))
+      SET dr_name_suffix   = TRIM(TCASE(NAME_SUFFX_TXT))
+      /*... Clear business name fields, if name_form is not 1.
+      IF(pr_name_form_01 != "1")
+         SET dr_business_name = ""
+         SET dr_alias_account = ""
+      ENDIF
+   ENDIF
+   </CONDITION>
+		</ENTRY>
+	</ARGUMENTS>
+</CONDITIONALS>
+</PARAMETER>
+    </OUTPUT>
+    <PROCESS>
+      <PARAMETER>
+        <PROCESS_SETTINGS>
+          <ARGUMENTS>
+            <PROCESS_LOG_FILE_NAME>$(LOGS)/p5_nl_drtranfrmr_log.txt</PROCESS_LOG_FILE_NAME>
+            <ENABLE_DEBUG_OUTPUT>N</ENABLE_DEBUG_OUTPUT>
+            <DEBUG_FILE_NAME>$(DEBUG)/p5_nl_drtranfrmr_debug.txt</DEBUG_FILE_NAME>
+            <MASK_FILE_NAME>$(GENERAL_RESOURCES)/maskfile$(PLAFEXT)</MASK_FILE_NAME>
+<STRSUB_TABLE_FILE_NAME>$(GENERAL_RESOURCES)/strsub$(PLAFEXT)</STRSUB_TABLE_FILE_NAME>
+          </ARGUMENTS>
+        </PROCESS_SETTINGS>
+      </PARAMETER>
+    </PROCESS>
+    <STATISTICS>
+      <PARAMETER>
+        <STATISTICS_SETTINGS>
+          <ARGUMENTS>
+            <STATS_FILE_NAME>$(STATS)/p5_nl_drtranfrmr_stats.txt</STATS_FILE_NAME>
+          </ARGUMENTS>
+        </STATISTICS_SETTINGS>
+      </PARAMETER>
+    </STATISTICS>
+  </CATEGORY>
+
+</TRANFRMR>
+    

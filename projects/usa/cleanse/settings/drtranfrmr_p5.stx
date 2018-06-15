@@ -1,0 +1,352 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TRANFRMR xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+   <SETTINGS_FILE_ENCODING>UTF8</SETTINGS_FILE_ENCODING>
+
+   
+   
+
+<CATEGORY>
+      <INPUT>
+         <PARAMETER>
+            <INPUT_SETTINGS>
+               <ARGUMENTS>
+                  <ENTRY>
+                     <ENTRY_ID>1</ENTRY_ID>
+                     <FILE_QUALIFIER>e671_us_pmatch_p10</FILE_QUALIFIER>
+                     <DATA_FILE_NAME>stdin</DATA_FILE_NAME>
+                     <DDL_FILE_NAME>$(DDL)/us_pmatch_p4.ddx</DDL_FILE_NAME>
+               <FILE_DELIMITER/>
+               <USE_QUOTES_AS_QUALIFIER/>
+             
+                     
+                     
+                     <START_RECORD/>
+                     <MAX_RECORDS/>
+                     <NTH_SAMPLE/>
+                     <FILE_TRACE_KEY/>
+                     <EXCEPTIONS_FILE_NAME/>
+
+                     
+                     
+                  
+
+<SELECT_RECORDS/>
+</ENTRY>
+               </ARGUMENTS>
+            </INPUT_SETTINGS>
+            
+            
+         </PARAMETER>
+      </INPUT>
+      <OUTPUT>
+         <PARAMETER>
+            <OUTPUT_SETTINGS>
+               <ARGUMENTS>
+                  <FILE_QUALIFIER>OUTPUT</FILE_QUALIFIER>
+                  <DATA_FILE_NAME>stdout</DATA_FILE_NAME>
+                  <DDL_FILE_NAME>$(DDL)/us_drtranfrmr_p5.ddx</DDL_FILE_NAME>
+                  
+               <SELECT_RECORDS/>
+</ARGUMENTS>
+            </OUTPUT_SETTINGS>
+            <FIELD_SCANNING>
+               <ARGUMENTS>
+                  <ENTRY>
+                     <ENTRY_ID>1</ENTRY_ID>
+<ENTRY_DESCRIPTION/>
+                     
+                     <SCAN_FIELD>DR_POSTAL_CODE</SCAN_FIELD>
+                     <TARGET_FIELD/>
+                     <FIELD_JUSTIFICATION/>
+                     <SCAN_FORMAT>M</SCAN_FORMAT>
+                     <BETWEEN_SUBSTRING/>
+                     <AND_SUBSTRING/>
+                     <RETAIN_BETWEEN_SUBSTRING>N</RETAIN_BETWEEN_SUBSTRING>
+                     <SCAN_VALUE>NNNNNNNNN</SCAN_VALUE>
+                     <CASE_SENSITIVE_SCAN_VALUE/>
+                     <RETAIN_SCAN_VALUE/>
+                     <SCAN_FUNCTION>CH</SCAN_FUNCTION>
+                     <SCAN_DIRECTION/>
+                     <SCAN_POSITION>B</SCAN_POSITION>
+                     <SCAN_LEVEL/>
+                     <SCAN_CAPTURE/>
+                     <WORD_DELIMITER/>
+                     <START_DELIMITER/>
+                     <END_DELIMITER/>
+                     <CHANGE_VALUE>NNNNN-NNNN</CHANGE_VALUE>
+                     <CHANGE_OCCURENCES/>
+                     <FLAG_VALUE/>
+                  </ENTRY>
+               </ARGUMENTS>
+            </FIELD_SCANNING>
+            
+
+
+
+
+
+
+
+
+            
+
+
+
+
+
+
+
+
+
+         
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<CONDITIONALS>
+	<ARGUMENTS>
+		<ENTRY>
+			<ENTRY_ID>1</ENTRY_ID>
+			<FOR_FILES>OUTPUT</FOR_FILES>
+			<CONDITION>
+   /*
+   /* ENTRY ID/SUBROUTINE LIST:
+   /*   1. main
+   /*   2. set_address_case
+   /*   3. set_name_fields
+   /*   4. usa_set_derived_address
+   /*
+/* +----------------------------------------------------------------------------+
+/* | ROUTINE: usa_cleanse                                         UNITED STATES |
+/* +----------------------------------------------------------------------------+
+/*
+   IF(ALWAYS)
+      RUN FIELD_SCANNING(ALL)
+      RUN TABLE_RECODING(ALL)
+      RUN SUBROUTINE(4)
+      RUN SUBROUTINE(3)
+      RUN SUBROUTINE(2)
+      SET dr_country      = "US"
+      SET dr_country_name = "USA"
+   ENDIF
+   </CONDITION>
+		</ENTRY>
+		<ENTRY>
+			<ENTRY_ID>2</ENTRY_ID>
+			<FOR_FILES>OUTPUT</FOR_FILES>
+			<CONDITION>SUBROUTINE
+   /* SUBROUTINE: set_address_case
+/* +----------------------------------------------------------------------------+
+/* | SUBROUTINE: set_address_case                                               |
+/* +----------------------------------------------------------------------------+
+/*
+   IF(ALWAYS)
+      SET dr_house_number2 = TCASE(DR_HOUSE_NUMBER2)
+      SET dr_street_name   = TCASE(DR_STREET_NAME)
+      SET dr_city_name     = TCASE(DR_CITY_NAME)
+      SET dr_region_name   = UCASE(DR_REGION_NAME)
+      SET dr_address       = TCASE(DR_ADDRESS)
+      SET dr_address2      = TCASE(DR_ADDRESS2)
+      SET dr_address3      = TCASE(DR_ADDRESS3)
+   IF (TRIM(UCASE(TERR_NAME)) = "UNK")
+       SET dr_region_name = "UNK"
+   ENDIF
+   ENDIF
+   </CONDITION>
+		</ENTRY>
+		<ENTRY>
+			<ENTRY_ID>3</ENTRY_ID>
+			<FOR_FILES>OUTPUT</FOR_FILES>
+			<CONDITION>SUBROUTINE
+   /* SUBROUTINE: set_name_fields
+/* +----------------------------------------------------------------------------+
+/* | SUBROUTINE: set_name_fields                                                |
+/* +----------------------------------------------------------------------------+
+/*
+/*   This is the original "set_name_fields" routine used by americas.
+/*
+   IF(ALWAYS)
+      SET dr_business_name = TCASE(PR_BUSNAME_ORIGINAL_01)
+      SET dr_alias_account = TRIM(TCASE(PR_SURNAME1_RECODED_01))
+      SET dr_alias_contact = TRIM(TCASE(PR_GIVEN_NAME1_RECODED_01))
+      SET dr_mrmrs         = TRIM(TCASE(NAME_PREFX_TXT))
+      SET dr_first_name    = TRIM(TCASE(GVN_NAME))
+      SET dr_middle_name   = TRIM(TCASE(MID_NAME))
+      SET dr_last_name     = TRIM(TCASE(FAMLY_NAME))
+      SET dr_name_gender   = TRIM(UCASE(GENDR_IND))
+      SET dr_name_suffix   = TRIM(TCASE(NAME_SUFFX_TXT))
+   ENDIF
+   </CONDITION>
+		</ENTRY>
+		<ENTRY>
+			<ENTRY_ID>4</ENTRY_ID>
+			<FOR_FILES>OUTPUT</FOR_FILES>
+			<CONDITION>SUBROUTINE
+   /* SUBROUTINE: usa_set_derived_address
+/* +----------------------------------------------------------------------------+
+/* | SUBROUTINE: usa_set_derived_address                                        |
+/* +----------------------------------------------------------------------------+
+/*
+   IF(ALWAYS)
+      IF(US_GOUT_MATCH_LEVEL = "0")
+         SET dr_cleanse_level = "2"
+         SET dr_house_number1 = US_GOUT_HOUSE_NUMBER
+         SET dr_street_name   = US_GOUT_STREET_NAME
+         SET dr_house_number2 = TRIM(TRIM(US_GOUT_SECONDARY_TYPE) |: US_GOUT_SECONDARY_NUMBER)
+         SET dr_city_name     = US_GOUT_POSTAL_CITY_NAME
+         SET dr_region_name   = US_GOUT_STATE_NAME
+         SET dr_postal_code   = US_GOUT_POSTAL_CODE
+         SET dr_address       = US_GOUT_DELIVERY_ADDRESS
+      ELSE
+         SET dr_cleanse_level = "1"
+         SET dr_house_number1 = US_GIN_HOUSE_NUMBER
+         SET dr_street_name   = US_GIN_STREET_NAME
+         SET dr_house_number2 = TRIM(TRIM(US_GIN_SECONDARY_TYPE) |: US_GIN_SECONDARY_NUMBER)
+         SET dr_city_name     = US_GIN_POSTAL_CITY_NAME
+         SET dr_region_name   = US_GIN_STATE_NAME
+         SET dr_postal_code   = US_GIN_POSTAL_CODE
+         SET dr_address       = US_GOUT_DELIVERY_ADDRESS
+      ENDIF
+      SET dr_address2         = ""
+      SET dr_address3         = ""
+      /*IF(PR_BOX1_TYPE != "")
+      /*   SET dr_house_number1 = ""
+      /*   SET dr_street_name   = ""
+      /*ENDIF
+   ENDIF
+   </CONDITION>
+		</ENTRY>
+	</ARGUMENTS>
+</CONDITIONALS>
+</PARAMETER>
+      </OUTPUT>
+      <PROCESS>
+         <PARAMETER>
+            <PROCESS_SETTINGS>
+               <ARGUMENTS>
+                  <PROCESS_LOG_FILE_NAME>$(LOGS)/p5_us_drtranfrmr_log.txt</PROCESS_LOG_FILE_NAME>
+                  <ENABLE_DEBUG_OUTPUT>N</ENABLE_DEBUG_OUTPUT>
+                  <DEBUG_FILE_NAME>$(DEBUG)/p5_us_drtranfrmr_debug.txt</DEBUG_FILE_NAME>
+                  <MASK_FILE_NAME>$(GENERAL_RESOURCES)/maskfile$(PLAFEXT)</MASK_FILE_NAME>
+                  <STRSUB_TABLE_FILE_NAME>$(GENERAL_RESOURCES)/strsub$(PLAFEXT)</STRSUB_TABLE_FILE_NAME>
+               </ARGUMENTS>
+            </PROCESS_SETTINGS>
+         </PARAMETER>
+      </PROCESS>
+      <STATISTICS>
+         <PARAMETER>
+            <STATISTICS_SETTINGS>
+               <ARGUMENTS>
+                  <STATS_FILE_NAME>$(STATS)/p5_us_drtranfrmr_stats.txt</STATS_FILE_NAME>
+               </ARGUMENTS>
+            </STATISTICS_SETTINGS>
+         </PARAMETER>
+      </STATISTICS>
+   </CATEGORY>
+
+</TRANFRMR>
+    

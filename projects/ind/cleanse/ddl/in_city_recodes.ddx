@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<RECORD xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+<NAME>recode267_1117.dat</NAME>
+<LENGTH>100</LENGTH>
+
+<FIELD>
+    <NAME>New_City</NAME>
+    <TYPE>UTF8</TYPE>
+    <STARTS-IN-COLUMN>0</STARTS-IN-COLUMN>
+    <LENGTH>50</LENGTH>
+</FIELD>
+<FIELD>
+    <NAME>City_name</NAME>
+    <TYPE>UTF8</TYPE>
+    <STARTS-IN-COLUMN>50</STARTS-IN-COLUMN>
+    <LENGTH>50</LENGTH>
+</FIELD>
+
+</RECORD>
+

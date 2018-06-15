@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RECORD xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tcl="urn:discovery.trilliumsoftware.com:tcl">
+<NAME>TRANFRMR</NAME>
+<TYPE>FIXED</TYPE>
+<LENGTH>12</LENGTH>
+<FIELD>
+<NAME>LOOKUP</NAME>
+<TYPE>UTF8</TYPE>
+<STARTS-IN-COLUMN>0</STARTS-IN-COLUMN>
+<LENGTH>0</LENGTH>
+</FIELD>
+<FIELD>
+<NAME>RECODE</NAME>
+<TYPE>UTF8</TYPE>
+<STARTS-IN-COLUMN>10</STARTS-IN-COLUMN>
+<LENGTH>2</LENGTH>
+</FIELD>
+</RECORD>

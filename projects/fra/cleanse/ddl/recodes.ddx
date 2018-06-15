@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no" ?>
+<RECORD xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
+    <NAME>RECODES</NAME>
+    <TYPE>FIXED</TYPE>
+    <LENGTH>601</LENGTH>
+
+    <FIELD>
+        <REDEFINE>N</REDEFINE>
+        <NAME>original_value</NAME>
+        <TYPE>UTF8</TYPE>
+        <STARTS-IN-COLUMN>0</STARTS-IN-COLUMN>
+        <LENGTH>300</LENGTH>
+    </FIELD>
+
+    <FIELD>
+        <REDEFINE>N</REDEFINE>
+        <NAME>recode_value</NAME>
+        <TYPE>UTF8</TYPE>
+        <STARTS-IN-COLUMN>300</STARTS-IN-COLUMN>
+        <LENGTH>300</LENGTH>
+    </FIELD>
+
+    <FIELD>
+        <REDEFINE>N</REDEFINE>
+        <NAME>LF</NAME>
+        <TYPE>ASCII NUMERIC</TYPE>
+        <STARTS-IN-COLUMN>600</STARTS-IN-COLUMN>
+        <LENGTH>1</LENGTH>
+        <DEFAULT>10</DEFAULT>
+    </FIELD>
+
+</RECORD>

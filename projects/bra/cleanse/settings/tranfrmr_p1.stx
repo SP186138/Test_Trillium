@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TRANFRMR xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+   <SETTINGS_FILE_ENCODING>UTF8</SETTINGS_FILE_ENCODING>
+
+   
+   
+
+<CATEGORY>
+      
+      <INPUT>
+         <PARAMETER>
+            <INPUT_SETTINGS>
+               <ARGUMENTS>
+
+<ENTRY>
+<ENTRY_ID>1</ENTRY_ID>
+<FILE_QUALIFIER>tss_cleanse_input_bra_1</FILE_QUALIFIER>
+<DATA_FILE_NAME>$(OUTPUT)/TSS_CLEANSE_INPUT_BRA.DAT</DATA_FILE_NAME>
+<DDL_FILE_NAME>$(DDL)/TSS_CLEANSE_INPUT_BRA.ddx</DDL_FILE_NAME>
+              <FILE_DELIMITER_ENCODING>UTF8</FILE_DELIMITER_ENCODING>
+              <FILE_DELIMITER>Pipe</FILE_DELIMITER>
+              <USE_QUOTES_AS_QUALIFIER>N</USE_QUOTES_AS_QUALIFIER>
+            
+
+<START_RECORD/>
+<MAX_RECORDS/>
+<NTH_SAMPLE/>
+<FILE_TRACE_KEY/>
+<EXCEPTIONS_FILE_NAME/>
+
+
+<SELECT_RECORDS/>
+</ENTRY>
+</ARGUMENTS>
+            </INPUT_SETTINGS>
+            
+            
+         </PARAMETER>
+      </INPUT>
+      <OUTPUT>
+         <PARAMETER>
+<OUTPUT_SETTINGS>
+               <ARGUMENTS>
+                  <FILE_QUALIFIER>OUTPUT</FILE_QUALIFIER>
+                  <DATA_FILE_NAME>stdout</DATA_FILE_NAME>
+                  <DDL_FILE_NAME>$(DDL)/br_tranfrmr_p1.ddx</DDL_FILE_NAME>
+
+                  <FILE_SEQUENCE_FIELD_NAME>_SEQUENCE_NUMBER</FILE_SEQUENCE_FIELD_NAME>
+                  
+               
+
+
+<SELECT_RECORDS/>
+</ARGUMENTS>
+            </OUTPUT_SETTINGS>
+<FIELD_SCANNING>
+               <ARGUMENTS>
+<ENTRY>
+                     <ENTRY_ID>1</ENTRY_ID>
+<ENTRY_DESCRIPTION>Addr_Line_1_Txt: Scan to change mask "AA9" to "AA 9"</ENTRY_DESCRIPTION>
+                     <SCAN_FIELD>ADDR_LINE_1_TXT</SCAN_FIELD>
+                     <TARGET_FIELD/>
+                     <FIELD_JUSTIFICATION>NJ</FIELD_JUSTIFICATION>
+                     <SCAN_FORMAT>M</SCAN_FORMAT>
+                     <BETWEEN_SUBSTRING/>
+                     <AND_SUBSTRING/>
+                     <RETAIN_BETWEEN_SUBSTRING/>
+                     <SCAN_VALUE>"AA9"</SCAN_VALUE>
+                     <CASE_SENSITIVE_SCAN_VALUE>Y</CASE_SENSITIVE_SCAN_VALUE>
+                     <RETAIN_SCAN_VALUE/>
+                     <SCAN_FUNCTION>CH</SCAN_FUNCTION>
+                     <SCAN_DIRECTION>L</SCAN_DIRECTION>
+                     <SCAN_POSITION>D</SCAN_POSITION>
+                     <SCAN_LEVEL/>
+                     <SCAN_CAPTURE/>
+                     <WORD_DELIMITER/>
+                     <CHANGE_VALUE>"AA 9"</CHANGE_VALUE>
+                     <CHANGE_OCCURENCES>ALL</CHANGE_OCCURENCES>
+                     <FLAG_VALUE/>
+                     
+                  </ENTRY>
+<ENTRY>
+<ENTRY_ID>2</ENTRY_ID>
+<ENTRY_DESCRIPTION>Copy_Addr_Line1: Scan to remove all non-alpha characters.</ENTRY_DESCRIPTION>
+<SCAN_FIELD>copy_addr_line1</SCAN_FIELD>
+<TARGET_FIELD/>
+<FIELD_JUSTIFICATION>LA</FIELD_JUSTIFICATION>
+<SCAN_FORMAT>M</SCAN_FORMAT>
+<BETWEEN_SUBSTRING/>
+<AND_SUBSTRING/>
+<RETAIN_BETWEEN_SUBSTRING/>
+<SCAN_VALUE>"~"</SCAN_VALUE>
+<CASE_SENSITIVE_SCAN_VALUE>Y</CASE_SENSITIVE_SCAN_VALUE>
+<RETAIN_SCAN_VALUE/>
+<SCAN_FUNCTION>CH</SCAN_FUNCTION>
+<SCAN_DIRECTION>L</SCAN_DIRECTION>
+<SCAN_POSITION>D</SCAN_POSITION>
+<SCAN_LEVEL/>
+<SCAN_CAPTURE/>
+<WORD_DELIMITER/>
+<CHANGE_VALUE>" "</CHANGE_VALUE>
+<CHANGE_OCCURENCES>ALL</CHANGE_OCCURENCES>
+<FLAG_VALUE/>
+
+</ENTRY>
+</ARGUMENTS>
+            </FIELD_SCANNING>
+<TABLE_RECODING>
+               <ARGUMENTS>
+                  <ENTRY>
+                     <ENTRY_ID>1</ENTRY_ID>
+<ENTRY_DESCRIPTION>Copy_Addr_Line1: Use recode table to remove most leading street types</ENTRY_DESCRIPTION>
+                     <FILE_QUALIFIER>RECODE1</FILE_QUALIFIER>
+                     <TABLE_FILE_NAME>$(USRTABLES)/br_recode_str_types_for_winkey.tbl</TABLE_FILE_NAME>
+                     <DDL_FILE_NAME>$(DDL)/br_recode_str_types_for_winkey.ddx</DDL_FILE_NAME>
+                     <FILE_DELIMITER>Pipe</FILE_DELIMITER>
+<LOOKUP_PHRASE_SEPARATOR>" "</LOOKUP_PHRASE_SEPARATOR>
+                     
+                     <LOOKUP_TABLE_FIELDS>FROM_STYPE</LOOKUP_TABLE_FIELDS>
+                     <LOOKUP_FIELDS_CASE_SENSITIVE>N</LOOKUP_FIELDS_CASE_SENSITIVE>
+                     <LOOKUP_OUTPUT_FIELDS>copy_addr_line1</LOOKUP_OUTPUT_FIELDS>
+                     <LOOKUP_OUTPUT_FIELDS_FORMAT>L</LOOKUP_OUTPUT_FIELDS_FORMAT>
+                     <RECODE_TABLE_FIELDS>TO_STYPE</RECODE_TABLE_FIELDS>
+                     <RECODE_TABLE_FIELDS_FORMAT>L</RECODE_TABLE_FIELDS_FORMAT>
+                     <RECODE_OUTPUT_FIELDS>copy_addr_line1</RECODE_OUTPUT_FIELDS>
+                     
+                  </ENTRY>
+               </ARGUMENTS>
+            </TABLE_RECODING>
+
+
+<CONDITIONALS>
+               <ARGUMENTS>
+                  <ENTRY>
+                     <ENTRY_ID>1</ENTRY_ID>
+                     <FOR_FILES>OUTPUT</FOR_FILES>
+                     <CONDITION>IF (ALWAYS)
+        IF (ALWAYS)
+    RUN FIELD_SCANNING(1)
+    SET ADDR_LINE_2_TXT = TERNARY( TRIM( ADDR_LINE_1_TXT) = TRIM( ADDR_LINE_2_TXT), SPACES, ADDR_LINE_2_TXT)
+    SET copy_addr_line1 = "^" || UCASE( ADDR_LINE_1_TXT)
+    RUN TABLE_RECODING(1)
+    RUN FIELD_SCANNING(2)
+    SET copy_addr_line1 = LPACK( COPY_ADDR_LINE1)
+    ENDIF
+    IF (ISNUMERIC( ADDR_LINE_2_TXT))
+    SET ADDR_LINE_1_TXT = TRIM( ADDR_LINE_1_TXT) |: TRIM( ADDR_LINE_2_TXT)
+    SET ADDR_LINE_2_TXT = SPACES
+    ENDIF
+    IF (ADDR_LINE_1_TXT = SPACES)
+    SET ADDR_LINE_1_TXT = TRIM( STRET_NAME) |: TRIM( STRET_NUM) |: TRIM( APT_NUM)
+    ENDIF
+    
+    ENDIF
+</CONDITION>
+                  </ENTRY>
+               </ARGUMENTS>
+            </CONDITIONALS>
+</PARAMETER>
+      </OUTPUT>
+      <PROCESS>
+         <PARAMETER>
+            <PROCESS_SETTINGS>
+               <ARGUMENTS>
+                  <PROCESS_LOG_FILE_NAME>$(LOGS)/p1_br_tranfrmr_log.txt</PROCESS_LOG_FILE_NAME>
+<PROCESS_SAMPLE_COUNT/>
+                  <ENABLE_DEBUG_OUTPUT>0</ENABLE_DEBUG_OUTPUT>
+                  <DEBUG_FILE_NAME>$(DEBUG)/p1_br_tranfrmr_debug.txt</DEBUG_FILE_NAME>
+                  <MASK_FILE_NAME>$(USRTABLES)/maskfile$(PLAFEXT)</MASK_FILE_NAME>
+                  <STRSUB_TABLE_FILE_NAME>$(GENERAL_RESOURCES)/strsub$(PLAFEXT)</STRSUB_TABLE_FILE_NAME>
+               </ARGUMENTS>
+            </PROCESS_SETTINGS>
+         </PARAMETER>
+      </PROCESS>
+      <STATISTICS>
+         <PARAMETER>
+            <STATISTICS_SETTINGS>
+               <ARGUMENTS>
+                  <STATS_FILE_NAME>$(STATS)/p1_br_tranfrmr_stats.txt</STATS_FILE_NAME>
+               </ARGUMENTS>
+            </STATISTICS_SETTINGS>
+         </PARAMETER>
+      </STATISTICS>
+   </CATEGORY>
+
+</TRANFRMR>

@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TRANFRMR xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <SETTINGS_FILE_ENCODING>UTF8</SETTINGS_FILE_ENCODING>
+   
+   
+<CATEGORY>
+      
+      <INPUT>
+         <PARAMETER>
+            <INPUT_SETTINGS>
+               <ARGUMENTS>
+                  <ENTRY>
+                     <ENTRY_ID>1</ENTRY_ID>
+                     <FILE_QUALIFIER>e55_it_rellinkref_p12</FILE_QUALIFIER>
+                     <DATA_FILE_NAME>$(INPUT)/it_rellinkref_p12.dat</DATA_FILE_NAME>
+                     <DDL_FILE_NAME>$(DDL)/it_rellinkref_p12.ddx</DDL_FILE_NAME>
+               <FILE_DELIMITER/>
+               <USE_QUOTES_AS_QUALIFIER/>
+             
+                     
+                     <START_RECORD/>
+                     <MAX_RECORDS/>
+                     <NTH_SAMPLE/>
+                     <FILE_TRACE_KEY/>
+                     <EXCEPTIONS_FILE_NAME/>
+                     
+                     
+                     
+                  <SELECT_RECORDS>LENGTH( REFERENCE_HOUSEHOLD_ID) &lt; 16 OR SUBSTR(REFERENCE_HOUSEHOLD_ID , 0 , 6 , "1") != "999999"</SELECT_RECORDS>
+</ENTRY>
+                  <ENTRY>
+                     <ENTRY_ID>2</ENTRY_ID>
+                     <FILE_QUALIFIER>e56_it_rellinkref_p13</FILE_QUALIFIER>
+                     <DATA_FILE_NAME>$(INPUT)/it_rellinkref_p16.dat</DATA_FILE_NAME>
+                     <DDL_FILE_NAME>$(DDL)/it_rellinkref_p16.ddx</DDL_FILE_NAME>
+               <FILE_DELIMITER/>
+               <USE_QUOTES_AS_QUALIFIER/>
+             
+                     
+                     <START_RECORD/>
+                     <MAX_RECORDS/>
+                     <NTH_SAMPLE/>
+                     <FILE_TRACE_KEY/>
+                     <EXCEPTIONS_FILE_NAME/>
+                     
+                     
+                     
+                  <SELECT_RECORDS>LENGTH( REFERENCE_HOUSEHOLD_ID) &lt; 16 OR SUBSTR(REFERENCE_HOUSEHOLD_ID , 0 , 6 , "1") != "999999"</SELECT_RECORDS>
+</ENTRY>
+                  <ENTRY>
+                     <ENTRY_ID>3</ENTRY_ID>
+                     <FILE_QUALIFIER>e63_it_rellinkref_link_p14</FILE_QUALIFIER>
+                     <DATA_FILE_NAME>$(INPUT)/LINKING_it_rellinkref_p12.dat</DATA_FILE_NAME>
+                     <DDL_FILE_NAME>$(DDL)/LINKING_it_rellinkref_p12.ddx</DDL_FILE_NAME>
+               <FILE_DELIMITER/>
+               <USE_QUOTES_AS_QUALIFIER/>
+             
+                     
+                     <START_RECORD/>
+                     <MAX_RECORDS/>
+                     <NTH_SAMPLE/>
+                     <FILE_TRACE_KEY/>
+                     <EXCEPTIONS_FILE_NAME/>
+                     
+                     
+                  <SELECT_RECORDS/>
+</ENTRY>
+                  <ENTRY>
+                     <ENTRY_ID>4</ENTRY_ID>
+                     <FILE_QUALIFIER>e64_it_rellinkref_link_p12</FILE_QUALIFIER>
+                     <DATA_FILE_NAME>$(INPUT)/LINKING_it_rellinkref_p16.dat</DATA_FILE_NAME>
+                     <DDL_FILE_NAME>$(DDL)/LINKING_it_rellinkref_p16.ddx</DDL_FILE_NAME>
+               <FILE_DELIMITER/>
+               <USE_QUOTES_AS_QUALIFIER/>
+             
+                     
+                     <START_RECORD/>
+                     <MAX_RECORDS/>
+                     <NTH_SAMPLE/>
+                     <FILE_TRACE_KEY/>
+                     <EXCEPTIONS_FILE_NAME/>
+                     
+                     
+                  <SELECT_RECORDS/>
+</ENTRY>
+               </ARGUMENTS>
+            </INPUT_SETTINGS>
+            
+            <CONDITIONALS>
+               <ARGUMENTS>
+                  <ENTRY>
+                     <ENTRY_ID>2</ENTRY_ID>
+                     <FOR_FILES>e55_it_rellinkref_p12</FOR_FILES>
+                     <CONDITION>IF (ALWAYS)
+        IF (ALWAYS)
+    SET REFERENCE_HOUSEHOLD_PATTERN = TERNARY( REFERENCE_MATCHED_LEV1_PATTERN = SPACES, LEV1_MATCHED_PATTERN, REFERENCE_MATCHED_LEV1_PATTERN)
+    ENDIF
+    
+    ENDIF</CONDITION>
+                  </ENTRY>
+                  <ENTRY>
+                     <ENTRY_ID>3</ENTRY_ID>
+                     <FOR_FILES>e56_it_rellinkref_p13</FOR_FILES>
+                     <CONDITION>IF (ALWAYS)
+        IF (ALWAYS)
+    SET REFERENCE_HOUSEHOLD_PATTERN = TERNARY( REFERENCE_MATCHED_LEV1_PATTERN = SPACES, LEV1_MATCHED_PATTERN, REFERENCE_MATCHED_LEV1_PATTERN)
+    ENDIF
+    
+    ENDIF</CONDITION>
+                  </ENTRY>
+                  <ENTRY>
+                     <ENTRY_ID>6</ENTRY_ID>
+                     <FOR_FILES>e63_it_rellinkref_link_p14</FOR_FILES>
+                     <CONDITION>IF (ALWAYS)
+        IF (ALWAYS)
+    SET PATTERN_ID = RIGHT( PATTERN_ID, 3)
+    ENDIF
+    
+    ENDIF</CONDITION>
+                  </ENTRY>
+                  <ENTRY>
+                     <ENTRY_ID>7</ENTRY_ID>
+                     <FOR_FILES>e64_it_rellinkref_link_p12</FOR_FILES>
+                     <CONDITION>IF (ALWAYS)
+        IF (ALWAYS)
+    SET PATTERN_ID = RIGHT( PATTERN_ID, 3)
+    ENDIF
+    
+    ENDIF</CONDITION>
+                  </ENTRY>
+               </ARGUMENTS>
+            </CONDITIONALS>
+         </PARAMETER>
+      </INPUT>
+      <OUTPUT>
+         <PARAMETER>
+            <OUTPUT_SETTINGS>
+               <ARGUMENTS>
+                  <FILE_QUALIFIER>OUTPUT</FILE_QUALIFIER>
+                  <DATA_FILE_NAME>stdout</DATA_FILE_NAME>
+                  <DDL_FILE_NAME>$(DDL)/it_tranfrmr_p17.ddx</DDL_FILE_NAME>
+                  
+               <SELECT_RECORDS/>
+</ARGUMENTS>
+            </OUTPUT_SETTINGS>
+            
+            
+            <CONDITIONALS>
+               <ARGUMENTS>
+                  <ENTRY>
+                     <ENTRY_ID>1</ENTRY_ID>
+                     <FOR_FILES>OUTPUT</FOR_FILES>
+                     <CONDITION>IF (ALWAYS)
+        IF (ALWAYS)
+    ENDIF
+    
+    ENDIF</CONDITION>
+                  </ENTRY>
+               </ARGUMENTS>
+            </CONDITIONALS>
+         </PARAMETER>
+      </OUTPUT>
+      <PROCESS>
+         <PARAMETER>
+            <PROCESS_SETTINGS>
+               <ARGUMENTS>
+                  <PROCESS_LOG_FILE_NAME>$(LOGS)/p17_it_tranfrmr_log.txt</PROCESS_LOG_FILE_NAME>
+                  <ENABLE_DEBUG_OUTPUT>0</ENABLE_DEBUG_OUTPUT>
+                  <DEBUG_FILE_NAME>$(DEBUG)/p17_it_tranfrmr_debug.txt</DEBUG_FILE_NAME>
+                  <MASK_FILE_NAME>$(GENERAL_RESOURCES)/maskfile$(PLAFEXT)</MASK_FILE_NAME>
+                  <STRSUB_TABLE_FILE_NAME>$(GENERAL_RESOURCES)/strsub$(PLAFEXT)</STRSUB_TABLE_FILE_NAME>
+               </ARGUMENTS>
+            </PROCESS_SETTINGS>
+         </PARAMETER>
+      </PROCESS>
+      <STATISTICS>
+         <PARAMETER>
+            <STATISTICS_SETTINGS>
+               <ARGUMENTS>
+                  <STATS_FILE_NAME>$(STATS)/p17_it_tranfrmr_stats.txt</STATS_FILE_NAME>
+               </ARGUMENTS>
+            </STATISTICS_SETTINGS>
+         </PARAMETER>
+      </STATISTICS>
+   </CATEGORY>
+</TRANFRMR>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dom-config>
+  <service-config Name="Trillium" Register="false" TransactionCache="false">
+    <logger>
+      <file Name="../log/trillium.log"/>
+    </logger>
+    <register-handlers/>
+    <extensionFiles/>
+    <ruleDefnFiles>
+      <ruleDefnFile Name="xservice/Trillium/rules/invokeTrillium.xml"/>
+    </ruleDefnFiles>
+    <docDefnFiles/>
+    <workflow>
+      <workflowDefnFiles/>
+      <uiWorkflowDefnFiles/>
+    </workflow>
+    <eventDefnFiles/>
+    <statetransition>
+      <stateTransitionFiles/>
+      <stateMappingFiles/>
+    </statetransition>
+    <messaging>
+      <messageTemplateFiles/>
+      <messageRecipientGroupFiles/>
+      <messagingEventDefFiles/>
+      <messagingEventFiles/>
+    </messaging>
+    <validationSpecFiles/>
+    <dataPersistSpec/>
+    <schemaGenerate Value="true">
+      <file Value="test.sql"/>
+      <generateTables Value="true"/>
+      <maxTableNameLength Value="25"/>
+      <maxColumnNameLength Value="29"/>
+      <dbname Value=""/>
+    </schemaGenerate>
+  </service-config>
+  <!--
+ 	 Copyright (c) 2009 by Teradata Corporation. 
+	 All Rights Reserved. 
+	 Teradata CONFIDENTIAL AND TRADE SECRET 
+ -->
+</dom-config>

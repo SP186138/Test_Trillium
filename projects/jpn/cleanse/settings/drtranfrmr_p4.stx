@@ -1,0 +1,396 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TRANFRMR xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <SETTINGS_FILE_ENCODING>UTF8</SETTINGS_FILE_ENCODING>
+   
+   
+<CATEGORY>
+      
+      <INPUT>
+         <PARAMETER>
+            <INPUT_SETTINGS>
+               <ARGUMENTS>
+<ENTRY>
+<ENTRY_ID>1</ENTRY_ID>
+<FILE_QUALIFIER>jp_geocoder_p8</FILE_QUALIFIER>
+<DATA_FILE_NAME>stdin</DATA_FILE_NAME>
+<DDL_FILE_NAME>$(DDL)/jp_gllatlon_p8.ddx</DDL_FILE_NAME>
+               <FILE_DELIMITER/>
+               <USE_QUOTES_AS_QUALIFIER/>
+             
+
+<START_RECORD/>
+<MAX_RECORDS/>
+<NTH_SAMPLE/>
+
+
+<SELECT_RECORDS/>
+</ENTRY>
+</ARGUMENTS>
+            </INPUT_SETTINGS>
+            
+            
+         </PARAMETER>
+      </INPUT>
+      <OUTPUT>
+         <PARAMETER>
+            <OUTPUT_SETTINGS>
+               <ARGUMENTS>
+                  <FILE_QUALIFIER>OUTPUT</FILE_QUALIFIER>
+                  <DATA_FILE_NAME>stdout</DATA_FILE_NAME>
+                  <DDL_FILE_NAME>$(DDL)/jp_drtranfrmr_p4.ddx</DDL_FILE_NAME>
+               <SELECT_RECORDS/>
+</ARGUMENTS>
+            </OUTPUT_SETTINGS>
+            <FIELD_SCANNING>
+               <ARGUMENTS>
+                  <ENTRY>
+                     <ENTRY_ID>1</ENTRY_ID>
+<ENTRY_DESCRIPTION/>
+                     
+                     <SCAN_FIELD>PR_LEVEL2</SCAN_FIELD>
+                     <TARGET_FIELD>DR_STREET_NAME</TARGET_FIELD>
+                     <FIELD_JUSTIFICATION>NJ</FIELD_JUSTIFICATION>
+                     <SCAN_FORMAT>L</SCAN_FORMAT>
+                     <BETWEEN_SUBSTRING/>
+                     <AND_SUBSTRING/>
+                     <RETAIN_BETWEEN_SUBSTRING>N</RETAIN_BETWEEN_SUBSTRING>
+                     <SCAN_VALUE>区</SCAN_VALUE>
+                     <CASE_SENSITIVE_SCAN_VALUE>N</CASE_SENSITIVE_SCAN_VALUE>
+                     <RETAIN_SCAN_VALUE>Y</RETAIN_SCAN_VALUE>
+                     <SCAN_FUNCTION>CT</SCAN_FUNCTION>
+                     <SCAN_DIRECTION>L</SCAN_DIRECTION>
+                     <SCAN_POSITION>D</SCAN_POSITION>
+                     <SCAN_LEVEL>W</SCAN_LEVEL>
+                     <SCAN_CAPTURE>A</SCAN_CAPTURE>
+                     <WORD_DELIMITER/>
+                     <CHANGE_VALUE/>
+                     <CHANGE_OCCURENCES/>
+                     <FLAG_VALUE/>
+                  </ENTRY>
+                  <ENTRY>
+                     <ENTRY_ID>2</ENTRY_ID>
+<ENTRY_DESCRIPTION/>
+                     
+                     <SCAN_FIELD>PR_LEVEL4</SCAN_FIELD>
+                     <TARGET_FIELD/>
+                     <FIELD_JUSTIFICATION>NJ</FIELD_JUSTIFICATION>
+                     <SCAN_FORMAT>M</SCAN_FORMAT>
+                     <BETWEEN_SUBSTRING/>
+                     <AND_SUBSTRING/>
+                     <RETAIN_BETWEEN_SUBSTRING>N</RETAIN_BETWEEN_SUBSTRING>
+                     <SCAN_VALUE>D</SCAN_VALUE>
+                     <CASE_SENSITIVE_SCAN_VALUE>Y</CASE_SENSITIVE_SCAN_VALUE>
+                     <RETAIN_SCAN_VALUE/>
+                     <SCAN_FUNCTION>CT</SCAN_FUNCTION>
+                     <SCAN_DIRECTION>L</SCAN_DIRECTION>
+                     <SCAN_POSITION>D</SCAN_POSITION>
+                     <SCAN_LEVEL>F</SCAN_LEVEL>
+                     <SCAN_CAPTURE>R</SCAN_CAPTURE>
+                     <WORD_DELIMITER>
+                     </WORD_DELIMITER>
+                     <CHANGE_VALUE/>
+                     <CHANGE_OCCURENCES/>
+                     <FLAG_VALUE/>
+                  </ENTRY>
+                  <ENTRY>
+                     <ENTRY_ID>3</ENTRY_ID>
+<ENTRY_DESCRIPTION/>
+                     
+                     <SCAN_FIELD>PR_LEVEL4</SCAN_FIELD>
+                     <TARGET_FIELD>PR_BUILDING_NAME</TARGET_FIELD>
+                     <FIELD_JUSTIFICATION>NJ</FIELD_JUSTIFICATION>
+                     <SCAN_FORMAT>M</SCAN_FORMAT>
+                     <BETWEEN_SUBSTRING/>
+                     <AND_SUBSTRING/>
+                     <RETAIN_BETWEEN_SUBSTRING>N</RETAIN_BETWEEN_SUBSTRING>
+                     <SCAN_VALUE>D</SCAN_VALUE>
+                     <CASE_SENSITIVE_SCAN_VALUE>Y</CASE_SENSITIVE_SCAN_VALUE>
+                     <RETAIN_SCAN_VALUE>Y</RETAIN_SCAN_VALUE>
+                     <SCAN_FUNCTION>CT</SCAN_FUNCTION>
+                     <SCAN_DIRECTION>L</SCAN_DIRECTION>
+                     <SCAN_POSITION>D</SCAN_POSITION>
+                     <SCAN_LEVEL>F</SCAN_LEVEL>
+                     <SCAN_CAPTURE>R</SCAN_CAPTURE>
+                     <WORD_DELIMITER>
+                     </WORD_DELIMITER>
+                     <CHANGE_VALUE/>
+                     <CHANGE_OCCURENCES/>
+                     <FLAG_VALUE/>
+                  </ENTRY>
+                  <ENTRY>
+                     <ENTRY_ID>4</ENTRY_ID>
+<ENTRY_DESCRIPTION/>
+                     
+                     <SCAN_FIELD>PR_LEVEL4</SCAN_FIELD>
+                     <TARGET_FIELD>PR_HOUSE_NUMBER_DISPLAY</TARGET_FIELD>
+                     <FIELD_JUSTIFICATION>NJ</FIELD_JUSTIFICATION>
+                     <SCAN_FORMAT>M</SCAN_FORMAT>
+                     <BETWEEN_SUBSTRING/>
+                     <AND_SUBSTRING/>
+                     <RETAIN_BETWEEN_SUBSTRING>N</RETAIN_BETWEEN_SUBSTRING>
+                     <SCAN_VALUE>'NNNN-NN'</SCAN_VALUE>
+                     <CASE_SENSITIVE_SCAN_VALUE>Y</CASE_SENSITIVE_SCAN_VALUE>
+                     <RETAIN_SCAN_VALUE/>
+                     <SCAN_FUNCTION>CT</SCAN_FUNCTION>
+                     <SCAN_DIRECTION/>
+                     <SCAN_POSITION>B</SCAN_POSITION>
+                     <SCAN_LEVEL/>
+                     <SCAN_CAPTURE/>
+                     <WORD_DELIMITER/>
+                     <CHANGE_VALUE/>
+                     <CHANGE_OCCURENCES/>
+                     <FLAG_VALUE/>
+                  </ENTRY>
+                  <ENTRY>
+                     <ENTRY_ID>5</ENTRY_ID>
+<ENTRY_DESCRIPTION/>
+                     
+                     <SCAN_FIELD>PR_LEVEL4</SCAN_FIELD>
+                     <TARGET_FIELD>PR_HOUSE_NUMBER_DISPLAY</TARGET_FIELD>
+                     <FIELD_JUSTIFICATION>LA</FIELD_JUSTIFICATION>
+                     <SCAN_FORMAT>M</SCAN_FORMAT>
+                     <BETWEEN_SUBSTRING/>
+                     <AND_SUBSTRING/>
+                     <RETAIN_BETWEEN_SUBSTRING>N</RETAIN_BETWEEN_SUBSTRING>
+                     <SCAN_VALUE>'NNN-NN'</SCAN_VALUE>
+                     <CASE_SENSITIVE_SCAN_VALUE>Y</CASE_SENSITIVE_SCAN_VALUE>
+                     <RETAIN_SCAN_VALUE/>
+                     <SCAN_FUNCTION>CT</SCAN_FUNCTION>
+                     <SCAN_DIRECTION/>
+                     <SCAN_POSITION>B</SCAN_POSITION>
+                     <SCAN_LEVEL/>
+                     <SCAN_CAPTURE/>
+                     <WORD_DELIMITER/>
+                     <CHANGE_VALUE/>
+                     <CHANGE_OCCURENCES/>
+                     <FLAG_VALUE/>
+                  </ENTRY>
+                  <ENTRY>
+                     <ENTRY_ID>6</ENTRY_ID>
+<ENTRY_DESCRIPTION/>
+                     
+                     <SCAN_FIELD>PR_LEVEL4</SCAN_FIELD>
+                     <TARGET_FIELD>PR_HOUSE_NUMBER_DISPLAY</TARGET_FIELD>
+                     <FIELD_JUSTIFICATION>LA</FIELD_JUSTIFICATION>
+                     <SCAN_FORMAT>M</SCAN_FORMAT>
+                     <BETWEEN_SUBSTRING/>
+                     <AND_SUBSTRING/>
+                     <RETAIN_BETWEEN_SUBSTRING>N</RETAIN_BETWEEN_SUBSTRING>
+                     <SCAN_VALUE>'NN-NN'</SCAN_VALUE>
+                     <CASE_SENSITIVE_SCAN_VALUE>Y</CASE_SENSITIVE_SCAN_VALUE>
+                     <RETAIN_SCAN_VALUE/>
+                     <SCAN_FUNCTION>CT</SCAN_FUNCTION>
+                     <SCAN_DIRECTION/>
+                     <SCAN_POSITION>B</SCAN_POSITION>
+                     <SCAN_LEVEL/>
+                     <SCAN_CAPTURE/>
+                     <WORD_DELIMITER/>
+                     <CHANGE_VALUE/>
+                     <CHANGE_OCCURENCES/>
+                     <FLAG_VALUE/>
+                  </ENTRY>
+                  <ENTRY>
+                     <ENTRY_ID>7</ENTRY_ID>
+<ENTRY_DESCRIPTION/>
+                     
+                     <SCAN_FIELD>PR_LEVEL4</SCAN_FIELD>
+                     <TARGET_FIELD>PR_HOUSE_NUMBER_DISPLAY</TARGET_FIELD>
+                     <FIELD_JUSTIFICATION>LA</FIELD_JUSTIFICATION>
+                     <SCAN_FORMAT>M</SCAN_FORMAT>
+                     <BETWEEN_SUBSTRING/>
+                     <AND_SUBSTRING/>
+                     <RETAIN_BETWEEN_SUBSTRING>N</RETAIN_BETWEEN_SUBSTRING>
+                     <SCAN_VALUE>'N-NNN'</SCAN_VALUE>
+                     <CASE_SENSITIVE_SCAN_VALUE>Y</CASE_SENSITIVE_SCAN_VALUE>
+                     <RETAIN_SCAN_VALUE/>
+                     <SCAN_FUNCTION>CT</SCAN_FUNCTION>
+                     <SCAN_DIRECTION/>
+                     <SCAN_POSITION>B</SCAN_POSITION>
+                     <SCAN_LEVEL/>
+                     <SCAN_CAPTURE/>
+                     <WORD_DELIMITER/>
+                     <CHANGE_VALUE/>
+                     <CHANGE_OCCURENCES/>
+                     <FLAG_VALUE/>
+                  </ENTRY>
+                  <ENTRY>
+                     <ENTRY_ID>8</ENTRY_ID>
+<ENTRY_DESCRIPTION/>
+                     
+                     <SCAN_FIELD>PR_LEVEL4</SCAN_FIELD>
+                     <TARGET_FIELD>PR_HOUSE_NUMBER_DISPLAY</TARGET_FIELD>
+                     <FIELD_JUSTIFICATION>LA</FIELD_JUSTIFICATION>
+                     <SCAN_FORMAT>M</SCAN_FORMAT>
+                     <BETWEEN_SUBSTRING/>
+                     <AND_SUBSTRING/>
+                     <RETAIN_BETWEEN_SUBSTRING>N</RETAIN_BETWEEN_SUBSTRING>
+                     <SCAN_VALUE>'N-NNN'</SCAN_VALUE>
+                     <CASE_SENSITIVE_SCAN_VALUE>Y</CASE_SENSITIVE_SCAN_VALUE>
+                     <RETAIN_SCAN_VALUE/>
+                     <SCAN_FUNCTION>CT</SCAN_FUNCTION>
+                     <SCAN_DIRECTION/>
+                     <SCAN_POSITION>B</SCAN_POSITION>
+                     <SCAN_LEVEL/>
+                     <SCAN_CAPTURE/>
+                     <WORD_DELIMITER/>
+                     <CHANGE_VALUE/>
+                     <CHANGE_OCCURENCES/>
+                     <FLAG_VALUE/>
+                  </ENTRY>
+                  <ENTRY>
+                     <ENTRY_ID>9</ENTRY_ID>
+<ENTRY_DESCRIPTION/>
+                     
+                     <SCAN_FIELD>PR_LEVEL4</SCAN_FIELD>
+                     <TARGET_FIELD>PR_HOUSE_NUMBER_DISPLAY</TARGET_FIELD>
+                     <FIELD_JUSTIFICATION>LA</FIELD_JUSTIFICATION>
+                     <SCAN_FORMAT>M</SCAN_FORMAT>
+                     <BETWEEN_SUBSTRING/>
+                     <AND_SUBSTRING/>
+                     <RETAIN_BETWEEN_SUBSTRING>N</RETAIN_BETWEEN_SUBSTRING>
+                     <SCAN_VALUE>'N-N'</SCAN_VALUE>
+                     <CASE_SENSITIVE_SCAN_VALUE>Y</CASE_SENSITIVE_SCAN_VALUE>
+                     <RETAIN_SCAN_VALUE/>
+                     <SCAN_FUNCTION>CT</SCAN_FUNCTION>
+                     <SCAN_DIRECTION/>
+                     <SCAN_POSITION>B</SCAN_POSITION>
+                     <SCAN_LEVEL/>
+                     <SCAN_CAPTURE/>
+                     <WORD_DELIMITER/>
+                     <CHANGE_VALUE/>
+                     <CHANGE_OCCURENCES/>
+                     <FLAG_VALUE/>
+                  </ENTRY>
+               </ARGUMENTS>
+            </FIELD_SCANNING>
+            
+      
+<CONDITIONALS>
+	<ARGUMENTS>
+		<ENTRY>
+			<ENTRY_ID>1</ENTRY_ID>
+			<FOR_FILES>OUTPUT</FOR_FILES>
+			<CONDITION>IF(ALWAYS)
+            /*  Build dr_address first with original ACE Level output fields
+            SET dr_address = TRIM(pr_level1) || TRIM(pr_level2) || TRIM(pr_level3) || TRIM(pr_level4)
+            /*  Clean out pr_level2 if Level 1 not Tokyo
+            IF(PR_LEVEL1 != "東京都")
+               RUN FIELD_SCANNING(1)
+            ENDIF
+            /*  Look for numbers at the beginning of pr_level_4 and cut to dr_house_number1
+            /*  Be sure to increment the scan entry range below if you add more scans
+            RUN FIELD_SCANNING(3)
+            IF(PR_GEOCODE_FAIL = "0")
+               SET dr_cleanse_level  = "2"
+               SET dr_region_name    = TRIM(pr_level1)
+               SET dr_city_name      = TRIM(pr_level2)
+               SET dr_street_name    = TRIM(TRIM(dr_street_name) |: pr_level3)
+               SET dr_house_number1  = pr_level4
+               SET dr_postal_code    = pr_postcode
+               SET dr_house_number2  = TRIM(PR_HOUSE_NUMBER_DISPLAY) || TRIM(pr_building_name) || TRIM(pr_building_number_display) || TRIM(pr_floor_number_display)
+               SET dr_house_number2  = TRIM(dr_house_number2) || TRIM(pr_apartment_number_display)
+               /*  SET dr_address = trim(pr_level1) + trim(pr_level2) + trim(pr_level3) + trim(pr_level4)
+               /*  IF(dr_address = SPACES)
+               /*     SET dr_address = dr_street_name
+               /*  ELSE
+               /*     SET dr_address2 = dr_street_name
+               /*  ENDIF
+            ELSE
+               SET dr_cleanse_level  = "0"
+               IF(PR_ADDR_CODE_FLAG = "2")
+                  SET dr_street_name = TRIM(TRIM(dr_street_name) |: STRET_NAME)
+                  SET dr_region_name = TRIM(pr_level1)
+                  SET dr_city_name   = TRIM(pr_level2)
+               ELSEIF(PR_ADDR_CODE_FLAG = "3")
+                  SET dr_street_name = TRIM(TRIM(dr_street_name) |: pr_level3)
+                  SET dr_region_name = TRIM(pr_level1)
+                  SET dr_city_name   = TRIM(pr_level2)
+               ELSE
+                  SET dr_street_name = TRIM(STRET_NAME)
+                  SET dr_region_name = TRIM(TERR_NAME)
+                  SET dr_city_name   = TRIM(CITY_NAME)
+               ENDIF
+               SET dr_house_number1  = TRIM(STRET_NUM)
+               SET dr_house_number2  = TRIM(APT_NUM)
+               SET dr_address        = TRIM(ADDR_LINE_1_TXT)
+               SET dr_address2       = TRIM(ADDR_LINE_2_TXT)
+               SET dr_address3       = TRIM(ADDR_LINE_3_TXT)
+               SET dr_postal_code    = TRIM(POSTL_AREA_CODE)
+            ENDIF
+            SET dr_country        = "JP"
+            SET dr_country_name   = "JPN"
+         ENDIF</CONDITION>
+		</ENTRY>
+		<ENTRY>
+			<ENTRY_ID>2</ENTRY_ID>
+			<FOR_FILES>OUTPUT</FOR_FILES>
+			<CONDITION>IF(ALWAYS)
+            RUN FIELD_SCANNING(ALL)
+            SET dr_mrmrs       = TCASE(NAME_PREFX_TXT)
+            SET dr_last_name   = TCASE(FAMLY_NAME)
+            SET dr_first_name  = TCASE(GVN_NAME)
+            SET dr_middle_name = TCASE(MID_NAME)
+            SET dr_name_gender = GENDR_IND
+            SET dr_name_suffix = NAME_SUFFX_TXT
+            RUN TABLE_RECODING(ALL)
+         ENDIF</CONDITION>
+		</ENTRY>
+		<ENTRY>
+			<ENTRY_ID>3</ENTRY_ID>
+			<FOR_FILES>OUTPUT</FOR_FILES>
+			<CONDITION>IF(ALWAYS)
+            /* Even though the input fields are all Unicode, the ACE postal matcher
+            /* works internally in CP932 and there is a possibility an out-of-band
+            /* character might be returned as a SUB character(0x1A).
+            /*
+            /* If this happens, we revert to the original data.
+            IF(dr_house_number1 CONTAINS HEXVAL("1A") OR
+               \  dr_house_number2 CONTAINS HEXVAL("1A") OR
+               \  dr_street_name   CONTAINS HEXVAL("1A") OR
+               \  dr_address       CONTAINS HEXVAL("1A") OR
+               \  dr_address2      CONTAINS HEXVAL("1A") OR
+               \  dr_address3      CONTAINS HEXVAL("1A") OR
+               \  dr_city_name     CONTAINS HEXVAL("1A") OR
+               \  dr_region_name   CONTAINS HEXVAL("1A") OR
+               \  dr_postal_code   CONTAINS HEXVAL("1A")   )
+               SET dr_house_number1  = Stret_Num
+               SET dr_house_number2  = Apt_Num
+               SET dr_street_name    = Stret_Name
+               SET dr_address        = TRIM(ADDR_LINE_1_TXT)
+               SET dr_address2       = TRIM(ADDR_LINE_2_TXT)
+               SET dr_address3       = TRIM(ADDR_LINE_3_TXT)
+               SET dr_city_name      = City_Name
+               SET dr_region_name    = Terr_Name
+               SET dr_postal_code    = Postl_Area_Code
+            ENDIF
+         ENDIF</CONDITION>
+		</ENTRY>
+	</ARGUMENTS>
+</CONDITIONALS>
+         </PARAMETER>
+      </OUTPUT>
+      <PROCESS>
+         <PARAMETER>
+            <PROCESS_SETTINGS>
+               <ARGUMENTS>
+                  <PROCESS_LOG_FILE_NAME>$(LOGS)/p4_jp_drtranfrmr_log.txt</PROCESS_LOG_FILE_NAME>
+                  <ENABLE_DEBUG_OUTPUT>0</ENABLE_DEBUG_OUTPUT>
+                  <DEBUG_FILE_NAME>$(DEBUG)/p4_jp_drtranfrmr_debug.txt</DEBUG_FILE_NAME>
+                  <MASK_FILE_NAME>$(GENERAL_RESOURCES)/maskfile$(PLAFEXT)</MASK_FILE_NAME>
+                  <STRSUB_TABLE_FILE_NAME>$(GENERAL_RESOURCES)/strsub$(PLAFEXT)</STRSUB_TABLE_FILE_NAME>
+               </ARGUMENTS>
+            </PROCESS_SETTINGS>
+         </PARAMETER>
+      </PROCESS>
+      <STATISTICS>
+         <PARAMETER>
+            <STATISTICS_SETTINGS>
+               <ARGUMENTS>
+                  <STATS_FILE_NAME>$(STATS)/p4_jp_drtranfrmr_stats.txt</STATS_FILE_NAME>
+               </ARGUMENTS>
+            </STATISTICS_SETTINGS>
+         </PARAMETER>
+      </STATISTICS>
+   </CATEGORY>
+</TRANFRMR>
+    

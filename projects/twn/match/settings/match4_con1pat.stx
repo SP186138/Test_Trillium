@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<CONSUMER_LEVEL1_PATTERN_SETTINGS xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <ARGUMENTS>
+        <ENTRY>
+            <PATTERN>P100AAAAAA---</PATTERN>
+            <!--     -     -->
+            <PATTERN>P101A-AAAA---</PATTERN>
+            <!--     -     -->
+            <PATTERN>P102-AAAAA---</PATTERN>
+            <!--    -    -->
+            <PATTERN>P103--AAAAA--</PATTERN>
+            <!--  -  -->
+            <PATTERN>P104A-AAAA--A</PATTERN>
+            <!--  -  -->
+            <PATTERN>P105-AAAAA-A-</PATTERN>
+        </ENTRY>
+    </ARGUMENTS>
+</CONSUMER_LEVEL1_PATTERN_SETTINGS>

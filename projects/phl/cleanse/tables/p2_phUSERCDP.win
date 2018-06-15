@@ -1,0 +1,32 @@
+***************************************************************************
+*   
+*
+*  Country:  Philippines
+*
+*            USER DEFINED SPECIFIC WORDS AND PATTERNS
+*
+***************************************************************************
+**'1500'                                     GEOG BEG ATT=POSTCODE
+**                                                DEF ATT=POSTCODE
+**                                                END ATT=POSTCODE
+'SAN JUAN'                                 GEOG BEG ATT=CITY FUNC=TSQ09
+                                                DEF ATT=CITY FUNC=TSQ09
+'nnnn'                         MOD MASK    GEOG BEG ATT=POSTCODE
+                                                DEF ATT=POSTCODE
+                                                END ATT=POSTCODE
+'GVN-NM1'
+   MOD    PATTERN NAME   DEF REC=GVN-NM1(1)
+
+*****   Upgrade to 15.6
+
+'HSNO 1ALPHA ALPHA STR-TYPE NEI1'
+     PATTERN STREET DEF
+     RECODE='HSNO STR-NM STR-NM STR-TYPE NEI1'
+'STREET'       MOD                                    NAME   DEF ATT=BUS?
+                                                      STREET DEF ATT=STR-TYPE REC='ST'
+'ST'           mod                                    NAME   DEF ATT=CON
+                                                      STREET DEF ATT=STR-TYPE
+                                                      GEOG   DEF REC='SAINT'
+'HSNO ALPHA NEI1 STR-TYPE1'
+     PATTERN STREET DEF
+     RECODE='HSNO STR-NM STR-NM STR-TYPE1'

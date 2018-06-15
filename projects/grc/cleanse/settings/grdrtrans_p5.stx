@@ -1,0 +1,888 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TRANFRMR xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <SETTINGS_FILE_ENCODING>UTF8</SETTINGS_FILE_ENCODING>
+   
+   
+<CATEGORY>
+      <INPUT>
+         <PARAMETER>
+            <INPUT_SETTINGS>
+               <ARGUMENTS>
+                  <ENTRY>
+                     <ENTRY_ID>1</ENTRY_ID>
+                     <FILE_QUALIFIER>e5_gr_pmatch_p4</FILE_QUALIFIER>
+                     <DATA_FILE_NAME>stdin</DATA_FILE_NAME>
+                     <DDL_FILE_NAME>$(DDL)/gr_pmatch_p4.ddx</DDL_FILE_NAME>
+               <FILE_DELIMITER/>
+               <USE_QUOTES_AS_QUALIFIER/>
+             
+                     
+                     
+                     <START_RECORD/>
+                     <MAX_RECORDS/>
+                     <NTH_SAMPLE/>
+                     
+                     <EXCEPTIONS_FILE_NAME/>
+                     
+                     
+                  <SELECT_RECORDS/>
+</ENTRY>
+               </ARGUMENTS>
+            </INPUT_SETTINGS>
+            
+            
+         </PARAMETER>
+      </INPUT>
+      <OUTPUT>
+         <PARAMETER>
+            <OUTPUT_SETTINGS>
+               <ARGUMENTS>
+                  <FILE_QUALIFIER>OUTPUT01</FILE_QUALIFIER>
+                  <DATA_FILE_NAME>stdout</DATA_FILE_NAME>
+                  <DDL_FILE_NAME>$(DDL)/gr_drtranfrmr_p5.ddx</DDL_FILE_NAME>
+                  
+               <SELECT_RECORDS/>
+</ARGUMENTS>
+            </OUTPUT_SETTINGS>
+            <FIELD_SCANNING>
+               <ARGUMENTS>
+                  <ENTRY>
+                     <ENTRY_ID>1</ENTRY_ID>
+<ENTRY_DESCRIPTION>Dr_Address: Adjust final-sigma, change some σ to ς</ENTRY_DESCRIPTION>
+                     <SCAN_FIELD>DR_ADDRESS</SCAN_FIELD>
+                     <TARGET_FIELD/>
+                     <FIELD_JUSTIFICATION>NJ</FIELD_JUSTIFICATION>
+                     <SCAN_FORMAT>L</SCAN_FORMAT>
+                     <BETWEEN_SUBSTRING/>
+                     <AND_SUBSTRING/>
+                     <RETAIN_BETWEEN_SUBSTRING/>
+                     <SCAN_VALUE>"σ "</SCAN_VALUE>
+                     <CASE_SENSITIVE_SCAN_VALUE>Y</CASE_SENSITIVE_SCAN_VALUE>
+                     <RETAIN_SCAN_VALUE/>
+                     <SCAN_FUNCTION>CH</SCAN_FUNCTION>
+                     <SCAN_DIRECTION>L</SCAN_DIRECTION>
+                     <SCAN_POSITION>D</SCAN_POSITION>
+                     <SCAN_LEVEL/>
+                     <SCAN_CAPTURE/>
+                     <WORD_DELIMITER/>
+                     <CHANGE_VALUE>"ς "</CHANGE_VALUE>
+                     <CHANGE_OCCURENCES>ALL</CHANGE_OCCURENCES>
+                     <FLAG_VALUE/>
+                     
+                  </ENTRY>
+                  <ENTRY>
+                     <ENTRY_ID>2</ENTRY_ID>
+<ENTRY_DESCRIPTION>Dr_Address2: Adjust final-sigma, change some σ to ς</ENTRY_DESCRIPTION>
+                     <SCAN_FIELD>DR_ADDRESS2</SCAN_FIELD>
+                     <TARGET_FIELD/>
+                     <FIELD_JUSTIFICATION>NJ</FIELD_JUSTIFICATION>
+                     <SCAN_FORMAT>L</SCAN_FORMAT>
+                     <BETWEEN_SUBSTRING/>
+                     <AND_SUBSTRING/>
+                     <RETAIN_BETWEEN_SUBSTRING/>
+                     <SCAN_VALUE>"σ "</SCAN_VALUE>
+                     <CASE_SENSITIVE_SCAN_VALUE>Y</CASE_SENSITIVE_SCAN_VALUE>
+                     <RETAIN_SCAN_VALUE/>
+                     <SCAN_FUNCTION>CH</SCAN_FUNCTION>
+                     <SCAN_DIRECTION>L</SCAN_DIRECTION>
+                     <SCAN_POSITION>D</SCAN_POSITION>
+                     <SCAN_LEVEL/>
+                     <SCAN_CAPTURE/>
+                     <WORD_DELIMITER/>
+                     <CHANGE_VALUE>"ς "</CHANGE_VALUE>
+                     <CHANGE_OCCURENCES>ALL</CHANGE_OCCURENCES>
+                     <FLAG_VALUE/>
+                     
+                  </ENTRY>
+                  <ENTRY>
+                     <ENTRY_ID>3</ENTRY_ID>
+<ENTRY_DESCRIPTION>Dr_Address3: Adjust final-sigma, change some σ to ς</ENTRY_DESCRIPTION>
+                     <SCAN_FIELD>DR_ADDRESS3</SCAN_FIELD>
+                     <TARGET_FIELD/>
+                     <FIELD_JUSTIFICATION>NJ</FIELD_JUSTIFICATION>
+                     <SCAN_FORMAT>L</SCAN_FORMAT>
+                     <BETWEEN_SUBSTRING/>
+                     <AND_SUBSTRING/>
+                     <RETAIN_BETWEEN_SUBSTRING/>
+                     <SCAN_VALUE>"σ "</SCAN_VALUE>
+                     <CASE_SENSITIVE_SCAN_VALUE>Y</CASE_SENSITIVE_SCAN_VALUE>
+                     <RETAIN_SCAN_VALUE/>
+                     <SCAN_FUNCTION>CH</SCAN_FUNCTION>
+                     <SCAN_DIRECTION>L</SCAN_DIRECTION>
+                     <SCAN_POSITION>D</SCAN_POSITION>
+                     <SCAN_LEVEL/>
+                     <SCAN_CAPTURE/>
+                     <WORD_DELIMITER/>
+                     <CHANGE_VALUE>"ς "</CHANGE_VALUE>
+                     <CHANGE_OCCURENCES>ALL</CHANGE_OCCURENCES>
+                     <FLAG_VALUE/>
+                     
+                  </ENTRY>
+                  <ENTRY>
+                     <ENTRY_ID>4</ENTRY_ID>
+<ENTRY_DESCRIPTION>Dr_Alias_Account: Adjust final-sigma, change some σ to ς</ENTRY_DESCRIPTION>
+                     <SCAN_FIELD>DR_ALIAS_ACCOUNT</SCAN_FIELD>
+                     <TARGET_FIELD/>
+                     <FIELD_JUSTIFICATION>NJ</FIELD_JUSTIFICATION>
+                     <SCAN_FORMAT>L</SCAN_FORMAT>
+                     <BETWEEN_SUBSTRING/>
+                     <AND_SUBSTRING/>
+                     <RETAIN_BETWEEN_SUBSTRING/>
+                     <SCAN_VALUE>"σ "</SCAN_VALUE>
+                     <CASE_SENSITIVE_SCAN_VALUE>Y</CASE_SENSITIVE_SCAN_VALUE>
+                     <RETAIN_SCAN_VALUE/>
+                     <SCAN_FUNCTION>CH</SCAN_FUNCTION>
+                     <SCAN_DIRECTION>L</SCAN_DIRECTION>
+                     <SCAN_POSITION>D</SCAN_POSITION>
+                     <SCAN_LEVEL/>
+                     <SCAN_CAPTURE/>
+                     <WORD_DELIMITER/>
+                     <CHANGE_VALUE>"ς "</CHANGE_VALUE>
+                     <CHANGE_OCCURENCES>ALL</CHANGE_OCCURENCES>
+                     <FLAG_VALUE/>
+                     
+                  </ENTRY>
+                  <ENTRY>
+                     <ENTRY_ID>5</ENTRY_ID>
+<ENTRY_DESCRIPTION>Dr_Alias_Contact: Adjust final-sigma, change some σ to ς</ENTRY_DESCRIPTION>
+                     <SCAN_FIELD>DR_ALIAS_CONTACT</SCAN_FIELD>
+                     <TARGET_FIELD/>
+                     <FIELD_JUSTIFICATION>NJ</FIELD_JUSTIFICATION>
+                     <SCAN_FORMAT>L</SCAN_FORMAT>
+                     <BETWEEN_SUBSTRING/>
+                     <AND_SUBSTRING/>
+                     <RETAIN_BETWEEN_SUBSTRING/>
+                     <SCAN_VALUE>"σ "</SCAN_VALUE>
+                     <CASE_SENSITIVE_SCAN_VALUE>Y</CASE_SENSITIVE_SCAN_VALUE>
+                     <RETAIN_SCAN_VALUE/>
+                     <SCAN_FUNCTION>CH</SCAN_FUNCTION>
+                     <SCAN_DIRECTION>L</SCAN_DIRECTION>
+                     <SCAN_POSITION>D</SCAN_POSITION>
+                     <SCAN_LEVEL/>
+                     <SCAN_CAPTURE/>
+                     <WORD_DELIMITER/>
+                     <CHANGE_VALUE>"ς "</CHANGE_VALUE>
+                     <CHANGE_OCCURENCES>ALL</CHANGE_OCCURENCES>
+                     <FLAG_VALUE/>
+                     
+                  </ENTRY>
+                  <ENTRY>
+                     <ENTRY_ID>6</ENTRY_ID>
+<ENTRY_DESCRIPTION>Dr_Business_Name: Adjust final-sigma, change some σ to ς</ENTRY_DESCRIPTION>
+                     <SCAN_FIELD>DR_BUSINESS_NAME</SCAN_FIELD>
+                     <TARGET_FIELD/>
+                     <FIELD_JUSTIFICATION>NJ</FIELD_JUSTIFICATION>
+                     <SCAN_FORMAT>L</SCAN_FORMAT>
+                     <BETWEEN_SUBSTRING/>
+                     <AND_SUBSTRING/>
+                     <RETAIN_BETWEEN_SUBSTRING/>
+                     <SCAN_VALUE>"σ "</SCAN_VALUE>
+                     <CASE_SENSITIVE_SCAN_VALUE>Y</CASE_SENSITIVE_SCAN_VALUE>
+                     <RETAIN_SCAN_VALUE/>
+                     <SCAN_FUNCTION>CH</SCAN_FUNCTION>
+                     <SCAN_DIRECTION>L</SCAN_DIRECTION>
+                     <SCAN_POSITION>D</SCAN_POSITION>
+                     <SCAN_LEVEL/>
+                     <SCAN_CAPTURE/>
+                     <WORD_DELIMITER/>
+                     <CHANGE_VALUE>"ς "</CHANGE_VALUE>
+                     <CHANGE_OCCURENCES>ALL</CHANGE_OCCURENCES>
+                     <FLAG_VALUE/>
+                     
+                  </ENTRY>
+                  <ENTRY>
+                     <ENTRY_ID>7</ENTRY_ID>
+<ENTRY_DESCRIPTION>Dr_City_Name: Adjust final-sigma, change some σ to ς</ENTRY_DESCRIPTION>
+                     <SCAN_FIELD>DR_CITY_NAME</SCAN_FIELD>
+                     <TARGET_FIELD/>
+                     <FIELD_JUSTIFICATION>NJ</FIELD_JUSTIFICATION>
+                     <SCAN_FORMAT>L</SCAN_FORMAT>
+                     <BETWEEN_SUBSTRING/>
+                     <AND_SUBSTRING/>
+                     <RETAIN_BETWEEN_SUBSTRING/>
+                     <SCAN_VALUE>"σ "</SCAN_VALUE>
+                     <CASE_SENSITIVE_SCAN_VALUE>Y</CASE_SENSITIVE_SCAN_VALUE>
+                     <RETAIN_SCAN_VALUE/>
+                     <SCAN_FUNCTION>CH</SCAN_FUNCTION>
+                     <SCAN_DIRECTION>L</SCAN_DIRECTION>
+                     <SCAN_POSITION>D</SCAN_POSITION>
+                     <SCAN_LEVEL/>
+                     <SCAN_CAPTURE/>
+                     <WORD_DELIMITER/>
+                     <CHANGE_VALUE>"ς "</CHANGE_VALUE>
+                     <CHANGE_OCCURENCES>ALL</CHANGE_OCCURENCES>
+                     <FLAG_VALUE/>
+                     
+                  </ENTRY>
+                  <ENTRY>
+                     <ENTRY_ID>8</ENTRY_ID>
+<ENTRY_DESCRIPTION>Dr_First_Name: Adjust final-sigma, change some σ to ς</ENTRY_DESCRIPTION>
+                     <SCAN_FIELD>Dr_First_Name</SCAN_FIELD>
+                     <TARGET_FIELD/>
+                     <FIELD_JUSTIFICATION>NJ</FIELD_JUSTIFICATION>
+                     <SCAN_FORMAT>L</SCAN_FORMAT>
+                     <BETWEEN_SUBSTRING/>
+                     <AND_SUBSTRING/>
+                     <RETAIN_BETWEEN_SUBSTRING/>
+                     <SCAN_VALUE>"σ "</SCAN_VALUE>
+                     <CASE_SENSITIVE_SCAN_VALUE>Y</CASE_SENSITIVE_SCAN_VALUE>
+                     <RETAIN_SCAN_VALUE/>
+                     <SCAN_FUNCTION>CH</SCAN_FUNCTION>
+                     <SCAN_DIRECTION>L</SCAN_DIRECTION>
+                     <SCAN_POSITION>D</SCAN_POSITION>
+                     <SCAN_LEVEL/>
+                     <SCAN_CAPTURE/>
+                     <WORD_DELIMITER/>
+                     <CHANGE_VALUE>"ς "</CHANGE_VALUE>
+                     <CHANGE_OCCURENCES>ALL</CHANGE_OCCURENCES>
+                     <FLAG_VALUE/>
+                     
+                  </ENTRY>
+                  <ENTRY>
+                     <ENTRY_ID>9</ENTRY_ID>
+<ENTRY_DESCRIPTION>Dr_House_Number1: Adjust final-sigma, change some σ to ς</ENTRY_DESCRIPTION>
+                     <SCAN_FIELD>DR_HOUSE_NUMBER1</SCAN_FIELD>
+                     <TARGET_FIELD/>
+                     <FIELD_JUSTIFICATION>NJ</FIELD_JUSTIFICATION>
+                     <SCAN_FORMAT>L</SCAN_FORMAT>
+                     <BETWEEN_SUBSTRING/>
+                     <AND_SUBSTRING/>
+                     <RETAIN_BETWEEN_SUBSTRING/>
+                     <SCAN_VALUE>"σ "</SCAN_VALUE>
+                     <CASE_SENSITIVE_SCAN_VALUE>Y</CASE_SENSITIVE_SCAN_VALUE>
+                     <RETAIN_SCAN_VALUE/>
+                     <SCAN_FUNCTION>CH</SCAN_FUNCTION>
+                     <SCAN_DIRECTION>L</SCAN_DIRECTION>
+                     <SCAN_POSITION>D</SCAN_POSITION>
+                     <SCAN_LEVEL/>
+                     <SCAN_CAPTURE/>
+                     <WORD_DELIMITER/>
+                     <CHANGE_VALUE>"ς "</CHANGE_VALUE>
+                     <CHANGE_OCCURENCES>ALL</CHANGE_OCCURENCES>
+                     <FLAG_VALUE/>
+                     
+                  </ENTRY>
+                  <ENTRY>
+                     <ENTRY_ID>10</ENTRY_ID>
+<ENTRY_DESCRIPTION>Dr_House_Number2: Adjust final-sigma, change some σ to ς</ENTRY_DESCRIPTION>
+                     <SCAN_FIELD>DR_HOUSE_NUMBER2</SCAN_FIELD>
+                     <TARGET_FIELD/>
+                     <FIELD_JUSTIFICATION>NJ</FIELD_JUSTIFICATION>
+                     <SCAN_FORMAT>L</SCAN_FORMAT>
+                     <BETWEEN_SUBSTRING/>
+                     <AND_SUBSTRING/>
+                     <RETAIN_BETWEEN_SUBSTRING/>
+                     <SCAN_VALUE>"σ "</SCAN_VALUE>
+                     <CASE_SENSITIVE_SCAN_VALUE>Y</CASE_SENSITIVE_SCAN_VALUE>
+                     <RETAIN_SCAN_VALUE/>
+                     <SCAN_FUNCTION>CH</SCAN_FUNCTION>
+                     <SCAN_DIRECTION>L</SCAN_DIRECTION>
+                     <SCAN_POSITION>D</SCAN_POSITION>
+                     <SCAN_LEVEL/>
+                     <SCAN_CAPTURE/>
+                     <WORD_DELIMITER/>
+                     <CHANGE_VALUE>"ς "</CHANGE_VALUE>
+                     <CHANGE_OCCURENCES>ALL</CHANGE_OCCURENCES>
+                     <FLAG_VALUE/>
+                     
+                  </ENTRY>
+                  <ENTRY>
+                     <ENTRY_ID>11</ENTRY_ID>
+<ENTRY_DESCRIPTION>Dr_Last_Name: Adjust final-sigma, change some σ to ς</ENTRY_DESCRIPTION>
+                     <SCAN_FIELD>DR_LAST_NAME</SCAN_FIELD>
+                     <TARGET_FIELD/>
+                     <FIELD_JUSTIFICATION>NJ</FIELD_JUSTIFICATION>
+                     <SCAN_FORMAT>L</SCAN_FORMAT>
+                     <BETWEEN_SUBSTRING/>
+                     <AND_SUBSTRING/>
+                     <RETAIN_BETWEEN_SUBSTRING/>
+                     <SCAN_VALUE>"σ "</SCAN_VALUE>
+                     <CASE_SENSITIVE_SCAN_VALUE>Y</CASE_SENSITIVE_SCAN_VALUE>
+                     <RETAIN_SCAN_VALUE/>
+                     <SCAN_FUNCTION>CH</SCAN_FUNCTION>
+                     <SCAN_DIRECTION>L</SCAN_DIRECTION>
+                     <SCAN_POSITION>D</SCAN_POSITION>
+                     <SCAN_LEVEL/>
+                     <SCAN_CAPTURE/>
+                     <WORD_DELIMITER/>
+                     <CHANGE_VALUE>"ς "</CHANGE_VALUE>
+                     <CHANGE_OCCURENCES>ALL</CHANGE_OCCURENCES>
+                     <FLAG_VALUE/>
+                     
+                  </ENTRY>
+                  <ENTRY>
+                     <ENTRY_ID>12</ENTRY_ID>
+<ENTRY_DESCRIPTION>Dr_Middle_Name: Adjust final-sigma, change some σ to ς</ENTRY_DESCRIPTION>
+                     <SCAN_FIELD>DR_MIDDLE_NAME</SCAN_FIELD>
+                     <TARGET_FIELD/>
+                     <FIELD_JUSTIFICATION>NJ</FIELD_JUSTIFICATION>
+                     <SCAN_FORMAT>L</SCAN_FORMAT>
+                     <BETWEEN_SUBSTRING/>
+                     <AND_SUBSTRING/>
+                     <RETAIN_BETWEEN_SUBSTRING/>
+                     <SCAN_VALUE>"σ "</SCAN_VALUE>
+                     <CASE_SENSITIVE_SCAN_VALUE>Y</CASE_SENSITIVE_SCAN_VALUE>
+                     <RETAIN_SCAN_VALUE/>
+                     <SCAN_FUNCTION>CH</SCAN_FUNCTION>
+                     <SCAN_DIRECTION>L</SCAN_DIRECTION>
+                     <SCAN_POSITION>D</SCAN_POSITION>
+                     <SCAN_LEVEL/>
+                     <SCAN_CAPTURE/>
+                     <WORD_DELIMITER/>
+                     <CHANGE_VALUE>"ς "</CHANGE_VALUE>
+                     <CHANGE_OCCURENCES>ALL</CHANGE_OCCURENCES>
+                     <FLAG_VALUE/>
+                     
+                  </ENTRY>
+                  <ENTRY>
+                     <ENTRY_ID>13</ENTRY_ID>
+<ENTRY_DESCRIPTION>Dr_Mrmrs: Adjust final-sigma, change some σ to ς</ENTRY_DESCRIPTION>
+                     <SCAN_FIELD>Dr_Mrmrs</SCAN_FIELD>
+                     <TARGET_FIELD/>
+                     <FIELD_JUSTIFICATION>NJ</FIELD_JUSTIFICATION>
+                     <SCAN_FORMAT>L</SCAN_FORMAT>
+                     <BETWEEN_SUBSTRING/>
+                     <AND_SUBSTRING/>
+                     <RETAIN_BETWEEN_SUBSTRING/>
+                     <SCAN_VALUE>"σ "</SCAN_VALUE>
+                     <CASE_SENSITIVE_SCAN_VALUE>Y</CASE_SENSITIVE_SCAN_VALUE>
+                     <RETAIN_SCAN_VALUE/>
+                     <SCAN_FUNCTION>CH</SCAN_FUNCTION>
+                     <SCAN_DIRECTION>L</SCAN_DIRECTION>
+                     <SCAN_POSITION>D</SCAN_POSITION>
+                     <SCAN_LEVEL/>
+                     <SCAN_CAPTURE/>
+                     <WORD_DELIMITER/>
+                     <CHANGE_VALUE>"ς "</CHANGE_VALUE>
+                     <CHANGE_OCCURENCES>ALL</CHANGE_OCCURENCES>
+                     <FLAG_VALUE/>
+                     
+                  </ENTRY>
+                  <ENTRY>
+                     <ENTRY_ID>14</ENTRY_ID>
+<ENTRY_DESCRIPTION>Dr_Name_Suffix: Adjust final-sigma, change some σ to ς</ENTRY_DESCRIPTION>
+                     <SCAN_FIELD>DR_NAME_SUFFIX</SCAN_FIELD>
+                     <TARGET_FIELD/>
+                     <FIELD_JUSTIFICATION>NJ</FIELD_JUSTIFICATION>
+                     <SCAN_FORMAT>L</SCAN_FORMAT>
+                     <BETWEEN_SUBSTRING/>
+                     <AND_SUBSTRING/>
+                     <RETAIN_BETWEEN_SUBSTRING/>
+                     <SCAN_VALUE>"σ "</SCAN_VALUE>
+                     <CASE_SENSITIVE_SCAN_VALUE>Y</CASE_SENSITIVE_SCAN_VALUE>
+                     <RETAIN_SCAN_VALUE/>
+                     <SCAN_FUNCTION>CH</SCAN_FUNCTION>
+                     <SCAN_DIRECTION>L</SCAN_DIRECTION>
+                     <SCAN_POSITION>D</SCAN_POSITION>
+                     <SCAN_LEVEL/>
+                     <SCAN_CAPTURE/>
+                     <WORD_DELIMITER/>
+                     <CHANGE_VALUE>"ς "</CHANGE_VALUE>
+                     <CHANGE_OCCURENCES>ALL</CHANGE_OCCURENCES>
+                     <FLAG_VALUE/>
+                     
+                  </ENTRY>
+                  <ENTRY>
+                     <ENTRY_ID>15</ENTRY_ID>
+<ENTRY_DESCRIPTION>Dr_Pobox_Number: Adjust final-sigma, change some σ to ς</ENTRY_DESCRIPTION>
+                     <SCAN_FIELD>DR_POBOX_NUMBER</SCAN_FIELD>
+                     <TARGET_FIELD/>
+                     <FIELD_JUSTIFICATION>NJ</FIELD_JUSTIFICATION>
+                     <SCAN_FORMAT>L</SCAN_FORMAT>
+                     <BETWEEN_SUBSTRING/>
+                     <AND_SUBSTRING/>
+                     <RETAIN_BETWEEN_SUBSTRING/>
+                     <SCAN_VALUE>"σ "</SCAN_VALUE>
+                     <CASE_SENSITIVE_SCAN_VALUE>Y</CASE_SENSITIVE_SCAN_VALUE>
+                     <RETAIN_SCAN_VALUE/>
+                     <SCAN_FUNCTION>CH</SCAN_FUNCTION>
+                     <SCAN_DIRECTION>L</SCAN_DIRECTION>
+                     <SCAN_POSITION>D</SCAN_POSITION>
+                     <SCAN_LEVEL/>
+                     <SCAN_CAPTURE/>
+                     <WORD_DELIMITER/>
+                     <CHANGE_VALUE>"ς "</CHANGE_VALUE>
+                     <CHANGE_OCCURENCES>ALL</CHANGE_OCCURENCES>
+                     <FLAG_VALUE/>
+                     
+                  </ENTRY>
+                  <ENTRY>
+                     <ENTRY_ID>16</ENTRY_ID>
+<ENTRY_DESCRIPTION>Dr_Region_Name: Adjust final-sigma, change some σ to ς</ENTRY_DESCRIPTION>
+                     <SCAN_FIELD>Dr_Region_Name</SCAN_FIELD>
+                     <TARGET_FIELD/>
+                     <FIELD_JUSTIFICATION>NJ</FIELD_JUSTIFICATION>
+                     <SCAN_FORMAT>L</SCAN_FORMAT>
+                     <BETWEEN_SUBSTRING/>
+                     <AND_SUBSTRING/>
+                     <RETAIN_BETWEEN_SUBSTRING/>
+                     <SCAN_VALUE>"σ "</SCAN_VALUE>
+                     <CASE_SENSITIVE_SCAN_VALUE>Y</CASE_SENSITIVE_SCAN_VALUE>
+                     <RETAIN_SCAN_VALUE/>
+                     <SCAN_FUNCTION>CH</SCAN_FUNCTION>
+                     <SCAN_DIRECTION>L</SCAN_DIRECTION>
+                     <SCAN_POSITION>D</SCAN_POSITION>
+                     <SCAN_LEVEL/>
+                     <SCAN_CAPTURE/>
+                     <WORD_DELIMITER/>
+                     <CHANGE_VALUE>"ς "</CHANGE_VALUE>
+                     <CHANGE_OCCURENCES>ALL</CHANGE_OCCURENCES>
+                     <FLAG_VALUE/>
+                     
+                  </ENTRY>
+                  <ENTRY>
+                     <ENTRY_ID>17</ENTRY_ID>
+<ENTRY_DESCRIPTION>Dr_Street_Name: Adjust final-sigma, change some σ to ς</ENTRY_DESCRIPTION>
+                     <SCAN_FIELD>DR_STREET_NAME</SCAN_FIELD>
+                     <TARGET_FIELD/>
+                     <FIELD_JUSTIFICATION>NJ</FIELD_JUSTIFICATION>
+                     <SCAN_FORMAT>L</SCAN_FORMAT>
+                     <BETWEEN_SUBSTRING/>
+                     <AND_SUBSTRING/>
+                     <RETAIN_BETWEEN_SUBSTRING/>
+                     <SCAN_VALUE>"σ "</SCAN_VALUE>
+                     <CASE_SENSITIVE_SCAN_VALUE>Y</CASE_SENSITIVE_SCAN_VALUE>
+                     <RETAIN_SCAN_VALUE/>
+                     <SCAN_FUNCTION>CH</SCAN_FUNCTION>
+                     <SCAN_DIRECTION>L</SCAN_DIRECTION>
+                     <SCAN_POSITION>D</SCAN_POSITION>
+                     <SCAN_LEVEL/>
+                     <SCAN_CAPTURE/>
+                     <WORD_DELIMITER/>
+                     <CHANGE_VALUE>"ς "</CHANGE_VALUE>
+                     <CHANGE_OCCURENCES>ALL</CHANGE_OCCURENCES>
+                     <FLAG_VALUE/>
+                     
+                  </ENTRY>
+               </ARGUMENTS>
+            </FIELD_SCANNING>
+            
+            
+         
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<CONDITIONALS>
+	<ARGUMENTS>
+		<ENTRY>
+			<ENTRY_ID>1</ENTRY_ID>
+			<FOR_FILES>OUTPUT01</FOR_FILES>
+			<CONDITION>
+   /*
+   /* ENTRY ID/SUBROUTINE LIST:
+   /*   1. main
+   /*   2. global_address_citypost
+   /*   3. global_address_match
+   /*   4. global_address_nomatch
+   /*   5. grc_keep_original_address
+   /*   6. grc_postal_matched_address
+   /*   7. remove_blank_address_lines
+   /*   8. set_address_case
+   /*   9. set_global_address_fields_nt
+   /*   10. set_name_fields_clear_busname
+   /*
+/* +----------------------------------------------------------------------------+
+/* | ROUTINE: grc_cleanse                                                GREECE |
+/* +----------------------------------------------------------------------------+
+/*
+   IF(ALWAYS)
+      RUN TABLE_RECODING(ALL)
+      RUN SUBROUTINE(9)
+      /*... Adjust GA match level based on match score.
+      IF(TQ_GOUT_MATCH_LEVEL = "0" AND GA_GOUT_ACR_MATCH_SCORE &lt; 80 )
+         SET TQ_GOUT_MATCH_LEVEL = "4"
+      ENDIF
+      /*...
+      IF(TQ_GOUT_MATCH_LEVEL = "0" AND PR_REV_GROUP IN "000,002,005,008,009,010")
+         SET dr_cleanse_level = "2"
+         RUN SUBROUTINE(6)
+      ELSE
+         /*IF(PR_REV_GROUP IN "000,002,005,008,009,010")
+         /*   SET dr_cleanse_level = "1"
+         /*   RUN SUBROUTINE(grc_parsed_address)
+         /*ELSE
+         SET dr_cleanse_level = "0"
+         RUN SUBROUTINE(5)
+         /*ENDIF
+      ENDIF
+      RUN SUBROUTINE(8)
+      RUN SUBROUTINE(10)
+      SET dr_postal_code  = LPACK(dr_postal_code)
+      SET dr_country      = "GR"
+      SET dr_country_name = "GRC"
+      /*... Defer field scanning until after lower-case conversions
+      /*    to address FINAL SIGMA special case.
+      RUN FIELD_SCANNING(ALL)
+   ENDIF
+   </CONDITION>
+		</ENTRY>
+		<ENTRY>
+			<ENTRY_ID>2</ENTRY_ID>
+			<FOR_FILES>OUTPUT01</FOR_FILES>
+			<CONDITION>SUBROUTINE
+   /* SUBROUTINE: global_address_citypost
+/* +----------------------------------------------------------------------------+
+/* | SUBROUTINE: global_address_citypost                                        |
+/* +----------------------------------------------------------------------------+
+/*
+/*   City + post verified
+/*
+   IF(ALWAYS)
+      SET GA_GOUT_POSTAL_CODE_CHANGED    = TERNARY(UCASE(GA_GOUT_POSTAL_CODE) = UCASE(TQ_GIN_POSTAL_CODE), "N", "Y")
+      SET GA_GOUT_PROVINCE_CHANGED       = TERNARY(UCASE(GA_GOUT_STATE)       = UCASE(TQ_GIN_STATE)      , "N", "Y")
+      SET GA_GOUT_CITY_CHANGED           = TERNARY(UCASE(GA_GOUT_POSTAL_CITY) = UCASE(TQ_GIN_CITY_NAME)  , "N", "Y")
+      SET GA_GOUT_HOUSE_NUMBER           = TQ_GIN_HOUSE_NUMBER
+      SET GA_GOUT_STREET_NAME_CHANGED    = "N"
+      SET GA_GOUT_STREET_TYPE_CHANGED    = "N"
+      SET GA_GOUT_BOX_NUMBER             = TRIM(TRIM(PR_BOX1_NAME_RECODED) |: PR_BOX1_NUMBER)
+      SET GA_GOUT_SUB_BUILDING           = TRIM(TRIM(TQ_GIN_SUB_BUILDING) |: TQ_GIN_SUB_BUILDING_VALUE)
+      SET GA_GOUT_DWELLING_1_CHANGED     = "N"
+      SET GA_GOUT_SUB_BUILDING2          = TQ_GIN_SUB_BUILDING2
+      SET GA_GOUT_SUB_BUILDING2_VALUE    = TQ_GIN_SUB_BUILDING2_VALUE
+      SET GA_GOUT_DWELLING_2_CHANGED     = "N"
+      SET GA_GOUT_BUILDING               = TRIM(TRIM(PR_COMPLEX1_NAME_RECODED) |: PR_COMPLEX1_TYPE_RECODED)
+      SET GA_GOUT_SUB_CITY               = TRIM(TRIM(PR_NEIGH1_NAME_RECODED) |: PR_NEIGH2_NAME_RECODED)
+      SET GA_GOUT_NEIGHBORHOOD_1_CHANGED = "N"
+   ENDIF
+   </CONDITION>
+		</ENTRY>
+		<ENTRY>
+			<ENTRY_ID>3</ENTRY_ID>
+			<FOR_FILES>OUTPUT01</FOR_FILES>
+			<CONDITION>SUBROUTINE
+   /* SUBROUTINE: global_address_match
+/* +----------------------------------------------------------------------------+
+/* | SUBROUTINE: global_address_match                                           |
+/* +----------------------------------------------------------------------------+
+/*
+/*   verified to house number if available otherwise to street.
+/*
+   IF(ALWAYS)
+      SET GA_GOUT_POSTAL_CODE_CHANGED    = TERNARY(UCASE(GA_GOUT_POSTAL_CODE) = UCASE(TQ_GIN_POSTAL_CODE), "N", "Y")
+      SET GA_GOUT_PROVINCE_CHANGED       = TERNARY(UCASE(GA_GOUT_STATE)       = UCASE(TQ_GIN_STATE)      , "N", "Y")
+      SET GA_GOUT_CITY_CHANGED           = TERNARY(UCASE(GA_GOUT_POSTAL_CITY) = UCASE(TQ_GIN_CITY_NAME)  , "N", "Y")
+      SET GA_GOUT_HOUSE_NUMBER           = TQ_GIN_HOUSE_NUMBER
+      SET GA_GOUT_SUB_BUILDING           = TRIM(TRIM(TQ_GIN_SUB_BUILDING) |: TQ_GIN_SUB_BUILDING_VALUE)
+      SET GA_GOUT_DWELLING_1_CHANGED     = "N"
+      SET GA_GOUT_SUB_BUILDING2          = TQ_GIN_SUB_BUILDING2
+      SET GA_GOUT_SUB_BUILDING2_VALUE    = TQ_GIN_SUB_BUILDING2_VALUE
+      SET GA_GOUT_DWELLING_2_CHANGED     = "N"
+      SET GA_GOUT_BUILDING               = TRIM(TRIM(PR_COMPLEX1_NAME_RECODED) |: PR_COMPLEX1_TYPE_RECODED)
+      SET GA_GOUT_SUB_CITY               = TRIM(TRIM(PR_NEIGH1_NAME_RECODED) |: PR_NEIGH2_NAME_RECODED)
+      SET GA_GOUT_NEIGHBORHOOD_1_CHANGED = "N"
+   ENDIF
+   </CONDITION>
+		</ENTRY>
+		<ENTRY>
+			<ENTRY_ID>4</ENTRY_ID>
+			<FOR_FILES>OUTPUT01</FOR_FILES>
+			<CONDITION>SUBROUTINE
+   /* SUBROUTINE: global_address_nomatch
+/* +----------------------------------------------------------------------------+
+/* | SUBROUTINE: global_address_nomatch                                         |
+/* +----------------------------------------------------------------------------+
+/*
+   IF(ALWAYS)
+      /*   address failure - fill gout with gin
+      SET GA_GOUT_POSTAL_CODE            = TQ_GIN_POSTAL_CODE
+      SET GA_GOUT_POSTAL_CODE_CHANGED    = "N"
+      SET GA_GOUT_STATE                  = TQ_GIN_STATE
+      SET GA_GOUT_PROVINCE_CHANGED       = "N"
+      SET GA_GOUT_POSTAL_CITY            = TQ_GIN_CITY_NAME
+      SET GA_GOUT_CITY_CHANGED           = "N"
+      SET GA_GOUT_HOUSE_NUMBER           = TQ_GIN_HOUSE_NUMBER
+      SET GA_GOUT_STREET_NAME_CHANGED    = "N"
+      SET GA_GOUT_STREET_TYPE_CHANGED    = "N"
+      SET GA_GOUT_BOX_NUMBER             = TRIM(TRIM(PR_BOX1_NAME_RECODED) |: PR_BOX1_NUMBER)
+      SET GA_GOUT_SUB_BUILDING           = TRIM(TRIM(TQ_GIN_SUB_BUILDING) |: TQ_GIN_SUB_BUILDING_VALUE)
+      SET GA_GOUT_DWELLING_1_CHANGED     = "N"
+      SET GA_GOUT_SUB_BUILDING2          = TQ_GIN_SUB_BUILDING2
+      SET GA_GOUT_SUB_BUILDING2_VALUE    = TQ_GIN_SUB_BUILDING2_VALUE
+      SET GA_GOUT_DWELLING_2_CHANGED     = "N"
+      SET GA_GOUT_BUILDING               = TRIM(TRIM(PR_COMPLEX1_NAME_RECODED) |: PR_COMPLEX1_TYPE_RECODED)
+      SET GA_GOUT_SUB_CITY               = TRIM(TRIM(PR_NEIGH1_NAME_RECODED) |: PR_NEIGH2_NAME_RECODED)
+      SET GA_GOUT_NEIGHBORHOOD_1_CHANGED = "N"
+   ENDIF
+   </CONDITION>
+		</ENTRY>
+		<ENTRY>
+			<ENTRY_ID>5</ENTRY_ID>
+			<FOR_FILES>OUTPUT01</FOR_FILES>
+			<CONDITION>SUBROUTINE
+   /* SUBROUTINE: grc_keep_original_address
+/* +----------------------------------------------------------------------------+
+/* | SUBROUTINE: grc_keep_original_address                                      |
+/* +----------------------------------------------------------------------------+
+/*
+/*   Purpose: Populates the address fields with original input data.
+/*
+   IF(ALWAYS)
+      SET dr_house_number1 = TQ_GIN_HOUSE_NUMBER
+      SET dr_street_name   = TRIM(TRIM(TQ_GIN_STREET_NAME) |: TQ_GIN_STREET_TYPE)
+      SET dr_house_number2 = TRIM(TRIM(TQ_GIN_SUB_BUILDING) |: TQ_GIN_SUB_BUILDING_VALUE)
+      SET dr_pobox_number  = PR_BOX1_NUMBER
+      SET dr_address       = UCASE(TRIM(ADDR_LINE_1_TXT))
+      SET dr_address2      = UCASE(TRIM(ADDR_LINE_2_TXT))
+      SET dr_address3      = UCASE(TRIM(ADDR_LINE_3_TXT))
+      SET dr_city_name     = UCASE(TRIM(CITY_NAME))
+      SET dr_region_name   = UCASE(TRIM(TERR_NAME))
+      SET dr_postal_code   = UCASE(TRIM(POSTL_AREA_CODE))
+   ENDIF
+   </CONDITION>
+		</ENTRY>
+		<ENTRY>
+			<ENTRY_ID>6</ENTRY_ID>
+			<FOR_FILES>OUTPUT01</FOR_FILES>
+			<CONDITION>SUBROUTINE
+   /* SUBROUTINE: grc_postal_matched_address
+/* +----------------------------------------------------------------------------+
+/* | SUBROUTINE: grc_postal_matched_address                                     |
+/* +----------------------------------------------------------------------------+
+/*
+/*   Purpose: Populates the address fields for an address that matched the
+/*            Greek postal directory.
+/*
+   IF(ALWAYS)
+      /*... Set house_number, street_name, apartment_number and PO box.
+      SET dr_house_number1 = GA_GOUT_HOUSE_NUMBER
+      SET dr_street_name   = TRIM(TRIM(GA_GOUT_STREET_NAME) |: GA_GOUT_STREET_TYPE)
+      SET dr_house_number2 = TRIM(TRIM(PR_DWELLING1_NAME_RECODED) |: TRIM(PR_DWELLING1_NUMBER) |:
+      \                           TRIM(PR_DWELLING2_NAME_RECODED) |: TRIM(PR_DWELLING2_NUMBER) |:
+      \                           TRIM(PR_DWELLING3_NAME_RECODED) |:      PR_DWELLING3_NUMBER    )
+      SET dr_pobox_number  = PR_BOX1_NUMBER
+      /*... Set address lines 1 and 2.
+      /*SET dr_address = GA_GOUT_DELIVERY_ADDRESS
+      /*IF(NOT(dr_address CONTAINS TRIM(TRIM(PR_BOX1_NAME_RECODED) |: PR_BOX1_NUMBER)))
+      /*  SET dr_address2 =       TRIM(TRIM(PR_BOX1_NAME_RECODED) |: PR_BOX1_NUMBER)
+      /*ENDIF
+      /*... Add neighborhood name #1 to address line2.
+      /*IF(PR_NEIGH1_NAME_ORIGINAL != "" AND
+      /*   \  NOT(dr_address CONTAINS TRIM(PR_NEIGH1_NAME_ORIGINAL)))
+      /*   SET dr_address2 = TRIM(TRIM(dr_address2) |: PR_NEIGH1_NAME_ORIGINAL)
+      /*ENDIF
+      /*... Add neighborhood name #2 to address line3.
+      /*IF(PR_NEIGH2_NAME_ORIGINAL != "" AND
+      /*   \  NOT(dr_address  CONTAINS TRIM(PR_NEIGH2_NAME_ORIGINAL)) AND
+      /*  \  NOT(dr_address2 CONTAINS TRIM(PR_NEIGH2_NAME_ORIGINAL))    )
+      /*  SET dr_address3 = TRIM(TRIM(dr_address3) |: PR_NEIGH2_NAME_ORIGINAL)
+      /*ENDIF
+      /*RUN SUBROUTINE(7)
+      /*... Set city, province and postal-code.
+      /*SET dr_city_name     = GA_GOUT_POSTAL_CITY
+      /*SET dr_region_name   = GA_GOUT_STATE
+      /*SET dr_postal_code   = GA_GOUT_POSTAL_CODE
+	  SET dr_address       = UCASE(TRIM(ADDR_LINE_1_TXT))
+      SET dr_address2      = UCASE(TRIM(ADDR_LINE_2_TXT))
+      SET dr_address3      = UCASE(TRIM(ADDR_LINE_3_TXT))
+      SET dr_city_name     = UCASE(TRIM(CITY_NAME))
+      SET dr_region_name   = UCASE(TRIM(TERR_NAME))
+      SET dr_postal_code   = UCASE(TRIM(POSTL_AREA_CODE))
+	  RUN SUBROUTINE(7)
+   ENDIF
+   </CONDITION>
+		</ENTRY>
+		<ENTRY>
+			<ENTRY_ID>7</ENTRY_ID>
+			<FOR_FILES>OUTPUT01</FOR_FILES>
+			<CONDITION>SUBROUTINE
+   /* SUBROUTINE: remove_blank_address_lines
+/* +----------------------------------------------------------------------------+
+/* | SUBROUTINE: remove_blank_address_lines                                     |
+/* +----------------------------------------------------------------------------+
+/*
+/*   Removes blank or duplicate address lines from finished address.
+/*
+   IF(ALWAYS)
+      /*... remove duplicate lines.
+      IF(dr_address = dr_address2)
+         SET dr_address2 = ""
+      ENDIF
+      IF(dr_address = dr_address3)
+         SET dr_address3 = ""
+      ENDIF
+      IF(dr_address2 = dr_address3)
+         SET dr_address3 = ""
+      ENDIF
+      /*... remove blank lines.
+      IF(dr_address2 = "")
+         SET dr_address2 = dr_address3
+         SET dr_address3 = ""
+      ENDIF
+      IF(dr_address = "")
+         SET dr_address  = dr_address2
+         SET dr_address2 = ""
+      ENDIF
+   ENDIF
+   </CONDITION>
+		</ENTRY>
+		<ENTRY>
+			<ENTRY_ID>8</ENTRY_ID>
+			<FOR_FILES>OUTPUT01</FOR_FILES>
+			<CONDITION>SUBROUTINE
+   /* SUBROUTINE: set_address_case
+/* +----------------------------------------------------------------------------+
+/* | SUBROUTINE: set_address_case                                               |
+/* +----------------------------------------------------------------------------+
+/*
+   IF(ALWAYS)
+      SET dr_house_number2 = TCASE(DR_HOUSE_NUMBER2)
+      SET dr_street_name   = TCASE(DR_STREET_NAME)
+      SET dr_city_name     = TCASE(DR_CITY_NAME)
+      SET dr_region_name   = UCASE(DR_REGION_NAME)
+      SET dr_address       = TCASE(DR_ADDRESS)
+      SET dr_address2      = TCASE(DR_ADDRESS2)
+      SET dr_address3      = TCASE(DR_ADDRESS3)
+   ENDIF
+   </CONDITION>
+		</ENTRY>
+		<ENTRY>
+			<ENTRY_ID>9</ENTRY_ID>
+			<FOR_FILES>OUTPUT01</FOR_FILES>
+			<CONDITION>SUBROUTINE
+   /* SUBROUTINE: set_global_address_fields_nt
+/* +----------------------------------------------------------------------------+
+/* | SUBROUTINE: set_global_address_fields_nt                                   |
+/* +----------------------------------------------------------------------------+
+/*
+/*   Used for countries that place the street name before the street type.
+/*
+   IF(ALWAYS)
+      /* verified to street or to house number
+      IF(    TQ_GOUT_MATCH_LEVEL IN ("0","3"))
+         RUN SUBROUTINE(3)
+         SET GA_GOUT_STREET_NAME_CHANGED = TERNARY(UCASE(TRIM(GA_GOUT_STREET_NAME)) = UCASE(TRIM(TRIM(TQ_GIN_STREET_NAME) |: TQ_GIN_STREET_TYPE)), "N", "Y")
+         SET GA_GOUT_STREET_TYPE_CHANGED = GA_GOUT_STREET_NAME_CHANGED
+         /* nothing verified, use input
+      ELSEIF(TQ_GOUT_MATCH_LEVEL IN (" ","1","6","7","8","9"))
+         RUN SUBROUTINE(4)
+         SET GA_GOUT_STREET_NAME         = TRIM(TRIM(TQ_GIN_STREET_NAME) |: TQ_GIN_STREET_TYPE)
+         /* city + postal code verified
+      ELSEIF(TQ_GOUT_MATCH_LEVEL = "2")
+         RUN SUBROUTINE(2)
+         SET GA_GOUT_STREET_NAME         = TRIM(TRIM(TQ_GIN_STREET_NAME) |: TQ_GIN_STREET_TYPE)
+      ENDIF
+      /* fill business name
+      SET GA_GOUT_BUSINESS_NAME         = TQ_GIN_BUSNAME
+      SET GA_GOUT_BUSINESS_NAME_CHANGED = "N"
+      /* pobox address
+      IF(TQ_GIN_BOX_INDICATOR = "P" AND PR_STREET_NAME_RECODED = "")
+         SET GA_GOUT_STREET_NAME  = PR_BOX1_NAME_RECODED
+         SET GA_GOUT_HOUSE_NUMBER = PR_BOX1_NUMBER
+      ENDIF
+      /* Fill delivery address
+      SET GA_GOUT_DELIVERY_ADDRESS = TRIM(TRIM(GA_GOUT_STREET_NAME) |: TRIM(GA_GOUT_HOUSE_NUMBER) |: GA_GOUT_SUB_BUILDING)
+   ENDIF
+   </CONDITION>
+		</ENTRY>
+		<ENTRY>
+			<ENTRY_ID>10</ENTRY_ID>
+			<FOR_FILES>OUTPUT01</FOR_FILES>
+			<CONDITION>SUBROUTINE
+   /* SUBROUTINE: set_name_fields_clear_busname
+/* +----------------------------------------------------------------------------+
+/* | SUBROUTINE: set_name_fields_clear_busname                                  |
+/* +----------------------------------------------------------------------------+
+/*
+/*   This is an improved "set_name_fields" routine that also conditionally
+/*   clears the busname fields.  It is used by EMEA.
+/*
+   IF(ALWAYS)
+      /*... Set name fields.
+      SET dr_business_name = TCASE(PR_BUSNAME_ORIGINAL_01)
+      SET dr_alias_account = PR_BUSNAME_RECODED_01
+      SET dr_alias_contact = PR_GIVEN_NAME1_RECODED_01
+      SET dr_mrmrs         = TRIM(TCASE(NAME_PREFX_TXT))
+      SET dr_first_name    = TRIM(TCASE(GVN_NAME))
+      SET dr_middle_name   = TRIM(TCASE(MID_NAME))
+      SET dr_last_name     = TRIM(TCASE(FAMLY_NAME))
+      SET dr_name_gender   = TRIM(UCASE(GENDR_IND))
+      SET dr_name_suffix   = TRIM(TCASE(NAME_SUFFX_TXT))
+      /*... Clear business name fields, if name_form is not 1.
+      IF(pr_name_form_01 != "1")
+         SET dr_business_name = ""
+         SET dr_alias_account = ""
+      ENDIF
+   ENDIF
+   </CONDITION>
+		</ENTRY>
+	</ARGUMENTS>
+</CONDITIONALS>
+</PARAMETER>
+      </OUTPUT>
+      <PROCESS>
+         <PARAMETER>
+            <PROCESS_SETTINGS>
+               <ARGUMENTS>
+                  <PROCESS_LOG_FILE_NAME>$(LOGS)/p5_gr_drtranfrmr_log.txt</PROCESS_LOG_FILE_NAME>
+                  <ENABLE_DEBUG_OUTPUT>0</ENABLE_DEBUG_OUTPUT>
+                  <DEBUG_FILE_NAME>$(DEBUG)/p5_gr_drtranfrmr_debug.txt</DEBUG_FILE_NAME>
+                  <MASK_FILE_NAME>$(GENERAL_RESOURCES)/maskfile$(PLAFEXT)</MASK_FILE_NAME>
+                  <STRSUB_TABLE_FILE_NAME>$(GENERAL_RESOURCES)/strsub$(PLAFEXT)</STRSUB_TABLE_FILE_NAME>
+               </ARGUMENTS>
+            </PROCESS_SETTINGS>
+         </PARAMETER>
+      </PROCESS>
+      <STATISTICS>
+         <PARAMETER>
+            <STATISTICS_SETTINGS>
+               <ARGUMENTS>
+                  <STATS_FILE_NAME>$(STATS)/p5_gr_drtranfrmr_stats.txt</STATS_FILE_NAME>
+               </ARGUMENTS>
+            </STATISTICS_SETTINGS>
+         </PARAMETER>
+      </STATISTICS>
+   </CATEGORY>
+</TRANFRMR>
+    

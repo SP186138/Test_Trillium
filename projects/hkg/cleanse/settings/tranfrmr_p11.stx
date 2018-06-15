@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TRANFRMR xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+  <SETTINGS_FILE_ENCODING>UTF8</SETTINGS_FILE_ENCODING>
+
+  
+
+
+
+
+
+
+
+
+
+
+<CATEGORY>
+
+    <INPUT>
+      <PARAMETER>
+        <INPUT_SETTINGS>
+          <ARGUMENTS>
+<ENTRY>
+              <ENTRY_ID>1</ENTRY_ID>
+              <FILE_QUALIFIER>e5_hk_winkey_p4</FILE_QUALIFIER>
+              <DATA_FILE_NAME>$(INPUT)/hk_winkey_p11.dat</DATA_FILE_NAME>
+              <DDL_FILE_NAME>$(DDL)/hk_winkey_p11.ddx</DDL_FILE_NAME>
+               <FILE_DELIMITER/>
+               <USE_QUOTES_AS_QUALIFIER/>
+             
+              
+              
+              <START_RECORD/>
+              <MAX_RECORDS/>
+              <NTH_SAMPLE/>
+              
+              <EXCEPTIONS_FILE_NAME/>
+              
+              
+              
+            
+<SELECT_RECORDS/>
+</ENTRY>
+<ENTRY>
+<ENTRY_ID>2</ENTRY_ID>
+<FILE_QUALIFIER>e14_hk_winkey_p15</FILE_QUALIFIER>
+<DATA_FILE_NAME>$(INPUT)/hk_winkey_p6.dat</DATA_FILE_NAME>
+<DDL_FILE_NAME>$(DDL)/hk_winkey_p6.ddx</DDL_FILE_NAME>
+               <FILE_DELIMITER/>
+               <USE_QUOTES_AS_QUALIFIER/>
+             
+
+<START_RECORD/>
+<MAX_RECORDS/>
+<NTH_SAMPLE/>
+
+<EXCEPTIONS_FILE_NAME/>
+
+
+<SELECT_RECORDS/>
+</ENTRY>
+</ARGUMENTS>
+        </INPUT_SETTINGS>
+
+        <CONDITIONALS>
+          <ARGUMENTS>
+<ENTRY>
+<ENTRY_ID>1</ENTRY_ID>
+<FOR_FILES>e5_hk_winkey_p4</FOR_FILES>
+<CONDITION>IF (ALWAYS)
+        IF (ALWAYS)
+    ENDIF
+    IF (ADDR_LINE_1_TXT = SPACES AND ADDR_LINE_2_TXT = SPACES AND ADDR_LINE_3_TXT = SPACES)
+    SET WINDOW_KEY_01 = SAVED_COUNTRY || _SEQUENCE_NUMBER
+    ENDIF
+    
+    ENDIF</CONDITION>
+</ENTRY>
+<ENTRY>
+<ENTRY_ID>3</ENTRY_ID>
+<FOR_FILES>e14_hk_winkey_p15</FOR_FILES>
+<CONDITION>IF (ALWAYS)
+        IF (ALWAYS)
+    ENDIF
+    
+    ENDIF</CONDITION>
+</ENTRY>
+</ARGUMENTS>
+        </CONDITIONALS>
+      </PARAMETER>
+    </INPUT>
+    <OUTPUT>
+      <PARAMETER>
+<OUTPUT_SETTINGS>
+               <ARGUMENTS>
+                  <FILE_QUALIFIER>OUTPUT</FILE_QUALIFIER>
+                  <DATA_FILE_NAME>$(OUTPUT)/TSS_CLEANSE_OUTPUT_HKG.DAT</DATA_FILE_NAME>
+                  <DDL_FILE_NAME>$(DDL)/hk_tranfrmr_p12.ddx</DDL_FILE_NAME>
+                  <FILE_DELIMITER_ENCODING>UTF8</FILE_DELIMITER_ENCODING>
+                  <FILE_DELIMITER>Pipe</FILE_DELIMITER>
+                  <USE_QUOTES_AS_QUALIFIER>N</USE_QUOTES_AS_QUALIFIER>
+                  <USE_FILE_HEADER>0</USE_FILE_HEADER>
+                  <SELECT_RECORDS/>
+               </ARGUMENTS>
+        </OUTPUT_SETTINGS>
+
+
+<CONDITIONALS>
+          <ARGUMENTS>
+<ENTRY>
+<ENTRY_ID>1</ENTRY_ID>
+<FOR_FILES>OUTPUT</FOR_FILES>
+<CONDITION>IF (ALWAYS)
+        IF (ALWAYS)
+    ENDIF
+    
+    ENDIF</CONDITION>
+</ENTRY>
+</ARGUMENTS>
+        </CONDITIONALS>
+</PARAMETER>
+    </OUTPUT>
+    <PROCESS>
+      <PARAMETER>
+        <PROCESS_SETTINGS>
+          <ARGUMENTS>
+            <PROCESS_LOG_FILE_NAME>$(LOGS)/p12_hk_tranfrmr_log.txt</PROCESS_LOG_FILE_NAME>
+            <ENABLE_DEBUG_OUTPUT>0</ENABLE_DEBUG_OUTPUT>
+            <DEBUG_FILE_NAME>$(DEBUG)/p12_hk_tranfrmr_debug.txt</DEBUG_FILE_NAME>
+            <MASK_FILE_NAME>$(GENERAL_RESOURCES)/maskfile$(PLAFEXT)</MASK_FILE_NAME>
+<STRSUB_TABLE_FILE_NAME>$(GENERAL_RESOURCES)/strsub$(PLAFEXT)</STRSUB_TABLE_FILE_NAME>
+          </ARGUMENTS>
+        </PROCESS_SETTINGS>
+      </PARAMETER>
+    </PROCESS>
+    <STATISTICS>
+      <PARAMETER>
+        <STATISTICS_SETTINGS>
+          <ARGUMENTS>
+            <STATS_FILE_NAME>$(STATS)/p12_hk_tranfrmr_stats.txt</STATS_FILE_NAME>
+          </ARGUMENTS>
+        </STATISTICS_SETTINGS>
+      </PARAMETER>
+    </STATISTICS>
+  </CATEGORY>
+
+</TRANFRMR>

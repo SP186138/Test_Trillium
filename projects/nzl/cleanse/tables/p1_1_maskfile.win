@@ -1,0 +1,82 @@
+* Mask File
+*
+* For Unicode values please check:
+* http://www.microsoft.com/globaldev/reference/WinCP.mspx
+* 
+* Syntax: MASK CHARACTER(CHARACTER RANGES).  CHARACTER RANGES can
+* be comma seperated or range seperated by a hyphen.  Use the keyword 
+* DEFAULT values for any mask grouping. 
+* Any line containing a '*' character is treated as a comment line no
+* matter where the '*' character appears in the line.	
+*
+
+
+PRECEDENCE
+*Used for table recodes using mask functionality
+ALPHA,NUMERIC
+
+ALPHA 
+* A - Default
+U0041(DEFAULT)
+
+NUMERIC
+* 9 - Default
+U0039(DEFAULT)
+
+* VOWEL
+* E - Default
+* U0055(DEFAULT)
+
+* CONSONANT
+* C - Default
+* U0043(DEFAULT)
+
+* UPPER-CASE
+* U - Default 
+* U0055(DEFAULT)
+
+* LOWER-CASE
+* l - Default 
+* U006C(DEFAULT)
+
+* HEX-DIGIT
+* F - Default 
+* U0046(DEFAULT)
+
+* MATH-SYMBOL
+* % - Default 
+* U0025(DEFAULT)
+
+* CURRENCY-SYMBOL
+* $ - Default 
+* U0024(DEFAULT)
+
+* PUNCTUATION
+* ? - Default 
+* U003F(DEFAULT)
+
+* The following 6 mask groups are for user defined charater sets.  
+* There are NO DEFAULT values for these.
+* Theses values are the UNICODE STANDARD 2.0 (UCS2) values,
+* not the Code Page that the project wishes to use! 
+* Please see mask documentation.
+
+* USER-DEF-1
+* User Define 1
+
+
+* USER-DEF-2
+* User Define 2
+
+* USER-DEF-3
+* User Define 3
+
+* USER-DEF-4
+* User Define 4
+
+* USER-DEF-5
+* User Define 5
+
+* USER-DEF-6
+* User Define 6
+

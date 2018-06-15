@@ -1,0 +1,339 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TRANFRMR xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+  <SETTINGS_FILE_ENCODING>UTF8</SETTINGS_FILE_ENCODING>
+
+  
+
+
+
+
+
+
+
+
+
+<CATEGORY>
+    <INPUT>
+      <PARAMETER>
+        <INPUT_SETTINGS>
+          <ARGUMENTS>
+<ENTRY>
+<ENTRY_ID>1</ENTRY_ID>
+<FILE_QUALIFIER>cn_geocoder_p8</FILE_QUALIFIER>
+<DATA_FILE_NAME>stdin</DATA_FILE_NAME>
+<DDL_FILE_NAME>$(DDL)/cn_gllatlon_p8.ddx</DDL_FILE_NAME>
+               <FILE_DELIMITER/>
+               <USE_QUOTES_AS_QUALIFIER/>
+             
+
+<START_RECORD/>
+<MAX_RECORDS/>
+<NTH_SAMPLE/>
+
+
+<SELECT_RECORDS/>
+</ENTRY>
+</ARGUMENTS>
+        </INPUT_SETTINGS>
+
+        
+      </PARAMETER>
+    </INPUT>
+    <OUTPUT>
+      <PARAMETER>
+<OUTPUT_SETTINGS>
+          <ARGUMENTS>
+            <FILE_QUALIFIER>OUTPUT</FILE_QUALIFIER>
+            <DATA_FILE_NAME>stdout</DATA_FILE_NAME>
+            <DDL_FILE_NAME>$(DDL)/cn_drtranfrmr_p4.ddx</DDL_FILE_NAME>
+            
+          <SELECT_RECORDS/>
+</ARGUMENTS>
+        </OUTPUT_SETTINGS>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<CONDITIONALS>
+<ARGUMENTS>
+<ENTRY>
+   <ENTRY_ID>1</ENTRY_ID>
+   <FOR_FILES>OUTPUT</FOR_FILES>
+   <CONDITION>
+   /*
+   /* ENTRY ID/SUBROUTINE LIST:
+   /*   1. main
+   /*   2. set_chinese_name_fields
+   /*   3. use_original_if_necessary
+   /*
+/* +----------------------------------------------------------------------------+
+/* | ROUTINE: chn_cleanse                                                 CHINA |
+/* +----------------------------------------------------------------------------+
+/*
+   IF(ALWAYS)
+      RUN FIELD_SCANNING(ALL)
+      RUN TABLE_RECODING(ALL)
+      /* Added 5Oct2011 to set GLF=9
+      IF(PR_GEOCODE_FAIL = "2" AND (PR_REVIEW_GROUP IN ("010","017")))
+         SET PR_GEOCODE_FAIL = "9"
+      ENDIF
+      /* Modified Sept 23, 2011
+      /* Moved pr_level1 into dr_region_name and removed from dr_city_name
+      IF(TRIM(PR_HOUSE_NUMBER_DISPLAY_FULL) LIKE "*弄")
+         SET dr_street_name      = TRIM(PR_LEVEL3) || TRIM(PR_LEVEL4) || TRIM(PR_ROAD)
+         SET dr_street_name      = TRIM(DR_STREET_NAME) |: TRIM(PR_SECTION) |:  TRIM(PR_LANE)
+         SET dr_street_name      = TRIM(DR_STREET_NAME) |: TRIM(PR_HOUSE_NUMBER_DISPLAY_FULL)
+      ELSE
+         SET dr_street_name      = TRIM(PR_LEVEL3) || TRIM(PR_LEVEL4) || TRIM(PR_ROAD)
+         SET dr_street_name      = TRIM(dr_street_name) |: TRIM(PR_SECTION) |:  TRIM(PR_LANE)
+         IF(TRIM(PR_HOUSE_NUMBER_DISPLAY_FULL) LIKE "*号")
+            SET dr_house_number1 = TRIM(PR_HOUSE_NUMBER_DISPLAY)
+         ENDIF
+      ENDIF
+      /* Modified 5Oct2011 to accept 0 and 9 as good
+      /* Modified 17Oct to accept 5 as good
+      IF(PR_GEOCODE_FAIL IN ("0","5","9"))
+         SET dr_cleanse_level = "2"
+         SET dr_house_number2 = PR_APARTMENT_NUMBER_DISPLAY
+         SET dr_address       = PR_ADDR_MAIL
+         SET dr_addr_mail     = PR_ADDR_MAIL
+         IF(dr_house_number2 = "")
+            SET dr_house_number2 = TRIM(PR_SUB_HOUSE) || TRIM(PR_FLOOR_NUMBER)
+         ENDIF
+      ELSE
+         SET dr_cleanse_level = "0"
+         SET dr_house_number2       = TRIM(PR_APARTMENT_NUMBER_DISPLAY )
+         /* Use original address lines for dr_address
+         SET dr_address = TRIM(addr_line_1_txt) || TRIM(addr_line_2_txt) || TRIM(addr_line_3_txt)
+      ENDIF
+      SET dr_city_name        = TRIM(PR_LEVEL2)
+      SET dr_region_name      = TRIM(PR_LEVEL1)
+      SET dr_postal_code      = PR_POSTCODE
+      IF(dr_house_number2 = "")
+         SET dr_house_number2 = TRIM(PR_SUB_HOUSE) || TRIM(PR_FLOOR_NUMBER)
+      ENDIF
+      /* Fill in missing fields with original data
+      RUN SUBROUTINE(3)
+      RUN SUBROUTINE(2)
+      /* Uses original address lines anyway!
+      SET dr_cleanse_level    = "0"
+      SET dr_address          = TRIM(ADDR_LINE_1_TXT)
+      SET dr_address2         = TRIM(ADDR_LINE_2_TXT)
+      SET dr_city_name        = UCASE(dr_city_name)
+      SET dr_country          = "CN"
+      SET dr_country_name     = "CHN"
+   ENDIF
+   </CONDITION>
+</ENTRY>
+<ENTRY>
+   <ENTRY_ID>2</ENTRY_ID>
+   <FOR_FILES>OUTPUT</FOR_FILES>
+   <CONDITION>SUBROUTINE
+   /* SUBROUTINE: set_chinese_name_fields
+/* +----------------------------------------------------------------------------+
+/* | SUBROUTINE: set_chinese_name_fields                                        |
+/* +----------------------------------------------------------------------------+
+/*
+/*   Used for China (CHN) and Taiwan (TWN).
+/*
+   IF(ALWAYS)
+      /*SET dr_business_name = TRIM(PR_BNP_NAME) || TRIM(PR_BNP_TYPE)
+      /*SET dr_alias_account = TRIM(PR_BNP_NAME) || TRIM(PR_BNP_TYPE)
+      /*SET dr_alias_contact = PR_PNP_FIRST_01
+      SET dr_mrmrs         = TRIM(TCASE(NAME_PREFX_TXT))
+      SET dr_first_name    = TRIM(TCASE(GVN_NAME))
+      SET dr_middle_name   = TRIM(TCASE(MID_NAME))
+      SET dr_last_name     = TRIM(TCASE(FAMLY_NAME))
+      SET dr_name_gender   = TRIM(UCASE(GENDR_IND))
+      SET dr_name_suffix   = TRIM(TCASE(NAME_SUFFX_TXT))
+   ENDIF
+   </CONDITION>
+</ENTRY>
+<ENTRY>
+   <ENTRY_ID>3</ENTRY_ID>
+   <FOR_FILES>OUTPUT</FOR_FILES>
+   <CONDITION>SUBROUTINE
+   /* SUBROUTINE: use_original_if_necessary
+/* +----------------------------------------------------------------------------+
+/* | SUBROUTINE: use_original_if_necessary                                      |
+/* +----------------------------------------------------------------------------+
+/*
+/*   Make sure we return something.  Use original data, if necessary.
+/*
+   IF(ALWAYS)
+      IF(dr_address = "")
+         SET dr_cleanse_level = "0"
+         SET dr_address       = TRIM(ADDR_LINE_1_TXT)
+      ENDIF
+      IF(dr_region_name = "")
+         SET dr_region_name   = TRIM(TERR_NAME)
+      ENDIF
+      IF(dr_city_name = "")
+         SET dr_city_name     = TRIM(CITY_NAME)
+      ENDIF
+      IF(dr_postal_code = "")
+         SET dr_postal_code   = TRIM(POSTL_AREA_CODE)
+      ENDIF
+   ENDIF
+   </CONDITION>
+</ENTRY>
+</ARGUMENTS>
+</CONDITIONALS>
+</PARAMETER>
+    </OUTPUT>
+    <PROCESS>
+      <PARAMETER>
+        <PROCESS_SETTINGS>
+          <ARGUMENTS>
+            <PROCESS_LOG_FILE_NAME>$(LOGS)/p4_cn_drtranfrmr_log.txt</PROCESS_LOG_FILE_NAME>
+            <ENABLE_DEBUG_OUTPUT>0</ENABLE_DEBUG_OUTPUT>
+            <DEBUG_FILE_NAME>$(DEBUG)/p4_cn_drtranfrmr_debug.txt</DEBUG_FILE_NAME>
+            <MASK_FILE_NAME>$(GENERAL_RESOURCES)/maskfile$(PLAFEXT)</MASK_FILE_NAME>
+<STRSUB_TABLE_FILE_NAME>$(GENERAL_RESOURCES)/strsub$(PLAFEXT)</STRSUB_TABLE_FILE_NAME>
+          </ARGUMENTS>
+        </PROCESS_SETTINGS>
+      </PARAMETER>
+    </PROCESS>
+    <STATISTICS>
+      <PARAMETER>
+        <STATISTICS_SETTINGS>
+          <ARGUMENTS>
+            <STATS_FILE_NAME>$(STATS)/p4_cn_drtranfrmr_stats.txt</STATS_FILE_NAME>
+          </ARGUMENTS>
+        </STATISTICS_SETTINGS>
+      </PARAMETER>
+    </STATISTICS>
+  </CATEGORY>
+
+</TRANFRMR>
+    

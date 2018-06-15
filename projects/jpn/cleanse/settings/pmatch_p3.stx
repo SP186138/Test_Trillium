@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<APPMATCH xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+  <SETTINGS_FILE_ENCODING>UTF8</SETTINGS_FILE_ENCODING>
+
+  
+
+
+
+
+
+
+
+
+
+
+
+<CATEGORY>
+    <INPUT>
+      <PARAMETER>
+        <INPUT_SETTINGS>
+          <ARGUMENTS>
+<FILE_QUALIFIER>e2_jp_cusparse_p2</FILE_QUALIFIER>
+<DATA_FILE_NAME>stdin</DATA_FILE_NAME>
+<DDL_FILE_NAME>$(DDL)/jp_cusparse_p2.ddx</DDL_FILE_NAME>
+               <FILE_DELIMITER/>
+               <USE_QUOTES_AS_QUALIFIER/>
+             
+<START_RECORD/>
+<MAX_RECORDS/>
+<NTH_SAMPLE/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            
+            
+            
+            
+            
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ADDRESS_LINE_2_TYPE>A</ADDRESS_LINE_2_TYPE>
+<ADDRESS_LINE_3_TYPE>Q</ADDRESS_LINE_3_TYPE>
+<LINE_1_NAME/>
+<LINE_2_NAME>TOTAL_ADDRESS</LINE_2_NAME>
+<LINE_3_NAME>POSTL_AREA_CODE</LINE_3_NAME>
+<LINE_4_NAME/>
+<LINE_5_NAME/>
+<LINE_6_NAME/>
+<LINE_7_NAME/>
+<LINE_8_NAME/>
+<LINE_9_NAME/>
+<LINE_10_NAME/>
+<SELECT_RECORDS/>
+</ARGUMENTS>
+        </INPUT_SETTINGS>
+      </PARAMETER>
+    </INPUT>
+    <OUTPUT>
+      <PARAMETER>
+        <OUTPUT_SETTINGS>
+          <ARGUMENTS>
+            <FILE_QUALIFIER>OUTPUT</FILE_QUALIFIER>
+            <DATA_FILE_NAME>stdout</DATA_FILE_NAME>
+            <DDL_FILE_NAME>$(DDL)/jp_pmatch_p3.ddx</DDL_FILE_NAME>
+          
+<SELECT_RECORDS/>
+</ARGUMENTS>
+        </OUTPUT_SETTINGS>
+      </PARAMETER>
+    </OUTPUT>
+    <PROCESS>
+      <PARAMETER>
+        <PROCESS_SETTINGS>
+          <ARGUMENTS>
+<PROCESS_LOG_FILE_NAME>$(LOGS)/p3_jp_pmatch_log.txt</PROCESS_LOG_FILE_NAME>
+<ENABLE_DEBUG_OUTPUT>0</ENABLE_DEBUG_OUTPUT>
+<DEBUG_FILE_NAME>$(DEBUG)/p3_jp_pmatch_debug.txt</DEBUG_FILE_NAME>
+<PMATCH_EXCEPTIONS_FILE_NAME>$(INPUT)/e6_parse_exceptions.txt</PMATCH_EXCEPTIONS_FILE_NAME>
+<EXCEPTIONS_UNKNOWN_TOKENS_ONLY>N</EXCEPTIONS_UNKNOWN_TOKENS_ONLY>
+
+
+
+
+
+
+
+
+
+
+<COUNTRY>JP</COUNTRY>
+<WORD_PATTERN_DEFINITIONS_FILE_NAME>$(USRTABLES)/p192_7_jpCDMDEF$(ENDEXT)</WORD_PATTERN_DEFINITIONS_FILE_NAME>
+<CUSTOM_TABLES_LOCATION>$(ACE_TABLES)</CUSTOM_TABLES_LOCATION>
+<USE_ADDRESS_CODE_EDITION>1</USE_ADDRESS_CODE_EDITION>
+</ARGUMENTS>
+        </PROCESS_SETTINGS>
+        <ADDRESS_CODE_EDITION_SETTINGS>
+          <ARGUMENTS>
+            
+            
+          
+
+
+<PROCESSING_MODE>0</PROCESSING_MODE>
+<OUTPUT_OPTION>2</OUTPUT_OPTION>
+<GET_JUKYO_CODE>Y</GET_JUKYO_CODE>
+<GET_NEW_ADDRESS>Y</GET_NEW_ADDRESS>
+</ARGUMENTS>
+        </ADDRESS_CODE_EDITION_SETTINGS>
+      </PARAMETER>
+    </PROCESS>
+    <STATISTICS>
+      <PARAMETER>
+        <STATISTICS_SETTINGS>
+          <ARGUMENTS>
+            <STATS_FILE_NAME>$(STATS)/p3_jp_pmatch_stats.txt</STATS_FILE_NAME>
+          </ARGUMENTS>
+        </STATISTICS_SETTINGS>
+      </PARAMETER>
+    </STATISTICS>
+  </CATEGORY>
+
+</APPMATCH>
+    

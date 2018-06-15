@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<CONSUMER_LEVEL1_PATTERN_SETTINGS xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <ARGUMENTS>
+        <ENTRY>
+            <PATTERN>P100AAAA</PATTERN>
+            <PATTERN>P115BAAA</PATTERN>
+            <PATTERN>P120ABAA</PATTERN>
+       <!-- <PATTERN>P121AA.A</PATTERN> -->
+            <PATTERN>P122AAA-</PATTERN>
+            <PATTERN>P123A-AA</PATTERN>
+       <!-- <PATTERN>P124A..A</PATTERN> -->
+            <PATTERN>P125A-A-</PATTERN>
+        </ENTRY>
+    </ARGUMENTS>
+</CONSUMER_LEVEL1_PATTERN_SETTINGS>

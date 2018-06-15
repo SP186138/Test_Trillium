@@ -1,0 +1,31 @@
+/***********************************************************************************************************
+SCRIPT:               TSS_MATCH_CLEANUP.BTEQ 
+DESCRIPTION:          THIS SCRIPT CLEANS UP FASTLOAD ERROR TABLES
+DEPENDENCY:           
+INPUT:                TRILLIUM OUTPUT
+OUTPUT:               TRILLIUM OUTPUT
+ERRORS:
+SPECIAL INSTRUCTIONS:
+
+CHANGE LOG:
+VERSION              DATE                 AUTHOR                          CHANGES
+1.00                 01/21/2011           TERADATA                        INITIAL VERSION
+***********************************************************************************************************/
+
+.RUN FILE $LOGON_FILE;
+.SET ERROROUT STDOUT;
+
+DATABASE $DATABASENAME;
+
+CALL PNGMDM.FLDCLEANUP(0,'TRILLIUM_OUTPUT','$DATABASENAME');
+
+.LABEL EXIT
+
+.IF ERRORLEVEL > 4 THEN .GOTO ERR ;
+.IF ERRORLEVEL <= 4 THEN .GOTO WARN;
+
+.LABEL ERR
+.QUIT 1
+
+.LABEL WARN
+.QUIT 0

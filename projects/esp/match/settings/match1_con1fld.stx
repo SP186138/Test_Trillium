@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<CONSUMER_LEVEL1_FIELD_SETTINGS xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <ARGUMENTS>
+        <ENTRY>
+            <DESCRIPTION>national_id</DESCRIPTION>
+            <SCORE>100</SCORE>
+            <ROUTINE>partial1</ROUTINE>
+            <ROUTINE>nonblank</ROUTINE>
+            <FIELD_NAME>NATIONAL_ID_NBR</FIELD_NAME>
+        </ENTRY>
+    </ARGUMENTS>
+</CONSUMER_LEVEL1_FIELD_SETTINGS>

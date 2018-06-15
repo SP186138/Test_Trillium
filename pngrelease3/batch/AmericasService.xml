@@ -1,0 +1,7 @@
+
+
+
+<REQUESTS ServiceName="Trillium">
+<REQUEST Name="invokeTestTrilliumService" AssignToVar="result" Synchronous="true" HandleException="true" >
+</REQUEST>
+</REQUESTS>

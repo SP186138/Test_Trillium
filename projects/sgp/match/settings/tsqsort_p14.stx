@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TSQSORT xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <SETTINGS_FILE_ENCODING>UTF8</SETTINGS_FILE_ENCODING>
+   
+   
+
+<CATEGORY>
+      <INPUT>
+         <PARAMETER>
+            <INPUT_SETTINGS>
+               <ARGUMENTS>
+                  <ENTRY>
+                     <ENTRY_ID>1</ENTRY_ID>
+                     <FILE_QUALIFIER>e65_sg_tranfrmr_p14</FILE_QUALIFIER>
+                     <DATA_FILE_NAME>$(INPUT)/sg_tranfrmr_p9.dat</DATA_FILE_NAME>
+                     <DDL_FILE_NAME>$(DDL)/sg_tranfrmr_p9.ddx</DDL_FILE_NAME>
+               <FILE_DELIMITER/>
+               <USE_QUOTES_AS_QUALIFIER/>
+             
+                     
+                     
+                     <START_RECORD/>
+                     <MAX_RECORDS/>
+                     <NTH_SAMPLE/>
+                     
+                     
+                     
+                  <SELECT_RECORDS>ALWAYS</SELECT_RECORDS>
+</ENTRY>
+               </ARGUMENTS>
+            </INPUT_SETTINGS>
+         </PARAMETER>
+      </INPUT>
+      <OUTPUT>
+         <PARAMETER>
+            <OUTPUT_SETTINGS>
+               <ARGUMENTS>
+                  <FILE_QUALIFIER>OUTPUT</FILE_QUALIFIER>
+                  <DATA_FILE_NAME>$(OUTPUT)/sg_tsqsort_p10.dat</DATA_FILE_NAME>
+                  <DDL_FILE_NAME>$(DDL)/sg_tsqsort_p10.ddx</DDL_FILE_NAME>
+               <SELECT_RECORDS/>
+</ARGUMENTS>
+            </OUTPUT_SETTINGS>
+         </PARAMETER>
+      </OUTPUT>
+      <PROCESS>
+         <PARAMETER>
+            <PROCESS_SETTINGS>
+               <ARGUMENTS>
+                  <PROCESS_LOG_FILE_NAME>$(LOGS)/p10_sg_tsqsort_log.txt</PROCESS_LOG_FILE_NAME>
+                  <ENABLE_DEBUG_OUTPUT>0</ENABLE_DEBUG_OUTPUT>
+                  <DEBUG_FILE_NAME>$(DEBUG)/p10_sg_tsqsort_debug.txt</DEBUG_FILE_NAME>
+                  <WORKSPACE>$(WORKSPACE)</WORKSPACE>
+                  <MEMORY>1000</MEMORY>
+                  <ENTRY>
+                     <ENTRY_ID>1</ENTRY_ID>
+                     <KEY>ADDRESS_HOUSEHOLD_ID</KEY>
+                     <ORDER>A</ORDER>
+                     <COLLATING_SEQUENCE>ASCII</COLLATING_SEQUENCE>
+                  </ENTRY>
+               </ARGUMENTS>
+            </PROCESS_SETTINGS>
+         </PARAMETER>
+      </PROCESS>
+      <STATISTICS>
+         <PARAMETER>
+            <STATISTICS_SETTINGS>
+               <ARGUMENTS>
+                  <STATS_FILE_NAME>$(STATS)/p10_sg_tsqsort_stats.txt</STATS_FILE_NAME>
+               </ARGUMENTS>
+            </STATISTICS_SETTINGS>
+         </PARAMETER>
+      </STATISTICS>
+   </CATEGORY>
+</TSQSORT>
+    

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RECORD xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tcl="urn:discovery.trilliumsoftware.com:tcl">
+<NAME>BAD_WINKEY1_KEYS</NAME>
+<TYPE>FIXED</TYPE>
+<LENGTH>75</LENGTH>
+<FIELD>
+   <NAME>WINDOW_KEY_01</NAME>
+   <TYPE>UTF8</TYPE>
+   <STARTS-IN-COLUMN>0</STARTS-IN-COLUMN>
+   <LENGTH>45</LENGTH>
+</FIELD>
+<FIELD>
+   <NAME>FLAG</NAME>
+   <TYPE>UTF8</TYPE>
+   <STARTS-IN-COLUMN>45</STARTS-IN-COLUMN>
+   <LENGTH>30</LENGTH>
+</FIELD>
+</RECORD>

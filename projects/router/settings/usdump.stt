@@ -1,0 +1,9 @@
+LEV1_FNAME              USINDEX1.tbl
+LEV2_FNAME              USINDEX2.tbl
+BASE_FNAME              USBASE.tbl
+DATAB_DATE              'JUL 2005'
+LIST_NAME               'PMDUMP'
+PROCESSOR_NAME          'PMDUMP'
+FORM_NAME               NULL
+DISPLAY_BASEDATA       
+LEVEL1_VALUE            

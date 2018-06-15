@@ -1,0 +1,222 @@
+***************************************************************************
+*   
+*
+*  Country:  Netherlands
+*
+*            USER DEFINED SPECIFIC WORDS AND PATTERNS
+*
+***************************************************************************
+***************************************************************************
+*
+*    Following entries added during Development - May-Jul 2013
+*
+***************************************************************************
+*
+*... Delete bad city entry
+*    Comment out entries that are the same in 15.5 - DSAM
+*'BEEK'                                                DEL
+
+*... Floor numbers
+'(1 HOOG)'                                                STREET DEF  ATT=FLR-NUM REC='1 HOOG'
+'(1HOOG)'                                                 STREET DEF  ATT=FLR-NUM REC='1 HOOG'
+'(2 HOOG)'                                                STREET DEF  ATT=FLR-NUM REC='2 HOOG'
+'(2HOOG)'                                                 STREET DEF  ATT=FLR-NUM REC='2 HOOG'
+'(3 HOOG)'                                                STREET DEF  ATT=FLR-NUM REC='3 HOOG'
+'(3HOOG)'                                                 STREET DEF  ATT=FLR-NUM REC='3 HOOG'
+'(4 HOOG)'                                                STREET DEF  ATT=FLR-NUM REC='4 HOOG'
+'(4HOOG)'                                                 STREET DEF  ATT=FLR-NUM REC='4 HOOG'
+'(5 HOOG)'                                                STREET DEF  ATT=FLR-NUM REC='5 HOOG'
+'(5HOOG)'                                                 STREET DEF  ATT=FLR-NUM REC='5 HOOG'
+'/ (1 HOOG)'                                              STREET DEF  ATT=FLR-NUM REC='1 HOOG'
+'/ (1HOOG)'                                               STREET DEF  ATT=FLR-NUM REC='1 HOOG'
+'/ (2 HOOG)'                                              STREET DEF  ATT=FLR-NUM REC='2 HOOG'
+'/ (2HOOG)'                                               STREET DEF  ATT=FLR-NUM REC='2 HOOG'
+'/ (3 HOOG)'                                              STREET DEF  ATT=FLR-NUM REC='3 HOOG'
+'/ (3HOOG)'                                               STREET DEF  ATT=FLR-NUM REC='3 HOOG'
+'/ (4 HOOG)'                                              STREET DEF  ATT=FLR-NUM REC='4 HOOG'
+'/ (4HOOG)'                                               STREET DEF  ATT=FLR-NUM REC='4 HOOG'
+'/ (5 HOOG)'                                              STREET DEF  ATT=FLR-NUM REC='5 HOOG'
+'/ (5HOOG)'                                               STREET DEF  ATT=FLR-NUM REC='5 HOOG'
+'/ 1 HOOG'                                                STREET DEF  ATT=FLR-NUM REC='1 HOOG'
+'/ 1HOOG'                                                 STREET DEF  ATT=FLR-NUM REC='1 HOOG'
+'/ 2 HOOG'                                                STREET DEF  ATT=FLR-NUM REC='2 HOOG'
+'/ 2HOOG'                                                 STREET DEF  ATT=FLR-NUM REC='2 HOOG'
+'/ 3 HOOG'                                                STREET DEF  ATT=FLR-NUM REC='3 HOOG'
+'/ 3HOOG'                                                 STREET DEF  ATT=FLR-NUM REC='3 HOOG'
+'/ 4 HOOG'                                                STREET DEF  ATT=FLR-NUM REC='4 HOOG'
+'/ 4HOOG'                                                 STREET DEF  ATT=FLR-NUM REC='4 HOOG'
+'/ 5 HOOG'                                                STREET DEF  ATT=FLR-NUM REC='5 HOOG'
+'/ 5HOOG'                                                 STREET DEF  ATT=FLR-NUM REC='5 HOOG'
+'/(1 HOOG)'                                               STREET DEF  ATT=FLR-NUM REC='1 HOOG'
+'/(1HOOG)'                                                STREET DEF  ATT=FLR-NUM REC='1 HOOG'
+'/(2 HOOG)'                                               STREET DEF  ATT=FLR-NUM REC='2 HOOG'
+'/(2HOOG)'                                                STREET DEF  ATT=FLR-NUM REC='2 HOOG'
+'/(3 HOOG)'                                               STREET DEF  ATT=FLR-NUM REC='3 HOOG'
+'/(3HOOG)'                                                STREET DEF  ATT=FLR-NUM REC='3 HOOG'
+'/(4 HOOG)'                                               STREET DEF  ATT=FLR-NUM REC='4 HOOG'
+'/(4HOOG)'                                                STREET DEF  ATT=FLR-NUM REC='4 HOOG'
+'/(5 HOOG)'                                               STREET DEF  ATT=FLR-NUM REC='5 HOOG'
+'/(5HOOG)'                                                STREET DEF  ATT=FLR-NUM REC='5 HOOG'
+'/1 HOOG'                                                 STREET DEF  ATT=FLR-NUM REC='1 HOOG'
+'/1HOOG'                                                  STREET DEF  ATT=FLR-NUM REC='1 HOOG'
+'/2 HOOG'                                                 STREET DEF  ATT=FLR-NUM REC='2 HOOG'
+'/2HOOG'                                                  STREET DEF  ATT=FLR-NUM REC='2 HOOG'
+'/3 HOOG'                                                 STREET DEF  ATT=FLR-NUM REC='3 HOOG'
+'/3HOOG'                                                  STREET DEF  ATT=FLR-NUM REC='3 HOOG'
+'/4 HOOG'                                                 STREET DEF  ATT=FLR-NUM REC='4 HOOG'
+'/4HOOG'                                                  STREET DEF  ATT=FLR-NUM REC='4 HOOG'
+'/5 HOOG'                                                 STREET DEF  ATT=FLR-NUM REC='5 HOOG'
+'/5HOOG'                                                  STREET DEF  ATT=FLR-NUM REC='5 HOOG'
+'1 HOOG'                                                  STREET DEF  ATT=FLR-NUM REC='1 HOOG'
+'1HOOG'                                                   STREET DEF  ATT=FLR-NUM REC='1 HOOG'
+'2 HOOG'                                                  STREET DEF  ATT=FLR-NUM REC='2 HOOG'
+'2HOOG'                                                   STREET DEF  ATT=FLR-NUM REC='2 HOOG'
+'3 HOOG'                                                  STREET DEF  ATT=FLR-NUM REC='3 HOOG'
+'3HOOG'                                                   STREET DEF  ATT=FLR-NUM REC='3 HOOG'
+'4 HOOG'                                                  STREET DEF  ATT=FLR-NUM REC='4 HOOG'
+'4HOOG'                                                   STREET DEF  ATT=FLR-NUM REC='4 HOOG'
+'5 HOOG'                                                  STREET DEF  ATT=FLR-NUM REC='5 HOOG'
+'5HOOG'                                                   STREET DEF  ATT=FLR-NUM REC='5 HOOG'
+'HS'                                                  MOD STREET DEF  ATT=FLR-NUM
+
+*... Streets
+
+'KONING WILLEM I LAAN'                                    STREET DEF  ATT=STR-NM REC='KONING WILLEM I LAAN' 
+'KONING WILLEM 1 LAAN'                                    STREET DEF  ATT=STR-NM REC='KONING WILLEM I LAAN' 
+'KONING WILLEM 1 LN'                                      STREET DEF  ATT=STR-NM REC='KONING WILLEM I LAAN' 
+'1E HAAGSTRAAT'                                           STREET DEF  ATT=STR-NM
+'2E HAAGSTRAAT'                                           STREET DEF  ATT=STR-NM
+'3E HAAGSTRAAT'                                           STREET DEF  ATT=STR-NM
+'1E EBBINGESTRAAT'                                        STREET DEF  ATT=STR-NM
+'2E EBBINGESTRAAT'                                        STREET DEF  ATT=STR-NM
+'3E EBBINGESTRAAT'                                        STREET DEF  ATT=STR-NM
+
+*... Patterns
+
+'STR-NM HSNO HYPHEN 1NUMERIC'
+    MOD PATTERN STREET DEF
+    REC='STR-NM HSNO IGN APT-NUM'
+'STR-NM HSNO HYPHEN FLR-NUM'
+    PATTERN STREET DEF
+    REC='STR-NM HSNO IGN FLR-NUM'
+'STR-NM HSNO HYPHEN NUMERIC 1ALPHA'
+    MOD PATTERN STREET DEF
+    REC='STR-NM HSNO IGN APT-NUM APT-NUM'
+'STR-NM HSNO HYPHEN NUMERIC HYPHEN NUMERIC'
+    MOD PATTERN STREET DEF
+    REC='STR-NM HSNO IGN APT-NUM APT-NUM APT-NUM'
+'STR-NM HSNO HYPHEN 1NUMERIC 1ALPHA'
+    MOD PATTERN STREET DEF
+    REC='STR-NM HSNO IGN APT-NUM APT-NUM'
+'ALPHA HSNO FLR-NUM'
+    PATTERN STREET DEF
+    REC='STR-NM HSNO FLR-NUM'
+
+
+*... June 6, 2013 Tuning
+
+'KRALINGEN-WEST'                                          GEOG   DEF  ATT=CITY REC='ROTTERDAM'
+'LAGE DER A'                                              STREET DEF  ATT=STR-NM
+
+'ALPHA HSNO HYPHEN 1ALPHA 1NUMERIC'
+     PATTERN STREET DEF REC='STR-NM HSNO IGN APT-NUM APT-NUM'
+'ALPHA-1SPECIAL 1NUMERIC HYPHEN 1NUMERIC'
+     PATTERN STREET DEF REC='STR-NM HSNO IGN APT-NUM'
+'ALPHA'
+    MOD PATTERN NAME   DEF REC='SRNM(1)'
+                STREET DEF REC='STR-NM'
+'ALPHA ALPHA'
+    MOD PATTERN NAME   DEF REC='GVN-NM1(1) SRNM(1)'
+                STREET DEF REC='STR-NM STR-NM'
+'ALPHA ALPHA ALPHA'
+    MOD PATTERN NAME   DEF REC='GVN-NM1(1) SRNM(1) SRNM(1)'
+                STREET DEF REC='STR-NM STR-NM STR-NM'
+'OTHER-SPECIAL ALPHA'
+     PATTERN STREET DEF REC='STR-NM STR-NM'
+'ALPHA-1NUMERIC NUMERIC'
+     PATTERN STREET DEF REC='STR-NM HSNO'
+'1ALPHA ALPHA'
+    MOD PATTERN NAME   DEF REC='GVN-NM1(1) SRNM(1)'
+                STREET DEF REC='STR-NM STR-NM'
+'1ALPHA 1ALPHA ALPHA'
+    MOD PATTERN NAME   DEF REC='GVN-NM1(1) GVN-NM2(1) SRNM(1)'
+                STREET DEF REC='STR-NM STR-NM STR-NM'
+*'ALPHA HSNO HYPHEN UNIT-NUM'
+*     PATTERN STREET DEF REC='STR-NM HSNO IGN APT-NUM'
+'1ALPHA ALPHA HSNO FLR-NUM'
+     PATTERN STREET DEF REC='STR-NM STR-NM HSNO FLR-NUM'
+'1ALPHA 1ALPHA 1ALPHA 1ALPHA ALPHA'
+    MOD PATTERN NAME   DEF REC='GVN-NM1(1) GVN-NM2(1) GVN-NM2(1) GVN-NM2(1) SRNM(1)'
+                STREET DEF REC='STR-NM STR-NM STR-NM STR-NM STR-NM'
+'1ALPHA ALPHA HSNO 1ALPHA 1NUMERIC'
+     PATTERN STREET DEF REC='STR-NM STR-NM HSNO APT-NUM APT-NUM'
+'1ALPHA 1ALPHA ALPHA HSNO HYPHEN FLR-NUM FLR'
+     PATTERN STREET DEF REC='STR-NM STR-NM STR-NM HSNO IGN FLR-NUM FLR'
+************************************************************************************
+*
+*          City Entries added during tuning - Feb 2014
+*
+************************************************************************************
+'DUINDORP'                    GEOG ATT=CITY REC='"S-GRAVENHAGE'
+'1E EXLOËRMOND'               GEOG ATT=CITY REC='1E EXLOERMOND'
+'EERSTE EXLOERMOND'           GEOG ATT=CITY REC='1E EXLOERMOND'
+'EERSTE EXLOËRMOND'           GEOG ATT=CITY REC='1E EXLOERMOND'
+'KATWIJK AAN DEN RIJN'        GEOG ATT=CITY REC='KATWIJK ZH'
+'KESSEL'                      GEOG ATT=CITY REC='KESSEL LB'
+'KOLLUMERZWAAG FR'            GEOG ATT=CITY REC='KOLLUMERZWAAG'
+'LIEDSCENDAM'                 GEOG ATT=CITY REC='LEIDSCHENDAM'
+'PERNIS'                      GEOG ATT=CITY REC='PERNIS ROTTERDAM'
+'GROOT-IJSSELMONDE'           GEOG ATT=CITY REC='ROTTERDAM'
+'KRALINGEN-OOST'              GEOG ATT=CITY REC='ROTTERDAM'
+'STEENBERGE'                  GEOG ATT=CITY REC='STEENBERGEN'
+'HARDINXVELD'                MOD GEOG ATT=CITY REC='HARDINXVELD-GIESSENDAM'
+'HEESWIJK'                   MOD GEOG ATT=CITY REC='HEESWIJK-DINTHER'
+'HEESWYK'                    MOD  GEOG ATT=CITY REC='HEESWIJK-DINTHER'
+'HAZERSWOUDE'                MOD  GEOG ATT=CITY
+'"-HERTOGENBOSCH'             GEOG ATT=CITY REC='"S-HERTOGENBOSCH'
+'"S- HERTOGENBOSCH'           GEOG ATT=CITY REC='"S-HERTOGENBOSCH'
+'"S-HERTOGENBOSCHDEN BOSCH'   GEOG ATT=CITY REC='"S-HERTOGENBOSCH'
+'"S-HERTOGENBSOCH'            GEOG ATT=CITY REC='"S-HERTOGENBOSCH'
+'"S-HERTTOGENBOSCH'           GEOG ATT=CITY REC='"S-HERTOGENBOSCH'
+'"SHERTOGENBOSCH'             GEOG ATT=CITY REC='"S-HERTOGENBOSCH'
+'"S HEER-HENDRIKSKINDEREN'    GEOG ATT=CITY REC='"S-HEER HENDRIKSKINDEREN'
+'"S-HEER HENDRKSKINDEREN'     GEOG ATT=CITY REC='"S-HEER HENDRIKSKINDEREN'
+'"SGRAVENPOLDER'              GEOG ATT=CITY REC='"S-GRAVENPOLDER'
+'"S-GRAVENDEE;'               GEOG ATT=CITY REC='"S-GRAVENDEEL'
+'"S-GRAVENDEE'                GEOG ATT=CITY REC='"S-GRAVENDEEL'
+';S-HERTOGENBOSCH'            GEOG ATT=CITY REC='"S-HERTOGENBOSCH'
+'S-HERTOGENBOSCH'             GEOG ATT=CITY REC='"S-HERTOGENBOSCH'
+'-GRAVENZANDE'                GEOG ATT=CITY REC='"S-GRAVENZANDE'
+'S-GRAVENPOLDER'              GEOG ATT=CITY REC='"S-GRAVENPOLDER'
+'S-GRAVENZANDE'               GEOG ATT=CITY REC='"S-GRAVENZANDE'
+'S-HEERENBERG'                GEOG ATT=CITY REC='"S-HEERENBERG'
+'A"DAM'                       GEOG ATT=CITY REC='AMSTERDAM'
+'A;LMAAR'                     GEOG ATT=CITY REC='ALKMAAR'
+'AALMERE'                     GEOG ATT=CITY REC='ALMERE'
+'AALST'                       GEOG ATT=CITY REC='AALST GLD'
+'AALST-WAALRE (NB)'           GEOG ATT=CITY REC='WAALRE'
+'AALZUM'                      GEOG ATT=CITY REC='AALSUM'
+'AGNIESEBUURT'                GEOG ATT=CITY REC='ROTTERDAM'
+'AKEL'                        GEOG ATT=CITY REC='ARKEL'
+'ADDEN'                       GEOG ATT=CITY REC='ASSEN'
+'AKMAAR'                      GEOG ATT=CITY REC='ALKMAAR'
+'AKPHEN AAN DEN RIJN'         GEOG ATT=CITY REC='ALPHEN AAN DEN RIJN'
+'ALPHEN AAN DEN RIJN (ZH)'    GEOG ATT=CITY REC='ALPHEN AAN DEN RIJN'
+'SON'                         GEOG ATT=CITY REC='SON EN BREUGEL'
+'DAMWOUDE'                    GEOG ATT=CITY REC='DAMWALD'
+'ZWAAGWESTEINDE'              GEOG ATT=CITY REC='DE WESTEREEN'
+'BERLICUM'                    GEOG ATT=CITY REC='BERLICUM NB'
+'H I AMBACHT'                MOD GEOG ATT=CITY REC='HENDRIK-IDO-AMBACHT'
+'VEENWOUDEN'                  GEOG ATT=CITY REC='FEANWALDEN'
+'OMMOORD/ZEVENKAMP'           GEOG ATT=CITY REC='ROTTERDAM'
+'WILLEMSTAD'                  GEOG ATT=CITY REC='WILLEMSTAD NB'
+'SPAKENBURG'                 MOD GEOG ATT=CITY REC='BUNSCHOTEN-SPAKENBURG'
+'BREUGEL'                     GEOG ATT=CITY REC='SON EN BREUGEL'
+'NIEUWENDIJK'                 GEOG ATT=CITY REC='NIEUWENDIJK NB'
+'TWEEDE EXLOERMOND'           GEOG ATT=CITY REC='2E EXLOERMOND'
+'YSSELSTEYN'                  GEOG ATT=CITY REC='IJSSELSTEIN UT'
+'BERLIKUM'                    GEOG ATT=CITY REC='BERLICUM NB'
+'ROTERDAM'                    GEOG ATT=CITY REC='ROTTERDAM'
+'ASTEN-HEUSDEN'               GEOG ATT=CITY REC='HEUSDEN GEM ASTEN'
+'SHERTOGENBOSCH'              GEOG ATT=CITY REC='"S-HERTOGENBOSCH'
+'ETTEN'                       GEOG ATT=CITY REC='ETTEN GLD'

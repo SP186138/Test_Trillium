@@ -1,0 +1,11 @@
+<!--Copyright (c) 2006 by Teradata Corporation. 
+All Rights Reserved. 
+Teradata CONFIDENTIAL AND TRADE SECRET -->
+
+<META_ENABLED_SERVICE_FILE_NAMES>
+  <SERVICE_FILE Value="png.xml"/>
+  <SERVICE_FILE Value="png-input.xml"/>
+  <SERVICE_FILE Value="png-netchange.xml"/>  
+  <SERVICE_FILE Value="png-output.xml"/>  
+  <SERVICE_FILE Value="png-version.xml"/>  
+</META_ENABLED_SERVICE_FILE_NAMES>

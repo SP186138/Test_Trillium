@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TRANFRMR xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <SETTINGS_FILE_ENCODING>UTF8</SETTINGS_FILE_ENCODING>
+   
+   
+<CATEGORY>
+      
+      <INPUT>
+         <PARAMETER>
+            <INPUT_SETTINGS>
+               <ARGUMENTS>
+                  <ENTRY>
+                     <ENTRY_ID>1</ENTRY_ID>
+                     <FILE_QUALIFIER>e1070_hk_cusparse_p2</FILE_QUALIFIER>
+                     <DATA_FILE_NAME>stdin</DATA_FILE_NAME>
+                     <DDL_FILE_NAME>$(DDL)/hk_pmatch_p9.ddx</DDL_FILE_NAME>
+               <FILE_DELIMITER/>
+               <USE_QUOTES_AS_QUALIFIER/>
+             
+                     
+                     
+                     <START_RECORD/>
+                     <MAX_RECORDS/>
+                     <NTH_SAMPLE/>
+                     
+                     <EXCEPTIONS_FILE_NAME/>
+                     
+                     
+                  <SELECT_RECORDS/>
+</ENTRY>
+               </ARGUMENTS>
+            </INPUT_SETTINGS>
+            
+            <CONDITIONALS>
+               <ARGUMENTS>
+                  <ENTRY>
+                     <ENTRY_ID>1</ENTRY_ID>
+                     <FOR_FILES>e1070_hk_cusparse_p2</FOR_FILES>
+                     <CONDITION>IF (ALWAYS)
+        IF (ALWAYS)
+    ENDIF
+    
+    ENDIF</CONDITION>
+                  </ENTRY>
+               </ARGUMENTS>
+            </CONDITIONALS>
+         </PARAMETER>
+      </INPUT>
+      <OUTPUT>
+         <PARAMETER>
+            <OUTPUT_SETTINGS>
+               <ARGUMENTS>
+                  <FILE_QUALIFIER>OUTPUT</FILE_QUALIFIER>
+                  <DATA_FILE_NAME>stdout</DATA_FILE_NAME>
+                  <DDL_FILE_NAME>$(DDL)/hk_drtranfrmr_p10.ddx</DDL_FILE_NAME>
+                  
+               <SELECT_RECORDS/>
+</ARGUMENTS>
+            </OUTPUT_SETTINGS>
+            
+            
+            <CONDITIONALS>
+               <ARGUMENTS>
+                  <ENTRY>
+                     <ENTRY_ID>1</ENTRY_ID>
+                     <FOR_FILES>OUTPUT</FOR_FILES>
+                     <CONDITION>IF (ALWAYS)
+                        IF (HK_GOUT_MATCH_LEVEL = 0)
+                           SET dr_cleanse_level = "2"
+                           SET dr_house_number1 = TRIM(HK_GOUT_HOUSE_NUMBER)
+                           SET dr_street_name   = TRIM(HK_GOUT_STREET_NAME)
+                           SET dr_house_number2 = TRIM(HK_GOUT_SUB_BUILDING) |: TRIM(HK_GOUT_SUB_BUILDING_VALUE)
+                           SET dr_address       = HK_GOUT_DELIVERY_ADDRESS1
+                           SET dr_address2      = HK_GOUT_DELIVERY_ADDRESS2
+                           SET dr_city_name     = TRIM(HK_GOUT_CITY_NAME)
+                           SET dr_region_name   = TRIM(HK_GOUT_AREA_NAME)
+                           SET dr_postal_code   = TRIM(HK_GOUT_BEAT_NUMBER)
+                        ELSE
+                           SET dr_cleanse_level = "0"
+                           SET dr_house_number1 = HK_GIN_HOUSE_NUMBER
+                           SET dr_street_name   = HK_GIN_STREET_NAME
+                           SET dr_house_number2 = HK_GIN_SUB_BUILDING
+                           SET dr_address       = TRIM(ADDR_LINE_1_TXT)
+                           SET dr_address2      = TRIM(ADDR_LINE_2_TXT)
+                           SET dr_address3      = TRIM(ADDR_LINE_3_TXT)
+                           SET dr_city_name     = TRIM(CITY_NAME)
+                           SET dr_region_name   = TRIM(TERR_NAME)
+                           SET dr_postal_code   = TRIM(POSTL_AREA_CODE)
+                        ENDIF
+                     ENDIF</CONDITION>
+                  </ENTRY>
+                  <ENTRY>
+                     <ENTRY_ID>2</ENTRY_ID>
+                     <FOR_FILES>OUTPUT</FOR_FILES>
+                     <CONDITION>IF (ALWAYS)
+                        RUN FIELD_SCANNING(ALL)
+                        SET PR_BUSNAME_ORIGINAL_01     = TCASE(PR_BUSNAME_ORIGINAL_01)
+                        SET PR_SURNAME1_ORIGINAL_01    = TCASE(PR_SURNAME1_ORIGINAL_01)
+                        SET PR_GIVEN_NAME1_ORIGINAL_01 = TCASE(PR_GIVEN_NAME1_ORIGINAL_01)
+                        SET PR_GIVEN_NAME2_ORIGINAL_01 = TCASE(PR_GIVEN_NAME2_ORIGINAL_01)
+                        SET PR_GIVEN_NAME3_ORIGINAL_01 = TCASE(PR_GIVEN_NAME3_ORIGINAL_01)
+                        SET dr_street_name             = TCASE(dr_street_name)
+                        SET dr_city_name               = TCASE(dr_city_name)
+                        SET DR_REGION_NAME             = UCASE(DR_REGION_NAME)
+                        SET DR_HOUSE_NUMBER2           = TCASE(DR_HOUSE_NUMBER2)
+                        SET dr_address                 = TCASE(dr_address)
+                        SET dr_address2                = TCASE(dr_address2)
+                        SET dr_alias_account           = PR_BUSNAME_RECODED_01
+                        SET dr_business_name           = TCASE(PR_BUSNAME_ORIGINAL_01)
+                        SET dr_mrmrs                   = TCASE(NAME_PREFX_TXT)
+                        SET dr_last_name               = TCASE(FAMLY_NAME)
+                        SET dr_first_name              = TCASE(GVN_NAME)
+                        SET dr_name_gender             = GENDR_IND
+                        SET dr_name_suffix             = NAME_SUFFX_TXT
+                        SET dr_middle_name             = TCASE(MID_NAME)
+                        SET dr_country_name            = "HKG"
+                     ENDIF</CONDITION>
+                  </ENTRY>
+                  <ENTRY>
+                     <ENTRY_ID>3</ENTRY_ID>
+                     <FOR_FILES>OUTPUT</FOR_FILES>
+                     <CONDITION>IF (ALWAYS)
+                        RUN TABLE_RECODING(ALL)
+                     ENDIF</CONDITION>
+                  </ENTRY>
+               </ARGUMENTS>
+            </CONDITIONALS>
+         </PARAMETER>
+      </OUTPUT>
+      <PROCESS>
+         <PARAMETER>
+            <PROCESS_SETTINGS>
+               <ARGUMENTS>
+                  <PROCESS_LOG_FILE_NAME>$(LOGS)/p10_hk_drtranfrmr_log.txt</PROCESS_LOG_FILE_NAME>
+                  <ENABLE_DEBUG_OUTPUT>N</ENABLE_DEBUG_OUTPUT>
+                  <DEBUG_FILE_NAME>$(DEBUG)/p10_hk_drtranfrmr_debug.txt</DEBUG_FILE_NAME>
+                  <MASK_FILE_NAME>$(GENERAL_RESOURCES)/maskfile$(PLAFEXT)</MASK_FILE_NAME>
+                  <STRSUB_TABLE_FILE_NAME>$(GENERAL_RESOURCES)/strsub$(PLAFEXT)</STRSUB_TABLE_FILE_NAME>
+               </ARGUMENTS>
+            </PROCESS_SETTINGS>
+         </PARAMETER>
+      </PROCESS>
+      <STATISTICS>
+         <PARAMETER>
+            <STATISTICS_SETTINGS>
+               <ARGUMENTS>
+                  <STATS_FILE_NAME>$(STATS)/p10_hk_drtranfrmr_stats.txt</STATS_FILE_NAME>
+               </ARGUMENTS>
+            </STATISTICS_SETTINGS>
+         </PARAMETER>
+      </STATISTICS>
+   </CATEGORY>
+</TRANFRMR>
+    

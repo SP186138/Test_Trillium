@@ -1,0 +1,14 @@
+/* delimiters control file
+/*
+/* file layout
+/* ===========
+/* col    description
+/* ---    ----------------------------
+/* 1      lookup control; 0 = exclude delimiter in lookup
+/*                        1 = include delimiter in lookup
+/* 2      blank (not used)
+/* 3->    delimiter; can be one or more bytes
+0 ,
+0  
+0 .
+
